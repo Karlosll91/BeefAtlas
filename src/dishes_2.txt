@@ -1,0 +1,218 @@
+# ---------------- México
+Carne asada|MX|grill|va|en,sb,ag|carne marinada a la parrilla|marinated grilled beef
+Tacos de carne asada|MX|grill|va|en,sb|tacos de carne a la parrilla|grilled beef tacos
+Arrachera a la parrilla|MX|grill|en|va|arrachera marinada|marinated grilled skirt
+Fajitas de res|MX|stirfry|en|va,sb|tiras de arrachera con pimientos|skirt strips with peppers
+Tacos de suadero|MX|braise|ma|fa,pe|suadero confitado en su grasa|suadero confited in fat
+Tacos de lengua|MX|braise|le||lengua cocida y picada|chopped braised tongue tacos
+Tacos de cabeza|MX|shred|ch|le|carne de cabeza al vapor|steamed head meat tacos
+Tacos de cachete|MX|shred|ch||cachete al vapor|steamed cheek tacos
+Tacos de tripa|MX|fry|chu||tripa dorada|crisp intestine tacos
+Tacos de bistec|MX|sear|ag|cp,ca|bistec picado a la plancha|chopped griddled steak tacos
+Tacos de costilla|MX|grill|cs||costilla asada picada|chopped grilled rib tacos
+Barbacoa de res|MX|shred|ch|ag,pe,cs|res cocida al vapor en pencas|pit-steamed beef
+Birria de res|MX|shred|ag|cs,mu,pe|res en adobo de chiles, deshebrada|chile-braised shredded beef
+Quesabirria|MX|shred|ag|cs,mu|taco de birria con queso y consomé|birria and cheese taco with consommé
+Machaca|MX|cure|cp|bo|carne seca deshebrada|dried shredded beef
+Machaca con huevo|MX|cure|cp|bo|carne seca con huevo|dried beef with eggs
+Cecina|MX|cure|cp|bo|carne salada y oreada en láminas|salted air-dried beef sheets
+Tasajo oaxaqueño|MX|cure|cp|bo,ca|carne salada asada|salted grilled beef
+Carne seca|MX|cure|cp|bo|carne seca|dried beef
+Mole de olla|MX|soup|mu|cs,ps|caldo de res con chiles y verduras|beef soup with chiles and vegetables
+Caldo de res|MX|soup|mu|cs,ps,tu|caldo de chambarete con verduras|shank and vegetable soup
+Menudo|MX|soup|mon|pt|sopa de pancita con chile|tripe soup with chile
+Pancita|MX|soup|mon|pt|menudo rojo|red tripe soup
+Pozole de res|MX|soup|mu|ch,pe|pozole con res|hominy soup with beef
+Salpicón de res|MX|shred|sb|pe,fa|carne deshebrada fría|cold shredded beef salad
+Ropa vieja mexicana|MX|shred|sb|fa|carne deshebrada con verduras|shredded beef with vegetables
+Tinga de res|MX|shred|sb|fa,ag|carne deshebrada en chipotle|shredded beef in chipotle
+Deshebrada|MX|shred|sb|fa,pe|carne deshebrada guisada|stewed shredded beef
+Chilorio de res|MX|shred|ag|pl|carne deshebrada frita en chile|shredded beef fried in chile
+Carne en su jugo|MX|braise|ca|cp,bp|carne en caldo con frijoles y tocino|beef in its juices with beans and bacon
+Bistec a la mexicana|MX|fry|cp|bp,ca|bistec con jitomate, cebolla y chile|steak with tomato, onion and chile
+Bistec ranchero|MX|fry|cp|bp|bistec en salsa ranchera|steak in ranchero sauce
+Bistec encebollado mexicano|MX|fry|cp|ca|bistec con cebolla|steak with onions
+Milanesa de res mexicana|MX|fry|cp|bp|milanesa empanizada|breaded cutlet
+Tampiqueña|MX|sear|lf||filete abierto a la plancha|butterflied griddled tenderloin
+Sábana de res|MX|sear|lf|cp|filete muy aplanado|paper-thin pounded tenderloin
+Puntas de filete|MX|stirfry|lf|ca|puntas de filete en salsa|tenderloin tips in sauce
+Puntas al albañil|MX|stirfry|ca|lf|puntas con tocino y chile|beef tips with bacon and chile
+Alambre de res|MX|stirfry|ca|va,cp|carne con tocino, pimiento y queso|beef with bacon, peppers and cheese
+Tacos de alambre|MX|stirfry|ca|va|alambre en tortilla|alambre tacos
+Discada|MX|stirfry|ca|ag,cp|carnes mixtas en disco|mixed meats cooked in a plough disc
+Chile colorado|MX|braise|ag|pl|res en salsa de chile rojo|beef in red chile sauce
+Asado de boda|MX|braise|ag|pl|res en mole rojo|beef in red mole
+Mole de res|MX|braise|ag|cs,mu|res en mole|beef in mole
+Entomatadas de res|MX|shred|sb|fa|tortillas con carne en salsa|tortillas with beef in tomato sauce
+Chiles rellenos de picadillo|MX|grind|mol||chiles rellenos de carne|chiles stuffed with ground beef
+Picadillo mexicano|MX|grind|mol||carne molida con papa y zanahoria|ground beef hash
+Albóndigas al chipotle|MX|grind|mol||albóndigas en salsa de chipotle|meatballs in chipotle sauce
+Tacos dorados de res|MX|shred|sb|fa|tacos fritos de carne deshebrada|fried shredded beef tacos
+Flautas de res|MX|shred|sb|fa|flautas de carne deshebrada|rolled fried beef tacos
+Burrito de machaca|MX|cure|cp||burrito de carne seca|dried beef burrito
+Burrito de carne asada|MX|grill|va|en|burrito de carne asada|carne asada burrito
+Torta de milanesa|MX|fry|cp|bp|torta de milanesa|breaded cutlet sandwich
+Pambazo de res|MX|shred|sb||pan con carne deshebrada|shredded beef roll
+Cuete mechado|MX|roll|mc||cuete mechado en salsa|larded eye of round
+Cuete en frío|MX|braise|mc||cuete frío en vinagreta|cold eye of round vinaigrette
+Carne a la tampiqueña|MX|sear|lf|la|filete con enchilada y guarniciones|steak with enchilada and sides
+Aguayón al horno|MX|roast|ca||aguayón horneado|oven-roasted sirloin
+Costillas en salsa verde|MX|braise|cs||costilla en salsa de tomatillo|ribs in tomatillo sauce
+Chambarete en chile pasilla|MX|braise|mu||chambarete en adobo|shank in pasilla chile
+Tuétanos asados|MX|roast|tu||tuétano a la parrilla|grilled marrow bones
+Tacos de tuétano|MX|roast|tu||tuétano en tortilla|marrow tacos
+Hígado encebollado mexicano|MX|sear|hi||hígado con cebolla|liver and onions
+Mollejas al ajillo|MX|sear|mj||mollejas con ajo|garlic sweetbreads
+Lengua a la veracruzana|MX|braise|le||lengua con jitomate y aceitunas|tongue Veracruz style
+Lengua en salsa verde|MX|braise|le||lengua en tomatillo|tongue in green sauce
+Pata de res en vinagre|MX|braise|pt||pata en escabeche|pickled cow foot
+Tostadas de pata|MX|braise|pt||tostadas con pata|cow foot tostadas
+Carne tártara mexicana|MX|raw|lf|cp|carne apache|lime-cured raw beef
+Aguachile de res|MX|raw|lf|la|láminas de res en chile y limón|sliced raw beef in chile-lime
+Hamburguesa al carbón|MX|grind|mol||hamburguesa a la parrilla|charcoal burger
+Cabrería|MX|grill|tb|la|lomo con hueso norteño|northern bone-in loin steak
+Rib eye al carbón|MX|grill|ba||rib eye a las brasas|charcoal ribeye
+Tomahawk a la parrilla|MX|grill|ba||costilla con hueso largo|long-bone ribeye
+Picaña al carbón|MX|grill|pa||picaña a las brasas|charcoal sirloin cap
+Tacos de picaña|MX|grill|pa||picaña en tortilla|sirloin cap tacos
+Vacío al carbón|MX|grill|va||vacío a las brasas|charcoal flap
+Agujas norteñas|MX|grill|cs|ag|agujas asadas|grilled chuck ribs
+Costillas de res al carbón|MX|grill|cs||costilla cargada asada|grilled beef ribs
+Caldo tlalpeño de res|MX|soup|mu|cs|caldo con chipotle|chipotle beef broth
+Sopa de médula|MX|soup|tu||sopa de tuétano|marrow soup
+Frijoles charros con carne|MX|braise|ca|pl|frijoles con carnes|cowboy beans with beef
+Gorditas de deshebrada|MX|shred|sb|fa|gorditas rellenas de carne|stuffed corn cakes
+Empalmes|MX|shred|ag||tortillas con frijol y carne|bean and beef tortilla stacks
+Enchiladas suizas de res|MX|shred|sb||enchiladas de carne|beef enchiladas
+Chimichanga de res|MX|shred|ag|sb|burrito frito de carne|fried beef burrito
+Cortadillo norteño|MX|braise|ca|pl,ag|carne en cubitos guisada|diced beef stew
+Asado de puerco de res|MX|braise|ag||res en chile rojo|beef in red chile
+Estofado de res mexicano|MX|braise|pl|ag|estofado con verduras|beef stew with vegetables
+# ---------------- Centroamérica y Caribe
+Ropa vieja|CU|shred|sb|fa,pe|falda deshebrada en salsa de tomate|shredded flank in tomato sauce
+Vaca frita|CU|shred|sb|fa|falda deshebrada y frita con cebolla|shredded flank fried crisp with onion
+Picadillo cubano|CU|grind|mol||carne molida con aceitunas y pasas|ground beef with olives and raisins
+Boliche|CU|roll|mc||muchacho relleno de chorizo|eye of round stuffed with chorizo
+Bistec de palomilla|CU|fry|cp|ca,bp|bistec fino con limón y cebolla|thin steak with lime and onion
+Bistec empanizado|CU|fry|cp|bp|bistec apanado|breaded steak
+Carne con papas|CU|braise|pl|ag,bo|guiso de carne con papas|beef and potato stew
+Tasajo cubano|CU|cure|cp|bo|carne seca guisada|stewed dried beef
+Rabo encendido|CU|braise|cl||rabo picante en vino|spicy braised oxtail
+Ajiaco cubano|CU|soup|pe|cs,cp|sopa de viandas y carnes|root vegetable and meat stew
+Frita cubana|CU|grind|mol||hamburguesa con papitas|Cuban burger with shoestring fries
+Papas rellenas cubanas|CU|grind|mol||bolas de papa rellenas de picadillo|potato balls stuffed with picadillo
+Carne mechada puertorriqueña|PR|roll|mc|bo|carne mechada rellena|stuffed pot roast
+Carne guisada puertorriqueña|PR|braise|pl|ag,bo|guiso de res con sofrito|beef stew with sofrito
+Bistec encebollado boricua|PR|fry|cp|bp|bistec con cebolla en adobo|marinated steak with onions
+Piñón|PR|grind|mol||pastelón de plátano y carne|plantain and beef casserole
+Pastelón de carne|PR|grind|mol||lasaña de plátano maduro|sweet plantain lasagne
+Alcapurrias|PR|grind|mol||frituras rellenas de carne|stuffed fritters
+Empanadillas de carne|PR|grind|mol||pastelillos de carne|beef turnovers
+Sancocho dominicano|DO|soup|cs|pe,mu|sancocho de siete carnes|seven-meat stew
+Carne guisada dominicana|DO|braise|pl|ag,bo|res guisada|Dominican beef stew
+Bistec encebollado dominicano|DO|fry|cp|bp|bistec con cebolla|steak with onions
+Rabo guisado|DO|braise|cl||rabo guisado|braised oxtail
+Mondongo dominicano|DO|soup|mon|pt|mondongo guisado|stewed tripe
+Pastelón de papa|DO|grind|mol||pastel de papa con carne|potato and beef pie
+Niño envuelto dominicano|DO|grind|mol||repollo relleno de carne|stuffed cabbage rolls
+Jamaican oxtail stew|JM|braise|cl||rabo con habichuelas|oxtail with butter beans
+Jamaican beef patty|JM|grind|mol||empanada de carne con curry|curried beef patty
+Pepper pot|JM|braise|pl|cs,cl|guiso oscuro de carne|dark spiced meat stew
+Cow foot soup|JM|soup|pt||sopa de pata|cow foot soup
+Jamaican stew beef|JM|braise|ag|pl|guiso de res|brown stew beef
+Griot de bœuf / Tassot|HT|cure|cp|bo|carne marinada, hervida y frita|marinated fried beef
+Bouyon bèf|HT|soup|cs|mu,pe|sopa de res con viandas|beef and root vegetable soup
+Pelau with beef|TT|braise|ag|pl|arroz con carne caramelizada|caramelised beef rice
+Trinidad stew beef|TT|braise|ag|pl|res guisada en azúcar quemada|browned-sugar beef stew
+Carne guisada panameña|PA|braise|pl|ag|carne guisada|Panamanian beef stew
+Ropa vieja panameña|PA|shred|sb|fa|carne deshebrada|shredded beef
+Sancocho de res panameño|PA|soup|cs|pe|sopa de res|beef soup
+Tasajo panameño|PA|cure|cp|bo|carne ahumada seca|smoked dried beef
+Olla de carne|CR|soup|cs|pe,mu|sopa de carne y verduras|beef and vegetable pot
+Casado con bistec|CR|fry|cp|ca|bistec encebollado con arroz y frijoles|steak with rice and beans
+Carne en salsa costarricense|CR|braise|pl|ag|carne en salsa|beef in sauce
+Churrasco nicaragüense|NI|grill|lf|la|lomo abierto a la parrilla|butterflied grilled tenderloin
+Carne asada nicaragüense|NI|grill|va|ca,en|carne marinada en naranja agria|sour-orange marinated beef
+Indio viejo|NI|shred|sb|fa|carne deshebrada con masa|shredded beef thickened with corn dough
+Vigorón con carne|NI|grill|ca||carne asada con yuca|grilled beef with cassava
+Baho|NI|smoke|pe|cs|cecina con plátano y yuca al vapor|steamed salted beef with plantain
+Salpicón nicaragüense|NI|grind|cp|bp|carne cocida y picada fina|boiled finely chopped beef
+Hilachas|GT|shred|sb|fa|carne deshilachada en recado|shredded beef in tomato sauce
+Pepián de res|GT|braise|pl|cs,ag|res en recado de pepitoria|beef in pumpkin-seed sauce
+Kak'ik de res|GT|soup|cs||caldo rojo|red broth
+Revolcado|GT|braise|ch|le|guiso de cabeza|head meat stew
+Carne adobada salvadoreña|SV|grill|ca|cp|carne adobada asada|marinated grilled beef
+Sopa de pata salvadoreña|SV|soup|pt|mon|sopa de pata y mondongo|cow foot and tripe soup
+Salpicón salvadoreño|SV|grind|cp|bp|carne picada con hierbabuena|chopped beef with mint
+Tajadas con carne molida|HN|grind|mol||plátano frito con carne|fried plantain with ground beef
+Carne asada hondureña|HN|grill|va|ca|carne asada con chimol|grilled beef with chimol
+Sopa de mondongo hondureña|HN|soup|mon|pt|sopa de mondongo|tripe soup
+# ---------------- Brasil
+Picanha na brasa|BR|grill|pa||picanha en espeto|sirloin cap on the sword
+Churrasco gaúcho|BR|grill|pa|cs,va,ca|carnes en espeto a la brasa|sword-grilled meats
+Fraldinha na brasa|BR|grill|va|sb|vacío a la brasa|grilled flap
+Maminha assada|BR|grill|co||colita a la brasa|grilled tri-tip
+Alcatra na brasa|BR|grill|ca||cadera a la brasa|grilled top sirloin
+Cupim assado|BR|smoke|mo||giba envuelta asada por horas|hump wrapped and roasted for hours
+Cupim na pressão|BR|braise|mo||giba en olla a presión|pressure-cooked hump
+Costela no bafo|BR|smoke|cs||costilla al vapor lento|slow-steamed beef ribs
+Costela fogo de chão|BR|smoke|cs||costillar asado doce horas junto al fuego|ribs roasted twelve hours by the fire
+Costela na pressão|BR|braise|cs||costilla en olla a presión|pressure-cooked ribs
+Vaca atolada|BR|braise|cs||costilla con mandioca|ribs with cassava
+Carne de panela|BR|braise|bo|mc,pl,ag|carne en olla|pot roast
+Carne louca|BR|shred|mc|bo|lagarto desmechado en vinagreta|shredded eye of round in vinaigrette
+Lagarto recheado|BR|roll|mc||lagarto relleno|stuffed eye of round
+Rosbife|BR|roast|mc|la,cp|rosbif frío en láminas|cold sliced roast beef
+Bife acebolado|BR|fry|cp|ca,bp|bistec con cebolla|steak with onions
+Bife à milanesa|BR|fry|cp|bp|bistec apanado|breaded steak
+Bife à parmegiana|BR|fry|cp|bp|milanesa con salsa y queso|breaded steak with sauce and cheese
+Bife à cavalo|BR|fry|ca|cp,la|bistec con huevo frito|steak with fried egg
+Bife a rolê|BR|roll|cp|bp|bifes enrollados rellenos|stuffed beef rolls
+Estrogonofe de carne|BR|stirfry|lf|ca,cp|tiras en crema|beef strips in cream sauce
+Picadinho|BR|braise|ca|cp,lf|carne picada a cuchillo en salsa|knife-chopped beef in sauce
+Carne moída refogada|BR|grind|mol||carne molida sofrita|sautéed ground beef
+Escondidinho de carne seca|BR|cure|bo|cp|carne seca bajo puré de mandioca|dried beef under cassava mash
+Carne de sol|BR|cure|bo|cp,ca|carne salada y oreada|salted, air-dried beef
+Carne seca acebolada|BR|cure|bo|cp|charque con cebolla|dried beef with onions
+Paçoca de carne|BR|cure|bo||carne seca pilada con farinha|pounded dried beef with cassava flour
+Arroz carreteiro|BR|cure|bo|cp|arroz con charque|rice with dried beef
+Feijão tropeiro|BR|cure|bo||frijoles con carne seca|beans with dried beef
+Baião de dois|BR|cure|bo||arroz, frijol y carne seca|rice, beans and dried beef
+Barreado|BR|shred|bo|pl,ag|carne cocida doce horas en olla de barro|beef cooked twelve hours in a sealed clay pot
+Rabada|BR|braise|cl||rabo guisado con berro|braised oxtail with watercress
+Mocotó|BR|soup|pt||caldo de pata|cow foot broth
+Dobradinha|BR|braise|mon||mondongo con frijoles blancos|tripe with white beans
+Buchada de boi|BR|braise|mon||mondongo relleno|stuffed tripe
+Fígado acebolado|BR|sear|hi||hígado con cebolla|liver with onions
+Língua ao molho madeira|BR|braise|le||lengua en salsa madeira|tongue in Madeira sauce
+Coração de boi grelhado|BR|skewer|cz||corazón en brochetas|heart skewers
+Espetinho de carne|BR|skewer|ca|pa,la|brochetas de carne|beef skewers
+Kafta brasileira|BR|grind|mol||brochetas de carne molida|ground beef skewers
+Feijoada (carnes bovinas)|BR|braise|bo|cs,le|frijoles negros con carnes|black beans with meats
+Cozido brasileiro|BR|soup|pe|mu,cs|hervido de carnes y verduras|boiled meats and vegetables
+Sopa de músculo|BR|soup|mu||sopa de músculo|shank soup
+Caldo de mocotó|BR|soup|pt||caldo espeso de pata|thick foot broth
+Músculo ao molho|BR|braise|mu||músculo en salsa|shank in sauce
+Ossobuco brasileiro|BR|braise|mu||osobuco guisado|braised shank
+Acém na pressão|BR|braise|ag||aguja a presión|pressure-cooked chuck
+Peito bovino defumado|BR|smoke|pe||pecho ahumado|smoked brisket
+Filé à Oswaldo Aranha|BR|sear|lf||filete con ajo frito|tenderloin with fried garlic
+Filé à parmegiana|BR|fry|lf|cp|filete apanado con queso|breaded tenderloin with cheese
+Filé ao molho madeira|BR|sear|lf||filete en salsa madeira|tenderloin in Madeira sauce
+Medalhão de filé|BR|sear|lf||medallones con tocino|bacon-wrapped medallions
+Contrafilé grelhado|BR|grill|la||contrafilé a la parrilla|grilled strip loin
+Bife ancho na brasa|BR|grill|ba||ancho a la brasa|grilled ribeye
+Bisteca na brasa|BR|grill|tb||bisteca a la brasa|grilled T-bone
+Hambúrguer artesanal|BR|grind|mol||hamburguesa artesanal|craft burger
+Quibe|BR|grind|mol|bp|croqueta de carne y trigo|beef and bulgur croquette
+Pastel de carne brasileiro|BR|grind|mol||empanada frita de carne|fried beef pastry
+Coxinha de carne|BR|shred|mc|bo|croqueta de carne desmechada|shredded beef croquette
+Carne desfiada|BR|shred|mc|bo,ag|carne desmechada|shredded beef
+Bauru|BR|roast|mc|la|sándwich de rosbif|roast beef sandwich
+Matambre recheado gaúcho|BR|roll|ma||matambre relleno|stuffed matambre
+Vazio na brasa|BR|grill|va||vazio a la brasa|grilled flank
+Entranha grelhada|BR|grill|en||entraña a la parrilla|grilled skirt
+Tutano assado|BR|roast|tu||tuétano asado|roasted marrow
+Moqueca de carne seca|BR|cure|bo||guiso de carne seca|dried beef stew
+Panelada|BR|soup|mon|pt|guiso de vísceras|offal stew
+Sarapatel bovino|BR|braise|hi|cz|guiso de vísceras|spiced offal stew

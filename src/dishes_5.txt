@@ -1,0 +1,303 @@
+# ---------------- China, Hong Kong, Taiwán
+Hong shao niu rou (红烧牛肉)|CN|braise|mu|cs,ag|res estofada en soya|red-braised beef
+Lanzhou beef noodle soup (牛肉面)|CN|soup|mu|pe,ps|sopa de fideos con res|hand-pulled noodle soup
+Taiwanese beef noodle soup|TW|braise|mu|cs,ag|fideos con morcillo estofado|noodles with braised shank
+Sichuan boiled beef (水煮牛肉)|CN|slice|sb|ca,cp|láminas en caldo picante|slices in fiery broth
+Mapo tofu with beef|CN|grind|mol||tofu picante con carne molida|spicy tofu with ground beef
+Beef chow fun (干炒牛河)|HK|stirfry|sb|ca|fideos anchos salteados|stir-fried wide noodles
+Beef with oyster sauce|CN|stirfry|sb|ca,cp|tiras en salsa de ostras|strips in oyster sauce
+Black pepper beef|CN|stirfry|ca|lf,sb|cubos a la pimienta negra|black pepper cubes
+Cumin beef (孜然牛肉)|CN|stirfry|sb|ca|tiras con comino|cumin-spiced strips
+Crispy shredded beef|CN|stirfry|cp|sb|tiras fritas crocantes|crisp fried shreds
+Beef with bitter melon|CN|stirfry|sb|ca|tiras con melón amargo|strips with bitter melon
+Tomato beef|CN|stirfry|sb|ca|tiras con tomate|strips with tomato
+Orange beef|CN|stirfry|sb|cp|tiras crocantes en naranja|crispy orange strips
+Beef lo mein|CN|stirfry|sb|ca|fideos con res|noodles with beef
+Kung pao beef|CN|stirfry|ca|sb|cubos con maní y chile|cubes with peanuts and chillies
+Dry-fried beef (干煸牛肉丝)|CN|stirfry|cp|sb|hebras fritas secas|dry-fried shreds
+Hot pot beef (火锅肥牛)|CN|slice|fa|ba,cs|láminas grasas para caldo|fatty slices for hot pot
+Chaozhou beef hot pot|CN|slice|cs|ag,mu,bp|cortes frescos en caldo claro|fresh hand-cut beef in clear broth
+Beef brisket noodles (牛腩面)|HK|braise|fa|pe,cs|fideos con falda estofada|noodles with braised brisket
+Curry beef brisket|HK|braise|fa|pe|falda al curry|curried brisket
+Braised beef tendon|CN|braise|pt|mu|tendón estofado|braised tendon
+Fuqi feipian (夫妻肺片)|CN|slice|mu|le,mon,cz|vísceras y morcillo fríos en aceite de chile|cold sliced shank and offal in chilli oil
+Five-spice beef shank (酱牛肉)|CN|braise|mu||morcillo frío en cinco especias|cold five-spice shank
+Beef tripe dim sum|HK|braise|mon||callos al vapor con jengibre|steamed tripe with ginger
+Beef balls (牛肉丸)|CN|grind|mol|bp|bolas de carne batida|bouncy beef balls
+Steamed beef meatballs|HK|grind|mol||albóndigas al vapor|steamed beef balls
+Beef dumplings|CN|grind|mol||empanadillas de res|beef dumplings
+Beef congee|HK|slice|sb|ca|arroz caldoso con res|rice porridge with beef
+West Lake beef soup|CN|grind|mol|ca|sopa de carne picada|minced beef soup
+Xinjiang beef skewers|CN|skewer|ca|cs|brochetas con comino|cumin skewers
+Braised brisket with daikon (蘿蔔牛腩)|CN|braise|fa|pe|falda con rábano|brisket with daikon
+Oxtail in red wine (HK)|HK|braise|cl||rabo en vino|oxtail in red wine
+Beef satay noodles|HK|stirfry|sb||tiras en salsa satay|strips in satay sauce
+Sizzling beef|HK|stirfry|lf|ca|filete en plancha caliente|fillet on a hot plate
+Three-cup beef|TW|stirfry|ca||cubos en soya, sésamo y vino|cubes in soy, sesame and wine
+Taiwanese beef roll|TW|braise|mu||panqueque con morcillo|scallion pancake with shank
+# ---------------- Japón
+Sukiyaki (すき焼き)|JP|slice|ba|ag,la|láminas en soya dulce|slices simmered in sweet soy
+Shabu-shabu (しゃぶしゃぶ)|JP|slice|ba|la,ag|láminas pasadas por caldo|slices swished in broth
+Gyudon (牛丼)|JP|slice|fa|ba,ag|láminas con cebolla sobre arroz|beef and onion rice bowl
+Yakiniku (焼肉)|JP|grill|cs|ba,en,le|cortes finos a la parrilla|thin cuts grilled at the table
+Karubi yakiniku|JP|grill|cs||costilla sin hueso a la parrilla|boneless short rib
+Harami yakiniku|JP|grill|en|ha|entraña a la parrilla|grilled skirt
+Gyutan (牛タン)|JP|grill|le||lengua en láminas a la parrilla|grilled sliced tongue
+Teppanyaki steak|JP|sear|lf|la,ba|bistec a la plancha|griddle steak
+Wagyu steak|JP|sear|la|ba,lf|bistec wagyu|wagyu steak
+Gyukatsu (牛カツ)|JP|fry|la|lf,ca|filete apanado, rojo por dentro|breaded rare beef cutlet
+Beef tataki (牛たたき)|JP|raw|lf|ca,cp,mc|sellado por fuera, crudo por dentro|seared outside, raw inside
+Yukke-style raw beef|JP|raw|lf|cp|carne cruda con yema|raw beef with egg yolk
+Nikujaga (肉じゃが)|JP|slice|fa|ag|láminas guisadas con papa|simmered slices with potatoes
+Japanese beef curry|JP|braise|ag|mu,cs|curry japonés|Japanese curry
+Hayashi rice|JP|slice|ag|fa|láminas en salsa demi-glace|slices in demi-glace
+Hambagu (ハンバーグ)|JP|grind|mol||hamburguesa japonesa|Japanese hamburger steak
+Menchi katsu|JP|grind|mol||croqueta de carne apanada|breaded mince cutlet
+Korokke de carne|JP|grind|mol||croqueta de papa y carne|potato and beef croquette
+Gyu-suji nikomi|JP|braise|pt|mu|tendón estofado|stewed tendon
+Motsunabe (もつ鍋)|JP|soup|chu|mon|caldero de intestino|offal hot pot
+Horumon yaki|JP|grill|chu|mon,cz|vísceras a la parrilla|grilled offal
+Beef negimaki|JP|roll|la|sb,cp|rollos con cebollín|scallion beef rolls
+Roast beef don|JP|roast|mc|cp,la|rosbif sobre arroz|roast beef rice bowl
+Beef udon (肉うどん)|JP|slice|fa|ba|udon con láminas|udon with beef slices
+Oxtail soup (Okinawa)|JP|soup|cl||sopa de rabo|oxtail soup
+Shigureni|JP|slice|fa|ag|láminas en soya y jengibre|soy-ginger simmered slices
+Beef sashimi|JP|raw|lf|mc|sashimi de res|beef sashimi
+Steak don|JP|sear|ca|la|bistec sobre arroz|steak rice bowl
+# ---------------- Corea
+Bulgogi (불고기)|KR|slice|ba|la,ca,cp|láminas marinadas a la parrilla|marinated grilled slices
+Galbi (갈비)|KR|grill|cs||costilla marinada a la parrilla|marinated grilled short ribs
+LA galbi|KR|grill|cs||costilla cortada a través del hueso|flanken-cut marinated ribs
+Galbi-jjim (갈비찜)|KR|braise|cs||costilla estofada dulce|sweet braised short ribs
+Galbitang (갈비탕)|KR|soup|cs||sopa clara de costilla|clear short rib soup
+Seolleongtang (설렁탕)|KR|soup|tu|pe,mu,pt|caldo blanco de huesos|milky bone broth
+Gomtang (곰탕)|KR|soup|pe|mu,cl|caldo de pecho|brisket soup
+Kkori gomtang (꼬리곰탕)|KR|soup|cl||sopa de rabo|oxtail soup
+Yukgaejang (육개장)|KR|shred|pe|sb|sopa picante de carne desmechada|spicy shredded beef soup
+Tteokguk|KR|soup|pe||sopa de pastel de arroz|rice cake soup
+Miyeokguk|KR|soup|pe|ca|sopa de algas|seaweed soup
+Jangjorim (장조림)|KR|shred|mc|sb,bo|carne en soya desmechada|soy-braised shredded beef
+Yukhoe (육회)|KR|raw|cp|lf,mc|carne cruda con pera y yema|raw beef with pear and yolk
+Bibimbap|KR|grind|mol|ca|arroz mixto con carne|mixed rice with beef
+Japchae|KR|stirfry|ca|cp|fideos de batata con res|glass noodles with beef
+Chadolbagi (차돌박이)|KR|slice|pe||pecho en láminas finas a la parrilla|paper-thin grilled brisket
+Deungsim gui|KR|grill|ba|la|lomo a la parrilla|grilled ribeye
+Ansim gui|KR|grill|lf||solomillo a la parrilla|grilled tenderloin
+Anchangsal gui|KR|grill|en||entraña a la parrilla|grilled skirt
+Tteokgalbi|KR|grind|cs|mol|carne de costilla picada a la parrilla|minced rib patties
+Soegogi-muguk|KR|soup|pe|ca|sopa de rábano|radish soup
+Doganitang|KR|soup|pt||sopa de rodilla|knuckle and tendon soup
+Gopchang gui (곱창)|KR|grill|chu||intestino a la parrilla|grilled intestine
+Gopchang jeongol|KR|soup|chu|mon|caldero de intestino|intestine hot pot
+Naejangtang|KR|soup|mon|chu|sopa de vísceras|offal soup
+Sundubu with beef|KR|grind|mol||tofu suave picante|soft tofu stew
+Suyuk|KR|braise|pe|mu|carne hervida en láminas|boiled sliced beef
+Soegogi jeon|KR|fry|cp|ca|láminas rebozadas en huevo|egg-battered slices
+Sanjeok|KR|skewer|ca|cp|brochetas|skewers
+Yukjeon|KR|fry|cp||carne rebozada|pan-fried battered beef
+Budae jjigae (beef)|KR|grind|mol||guiso del ejército|army stew
+Bulgogi jeongol|KR|slice|ba|ca|caldero de bulgogi|bulgogi hot pot
+# ---------------- Sudeste asiático
+Phở bò|VN|soup|tu|pe,mu,cl,sb|caldo de huesos con fideos|bone broth with noodles
+Phở tái|VN|slice|ca|lf,mc|láminas crudas en caldo|rare slices in broth
+Phở chín|VN|soup|pe||pecho cocido en caldo|well-done brisket pho
+Bún bò Huế|VN|soup|mu|pt,cs|sopa picante de Hue|spicy Hue noodle soup
+Bò kho|VN|braise|fa|mu,ag|estofado con hierba limón|lemongrass beef stew
+Bò lúc lắc|VN|stirfry|lf|ca,la|cubos salteados|shaking beef
+Bò lá lốt|VN|grind|mol||carne en hojas de betel|beef in betel leaves
+Bò tái chanh|VN|raw|lf|ca,mc|ceviche de res|lime-cured beef salad
+Bò nướng sả|VN|skewer|sb|ca|brochetas con hierba limón|lemongrass skewers
+Bò bía|VN|slice|sb||rollos frescos|fresh rolls
+Bò né|VN|sear|lf|ca|bistec en plancha|sizzling steak
+Lẩu bò|VN|slice|ba|sb,mu|caldero de res|beef hot pot
+Bò viên|VN|grind|mol||bolas de carne|beef balls
+Nam tok neua|TH|grill|sb|ca,va|ensalada de carne a la parrilla|grilled beef salad
+Yam neua|TH|grill|sb|ca|ensalada picante de res|spicy beef salad
+Neua pad prik|TH|stirfry|sb|ca|tiras con chile|strips with chilli
+Pad kra pao neua|TH|grind|mol|sb|carne con albahaca|basil beef
+Massaman neua|TH|braise|mu|ag,ch|curry massaman|massaman curry
+Panang neua|TH|slice|sb|ca,ag|curry panang|panang curry
+Gaeng keow wan neua|TH|slice|sb|ca|curry verde|green curry
+Kuay teow neua|TH|soup|mu|pe,mon|sopa de fideos|boat noodles
+Neua dad deaw|TH|cure|cp|sb|carne seca frita|sun-dried fried beef
+Suea rong hai|TH|grill|pe|sb,ba|tigre llorón, pecho a la parrilla|crying tiger grilled brisket
+Larb neua|TH|grind|mol|cp|ensalada de carne picada|minced beef salad
+Koi soi|TH|raw|cp|lf|carne cruda picante|raw spicy beef
+Rendang|ID|braise|bo|ag,mu,pl|curry seco cocido horas|dry curry cooked for hours
+Rawon|ID|soup|pe|mu|sopa negra de keluak|black keluak soup
+Soto betawi|ID|soup|pe|mon,mu|sopa con leche de coco|coconut milk soup
+Sop buntut|ID|soup|cl||sopa de rabo|oxtail soup
+Bakso|ID|grind|mol|bp|bolas de carne|meatballs
+Sate sapi|ID|skewer|ca|lf|brochetas|satay
+Sate padang|ID|skewer|le|cz|brochetas de lengua|tongue satay
+Dendeng balado|ID|cure|cp|bo|carne seca frita con chile|dried fried beef with chilli
+Empal gepuk|ID|braise|bo|mu|carne machacada frita|pounded fried beef
+Semur daging|ID|braise|mu|ag|estofado en soya dulce|sweet soy stew
+Gulai sapi|ID|braise|pe|mu|curry|curry
+Tongseng sapi|ID|braise|mu||curry dulce|sweet curry stew
+Sup tulang|MY|soup|tu|cs|sopa de huesos|bone soup
+Daging masak kicap|MY|braise|ca|cp|carne en soya|soy sauce beef
+Beef satay|MY|skewer|ca|sb|brochetas|satay
+Sup ekor|MY|soup|cl||sopa de rabo|oxtail soup
+Daging salai masak lemak|MY|smoke|pe||carne ahumada en coco|smoked beef in coconut
+Bistek tagalog|PH|fry|ca|cp|bistec con soya y calamansi|soy-citrus steak
+Beef tapa (tapsilog)|PH|cure|ca|cp|carne curada frita|cured fried beef
+Kare-kare|PH|braise|cl|mon,pt|rabo en salsa de maní|oxtail in peanut sauce
+Bulalo|PH|soup|mu|tu|sopa de morcillo con tuétano|shank and marrow soup
+Nilagang baka|PH|soup|pe|mu,cs|hervido|boiled beef soup
+Beef caldereta|PH|braise|ag|cs,pl|guiso en tomate|tomato stew
+Beef mechado|PH|braise|bo|ag|carne mechada|larded stew
+Beef pares|PH|braise|pe|fa|pecho en soya dulce|sweet soy brisket
+Beef morcon|PH|roll|sb|cp|rollo relleno|stuffed roll
+Sinigang na baka|PH|soup|cs|pe|sopa agria|sour soup
+Papaitan|PH|soup|mon|hi|sopa amarga de vísceras|bitter offal soup
+Beef salpicao|PH|stirfry|lf|ca|cubos al ajo|garlic cubes
+Beef sisig|PH|grill|ch||cabeza picada|chopped head meat
+Lok lak|KH|stirfry|lf|ca|cubos salteados|stir-fried cubes
+Amok de res|KH|braise|ca||curry al vapor|steamed curry
+Laap ngua|LA|grind|mol|cp|ensalada de carne picada|minced beef salad
+Amè hnat|MM|braise|pl|mu|curry birmano|Burmese curry
+# ---------------- Subcontinente indio
+Nihari|PK|braise|mu|tu|estofado de morcillo y tuétano|shank and marrow stew
+Haleem|PK|shred|mu|pl|carne con trigo y lentejas|beef pounded with wheat and lentils
+Beef biryani|PK|braise|pl|mu,cs|arroz con carne|layered rice with beef
+Beef karahi|PK|braise|pl|ca|guiso en wok|wok stew
+Beef korma|PK|braise|pl|ag|curry cremoso|creamy curry
+Bihari kabab|PK|skewer|cp|ca|láminas marinadas en brocheta|marinated strips on skewers
+Seekh kabab|PK|grind|mol||brochetas de carne picada|minced skewers
+Chapli kabab|PK|grind|mol||tortas de carne especiada|spiced flat patties
+Shami kabab|PK|grind|mol|pl|tortas de carne y lentejas|beef and lentil patties
+Paya|PK|soup|pt||sopa de patas|trotter soup
+Beef pulao|PK|braise|cs|pl|arroz en caldo|rice in beef stock
+Kata-kat|PK|stirfry|cz|ri,hi|vísceras picadas en plancha|offal chopped on the griddle
+Beef pasanda|PK|fry|cp||filetes en yogur|slices in yogurt
+Aloo gosht|PK|braise|pl|cs|guiso con papa|beef and potato curry
+Keema|IN|grind|mol||carne picada especiada|spiced mince
+Keema matar|IN|grind|mol||carne picada con arvejas|mince with peas
+Kerala beef fry (ularthiyathu)|IN|braise|pl|ag,bo|carne salteada seca con coco|dry-roasted beef with coconut
+Kerala beef curry|IN|braise|pl|ag|curry|curry
+Goan beef roast|IN|roll|mc|bo|carne asada especiada|spiced pot roast
+Beef vindaloo|IN|braise|pl|ag|curry ácido picante|hot sour curry
+Beef xacuti|IN|braise|pl||curry de coco tostado|roasted coconut curry
+Beef cutlets (Kerala)|IN|grind|mol||croquetas|croquettes
+Beef samosa|IN|grind|mol||samosa de carne|beef samosa
+Beef bhuna|BD|braise|pl|ag|curry seco|dry curry
+Kala bhuna|BD|braise|pl|cs|curry negro|black dry curry
+Beef tehari|BD|braise|pl|ca|arroz con carne|beef rice
+Beef rezala|BD|braise|pl||curry blanco|white curry
+Sri Lankan beef curry|LK|braise|pl|ag|curry|curry
+Beef momo|NP|grind|mol||empanadillas|dumplings
+Sukuti|NP|cure|cp|bo|carne seca|dried meat
+Shapta|NP|stirfry|ca||tiras salteadas|stir-fried strips
+Beef kofta curry|IN|grind|mol||albóndigas en curry|meatball curry
+Bone marrow nalli|PK|braise|tu|mu|tuétano en salsa|marrow in gravy
+Beef tongue curry|PK|braise|le||lengua al curry|tongue curry
+# ---------------- Asia Central, Mongolia
+Beshbarmak|KZ|soup|pe|cs|carne hervida sobre pasta|boiled meat over noodles
+Plov (beef)|UZ|braise|pl|cs|arroz con carne y zanahoria|rice with beef and carrot
+Lagman|UZ|stirfry|ca|pl|fideos con carne|noodles with beef
+Manti|UZ|grind|mol||empanadillas al vapor|steamed dumplings
+Shurpa|UZ|soup|cs|mu|sopa de carne|meat soup
+Khorkhog (beef)|MN|braise|cs||carne cocida con piedras|meat cooked with hot stones
+Buuz|MN|grind|mol||empanadillas|dumplings
+Borts|MN|cure|cp|bo|carne seca|dried meat
+Tsuivan|MN|stirfry|ca||fideos salteados|stir-fried noodles
+# ---------------- Oceanía
+Aussie meat pie|AU|grind|mol|ag|pastel individual de carne|hand-held beef pie
+Steak sandwich (Aussie)|AU|sear|ca|la|sándwich de bistec|steak sandwich
+Scotch fillet on the barbie|AU|grill|ba||ribeye a la parrilla|barbecued ribeye
+Rump steak (pub)|AU|grill|ca||cadera a la parrilla|grilled rump
+Beef sausage rolls|AU|grind|mol||rollos de hojaldre|sausage rolls
+Corned silverside|AU|cure|bo||contra en salmuera hervida|boiled corned silverside
+Beef rissoles|AU|grind|mol||tortas de carne|pan-fried patties
+Beef and Guinness pie|AU|braise|ag||pastel de carne|beef pie
+Hāngi beef|NZ|smoke|pe|cs,ag|carne en horno de tierra|earth-oven beef
+Mince on toast|NZ|grind|mol||carne picada sobre tostada|mince on toast
+Boil-up|NZ|soup|cs|ps|hervido|boiled bones and greens
+Pipikaula|US|cure|sb|cp|carne seca hawaiana|Hawaiian dried beef
+Loco moco|US|grind|mol||hamburguesa sobre arroz con huevo|burger patty on rice with egg
+Hawaiian beef stew|US|braise|ag||guiso|stew
+Kalbi (Hawaii)|US|grill|cs||costilla marinada|marinated short ribs
+Fijian beef curry|FJ|braise|pl|ag|curry|curry
+Palusami with corned beef|WS|cure|pe||hojas de taro con corned beef|taro leaves with corned beef
+# ---------------- Preparaciones generales
+Bistec a la plancha|INT|sear|ca|la,cp,ba|bistec|griddled steak
+Bistec a la parrilla|INT|grill|la|ba,ca,pa|bistec asado|grilled steak
+Bistec delgado|INT|fry|cp|bp,ca|filete fino|thin steak
+Filete a la pimienta|INT|sear|lf|la|filete en salsa de pimienta|pepper steak
+Medallones de lomo|INT|sear|lf||medallones|medallions
+Lomo en salsa de champiñones|INT|sear|lf|la|lomo con hongos|steak with mushroom sauce
+Lomo al vino tinto|INT|sear|lf|la|lomo en reducción de vino|steak in red wine reduction
+Roast beef|INT|roast|la|cp,mc,ba|asado al horno tajado|sliced oven roast
+Rosbif frío|INT|roast|mc|cp|rosbif para sándwich|cold roast beef
+Asado al horno|INT|roast|pa|la,co,cp|pieza entera horneada|whole oven roast
+Carne al horno con papas|INT|roast|pa|co,mc|carne horneada|roast with potatoes
+Estofado de res|INT|braise|ag|pl,mu,bo|guiso de res|beef stew
+Guiso de carne|INT|braise|pl|ag,bo|guiso|stew
+Carne en salsa|INT|braise|pl|bo,ag|carne guisada|beef in sauce
+Carne a la cerveza|INT|braise|ag|pl|estofado en cerveza|beer-braised beef
+Carne al vino|INT|braise|ag|ch,mu|estofado en vino|wine-braised beef
+Carne en olla a presión|INT|braise|bo|ag,pl,mu|carne a presión|pressure-cooker beef
+Carne en olla de cocción lenta|INT|braise|ag|pe,bo|carne en slow cooker|slow-cooker beef
+Carne para tacos|INT|shred|ag|sb,fa|carne deshebrada|taco beef
+Sopa de res|INT|soup|mu|cs,ps|sopa de carne|beef soup
+Caldo de huesos|INT|soup|tu|mu,pt,cl|caldo de hueso|bone broth
+Consomé|INT|soup|mu|tu|consomé|consommé
+Sopa de verduras con carne|INT|soup|mu|cs|sopa de verduras|vegetable soup with beef
+Sopa de fideos con carne|INT|soup|mu|cs|sopa de fideos|noodle soup with beef
+Hamburguesa|INT|grind|mol||hamburguesa|burger
+Albóndigas|INT|grind|mol||albóndigas|meatballs
+Carne molida|INT|grind|mol||carne molida|ground beef
+Salsa boloñesa|INT|grind|mol||salsa de carne|meat sauce
+Lasaña|INT|grind|mol||lasaña|lasagne
+Chili|INT|grind|mol|ag|chili|chili
+Relleno para empanadas|INT|grind|mol|fa,ca|relleno de carne|empanada filling
+Pinchos|INT|skewer|ca|pa,lf|brochetas|skewers
+Brochetas|INT|skewer|ca|lf,pa|brochetas|kebabs
+Salteado de carne|INT|stirfry|sb|ca,cp,bp|salteado|stir-fry
+Carne en tiras|INT|stirfry|ca|sb,cp|tiras|beef strips
+Carne con verduras|INT|stirfry|sb|ca,cp|salteado con verduras|beef with vegetables
+Wok de res|INT|stirfry|sb|ca,lf|salteado al wok|wok beef
+Fajitas|INT|stirfry|en|va,sb|fajitas|fajitas
+Carne apanada|INT|fry|cp|bp|filete empanizado|breaded beef
+Escalopes|INT|fry|cp|bp|escalopes|escalopes
+Tartar de res|INT|raw|lf|cp|carne cruda picada|raw chopped beef
+Tataki|INT|raw|lf|ca|sellado y crudo|seared rare
+Carne ahumada|INT|smoke|pe|cs,ag,co|ahumado lento|low and slow smoked beef
+Barbacoa (BBQ)|INT|smoke|pe|cs,ag|barbacoa|barbecue
+Costillas a la BBQ|INT|smoke|cs||costillas con salsa|barbecued ribs
+Asado a la parrilla|INT|grill|cs|va,pa,la|parrillada|mixed grill
+Parrillada|INT|grill|pa|cs,va,en,la|parrillada mixta|mixed grill
+Carne a la brasa|INT|grill|pa|la,va|carne a las brasas|charcoal-grilled beef
+Jerky|INT|cure|cp|bo,mc|carne seca en tiras|jerky
+Carne curada|INT|cure|mc|bo,cp|curado|cured beef
+Carne rellena|INT|roll|mc|sb,cp|carne rellena|stuffed beef
+Rollo de carne|INT|roll|sb|cp,ma|carne enrollada|beef roll
+Carne mechada rellena|INT|roll|mc|bo|carne mechada|larded pot roast
+Fondue de carne|INT|fry|lf|ca,la|cubos para fondue|fondue cubes
+Hot pot|INT|slice|ba|fa,la|láminas para caldero|hot pot slices
+Carne para sándwich|INT|roast|mc|cp,la|carne tajada|sandwich beef
+Carne para sancocho|INT|soup|cs|pe,mu|carne para sopa|soup beef
+Carne para frijoles|INT|braise|cs|pt,pl|carne para guisar con frijoles|beef for beans
+Carne para arroz|INT|braise|pl|ca,mol|carne para arroz|beef for rice dishes
+Carne para pasta|INT|braise|ag|mol,mu|carne para salsa|beef for pasta sauce
+Carne para curry|INT|braise|pl|ag,mu|carne para curry|curry beef
+Carne para bebés y purés|INT|braise|bp|cp,lf|carne magra muy cocida|lean beef cooked soft
+Carne para dieta (magra)|INT|sear|bp|cp,mc,lf|cortes con menos grasa|leanest cuts
+Carne para adulto mayor (blanda)|INT|braise|lf|ch,mol,le|cortes que quedan muy tiernos|cuts that end up very tender
+Carne para freidora de aire|INT|sear|ca|la,pa,lf|cortes tiernos y medianos|tender mid-sized cuts
+Carne al sous vide|INT|sear|la|ba,ca,cs|baja temperatura|sous vide beef
+Carne para ceviche de res|INT|raw|lf|ca|carne curada en limón|lime-cured beef
+Carne para tacos al carbón|INT|grill|va|en,sb|carne para asar y picar|grill-and-chop beef
+Carne para nachos|INT|grind|mol|ag|carne para nachos|nacho beef
+Carne para pizza|INT|grind|mol||carne molida|pizza beef
+Carne para quesadillas|INT|shred|ag|sb|carne deshebrada|quesadilla beef
+Carne para burritos|INT|shred|ag|sb,mol|carne para burrito|burrito beef
+Carne para arepas|INT|shred|fa|sb|carne mechada|arepa filling
+Carne para lasaña|INT|grind|mol||carne molida|lasagne beef
+Carne para ramen|INT|braise|fa|mu,pe|carne estofada para fideos|braised beef for ramen
+Carne para ensalada|INT|grill|sb|ca,la|bistec tajado frío|sliced steak for salad
+Carne para lonchera|INT|fry|cp|bp|filete fino|thin steak for lunchboxes
+Carne para asado familiar|INT|grill|pa|cs,va,ca|parrilla para muchos|grill for a crowd
+Carne para parrilla económica|INT|grill|co|va,ca,ag|cortes de parrilla a buen precio|budget grilling cuts
+Carne para una cena especial|INT|sear|lf|ba,la,tb|el corte para lucirse|the cut for a special dinner

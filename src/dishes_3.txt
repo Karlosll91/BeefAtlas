@@ -1,0 +1,198 @@
+# ---------------- Estados Unidos y Canadá
+Texas smoked brisket|US|smoke|pe||pecho ahumado 12 horas|12-hour smoked brisket
+Burnt ends|US|smoke|pe|ag|cubos de punta de pecho ahumados|smoked brisket point cubes
+Smoked beef ribs|US|smoke|cs||costillas de res ahumadas|smoked dino ribs
+Pulled beef|US|smoke|ag|pe|aguja ahumada y desmechada|smoked shredded chuck
+Santa Maria tri-tip|US|smoke|co||colita asada a la leña|oak-grilled tri-tip
+Pastrami|US|cure|fa|pe|falda curada, ahumada y al vapor|cured, smoked and steamed navel
+Corned beef|US|cure|pe|bo|pecho en salmuera hervido|brined boiled brisket
+Corned beef hash|US|cure|pe||corned beef picado con papa|chopped corned beef with potatoes
+Reuben sandwich|US|cure|pe||sándwich de corned beef y chucrut|corned beef and sauerkraut sandwich
+Beef jerky|US|cure|cp|bo,mc,sb|carne seca en tiras|dried beef strips
+Pot roast|US|braise|ag|bo,pe|aguja estofada con verduras|chuck braised with vegetables
+Mississippi pot roast|US|braise|ag||estofado con pepperoncini|chuck roast with pepperoncini
+Beef stew|US|braise|ag|pl,bo|estofado de res|classic beef stew
+Chili con carne|US|braise|ag|mol,pe|guiso de res con chiles|beef and chile stew
+Texas red chili|US|braise|ag||chili de cubos de res sin frijoles|cubed beef chili, no beans
+Sloppy joes|US|grind|mol||carne molida en salsa dulce|ground beef in sweet sauce
+Meatloaf|US|grind|mol||pastel de carne molida|baked ground beef loaf
+Hamburger|US|grind|mol||hamburguesa|ground beef patty
+Cheeseburger|US|grind|mol||hamburguesa con queso|burger with cheese
+Smash burger|US|grind|mol||hamburguesa aplastada en plancha|griddle-smashed burger
+Patty melt|US|grind|mol||hamburguesa en pan de centeno|burger on rye with onions
+Salisbury steak|US|grind|mol||filete de carne molida en gravy|ground beef steak in gravy
+Meatballs and spaghetti|US|grind|mol||albóndigas con espagueti|spaghetti and meatballs
+Tacos (ground beef)|US|grind|mol||tacos de carne molida|ground beef tacos
+Philly cheesesteak|US|slice|ba|la,cp|láminas de ribeye con queso|shaved ribeye with cheese
+Italian beef sandwich|US|roast|cp|bo,ca|roast beef en láminas con jugo|thin-sliced roast beef in jus
+French dip|US|roast|cp|la,ba|sándwich de roast beef con jugo|roast beef sandwich with jus
+Roast beef sandwich|US|roast|cp|mc,la|sándwich de roast beef|roast beef sandwich
+Beef on weck|US|roast|cp||roast beef en pan con sal|roast beef on salted roll
+Prime rib|US|roast|ba||costillar al horno|standing rib roast
+Ribeye steak|US|grill|ba||ribeye a la parrilla|grilled ribeye
+Tomahawk steak|US|grill|ba||ribeye con hueso largo|long-bone ribeye
+Cowboy steak|US|grill|ba||ribeye con hueso|bone-in ribeye
+New York strip|US|grill|la||lomo ancho a la parrilla|grilled strip steak
+Filet mignon|US|sear|lf||medallón de lomo fino|tenderloin medallion
+T-bone steak|US|grill|tb||T-bone a la parrilla|grilled T-bone
+Porterhouse|US|grill|tb||porterhouse a la parrilla|grilled porterhouse
+Top sirloin steak|US|grill|ca||cadera a la parrilla|grilled top sirloin
+Flank steak (grilled)|US|grill|sb||sobrebarriga marinada a la parrilla|marinated grilled flank
+London broil|US|grill|sb|cp|sobrebarriga marinada y tajada fina|marinated broiled flank, thinly sliced
+Skirt steak (grilled)|US|grill|en||entraña a la parrilla|grilled skirt
+Hanger steak|US|sear|ha||hanger a la sartén|pan-seared hanger
+Flat iron steak|US|sear|pl||flat iron a la sartén|pan-seared flat iron
+Denver steak|US|grill|ag||bistec de aguja|chuck under blade steak
+Chuck eye steak|US|grill|ag||ojo de aguja|poor man's ribeye
+Bavette steak|US|grill|va||vacío a la parrilla|grilled flap
+Steak au poivre (US)|US|sear|la|lf|bistec a la pimienta|pepper-crusted steak
+Steak and eggs|US|sear|ca|la|bistec con huevos|steak with eggs
+Surf and turf|US|sear|lf||lomo con langosta|tenderloin with lobster
+Steak Diane|US|sear|lf||medallones flambeados|flambéed medallions
+Beef Wellington|US|roast|lf||lomo en hojaldre|tenderloin in puff pastry
+Chateaubriand|US|roast|lf||centro del lomo asado|roasted centre-cut tenderloin
+Chicken fried steak|US|fry|cp|bp,bo|bistec apanado con gravy|breaded cube steak with gravy
+Country fried steak|US|fry|cp|bp|bistec apanado con salsa oscura|breaded steak with brown gravy
+Cube steak|US|fry|cp|bo|bistec tiernizado|tenderised round steak
+Swiss steak|US|braise|bo|cp|bistec de pierna estofado en tomate|tomato-braised round steak
+Beef tips and gravy|US|braise|ca|bp,ag|puntas en salsa|sirloin tips in gravy
+Beef Stroganoff (US)|US|stirfry|ca|lf,cp|tiras en crema agria|strips in sour cream sauce
+Pepper steak|US|stirfry|sb|ca,cp|tiras con pimientos|strips with bell peppers
+Beef and broccoli|US|stirfry|sb|ca|tiras con brócoli|flank strips with broccoli
+Mongolian beef|US|stirfry|sb|ca|tiras en salsa de soya dulce|strips in sweet soy sauce
+Beef fajitas|US|stirfry|en|va,sb|fajitas de entraña|skirt fajitas
+Carne asada fries|US|grill|va|en|papas con carne asada|fries topped with carne asada
+Steak tacos|US|grill|va|en,sb|tacos de bistec|steak tacos
+Beef barbacoa (slow cooker)|US|shred|ag|ch|barbacoa de aguja|chuck barbacoa
+Shredded beef tacos|US|shred|ag|sb|tacos de carne desmechada|shredded beef tacos
+Beef enchiladas|US|shred|ag|mol|enchiladas de res|beef enchiladas
+Short ribs braised in red wine|US|braise|cs||costilla estofada en vino tinto|red wine braised short ribs
+Korean-style short ribs (LA galbi)|US|grill|cs||costilla en tira marinada|marinated flanken ribs
+Beef back ribs|US|smoke|cs||costillas del lomo ahumadas|smoked back ribs
+Oxtail stew (Southern)|US|braise|cl||rabo estofado|smothered oxtails
+Beef and barley soup|US|soup|mu|ag,cs|sopa de res y cebada|beef and barley soup
+Vegetable beef soup|US|soup|mu|ag|sopa de verduras con res|vegetable beef soup
+Beef bone broth|US|soup|tu|mu,cl,pt|caldo de huesos|long-simmered bone broth
+Beef stock|US|soup|tu|mu,ps|fondo de res|brown beef stock
+Roasted bone marrow|US|roast|tu||tuétano asado|roasted marrow bones
+Beef pot pie|US|braise|ag|pl|pastel de res|beef pot pie
+Shepherd's pie (beef)|US|grind|mol||pastel de carne y puré|ground beef and mash pie
+Stuffed peppers|US|grind|mol||pimientos rellenos|peppers stuffed with ground beef
+Stuffed cabbage|US|grind|mol||repollo relleno|cabbage rolls
+Lasagna (US)|US|grind|mol||lasaña de carne|beef lasagna
+Beef nachos|US|grind|mol||nachos con carne|nachos with ground beef
+Beef burrito|US|grind|mol|ag|burrito de carne|beef burrito
+Frito pie|US|grind|mol|ag|chili sobre fritos|chili over corn chips
+Coney dog chili|US|grind|mol|cz|chili para perro caliente|hot dog chili
+Liver and onions|US|sear|hi||hígado con cebolla|liver and onions
+Beef tongue sandwich|US|braise|le||sándwich de lengua|deli tongue sandwich
+Beef cheek barbacoa|US|shred|ch||barbacoa de cachete|beef cheek barbacoa
+Steak tartare (US)|US|raw|lf|cp|tartar de res|beef tartare
+Beef carpaccio (US)|US|raw|lf||carpaccio|thin raw beef
+Steak salad|US|grill|sb|ca,en|ensalada con bistec|salad with sliced steak
+Steak sandwich|US|sear|ca|la,ba|sándwich de bistec|steak sandwich
+Beef kebabs|US|skewer|ca|lf,pa|brochetas de res|beef kebabs
+Teriyaki beef skewers|US|skewer|sb|ca|brochetas teriyaki|teriyaki skewers
+Smoked chuck roast|US|smoke|ag||aguja ahumada|smoked chuck roast
+Smoked tri-tip|US|smoke|co||colita ahumada|smoked tri-tip
+Smoked picanha|US|smoke|pa||picaña ahumada|smoked sirloin cap
+Reverse-seared steak|US|sear|ba|la,tb|bistec grueso al horno y sellado|oven-then-sear thick steak
+Sous vide steak|US|sear|la|ba,lf,ca|bistec a baja temperatura|sous vide steak
+Sous vide short ribs|US|braise|cs||costilla 48 horas a baja temperatura|48-hour short ribs
+Dry-aged steak|US|grill|ba|la,tb|bistec madurado en seco|dry-aged steak
+Beef bacon|US|cure|fa||tocino de res|cured smoked navel
+Bresaola-style beef|US|cure|mc||res curada|air-cured eye of round
+Montreal smoked meat|CA|cure|pe||pecho curado y ahumado|cured smoked brisket
+Tourtière (beef)|CA|grind|mol||pastel de carne|spiced meat pie
+Poutine with brisket|CA|smoke|pe||papas con pecho ahumado|fries with smoked brisket
+Ginger beef|CA|stirfry|sb|ca|tiras crocantes con jengibre|crispy ginger beef strips
+Alberta prime rib roast|CA|roast|ba||costillar asado|rib roast
+# ---------------- Reino Unido e Irlanda
+Roast beef and Yorkshire pudding|UK|roast|la|ba,cp,mc|asado dominical|Sunday roast
+Roast rib of beef|UK|roast|ba||costillar asado|roast fore rib
+Roast topside|UK|roast|cp||tapa asada|roast topside
+Roast silverside|UK|roast|bo|mc|contra asada|roast silverside
+Beef Wellington (UK)|UK|roast|lf||solomillo en hojaldre|fillet in puff pastry
+Steak and kidney pie|UK|braise|ag|ri,pl|pastel de carne y riñón|steak and kidney pie
+Steak and ale pie|UK|braise|ag|pl,mu|pastel de carne en cerveza|beef and ale pie
+Cottage pie|UK|grind|mol||carne picada bajo puré|minced beef under mash
+Cornish pasty|UK|braise|en|ag,ca|empanada de carne y nabo|skirt and swede pasty
+Beef stew and dumplings|UK|braise|ag|mu,pl|estofado con bolas de masa|stew with dumplings
+Lancashire hotpot (beef)|UK|braise|ag|ps|guiso bajo láminas de papa|stew under sliced potatoes
+Scouse|UK|braise|ag|ps|guiso de Liverpool|Liverpool stew
+Scotch broth (beef)|UK|soup|ps|mu|sopa de cebada|barley broth
+Oxtail soup|UK|soup|cl||sopa de rabo|oxtail soup
+Braised oxtail|UK|braise|cl||rabo estofado|braised oxtail
+Braised ox cheek|UK|braise|ch||carrillera estofada|braised ox cheek
+Boiled beef and carrots|UK|braise|bo|pe|contra hervida con zanahoria|boiled silverside and carrots
+Salt beef|UK|cure|pe|bo|pecho en salmuera|salt-cured brisket
+Salt beef bagel|UK|cure|pe||bagel de pecho curado|salt beef bagel
+Potted beef|UK|shred|mu|ag|carne en conserva de mantequilla|beef potted in butter
+Mince and tatties|UK|grind|mol||carne picada con papas|mince and potatoes
+Beef olives|UK|roll|cp|bo|rollos de carne rellenos|stuffed beef rolls
+Steak and chips|UK|sear|ca|la,ba|bistec con papas fritas|rump steak and chips
+Rump steak|UK|sear|ca||bistec de cadera|rump steak
+Sirloin steak (UK)|UK|sear|la||lomo a la sartén|sirloin steak
+Onglet with shallots|UK|sear|ha||onglet con chalotes|hanger with shallots
+Bavette steak (UK)|UK|sear|va|sb|bavette a la sartén|pan-seared bavette
+Ox tongue (pressed)|UK|cure|le||lengua prensada|pressed tongue
+Liver and bacon|UK|sear|hi||hígado con tocineta|liver and bacon
+Faggots|UK|grind|hi|cz|albóndigas de vísceras|offal meatballs
+Tripe and onions|UK|braise|mon||callos con cebolla|tripe and onions
+Jellied beef|UK|braise|mu|pt|carne en gelatina|beef in jelly
+Bone marrow on toast|UK|roast|tu||tuétano en tostada|marrow on toast
+Irish beef and Guinness stew|IE|braise|ag|mu,pl|estofado en cerveza negra|beef and stout stew
+Corned beef and cabbage|IE|cure|pe|bo|pecho curado con repollo|corned beef and cabbage
+Spiced beef|IE|cure|bo|pe|carne especiada curada|spiced cured beef
+Irish steak sandwich|IE|sear|la|ca|sándwich de bistec|steak sandwich
+# ---------------- Francia y Bélgica
+Bœuf bourguignon|FR|braise|ag|ch,pl,mu|estofado en vino tinto|red wine beef stew
+Daube provençale|FR|braise|ag|ch,pl|estofado provenzal|Provençal beef stew
+Pot-au-feu|FR|soup|mu|cs,pe,ps,cl,tu|hervido de carnes y verduras|boiled beef and vegetables
+Blanquette (de veau)|FR|braise|pe|pl|ternera en salsa blanca|veal in white sauce
+Bœuf à la mode|FR|braise|bo|mc,ag|carne mechada en vino|larded pot roast
+Bœuf en croûte|FR|roast|lf||lomo en hojaldre|tenderloin in pastry
+Tournedos Rossini|FR|sear|lf||tournedó con foie gras|tournedos with foie gras
+Chateaubriand béarnaise|FR|roast|lf||chateaubriand con bearnesa|chateaubriand with béarnaise
+Steak au poivre|FR|sear|lf|la|bistec a la pimienta|pepper steak
+Steak frites|FR|sear|la|ha,va,ca|bistec con papas fritas|steak and fries
+Entrecôte marchand de vin|FR|sear|ba||entrecot en vino tinto|ribeye in red wine sauce
+Entrecôte bordelaise|FR|grill|ba||entrecot con tuétano y chalote|ribeye with marrow and shallot
+Côte de bœuf|FR|grill|ba||chuletón a la brasa|grilled bone-in rib
+Onglet à l'échalote|FR|sear|ha||onglet con chalotes|hanger with shallots
+Bavette à l'échalote|FR|sear|va|sb|bavette con chalotes|bavette with shallots
+Hampe grillée|FR|grill|en||entraña a la parrilla|grilled skirt
+Steak tartare|FR|raw|lf|cp,ca|tartar a cuchillo|knife-cut raw beef
+Carpaccio de bœuf|FR|raw|lf||carpaccio|carpaccio
+Bœuf Stroganoff|FR|stirfry|lf|ca|tiras en crema|strips in cream
+Fondue bourguignonne|FR|fry|lf|ca,la|cubos fritos en aceite|cubes fried in oil at the table
+Rôti de bœuf|FR|roast|la|cp,ca|rosbif|roast beef
+Paupiettes de bœuf|FR|roll|cp|bp|rollos de carne rellenos|stuffed beef parcels
+Hachis parmentier|FR|shred|ag|mol|carne bajo puré gratinado|beef under gratinated mash
+Joue de bœuf braisée|FR|braise|ch||carrillera estofada|braised cheek
+Queue de bœuf braisée|FR|braise|cl||rabo estofado|braised oxtail
+Jarret de bœuf braisé|FR|braise|mu||jarrete estofado|braised shin
+Plat de côtes braisé|FR|braise|cs||costilla estofada|braised short rib
+Langue de bœuf sauce piquante|FR|braise|le||lengua en salsa picante|tongue in piquant sauce
+Tête de veau|FR|braise|ch|le|cabeza de ternera|calf's head
+Tripes à la mode de Caen|FR|braise|mon|pt|callos con pata en sidra|tripe with foot in cider
+Gras-double à la lyonnaise|FR|fry|mon||callos salteados con cebolla|sautéed tripe with onion
+Rognons à la moutarde|FR|sear|ri||riñones a la mostaza|kidneys in mustard sauce
+Foie de veau à la lyonnaise|FR|sear|hi||hígado con cebolla|calf's liver with onions
+Ris de veau|FR|sear|mj||mollejas doradas|pan-fried sweetbreads
+Os à moelle|FR|roast|tu||tuétano al horno|roasted marrow bone
+Consommé de bœuf|FR|soup|mu|tu|consomé clarificado|clarified beef consommé
+Fond brun|FR|soup|tu|mu,ps|fondo oscuro|brown stock
+Bœuf miroton|FR|braise|mu|pe|carne hervida gratinada con cebolla|boiled beef gratin with onions
+Bœuf aux carottes|FR|braise|ag|pl|carne con zanahorias|beef with carrots
+Estouffade de bœuf|FR|braise|ag|pl|estofado|slow beef stew
+Carbonnade flamande|BE|braise|ag|pl,ch|estofado en cerveza|beef and beer stew
+Filet américain|BE|raw|lf|cp|tartar belga|Belgian tartare
+Steak haché|FR|grind|mol||carne picada a la plancha|ground beef steak
+Tomates farcies|FR|grind|mol||tomates rellenos|stuffed tomatoes
+Brochettes de bœuf|FR|skewer|ca|lf|brochetas|beef skewers
+Pavé de rumsteck|FR|sear|ca||bistec grueso de cadera|thick rump steak
+Araignée de bœuf|FR|sear|ca|ha|bistec del carnicero|butcher's spider steak
+Bœuf à la ficelle|FR|roast|lf|la|lomo escalfado en caldo|tenderloin poached on a string
+Pâté en croûte (bœuf)|FR|grind|mol||paté en costra|meat pie in pastry
+Waterzooi de bœuf|BE|soup|mu||sopa cremosa|creamy beef soup

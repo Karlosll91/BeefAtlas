@@ -1,0 +1,43 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#d8d5cf}canvas{display:block}</style></head><body>
+<script src="three.min.js"></script>
+<script src="../src/meshlib.js"></script>
+<script>
+const Q = new URLSearchParams(location.search);
+const file = Q.get('f') || '../out/cow_test.bin';
+const explode = parseFloat(Q.get('e') || '0');
+const yaw = parseFloat(Q.get('yaw') || '0.5'), pitch = parseFloat(Q.get('pitch') || '0.15'), dist = parseFloat(Q.get('d') || '4.2');
+const filt = Q.get('only');
+const tgt = (Q.get('t') || '-0.1,0.85,0').split(',').map(Number);
+const renderer = new THREE.WebGLRenderer({antialias:true});
+renderer.setSize(innerWidth, innerHeight); renderer.setPixelRatio(1);
+renderer.outputEncoding = THREE.sRGBEncoding; renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = parseFloat(Q.get('x') || '0.6');
+renderer.physicallyCorrectLights = true; renderer.shadowMap.enabled = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+document.body.appendChild(renderer.domElement);
+const scene = new THREE.Scene(); scene.background = new THREE.Color('#d8d5cf'); scene.environment = MeshLib.makeEnv(renderer);
+const cam = new THREE.PerspectiveCamera(32, innerWidth/innerHeight, 0.05, 100);
+cam.position.set(tgt[0] + dist*Math.sin(yaw)*Math.cos(pitch), tgt[1] + dist*Math.sin(pitch), tgt[2] + dist*Math.cos(yaw)*Math.cos(pitch)); cam.lookAt(tgt[0], tgt[1], tgt[2]);
+scene.add(new THREE.HemisphereLight(0xfff4e6, 0x8a8478, 0.35));
+const sun = new THREE.DirectionalLight(0xfff1dd, 2.4); sun.position.set(2.5, 5, 4); sun.castShadow = true;
+sun.shadow.mapSize.set(2048,2048); sun.shadow.camera.left=-3; sun.shadow.camera.right=3; sun.shadow.camera.top=3; sun.shadow.camera.bottom=-1; sun.shadow.bias=-0.0006; sun.shadow.normalBias = 0.01; scene.add(sun);
+const fill = new THREE.DirectionalLight(0xcfe0ff, 0.9); fill.position.set(-4, 2, -3); scene.add(fill);
+const floor = new THREE.Mesh(new THREE.PlaneGeometry(20,20), new THREE.MeshStandardMaterial({color:'#cfcac2', roughness:0.9})); floor.rotation.x = -Math.PI/2; floor.receiveShadow = true; scene.add(floor);
+fetch(file).then(r => r.arrayBuffer()).then(buf => {
+  const pk = MeshLib.parsePack(buf);
+  const hide = MeshLib.clayMaterial();
+  const C = [-0.05, 0.98];
+  for (const name in pk.meshes) {
+    const {geo, meta} = pk.meshes[name];
+    if (filt && !name.includes(filt)) continue;
+    let mat = meta.kind === 'flesh' ? MeshLib.fleshMaterial(Object.assign(meta.cut ? {ribs: meta.internal ? 0 : 1, marb: 0.1, marbScale: 60, seams: meta.internal ? 0 : 1} : {}, (pk.extra.mats || {})[meta.mat] || {})) : hide;
+    const m = new THREE.Mesh(geo, mat); m.castShadow = true; m.receiveShadow = true;
+    if (meta.cen && explode) {
+      let dx = meta.cen[0]-C[0], dy = meta.cen[1]-C[1]; const L = Math.hypot(dx,dy)||1;
+      m.position.set(dx*explode*0.6, dy*explode*0.6 + explode*0.25, meta.side*explode*0.35 + (meta.internal ? explode*1.0*(meta.side||1) : 0));
+    }
+    if (meta.at) m.position.fromArray(meta.at);
+    scene.add(m);
+  }
+  renderer.render(scene, cam);
+  document.title = 'ready';
+});
+</script></body></html>

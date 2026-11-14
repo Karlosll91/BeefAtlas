@@ -1,0 +1,287 @@
+# ---------------- Italia
+Bistecca alla fiorentina|IT|grill|tb||chuletón con solomillo a la brasa|thick T-bone over coals
+Tagliata di manzo|IT|grill|la|ba,ca|lomo tajado con rúcula|sliced grilled steak with rocket
+Costata alla griglia|IT|grill|ba||costata a la parrilla|grilled rib steak
+Filetto al pepe verde|IT|sear|lf||filete a la pimienta verde|tenderloin with green peppercorns
+Carpaccio|IT|raw|lf|la,cp|láminas crudas con limón y parmesano|raw slices with lemon and parmesan
+Carne cruda all'albese|IT|raw|cp|lf,bp|carne cruda picada a cuchillo|knife-chopped raw beef
+Battuta di fassona|IT|raw|cp|lf|tartar piamontés|Piedmontese tartare
+Vitello tonnato|IT|braise|mc||redondo frío en salsa de atún|cold eye of round in tuna sauce
+Brasato al Barolo|IT|braise|pl|ag,bo|carne estofada en vino Barolo|beef braised in Barolo
+Stracotto|IT|braise|pl|ag,bo|estofado toscano|Tuscan pot roast
+Stufato di manzo|IT|braise|ag|pl|estofado de res|beef stew
+Spezzatino|IT|braise|ag|pl,mu|guiso en trozos|cubed beef stew
+Peposo|IT|braise|mu|ag,ch|estofado de pimienta y vino|pepper and wine stew
+Bollito misto|IT|soup|pe|le,mu,cl,ch|hervido mixto de carnes|mixed boiled meats
+Lesso|IT|soup|pe|mu,ag|carne hervida|boiled beef
+Ossobuco alla milanese|IT|braise|mu||jarrete estofado con azafrán|braised shank with saffron
+Coda alla vaccinara|IT|braise|cl||rabo estofado a la romana|Roman braised oxtail
+Trippa alla fiorentina|IT|braise|mon||callos en tomate|tripe in tomato
+Trippa alla romana|IT|braise|mon||callos con menta y pecorino|tripe with mint and pecorino
+Lampredotto|IT|braise|mon||cuajar hervido en panino|boiled abomasum sandwich
+Fegato alla veneziana|IT|sear|hi||hígado con cebolla|liver with onions
+Rognone trifolato|IT|sear|ri||riñón salteado|sautéed kidney
+Animelle fritte|IT|fry|mj||mollejas fritas|fried sweetbreads
+Pajata|IT|braise|chu||intestino de ternera en salsa|veal intestines in sauce
+Lingua in salsa verde|IT|braise|le||lengua con salsa verde|tongue with green sauce
+Guancia brasata|IT|braise|ch||carrillera estofada|braised cheek
+Ragù alla bolognese|IT|grind|mol|ag,fa|salsa de carne picada cocida lenta|slow-cooked ground beef sauce
+Ragù napoletano|IT|braise|ag|mu,pl,cs|trozos de carne en tomate|meat chunks in tomato
+Lasagne alla bolognese|IT|grind|mol||lasaña con ragú|lasagne with ragù
+Polpette al sugo|IT|grind|mol||albóndigas en salsa|meatballs in sauce
+Polpettone|IT|grind|mol||pastel de carne|meatloaf
+Braciole|IT|roll|cp|sb,bp|rollos de carne en salsa|stuffed beef rolls in sauce
+Involtini di manzo|IT|roll|cp|bp|rollitos rellenos|stuffed beef rolls
+Saltimbocca|IT|fry|cp|bp|escalopes con jamón y salvia|scallops with ham and sage
+Scaloppine al limone|IT|fry|cp|bp|escalopes al limón|scallops with lemon
+Scaloppine al marsala|IT|fry|cp|bp|escalopes al marsala|scallops in marsala
+Cotoletta alla milanese|IT|fry|la|cp|chuleta apanada en mantequilla|bone-in breaded chop in butter
+Piccata|IT|fry|cp|bp|escalopes con alcaparras|scallops with capers
+Straccetti di manzo|IT|stirfry|ca|cp,lf|tiras salteadas con rúcula|sautéed strips with rocket
+Pizzaiola|IT|fry|cp|bp,ca|bistec en salsa de tomate y orégano|steak in tomato-oregano sauce
+Bresaola|IT|cure|mc|cp|redondo curado y secado|air-cured eye of round
+Arrosto di manzo|IT|roast|la|cp,ca|asado al horno|oven roast
+Roast beef all'inglese|IT|roast|la|cp|rosbif|roast beef
+Arrosticini di manzo|IT|skewer|ca||brochetas pequeñas|small skewers
+Bistecca alla pizzaiola|IT|fry|ca|cp|bistec a la pizzaiola|steak pizzaiola
+Genovese napoletana|IT|braise|mu|pl,ag|carne estofada con cebolla|beef braised in onions
+Nervetti in insalata|IT|braise|pt||tendones en ensalada|tendon salad
+Brodo di manzo|IT|soup|mu|pe,tu|caldo de res|beef broth
+Tortellini in brodo|IT|soup|mu|pe|pasta en caldo|pasta in beef broth
+Cappello del prete brasato|IT|braise|pl||paleta estofada|braised shoulder
+Midollo al forno|IT|roast|tu||tuétano al horno|roasted marrow
+Hamburger di chianina|IT|grind|mol||hamburguesa|burger
+# ---------------- España y Portugal
+Chuletón a la brasa|ES|grill|ba|tb|chuletón de vaca vieja|bone-in rib steak over coals
+Entrecot a la plancha|ES|sear|la|ba|entrecot a la plancha|griddled entrecôte
+Solomillo al whisky|ES|sear|lf||solomillo en salsa de whisky|tenderloin in whisky sauce
+Solomillo a la pimienta|ES|sear|lf||solomillo a la pimienta|pepper tenderloin
+Solomillo Wellington|ES|roast|lf||solomillo en hojaldre|tenderloin in pastry
+Rabo de toro|ES|braise|cl||rabo estofado en vino tinto|oxtail braised in red wine
+Carrilleras al vino tinto|ES|braise|ch||carrilleras estofadas|cheeks in red wine
+Callos a la madrileña|ES|braise|mon|pt|callos con chorizo y morcilla|tripe with chorizo and blood sausage
+Cocido madrileño|ES|soup|mu|pe,tu|cocido de garbanzos y carnes|chickpea and meat boiled dinner
+Escudella i carn d'olla|ES|soup|mu|pe|cocido catalán|Catalan boiled dinner
+Caldo gallego|ES|soup|mu|cs|caldo con grelos|Galician broth
+Estofado de ternera|ES|braise|ag|mu,pl|estofado con patatas|veal stew with potatoes
+Ternera guisada|ES|braise|ag|pl,mu|ternera en salsa|stewed veal
+Carne gobernada|ES|braise|ag|pl|ternera asturiana en vino blanco|Asturian beef in white wine
+Fricandó|ES|braise|pl|bp,cp|filetes guisados con setas|braised slices with mushrooms
+Redondo de ternera|ES|braise|mc||redondo mechado en salsa|pot-roasted eye of round
+Ternera a la jardinera|ES|braise|ag|pl|ternera con verduras|veal with vegetables
+Filetes rusos|ES|grind|mol||filetes de carne picada|ground beef patties
+Albóndigas en salsa española|ES|grind|mol||albóndigas en salsa|meatballs in sauce
+Canelones de carne|ES|grind|mol|ag|canelones de asado|meat cannelloni
+Empanada gallega de carne|ES|braise|ag|mol|empanada de zorza o ternera|Galician meat pie
+Cachopo|ES|fry|cp|bp|filetes rellenos de jamón y queso, empanados|breaded steaks stuffed with ham and cheese
+Filete empanado|ES|fry|cp|bp|filete empanado|breaded steak
+San Jacobo de ternera|ES|fry|cp||filete relleno empanado|stuffed breaded cutlet
+Escalope de ternera|ES|fry|cp|bp|escalope|veal escalope
+Churrasco gallego|ES|grill|cs||costillar a la brasa|grilled rib strips
+Pincho moruno de ternera|ES|skewer|ca||pinchos adobados|spiced skewers
+Cecina de León|ES|cure|bo|cp,mc|pierna curada y ahumada|cured smoked beef leg
+Steak tartar|ES|raw|lf||tartar|tartare
+Carpaccio de buey|ES|raw|lf||carpaccio|carpaccio
+Lengua estofada|ES|braise|le||lengua en salsa|braised tongue
+Riñones al jerez|ES|sear|ri||riñones al jerez|kidneys in sherry
+Mollejas de ternera a la plancha|ES|sear|mj||mollejas a la plancha|griddled sweetbreads
+Zancarrón guisado|ES|braise|mu||morcillo guisado|braised shank
+Morcillo estofado|ES|braise|mu||morcillo en salsa|stewed shank
+Ropa vieja canaria|ES|shred|mu|pe,fa|carne y garbanzos del cocido salteados|shredded stew meat with chickpeas
+Pringá|ES|shred|mu|pe|carnes del cocido desmenuzadas|shredded boiled-dinner meats
+Croquetas de cocido|ES|shred|mu|pe|croquetas de carne del cocido|croquettes of boiled meat
+Hamburguesa de vaca vieja|ES|grind|mol||hamburguesa|aged beef burger
+Txuleta vasca|ES|grill|ba|tb|chuleta de vaca a la parrilla|Basque aged rib chop
+Bife à portuguesa|PT|sear|ca|la|bistec con huevo y jamón|steak with egg and ham
+Bitoque|PT|sear|ca|cp|bistec fino con huevo|thin steak with egg
+Prego no pão|PT|sear|ca|la|sándwich de bistec con ajo|garlic steak sandwich
+Francesinha|PT|sear|ca||sándwich de carnes gratinado|layered meat sandwich
+Cozido à portuguesa|PT|soup|mu|pe,cs|cocido portugués|Portuguese boiled dinner
+Posta mirandesa|PT|grill|la|ca|chuleta gruesa a la brasa|thick grilled steak
+Alcatra à moda da Terceira|PT|braise|ca|bo|cadera estofada en vino|rump braised in wine
+Carne de vinha d'alhos (vaca)|PT|braise|pl|ag|carne en vino y ajo|beef in wine and garlic
+Dobrada|PT|braise|mon||callos con alubias|tripe with beans
+Tripas à moda do Porto|PT|braise|mon|pt|callos con alubias y carnes|Porto tripe with beans
+Mão de vaca com grão|PT|braise|pt||pata con garbanzos|cow foot with chickpeas
+Rabo de boi estufado|PT|braise|cl||rabo estofado|braised oxtail
+Espetada madeirense|PT|skewer|ca|lf,la|brochetas en palo de laurel|bay-skewered beef cubes
+Iscas com elas|PT|sear|hi||hígado con papas|liver with potatoes
+Língua estufada|PT|braise|le||lengua estofada|braised tongue
+Jardineira de vaca|PT|braise|ag|pl|guiso con verduras|beef and vegetable stew
+# ---------------- Alemania, Austria, Suiza, Países Bajos
+Sauerbraten|DE|braise|bo|mc,pl|carne marinada en vinagre y estofada|vinegar-marinated pot roast
+Rinderrouladen|DE|roll|cp|bo|rollos con mostaza, tocino y pepinillo|rolls with mustard, bacon and pickle
+Rindergulasch|DE|braise|mu|ag,pl|gulash de res|beef goulash
+Tafelspitz|AT|soup|ca|pa,bo|punta de cadera hervida con rábano|boiled rump cap with horseradish
+Wiener Schnitzel (Kalb)|AT|fry|cp|bp|escalope apanado vienés|Viennese breaded veal cutlet
+Zwiebelrostbraten|AT|sear|la|ba|lomo con cebolla frita|strip steak with fried onions
+Wiener Saftgulasch|AT|braise|mu||gulash vienés de morcillo|Viennese shank goulash
+Rindsuppe|AT|soup|mu|pe,tu|caldo de res|beef broth
+Frikadellen|DE|grind|mol||albóndigas aplanadas|pan-fried meat patties
+Königsberger Klopse|DE|grind|mol||albóndigas en salsa de alcaparras|meatballs in caper sauce
+Hackbraten|DE|grind|mol||pastel de carne|meatloaf
+Labskaus|DE|cure|pe||puré de corned beef|corned beef hash mash
+Rinderbraten|DE|braise|bo|pl,ag|asado en olla|pot roast
+Ochsenschwanzsuppe|DE|soup|cl||sopa de rabo|oxtail soup
+Ochsenbäckchen|DE|braise|ch||carrilleras estofadas|braised cheeks
+Tellerfleisch|DE|soup|pe|ca|carne hervida|boiled beef plate
+Rindertatar (Mett)|DE|raw|lf|cp|tartar|tartare
+Rinderleber Berliner Art|DE|sear|hi||hígado con manzana y cebolla|liver with apple and onion
+Saure Kutteln|DE|braise|mon||callos agrios|sour tripe
+Zürcher Geschnetzeltes (Rind)|CH|stirfry|cp|lf,ca|tiras en crema|strips in cream sauce
+Bündnerfleisch|CH|cure|mc|cp|carne curada de los Grisones|air-dried Grisons beef
+Fondue chinoise|CH|slice|la|lf,ca|láminas cocidas en caldo|slices cooked in broth
+Hachee|NL|braise|ag|pl|guiso con cebolla y vinagre|onion and vinegar beef stew
+Draadjesvlees|NL|braise|ag|pl|carne estofada hasta deshacerse|beef stewed to threads
+Stoofvlees|BE|braise|ag|pl|estofado en cerveza|beer-braised beef
+Gehaktballen|NL|grind|mol||albóndigas grandes|large meatballs
+Runderlappen|NL|braise|ag|pl|bistec estofado|braised steaks
+Biefstuk|NL|sear|ca|lf|bistec holandés|Dutch steak
+Rookvlees|NL|cure|bo||carne ahumada|smoked beef
+# ---------------- Europa Central y del Este, Nórdicos
+Gulyás|HU|soup|mu|ag,pl|sopa de res con páprika|paprika beef soup
+Pörkölt|HU|braise|mu|ag,pl|guiso espeso con páprika|thick paprika stew
+Marhapörkölt|HU|braise|mu||guiso de res|beef pörkölt
+Tokány|HU|braise|ca|cp|tiras guisadas|braised strips
+Pacalpörkölt|HU|braise|mon||callos con páprika|paprika tripe
+Svíčková|CZ|braise|bo|lf,mc|carne en salsa de crema y verduras|beef in cream vegetable sauce
+Hovězí guláš|CZ|braise|mu|ag|gulash checo|Czech goulash
+Rajská omáčka|CZ|braise|bo|pe|carne hervida en salsa de tomate|boiled beef in tomato sauce
+Zrazy|PL|roll|cp|bo|rollos rellenos|stuffed beef rolls
+Bigos (wołowina)|PL|braise|ag|pl|guiso de col y carnes|hunter's stew
+Flaki|PL|soup|mon||sopa de callos|tripe soup
+Gołąbki|PL|grind|mol||repollo relleno|stuffed cabbage
+Tatar wołowy|PL|raw|lf|cp|tartar|tartare
+Rosół wołowy|PL|soup|mu|pe,cs|caldo|beef broth
+Pieczeń wołowa|PL|braise|bo|pl|asado en olla|pot roast
+Borscht|UA|soup|cs|mu,pe|sopa de remolacha con res|beet soup with beef
+Beef Stroganoff|RU|stirfry|lf|ca,cp|tiras en crema agria|strips in sour cream
+Pelmeni|RU|grind|mol||pasta rellena de carne|meat dumplings
+Shchi|RU|soup|pe|cs,mu|sopa de col|cabbage soup
+Solyanka|RU|soup|pe|le,ri|sopa agria de carnes|sour mixed-meat soup
+Kotleti|RU|grind|mol||croquetas de carne|pan-fried patties
+Golubtsy|RU|grind|mol||repollo relleno|stuffed cabbage
+Kholodets|RU|soup|pt|mu,cl|gelatina de carne|meat aspic
+Shashlik (beef)|RU|skewer|ca|lf,pa|brochetas marinadas|marinated skewers
+Basturma|AM|cure|mc|lf,cp|carne curada con chemen|air-cured beef with fenugreek paste
+Khashlama|AM|soup|cs|pe|carne hervida con verduras|boiled beef with vegetables
+Khash|AM|soup|pt|mon|sopa de patas|foot soup
+Kharcho|GE|soup|pe|cs,mu|sopa con arroz y nueces|beef soup with rice and walnuts
+Chashushuli|GE|braise|ca|pl|guiso picante con tomate|spicy tomato stew
+Ostri|GE|braise|pl|ag|guiso picante|hot beef stew
+Sarma|RS|grind|mol||hojas rellenas|stuffed cabbage leaves
+Ćevapi|BA|grind|mol||salchichas sin tripa a la parrilla|grilled skinless sausages
+Pljeskavica|RS|grind|mol||hamburguesa balcánica|Balkan burger
+Musaka (govedina)|BG|grind|mol||musaca|moussaka
+Köttbullar|SE|grind|mol||albóndigas suecas|Swedish meatballs
+Kalops|SE|braise|ag|pl|guiso con pimienta de Jamaica|allspice beef stew
+Sjömansbiff|SE|braise|bo|cp|carne con papas y cerveza|sailor's beef with beer
+Pytt i panna|SE|fry|ca|la|picadillo de carne y papa|diced beef and potato hash
+Råbiff|SE|raw|lf|cp|tartar|tartare
+Biff à la Lindström|SE|grind|mol||hamburguesa con remolacha|beet burger
+Hakkebøf|DK|grind|mol||filete de carne picada con cebolla|ground beef steak with onions
+Bøf med løg|DK|grind|mol||carne picada con cebolla|beef patties with onions
+Karjalanpaisti|FI|braise|ag|pl|guiso carelio|Karelian stew
+Lapskaus|NO|braise|ag|pl|guiso con papas|beef and potato stew
+# ---------------- Grecia, Turquía, Medio Oriente
+Stifado|GR|braise|ag|pl,ch|guiso con cebollitas|beef and pearl onion stew
+Moussaka|GR|grind|mol||berenjena con carne|aubergine and beef bake
+Pastitsio|GR|grind|mol||pasta con carne gratinada|baked pasta with beef
+Keftedes|GR|grind|mol||albóndigas fritas|fried meatballs
+Soutzoukakia|GR|grind|mol||albóndigas en tomate|meatballs in tomato
+Sofrito (Corfu)|GR|fry|cp|bp|filetes en ajo y vinagre|slices in garlic and vinegar
+Kokkinisto|GR|braise|ag|pl|carne en salsa roja|beef in red sauce
+Giouvetsi|GR|braise|ag|mu|carne con orzo|beef with orzo
+Youvarlakia|GR|grind|mol||albóndigas en sopa de limón|meatballs in lemon soup
+Patsas|GR|soup|mon|pt|sopa de callos|tripe soup
+Döner kebab (dana)|TR|slice|cp|ca,fa|carne apilada asada en vertical|stacked beef on a vertical spit
+İskender kebap|TR|slice|cp|ca|döner con yogur y tomate|döner with yogurt and tomato
+Adana kebap (dana)|TR|grind|mol|fa|carne picada en espada|hand-minced meat on a blade
+Köfte|TR|grind|mol||albóndigas a la parrilla|grilled meatballs
+İçli köfte|TR|grind|mol||croqueta de trigo rellena|stuffed bulgur shell
+Çiğ köfte|TR|raw|cp|lf|carne cruda con bulgur|raw beef kneaded with bulgur
+Şiş kebap (dana)|TR|skewer|ca|lf,pa|brochetas|shish kebab
+Bonfile|TR|sear|lf||solomillo|tenderloin steak
+Antrikot|TR|grill|ba||entrecot|ribeye
+Kavurma|TR|braise|pl|ag,cp|carne confitada en su grasa|beef confited in its fat
+Tas kebabı|TR|braise|pl|ag|guiso|stew
+Hünkar beğendi|TR|braise|pl|ag|guiso sobre puré de berenjena|stew over aubergine purée
+Kuru fasulye (etli)|TR|braise|pl|cs|alubias con carne|beans with beef
+İşkembe çorbası|TR|soup|mon||sopa de callos|tripe soup
+Kelle paça|TR|soup|pt|ch|sopa de cabeza y patas|head and foot soup
+Pastırma|TR|cure|mc|lf,cp|carne curada con çemen|cured beef with spice paste
+Sucuk|TR|grind|mol||embutido seco especiado|dry spiced sausage
+Lahmacun|TR|grind|mol||pan plano con carne picada|flatbread with minced beef
+Mantı|TR|grind|mol||pasta rellena|meat dumplings
+Karnıyarık|TR|grind|mol||berenjena rellena|stuffed aubergine
+Ciğer tava|TR|fry|hi||hígado frito|fried liver
+Dil söğüş|TR|braise|le||lengua fría|cold tongue
+Shawarma (beef)|LB|slice|cp|ca,fa,sb|carne marinada en asador vertical|marinated beef on a vertical spit
+Kafta|LB|grind|mol||carne picada con perejil|ground beef with parsley
+Kibbeh|LB|grind|mol|cp|croqueta de bulgur y carne|bulgur and beef croquette
+Kibbeh nayyeh|LB|raw|cp|lf|carne cruda con bulgur|raw beef with bulgur
+Lahem meshwi|LB|skewer|ca|lf|brochetas|beef skewers
+Sfiha|LB|grind|mol||empanada abierta de carne|open meat pie
+Fatteh b'lahmeh|LB|braise|pl||carne con yogur y pan|beef with yogurt and bread
+Arayes|LB|grind|mol||pan relleno de carne a la parrilla|grilled meat-stuffed pita
+Makloubeh (beef)|PS|braise|pl|cs|arroz invertido con carne|upside-down rice with beef
+Mansaf (beef)|JO|braise|pl|mu|carne en salsa de yogur seco|beef in dried yogurt sauce
+Cholent|IL|braise|pe|cs,ag,fa|guiso de sábado, 12 horas|12-hour Sabbath stew
+Hamin|IL|braise|pe|cs|guiso lento|slow overnight stew
+Chelo kabab koobideh|IR|grind|mol||brochetas de carne picada|minced beef skewers
+Kabab barg|IR|skewer|lf|la|filete en brocheta|flattened tenderloin skewer
+Ghormeh sabzi|IR|braise|pl|mu,ag|guiso de hierbas|herb stew with beef
+Gheimeh|IR|braise|pl|ag|guiso con arvejas partidas|split pea stew
+Abgoosht|IR|soup|mu|cs|guiso de carne y garbanzos|meat and chickpea stew
+Khoresh bademjan|IR|braise|pl|ag|guiso con berenjena|aubergine stew
+Kalleh pacheh|IR|soup|ch|pt,le|sopa de cabeza y patas|head and foot soup
+Kofta kebab|EG|grind|mol||brochetas de carne picada|ground beef kebabs
+Hawawshi|EG|grind|mol||pan relleno de carne|meat-stuffed bread
+Kebda eskandarani|EG|sear|hi||hígado picante|spicy liver
+Fatta|EG|braise|pl|mu|carne con arroz y pan|beef with rice and bread
+Molokhia bil lahma|EG|braise|pl|mu|guiso de yute con carne|jute leaf stew with beef
+Kawareh|EG|soup|pt||sopa de patas|cow foot soup
+Machboos laham|SA|braise|pl|mu|arroz especiado con carne|spiced rice with beef
+Quzi|IQ|roast|pl|cs|carne asada sobre arroz|roast beef on rice
+Pacha|IQ|soup|ch|pt,mon|cabeza y patas hervidas|boiled head and feet
+# ---------------- África
+Tajine de bœuf aux pruneaux|MA|braise|pl|mu,ag|tajín con ciruelas|tagine with prunes
+Tajine kefta|MA|grind|mol||albóndigas en tomate con huevo|meatballs in tomato with eggs
+Couscous au bœuf|MA|braise|pl|mu,cs|cuscús con res|couscous with beef
+Harira (beef)|MA|soup|pl|mu|sopa de legumbres|legume soup
+Khlii|MA|cure|bo|cp|carne seca confitada|dried beef preserved in fat
+Brochettes de foie|MA|skewer|hi||brochetas de hígado|liver skewers
+Tangia|MA|braise|mu|ch|carne cocida en ánfora|beef slow-cooked in an urn
+Kitfo|ET|raw|cp|lf|carne cruda picada con mantequilla especiada|raw minced beef with spiced butter
+Tibs|ET|stirfry|ca|lf,cp|cubos salteados|sautéed cubes
+Key wat|ET|braise|pl|ag|guiso rojo picante|spicy red stew
+Kurt (tere siga)|ET|raw|lf|ca|cubos de carne cruda|raw beef cubes
+Dulet|ET|stirfry|hi|mon|vísceras picadas|minced offal
+Zilzil tibs|ET|stirfry|ca||tiras salteadas|sautéed strips
+Suya|NG|skewer|ca|cp,sb|brochetas con maní y especias|peanut-spiced skewers
+Kilishi|NG|cure|cp|bo|carne seca especiada|spiced dried beef
+Nigerian beef stew|NG|braise|pl|ag|guiso en tomate y pimiento|tomato-pepper stew
+Pepper soup (beef)|NG|soup|mon|cl,pt|sopa picante|hot pepper soup
+Shaki (tripe stew)|NG|braise|mon||callos en salsa|tripe in stew
+Nkwobi|NG|braise|pt||pata en salsa de palma|cow foot in palm oil sauce
+Egusi with beef|NG|braise|pl|mon|guiso de semillas de melón|melon seed stew
+Jollof rice with beef|NG|braise|pl||arroz jollof con res|jollof rice with beef
+Nyama choma (beef)|KE|grill|cs|ag|carne a la brasa|charcoal-roasted beef
+Mshikaki|KE|skewer|ca|cp|brochetas marinadas|marinated skewers
+Matumbo|KE|braise|mon||callos guisados|stewed tripe
+Biltong|ZA|cure|bo|cp,mc|carne curada y secada|cured air-dried beef
+Droëwors|ZA|grind|mol||salchicha seca|dried sausage
+Boerewors|ZA|grind|mol||salchicha de granja|farmer's sausage
+Bobotie|ZA|grind|mol||pastel de carne al curry|curried mince bake
+Potjiekos (beef)|ZA|braise|mu|cl,ag|guiso en olla de hierro|cast-iron pot stew
+Sosaties (beef)|ZA|skewer|ca||brochetas al curry|curried skewers
+Braai steak|ZA|grill|ca|tb,ba|bistec a la brasa|braai-grilled steak
+Mogodu|ZA|braise|mon||callos|tripe stew
+Seswaa|BW|shred|ag|pe,cs|carne hervida y machacada|boiled pounded beef
+Cachupa (vaca)|CV|braise|pl||guiso de maíz y frijol|hominy and bean stew
+Muamba de carne|AO|braise|pl||guiso en aceite de palma|palm oil stew
+Romazava|MG|soup|pl|cs|caldo con hojas|beef and greens broth
+Thiébou yapp|SN|braise|pl|cs|arroz con carne|rice with beef
+Mafé|SN|braise|pl|ag,mu|guiso en salsa de maní|peanut stew
+Dibi (bœuf)|SN|grill|cs||carne a la parrilla|grilled beef
+Sukuma na nyama|KE|stirfry|ca||carne con col|beef with greens

@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8"><style>html,body{margin:0;height:100%;background:#222}#h{position:absolute;inset:0}canvas{display:block;width:100%;height:100%}</style></head><body><div id="h"></div>
+<script src="three.min.js"></script><script src="../src/meshlib.js"></script><script src="../src/data_cuts.js"></script><script src="../src/scene.js"></script>
+<script>
+const Q = new URLSearchParams(location.search);
+fetch('../out/meshes.bin').then(r=>r.arrayBuffer()).then(buf=>{
+  const pack = MeshLib.parsePack(buf);
+  const shop = Shop.create(document.getElementById('h'), pack, {cuts: CUTS, panelWidth: ()=> +(Q.get('p')||0), idle:false});
+  window.shop = shop;
+  shop.setTags(c => c.names.co[0]);
+  shop.setChalk('Hoy recomendamos', ['Sobrebarriga', 'para ropa vieja', 'también: falda, pecho']);
+  const v = Q.get('v') || 'shop'; shop.setView(v);
+  if (Q.get('sel')) { shop.setSelection(Q.get('sel')); shop.setBlockCut(Q.get('sel')); }
+  if (Q.get('e')) shop.setExplode(+Q.get('e'));
+  if (Q.get('recs')) shop.setRecs(Q.get('recs').split(','));
+  setTimeout(()=>{document.title='ready'}, 2500);
+}).catch(e=>{console.error(e); document.title='ready'});
+</script></body></html>
