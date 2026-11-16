@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Atlas de la Res</title>
+<title>Korte</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
@@ -43,6 +43,11 @@ button { cursor: pointer }
 #brand { position: absolute; left: 16px; top: 14px; z-index: 3; display: flex; flex-direction: column; gap: 0; padding: 9px 16px 10px; background: #16382d; color: #EBDDB3; border: 2px solid #C9A04E; border-radius: 8px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) }
 #brand .eyebrow { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85 }
 #brand h1 { font-family: var(--display); font-weight: 700; font-size: 25px; line-height: 1.05; margin: 0; letter-spacing: 0.01em }
+
+/* species switch */
+#species { position: absolute; left: 16px; top: 86px; z-index: 3; background: rgba(18, 27, 23, 0.82); border: 0; backdrop-filter: blur(6px) }
+#species button { color: #E7ECE6; padding: 7px 16px }
+#species button[aria-pressed="true"] { background: #F0B429; color: #2B1E00 }
 
 /* view switcher */
 #views { position: absolute; left: 16px; bottom: 16px; z-index: 3; display: flex; gap: 4px; padding: 4px; background: rgba(18, 27, 23, 0.82); border-radius: 999px; backdrop-filter: blur(6px) }
@@ -268,6 +273,7 @@ td.num { white-space: nowrap }
   #stage { flex: 0 0 43%; min-height: 250px }
   #panel { position: relative; right: auto; top: auto; bottom: auto; width: auto; flex: 1 1 auto; min-height: 0; border-radius: 14px 14px 0 0; margin-top: -12px; border: 0; border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.25) }
   #brand { left: max(10px, env(safe-area-inset-left, 0px)); top: 10px; padding: 6px 11px 7px } #brand h1 { font-size: 18px } #brand .eyebrow { font-size: 9px }
+  #species { left: auto; right: 10px; top: 10px } #species button { padding: 6px 13px; font-size: 12.5px }
   #views { left: 10px; bottom: 22px } #views button { padding: 7px 11px; font-size: 12.5px }
   #cowtools { left: auto; right: 10px; bottom: 22px; padding: 6px 10px } #cowtools input { width: 84px } #cowtools span { display: none }
   #hint { display: none }
@@ -286,13 +292,14 @@ td.num { white-space: nowrap }
     <div id="gl"></div>
     <div id="tags"></div>
     <div id="hover" hidden></div>
-    <header id="brand"><span class="eyebrow">Carnicería</span><h1>Atlas de la Res</h1></header>
+    <header id="brand"><span class="eyebrow">Carnicería</span><h1>Korte</h1></header>
+    <div id="species" class="seg" role="group" aria-label="Res · Cerdo"></div>
     <div id="cowtools" hidden><span>Separar cortes</span><input id="explode" type="range" min="0" max="100" value="0" aria-label="Separar cortes"></div>
     <nav id="views" aria-label="Vistas">
       <button data-v="shop" aria-pressed="true">Tienda</button><button data-v="cow" aria-pressed="false">La res</button><button data-v="case" aria-pressed="false">Vitrina</button><button data-v="block" aria-pressed="false">El corte</button>
     </nav>
     <div id="hint">Arrastra para girar · toca un corte</div>
-    <div id="loading"><div class="box"><h2>Atlas de la Res</h2><div class="bar"><b></b></div><p id="loadmsg">Afilando los cuchillos…</p></div></div>
+    <div id="loading"><div class="box"><h2>Korte</h2><div class="bar"><b></b></div><p id="loadmsg">Afilando los cuchillos…</p></div></div>
   </div>
   <aside id="panel">
     <div id="phead">
@@ -1546,6 +1553,290 @@ Carne para lonchera|INT|fry|cp|bp|filete fino|thin steak for lunchboxes
 Carne para asado familiar|INT|grill|pa|cs,va,ca|parrilla para muchos|grill for a crowd
 Carne para parrilla económica|INT|grill|co|va,ca,ag|cortes de parrilla a buen precio|budget grilling cuts
 Carne para una cena especial|INT|sear|lf|ba,la,tb|el corte para lucirse|the cut for a special dinner
+Lechona tolimense|CO|roll|pen|ppn,ppi|cerdo entero relleno de arroz y arveja, horneado|whole pig stuffed with rice and peas, roasted
+Chicharrón colombiano|CO|crisp|ppn|pcu,ppp|tocino carnudo frito en su grasa|meaty pork belly fried in its own fat
+Bandeja paisa (chicharrón)|CO|crisp|ppn||chicharrón de varias patas|scored belly crackling with many "legs"
+Chuleta valluna|CO|fry|plo|ppi,pch|lomo aplanado, marinado y apanado|pounded, marinated and breaded loin
+Costillitas en salsa BBQ|CO|roast|pbb|pco|costillas horneadas y glaseadas|oven ribs with a barbecue glaze
+Pernil de cerdo navideño|CO|roast|ppi|ppa|pierna marinada y horneada lento|marinated leg roasted slowly
+Fritanga bogotana|CO|crisp|pco|ppn,ptr|picada de costilla, chicharrón y tripa fritos|fried platter of ribs, belly and chitterlings
+Marranitas vallunas|CO|crisp|ppn|pcu|bolas de plátano rellenas de chicharrón|plantain balls stuffed with chicharrón
+Tamal tolimense (cerdo)|CO|braise|pco|ppn,ppi|masa con costilla y tocino cocida en hoja|corn dough with ribs and belly steamed in leaves
+Frijoles con pezuña|CO|soup|ppt|pcd,pra|frijoles rojos cocidos con pata de cerdo|red beans simmered with pig’s feet
+Lomo de cerdo en salsa de ciruelas|CO|roast|plo|pso|lomo horneado con ciruelas pasas|roast loin with prunes
+Cañón de cerdo relleno|CO|roll|plo|ppi|lomo abierto y relleno, al horno|loin opened, stuffed and roasted
+Chorizo santarrosano|CO|grind|pmo|pbo,ppa|chorizo fresco de cerdo|fresh pork sausage
+Sancocho de espinazo|CO|soup|pco|pra,pcd|sopa de hueso carnudo con yuca y plátano|meaty bone soup with cassava and plantain
+Chunchurria de cerdo|CO|crisp|ptr||tripa trenzada y frita|braided, fried chitterlings
+Arroz atollado|CO|braise|pco|ppn,plo|arroz meloso con costilla y longaniza|soupy rice with ribs and sausage
+Hornado pastuso|CO|roast|ppi|ppa,pen|pierna horneada en horno de leña|leg roasted in a wood oven
+Lomo de cerdo a la plancha|CO|sear|plo|pso|filetes de lomo a la plancha|griddled loin steaks
+Cochinita pibil|MX|shred|pbo|ppa,ppi|cerdo en achiote cocido bajo tierra, desmechado|achiote pork cooked in a pit, shredded
+Carnitas michoacanas|MX|crisp|pbo|ppa,pco,ppn|cerdo confitado en manteca y dorado|pork confited in lard, then browned
+Tacos al pastor|MX|skewer|pbo|ppi,plo|láminas adobadas asadas en trompo|adobo-marinated slices roasted on a spit
+Pozole rojo|MX|soup|pca|ppa,pco|sopa de maíz cacahuazintle con cabeza|hominy soup with pig’s head
+Chicharrón prensado|MX|crisp|pcu|ppn|recortes de chicharrón prensados|pressed crackling trimmings
+Chicharrón en salsa verde|MX|braise|pcu||chicharrón ablandado en salsa de tomate verde|crackling softened in tomatillo sauce
+Chamorro adobado|MX|braise|pcd||codillo en adobo de chiles secos|hock in dried-chile adobo
+Costillas de cerdo en salsa verde|MX|braise|pco||costilla guisada con tomate verde|ribs stewed with tomatillo
+Chuletas ahumadas con piña|MX|sear|pch||chuleta ahumada a la plancha|smoked chop on the griddle
+Lomo adobado|MX|roast|plo|pbo|lomo en adobo, al horno|adobo-rubbed roast loin
+Puerco en chile verde|MX|braise|ppa|pbo|trozos guisados en salsa de chiles verdes|chunks stewed in green chile sauce
+Manitas de cerdo en escabeche|MX|braise|ppt||patas cocidas y encurtidas|pickled pig’s feet
+Chorizo mexicano|MX|grind|pmo|pbo|chorizo fresco con chile y vinagre|fresh sausage with chile and vinegar
+Chilorio|MX|shred|ppa|pbo|cerdo deshebrado y frito en chile pasilla|shredded pork fried in pasilla chile
+Poc chuc|MX|grill|plo|ppi|filete delgado en naranja agria, a las brasas|thin steak in sour orange, grilled
+Cueritos en vinagre|MX|braise|pcu||piel cocida y encurtida|pickled pork skin
+Frijol con puerco|MX|braise|ppa|pco|frijoles negros con trozos de cerdo|black beans with pork chunks
+Torta ahogada|MX|crisp|pbo|ppi|birote con carnitas bañado en salsa|carnitas roll drowned in salsa
+Asado de puerco|MX|braise|ppi|ppa|cerdo en salsa de chile colorado|pork in red chile sauce
+Lechón al horno yucateco|MX|roast|pen|ppi|lechón horneado, para tortas|roast suckling pig for sandwiches
+Bondiola a la parrilla|AR|grill|pbo||bondiola entera asada lento|whole collar grilled slowly
+Sándwich de bondiola|AR|grill|pbo||filetes de bondiola a la plancha en pan|grilled collar steaks in a roll
+Matambrito de cerdo a la pizza|AR|grill|pse|ppn|matambrito asado con salsa y queso|grilled pork flank topped like a pizza
+Pechito de cerdo a la parrilla|AR|grill|pco|pbb|costillar asado a fuego lento|rack of ribs over slow coals
+Lechón a la parrilla|AR|grill|pen||lechón abierto asado a las brasas|butterflied suckling pig over coals
+Carré de cerdo a la mostaza|AR|roast|plo|pch|lomo al horno con mostaza|roast loin with mustard
+Costeletas de cerdo a la riojana|AR|sear|pch||chuletas con huevo, panceta y arvejas|chops with egg, bacon and peas
+Solomillo de cerdo al verdeo|AR|sear|pso||solomillo con salsa de cebolla de verdeo|tenderloin in scallion cream
+Chorizo criollo|AR|grind|pmo|pbo,ppa|chorizo fresco para la parrilla|fresh grilling sausage
+Queso de cerdo|AR|braise|pca|ppt|fiambre de cabeza prensada|pressed head cheese
+Pamplona de cerdo|UY|roll|plo|pse|lomo relleno y envuelto, a la parrilla|stuffed, wrapped loin on the grill
+Costillar de chancho al horno|CL|roast|pco||costillar adobado con ají y ajo|ribs rubbed with chile and garlic
+Pernil con papas cocidas|CL|braise|pcd||codillo hervido con papas|boiled hock with potatoes
+Arrollado huaso|CL|roll|ppi|pcu,ppn|pulpa adobada envuelta en cuero y cocida|seasoned leg meat rolled in skin and boiled
+Longaniza de Chillán|CL|grind|pmo||longaniza ahumada de cerdo|smoked pork sausage
+Pernil venezolano|VE|roast|ppi|ppa|pierna horneada navideña|Christmas roast leg
+Hallaca (guiso de cochino)|VE|braise|ppi|ppa,ppn|guiso de cerdo para el relleno|pork stew for the filling
+Cochino frito|VE|crisp|ppa|pco,ppn|trozos de cerdo fritos en su grasa|pork chunks fried in their own fat
+Hornado ecuatoriano|EC|roast|ppi|pen|pierna horneada con chicha y ajo|leg roasted with chicha and garlic
+Fritada ecuatoriana|EC|crisp|pco|ppa,ppn|costilla cocida y frita en su manteca|ribs simmered, then fried in their fat
+Chugchucaras|EC|crisp|ppa|pcu|fritada con cuero reventado|fried pork with puffed skin
+Pan con chicharrón|PE|crisp|pco|ppn,pbo|chicharrón de costilla en pan con camote|fried pork in a roll with sweet potato
+Adobo arequipeño|PE|braise|pbo|ppi,ppa|cerdo en chicha y ají panca|pork stewed in chicha and panca chile
+Chancho al palo|PE|smoke|pco|ppn|costillar asado en cruz junto al fuego|ribs roasted on a cross by the fire
+Carapulcra|PE|braise|ppn|pco|guiso de papa seca con cerdo|dried-potato stew with pork
+Lechón al horno peruano|PE|roast|ppi||pierna con piel crocante|leg with crackling skin
+Fricasé paceño|BO|soup|pco|ppa|sopa picante con mote y chuño|spicy soup with hominy and chuño
+Chicharrón cochabambino|BO|crisp|pco|ppn|costilla cocida en chicha y frita|ribs boiled in chicha and fried
+Lechón al horno boliviano|BO|roast|pen|ppi|lechón horneado con ají amarillo|suckling pig roasted with yellow chile
+Torresmo|BR|crisp|ppn|pcu,ppp|barriga frita hasta pururucar|belly fried until it crackles
+Feijoada (porco)|BR|braise|pcd|pco,por,pra,ppt|frijol negro con cortes salados de cerdo|black beans with salted pork cuts
+Costelinha com canjiquinha|BR|braise|pco||costilla con maíz quebrado|ribs with cracked corn
+Pernil assado de Natal|BR|roast|ppi||pernil horneado navideño|Christmas roast leg
+Leitão à pururuca|BR|roast|pen|ppn|lechón con piel reventada con aceite caliente|suckling pig, skin blistered with hot oil
+Lombo recheado|BR|roll|plo||lomo relleno al horno|stuffed roast loin
+Bisteca suína grelhada|BR|grill|pch||chuleta a la parrilla|grilled chop
+Linguiça caseira|BR|grind|pmo|ppa|chorizo fresco casero|homemade fresh sausage
+Panceta pururuca|BR|crisp|ppn||panceta al horno con piel crocante|roast belly with crackling
+Sarapatel|BR|braise|phi||guiso de vísceras de cerdo|pork offal stew
+Virado à paulista|BR|sear|pch|ppn|chuleta con tutu de frijol y torresmo|chop with mashed beans and crackling
+Lechón asado cubano|CU|roast|ppi|pen,ppa|pierna en mojo de naranja agria|leg in sour-orange mojo
+Masitas de puerco fritas|CU|crisp|ppa|pbo|cubos marinados y fritos|marinated, fried pork cubes
+Sándwich cubano|CU|roast|ppi|ppa|cerdo asado con jamón y queso en pan prensado|roast pork with ham and cheese, pressed
+Pernil puertorriqueño|PR|roast|ppa|ppi|paleta con cuerito crocante|shoulder with crisp skin
+Lechón a la varita|PR|smoke|pen||cerdo entero asado en vara|whole pig roasted on a pole
+Mofongo con chicharrón|PR|crisp|ppn|pcu|plátano majado con chicharrón|mashed plantain with crackling
+Cuchifritos|PR|crisp|por|ptr,pra|oreja, rabo y tripa fritos|fried ears, tails and chitterlings
+Chicharrón dominicano|DO|crisp|ppn|ppa|chicharrón de Villa Mella|Villa Mella-style fried pork
+Jerk pork|JM|grill|pbo|ppa,pch|cerdo en adobo jerk a la leña de pimento|jerk-marinated pork over pimento wood
+Griot|HT|crisp|ppa|pbo|cubos en naranja agria, cocidos y fritos|sour-orange pork cubes, simmered and fried
+Vigorón|NI|crisp|ppn|pcu|chicharrón con yuca y ensalada de repollo|crackling with cassava and slaw
+Nacatamal|NI|braise|pco|ppn,ppi|tamal grande con costilla|large tamal with ribs
+Pupusa de chicharrón|SV|grind|ppa|ppn|cerdo frito y molido para el relleno|fried, ground pork filling
+Chifrijo|CR|crisp|ppn|pco|chicharrón con frijoles y pico de gallo|crackling with beans and pico de gallo
+Pig foot souse|TT|braise|ppt|por|patas cocidas en caldo ácido frío|pig’s feet in a cold lime brine
+Carolina pulled pork|US|smoke|pbo|ppa|paleta ahumada y desmechada|smoked, pulled shoulder
+St. Louis ribs|US|smoke|pco||costillar recortado y ahumado|trimmed, smoked spare ribs
+Memphis baby back ribs|US|smoke|pbb||costillitas ahumadas con adobo seco|dry-rubbed smoked back ribs
+Bacon|US|cure|ppn|ppp|panceta curada y ahumada|cured, smoked belly
+Smothered pork chops|US|braise|pch||chuletas en salsa de cebolla|chops in onion gravy
+Whole hog barbecue|US|smoke|pen|ppa|cerdo entero ahumado toda la noche|whole pig smoked overnight
+Collard greens with ham hock|US|soup|pcd|ppt|verduras cocidas con codillo ahumado|greens simmered with smoked hock
+Chitlins|US|braise|ptr||tripa cocida lento|slow-simmered chitterlings
+Pork tenderloin medallions|US|sear|pso||medallones de solomillo a la sartén|pan-seared tenderloin medallions
+Breaded pork tenderloin sandwich|US|fry|plo|pso|lomo aplanado y apanado en pan|pounded, breaded loin in a bun
+Pork belly burnt ends|US|smoke|ppn||cubos de panceta ahumados y glaseados|smoked, glazed belly cubes
+Breakfast sausage|US|grind|pmo|pbo|salchicha fresca con salvia|fresh sausage with sage
+Kalua pig|US|smoke|pbo|ppa,pen|cerdo cocido en horno de tierra hawaiano|pork cooked in a Hawaiian earth oven
+Scrapple|US|grind|pca|phi|pan de recortes de cerdo y maíz|loaf of pork scraps and cornmeal
+Cracklins|US|crisp|pcu|ppn|cuero con grasa frito, estilo cajún|Cajun fried skin with fat
+Tourtière|CA|grind|pmo|ppa|pastel de carne de cerdo especiado|spiced pork pie
+Peameal bacon|CA|cure|plo||lomo curado rebozado en harina de maíz|cured loin rolled in cornmeal
+Cretons|CA|grind|pmo|ppa|paté de cerdo para untar|pork spread
+Roast pork with crackling|UK|roast|plo|ppn,ppi|lomo asado con piel crocante|roast loin with crackling
+Pork pie|UK|grind|ppa|pmo,ppn|pastel frío de cerdo con gelatina|cold pork pie with jelly
+Bangers and mash|UK|grind|pmo|ppa|salchichas con puré|sausages and mash
+Gammon steak|UK|sear|ppi||filete de pierna curada|cured leg steak
+Pork scratchings|UK|crisp|pcu||cuero frito de pub|pub pork rinds
+Brawn|UK|braise|pca|ppt|fiambre de cabeza en gelatina|jellied head meat
+Faggots (pork)|UK|grind|phi|pmo|albóndigas de hígado y recortes|liver and offcut meatballs
+Bacon and cabbage|IE|braise|pbo|plo|tocino de paleta hervido con repollo|boiled collar bacon with cabbage
+Crubeens|IE|braise|ppt||patas hervidas y doradas|boiled, browned pig’s feet
+Rôti de porc|FR|roast|plo|pbo|asado de cerdo al horno|oven roast pork
+Petit salé aux lentilles|FR|braise|ppn|pbo,pcd|cerdo en salmuera con lentejas|salt pork with lentils
+Rillettes|FR|shred|ppn|pbo,ppa|cerdo confitado y deshebrado para untar|confited, shredded pork spread
+Cassoulet (porc)|FR|braise|pcu|ppn,pbo|alubias con corteza, panceta y aguja|beans with rind, belly and collar
+Choucroute garnie|FR|braise|pcd|ppn,ppa|chucrut con codillo y panceta|sauerkraut with hock and belly
+Pieds de porc Sainte-Menehould|FR|crisp|ppt||manitas cocidas, empanadas y doradas|trotters simmered, crumbed and grilled
+Pâté de campagne|FR|grind|phi|pbo,ppp|paté rústico de hígado y papada|country pâté of liver and jowl
+Filet mignon de porc à la moutarde|FR|sear|pso||solomillo con salsa de mostaza|tenderloin in mustard sauce
+Côte de porc charcutière|FR|sear|pch||chuleta con salsa de pepinillos|chop with gherkin sauce
+Travers de porc au miel|FR|roast|pco|pbb|costillas laqueadas con miel|honey-glazed ribs
+Jambon persillé|FR|braise|pcd|ppa|terrina de jamón y perejil|ham and parsley terrine
+Andouillette|FR|grind|ptr||embutido de tripa|chitterling sausage
+Boudin blanc|BE|grind|pmo||salchicha blanca fina|fine white sausage
+Porchetta|IT|roll|ppn|pen,plo|panceta enrollada con hierbas, asada|herbed, rolled belly roast
+Arista alla fiorentina|IT|roast|plo|pch|lomo asado con romero y ajo|loin roasted with rosemary and garlic
+Guanciale|IT|cure|ppp|ppn|papada curada para carbonara y amatriciana|cured jowl for carbonara and amatriciana
+Pancetta arrotolata|IT|cure|ppn||panceta curada y enrollada|cured, rolled belly
+Prosciutto crudo|IT|cure|ppi||pierna curada al aire|air-cured leg
+Capocollo|IT|cure|pbo||aguja curada|cured collar
+Salsiccia|IT|grind|pmo|ppa,pbo|salchicha fresca con hinojo|fresh sausage with fennel
+Cotechino|IT|grind|pcu|pmo,ppp|embutido de corteza para hervir|rind sausage for boiling
+Zampone|IT|roll|ppt|pcu|pata rellena de carne picada|trotter stuffed with ground pork
+Stinco al forno|IT|roast|pcd||codillo asado con hierbas|roast hock with herbs
+Maiale al latte|IT|braise|plo|pbo|lomo cocido en leche|loin braised in milk
+Puntine al sugo|IT|braise|pco||costillas en salsa de tomate|ribs in tomato sauce
+Fegatelli|IT|roast|phi||hígado envuelto en redaño con laurel|liver wrapped in caul with bay
+Porceddu|IT|roast|pen||lechón sardo al asador|Sardinian spit-roast suckling pig
+Braciole di maiale|IT|roll|ppi|plo|filetes enrollados en salsa|rolled slices in sauce
+Cochinillo asado|ES|roast|pen||lechal al horno de leña, estilo Segovia|wood-oven suckling pig, Segovia style
+Secreto ibérico a la plancha|ES|sear|pse||secreto a la plancha con sal|griddled secreto with salt
+Presa ibérica a la brasa|ES|grill|ppr||presa entera a la brasa|whole presa over coals
+Pluma ibérica a la parrilla|ES|grill|ppl||pluma a fuego fuerte|pluma over fierce heat
+Carrilladas al vino tinto|ES|braise|pcr||carrilleras estofadas en vino|cheeks braised in red wine
+Jamón ibérico|ES|cure|ppi||pierna curada de cerdo ibérico|cured leg of Ibérico pig
+Lomo embuchado|ES|cure|plo||lomo curado con pimentón|loin cured with paprika
+Torreznos de Soria|ES|crisp|ppn||panceta adobada frita con corteza inflada|cured belly fried until the rind puffs
+Oreja a la plancha|ES|crisp|por||oreja cocida y dorada|boiled ear, seared
+Manitas de cerdo guisadas|ES|braise|ppt||manitas en salsa|trotters in sauce
+Codillo asado|ES|roast|pcd||codillo al horno|roast hock
+Lacón con grelos|ES|braise|pcd|ppa|lacón cocido con grelos|cured shoulder hock boiled with turnip greens
+Solomillo de cerdo al whisky|ES|sear|pso||solomillo con ajo y whisky|tenderloin with garlic and whisky
+Chorizo español|ES|grind|pmo|pbo,ppp|embutido curado con pimentón|paprika-cured sausage
+Lomo en manteca|ES|braise|plo||lomo confitado en manteca|loin confited in lard
+Pinchos morunos|ES|skewer|ppi|pbo,plo|pinchos adobados con especias|spice-marinated skewers
+Fabada asturiana|ES|braise|ppn|pcd,ppa|fabes con tocino, lacón y embutidos|white beans with belly, hock and sausages
+Careta a la plancha|ES|crisp|pca|por|careta cocida y dorada|boiled pig’s face, seared
+Zorza|ES|stirfry|pbo|plo|picadillo adobado con pimentón|paprika-marinated chopped pork
+Flamenquín|ES|roll|plo|ppi|lomo enrollado con jamón, apanado y frito|loin rolled with ham, breaded and fried
+Leitão da Bairrada|PT|roast|pen||lechón asado con pasta de ajo y pimienta|suckling pig with garlic-pepper paste
+Carne de porco à alentejana|PT|braise|ppi|plo,pbo|cerdo con almejas|pork with clams
+Bifanas|PT|braise|plo|ppi|filetes finos en vino y ajo, en pan|thin slices in wine and garlic, in a roll
+Rojões à moda do Minho|PT|crisp|ppi|pbo|cubos marinados y fritos en manteca|marinated cubes fried in lard
+Chouriço|PT|grind|pmo||embutido ahumado con pimentón|smoked paprika sausage
+Schweinshaxe|DE|roast|pcd||codillo asado con piel crocante|roast hock with crackling
+Eisbein|DE|braise|pcd||codillo curado y hervido|cured, boiled hock
+Schnitzel Wiener Art|DE|fry|ppi|plo|escalope de cerdo apanado|breaded pork escalope
+Schweinebraten|DE|roast|pbo|ppa|asado de aguja con salsa de cerveza|collar roast with beer gravy
+Kassler|DE|cure|pch|pbo|chuleta curada y ahumada|cured, smoked chop
+Bratwurst|DE|grind|pmo|ppa|salchicha fresca para la parrilla|fresh grilling sausage
+Leberwurst|DE|grind|phi|ppp|embutido de hígado para untar|spreadable liver sausage
+Krustenbraten|DE|roast|ppa|ppn|paleta asada con costra de piel|shoulder roast with crackling
+Spanferkel|DE|roast|pen||lechón al asador|spit-roast suckling pig
+Sülze|DE|braise|pca|ppt|carne de cabeza en gelatina ácida|head meat in sharp aspic
+Stelze|AT|roast|pcd||codillo asado austríaco|Austrian roast hock
+Schweinsbraten mit Kruste|AT|roast|ppn|pbo|panceta asada con comino|belly roast with caraway
+Vepřo knedlo zelo|CZ|roast|pbo|ppa|cerdo asado con knedlíky y repollo|roast pork with dumplings and cabbage
+Pečené koleno|CZ|roast|pcd||codillo asado en cerveza|hock roasted in beer
+Kotlet schabowy|PL|fry|plo|pch|chuleta aplanada y apanada|pounded, breaded chop
+Golonka|PL|braise|pcd||codillo cocido en cerveza|hock simmered in beer
+Bigos|PL|braise|ppa|pco,ppn|guiso de repollo con cerdo y embutidos|cabbage stew with pork and sausage
+Kiełbasa|PL|grind|pmo|ppa|salchicha ahumada con ajo|smoked garlic sausage
+Sertéspörkölt|HU|braise|ppa|pbo|guiso de cerdo con paprika|pork paprika stew
+Töltött káposzta|HU|grind|pmo||repollo relleno de cerdo|pork-stuffed cabbage
+Salo|UA|cure|ppn|ppp|tocino curado en sal|salt-cured fat
+Kholodets (svinina)|RU|soup|ppt|pcd,pca|gelatina de carne fría|cold meat aspic
+Shashlik iz svininy|RU|skewer|pbo||pinchos de cerdo marinados|marinated pork skewers
+Khorovats|AM|skewer|pbo|pch,pco|cerdo a la brasa en espada|pork grilled on swords
+Mtsvadi|GE|skewer|pbo|plo|pinchos sobre sarmientos|skewers over vine cuttings
+Pečeno prase|RS|roast|pen||cerdo entero al asador|whole pig on the spit
+Kavarma|BG|braise|ppa|pbo|guiso de cerdo en cazuela de barro|pork stew in a clay pot
+Flæskesteg|DK|roast|plo|pbo,ppn|asado con piel crocante|roast with crackling
+Stegt flæsk|DK|crisp|ppn||lonjas de panceta fritas con salsa de perejil|fried belly slices with parsley sauce
+Julskinka|SE|roast|ppi||jamón navideño con mostaza|Christmas ham with mustard crust
+Ribbe|NO|roast|ppn|pco|costillar de panceta navideño|Christmas belly ribs
+Joulukinkku|FI|roast|ppi||jamón navideño al horno|Christmas baked ham
+Souvlaki hirinó|GR|skewer|pbo|plo,ppi|pinchos con limón y orégano|skewers with lemon and oregano
+Gyros hirinó|GR|skewer|pbo|ppn|láminas apiladas asadas en vertical|stacked slices on a vertical spit
+Kontosouvli|GR|skewer|pbo||trozos grandes al asador|large chunks on the spit
+Char siu|CN|roast|pbo|ppn,plo|cerdo laqueado asado|lacquered roast pork
+Dongpo rou|CN|braise|ppn||panceta en cubos estofada en vino de arroz|belly cubes braised in rice wine
+Hong shao rou|CN|braise|ppn||panceta estofada roja|red-braised belly
+Gu lao rou|CN|fry|plo|pbo|cerdo agridulce rebozado|sweet and sour pork
+Hui guo rou|CN|stirfry|ppn|pbo|panceta dos veces cocida|twice-cooked pork
+Yu xiang rou si|CN|stirfry|plo|pso|tiras salteadas en salsa "aroma de pescado"|shredded pork in fish-fragrant sauce
+Siu yuk|HK|crisp|ppn||panceta asada de piel crocante|crisp-skinned roast belly
+Xiaolongbao|CN|grind|pmo|ppn,pcu|empanadillas con caldo dentro|soup dumplings
+Jiaozi de cerdo y col|CN|grind|pmo||empanadillas hervidas|boiled dumplings
+Shizi tou|CN|grind|pmo|ppn|albóndigas "cabeza de león"|lion’s head meatballs
+Mu shu rou|CN|stirfry|plo|pso|cerdo salteado con huevo y hongos|pork stir-fried with egg and wood ear
+Tang cu pai gu|CN|braise|pco||costillitas agridulces|sweet and sour ribs
+Zhu jiao jiang|HK|braise|ppt|pcd|patas en vinagre negro y jengibre|trotters in black vinegar and ginger
+Lu rou fan|TW|braise|ppn|pmo|panceta picada estofada sobre arroz|braised minced belly over rice
+Gua bao|TW|braise|ppn||pan al vapor con panceta estofada|steamed bun with braised belly
+Tonkatsu|JP|fry|plo|pso|chuleta apanada en panko|panko-breaded cutlet
+Katsudon|JP|fry|plo||tonkatsu con huevo sobre arroz|cutlet and egg over rice
+Chashu|JP|roll|ppn|pbo|panceta enrollada y estofada para ramen|rolled, braised belly for ramen
+Tonkotsu ramen|JP|soup|ppt|pcd,pca|caldo lechoso de huesos de cerdo|milky pork-bone broth
+Buta no kakuni|JP|braise|ppn||cubos de panceta estofados|braised belly cubes
+Shogayaki|JP|stirfry|plo|pbo|láminas salteadas con jengibre|ginger pork slices
+Gyoza|JP|grind|pmo||empanadillas a la plancha|pan-fried dumplings
+Tonjiru|JP|soup|ppn||sopa de miso con cerdo|miso soup with pork
+Samgyeopsal|KR|grill|ppn||lonjas de panceta a la plancha en la mesa|belly slices grilled at the table
+Bossam|KR|braise|ppn|pbo|panceta hervida envuelta en col|boiled belly wrapped in cabbage
+Jokbal|KR|braise|ppt|pcd|patas estofadas en soya|trotters braised in soy
+Dwaeji bulgogi|KR|grill|pbo|ppi|cerdo picante marinado|spicy marinated pork
+Dwaeji galbi|KR|grill|pco|pbb|costillas marinadas a la parrilla|marinated grilled ribs
+Gamjatang|KR|soup|pco||sopa picante de espinazo con papa|spicy pork-bone and potato soup
+Jeyuk bokkeum|KR|stirfry|pbo|ppn|cerdo salteado con gochujang|pork stir-fried with gochujang
+Thịt kho|VN|braise|ppn|pbo|panceta caramelizada con huevo|caramelised belly with eggs
+Bún chả|VN|grill|pmo|ppn|albóndigas y panceta a la brasa con fideos|grilled patties and belly with noodles
+Bún thịt nướng|VN|grill|pbo||cerdo a la brasa sobre fideos|grilled pork over noodles
+Bánh mì heo quay|VN|crisp|ppn||baguette con panceta crocante|baguette with crisp belly
+Cơm tấm sườn nướng|VN|grill|pch|pco|chuleta marinada a la brasa con arroz partido|grilled marinated chop on broken rice
+Moo ping|TH|skewer|pbo||pinchos con leche de coco|coconut-milk skewers
+Khao kha moo|TH|braise|pcd||codillo estofado sobre arroz|braised hock over rice
+Moo krob|TH|crisp|ppn||panceta crocante|crisp belly
+Pad kra pao moo|TH|stirfry|pmo||cerdo molido con albahaca sagrada|ground pork with holy basil
+Larb moo|TH|grind|pmo||ensalada de cerdo picado con lima|minced pork salad with lime
+Nam tok moo|TH|grill|pbo||cerdo a la brasa en ensalada picante|grilled pork in a spicy salad
+Babi guling|ID|roast|pen||lechón balinés al asador|Balinese spit-roast pig
+Babi kecap|ID|braise|ppn||panceta en soya dulce|belly in sweet soy
+Sate babi|ID|skewer|pbo||pinchos con salsa de maní|skewers with peanut sauce
+Bak kut teh|MY|soup|pco||sopa de costilla con hierbas|herbal rib soup
+Lechon cebuano|PH|roast|pen||cerdo entero al asador relleno de hierbas|whole spit-roast pig stuffed with herbs
+Lechon kawali|PH|crisp|ppn||panceta hervida y frita|boiled, deep-fried belly
+Sisig|PH|crisp|pca|por,ppp|cabeza picada a la plancha con calamansí|chopped pig’s head on a sizzling plate
+Crispy pata|PH|crisp|pcd||codillo hervido y frito entero|boiled, deep-fried hock
+Adobong baboy|PH|braise|ppn|pbo|cerdo en vinagre y soya|pork in vinegar and soy
+Sinigang na baboy|PH|soup|pco|ppn|sopa ácida de tamarindo|sour tamarind soup
+Tocino filipino|PH|cure|pbo||cerdo curado dulce|sweet cured pork
+Bicol express|PH|braise|ppn||panceta en leche de coco y chile|belly in coconut milk and chile
+Pork vindaloo|IN|braise|ppa|pbo|cerdo en vinagre y especias, de Goa|Goan pork in vinegar and spice
+Sorpotel|IN|braise|phi|ppa|guiso de hígado y carne en vinagre|liver and pork stew in vinegar
+Naga smoked pork with bamboo shoot|IN|smoke|ppn||cerdo ahumado con brote de bambú|smoked pork with bamboo shoot
+Wet thar hin|MM|braise|ppn|ppa|curry birmano de cerdo|Burmese pork curry
+Sai oua|LA|grind|pmo||salchicha con hierba limón|lemongrass sausage
+Prahok ktis|KH|grind|pmo||cerdo molido con prahok y coco|ground pork with prahok and coconut
+Pork rashers on the braai|ZA|grill|ppn|pch|lonjas de panceta a la brasa|belly rashers over coals
+Hāngi (pork)|NZ|smoke|ppa|pbo|cerdo cocido en horno de tierra|pork cooked in an earth oven
+Lovo (vuaka)|FJ|smoke|ppa|pen|cerdo en horno de tierra fiyiano|pork in a Fijian earth oven
+Umu pua‘a|WS|roast|pen||cerdo entero en horno de piedras|whole pig in a stone oven
+Roast pork belly roll|AU|roast|ppn||panceta asada con piel crocante en pan|roast belly with crackling in a roll
+Costillas BBQ|INT|smoke|pbb|pco|costillas ahumadas con salsa|smoked ribs with sauce
+Chuleta de cerdo a la plancha|INT|sear|pch||chuleta dorada en sartén|pan-seared chop
+Lomo de cerdo al horno|INT|roast|plo||lomo asado entero|whole roast loin
+Albóndigas de cerdo|INT|grind|pmo||albóndigas en salsa|meatballs in sauce
+Brochetas de cerdo|INT|skewer|pso|plo,pbo|pinchos a la parrilla|grilled skewers
+Cerdo salteado con verduras|INT|stirfry|plo|pso|tiras salteadas al wok|strips stir-fried in the wok
+Tocino ahumado casero|INT|smoke|ppn||panceta curada y ahumada en casa|home-cured smoked belly
+Hígado de cerdo encebollado|INT|sear|phi||hígado con cebolla|liver and onions
+Rabo de cerdo guisado|INT|braise|pra||rabo en salsa|stewed pig tails
+Sopa de rabo de cerdo|INT|soup|pra|pcd|sopa con rabo salado|soup with salted pig tail
+Oreja en vinagreta|INT|braise|por||oreja cocida y aliñada|boiled ears in vinaigrette
+Frijoles con cuero|INT|soup|pcu|ppt|frijoles espesados con piel|beans thickened with skin
 </script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script>
@@ -1782,14 +2073,17 @@ const METHODS = {
     ask: ['Pide que te lo abran en libro o le hagan el bolsillo para el relleno.', 'Ask the butcher to butterfly it or cut the pocket for the stuffing.'] },
   slice: { n: ['Láminas finas', 'Paper-thin slices'], v: ['cortar en láminas', 'slice thin'],
     need: ['Cortada casi transparente, la carne se cocina en segundos: aquí la grasa infiltrada es la que da el sabor.', 'Cut almost see-through, beef cooks in seconds: marbling is what carries the flavour here.'],
-    ask: ['Pide que lo corten en máquina, o congélalo 1 hora para lonchearlo en casa.', 'Ask for it machine-sliced, or freeze it for 1 hour to slice at home.'] }
+    ask: ['Pide que lo corten en máquina, o congélalo 1 hora para lonchearlo en casa.', 'Ask for it machine-sliced, or freeze it for 1 hour to slice at home.'] },
+  crisp: { n: ['Chicharrón o fritura', 'Crackling / deep-fry'], v: ['freír hasta que quede crocante', 'fry until crisp'],
+    need: ['Para que algo quede crocante hace falta piel o mucha grasa: primero se ablanda con calor húmedo y luego se fríe, casi siempre en su propia grasa.', 'Crispness needs skin or plenty of fat: soften it first with moist heat, then fry it, usually in its own fat.'],
+    ask: ['Pídelo con piel y con su grasa; la piel se seca bien antes de freír.', 'Ask for it skin-on with its fat; dry the skin well before frying.'] }
 };
 
 const PROPS = { t: ['Terneza', 'Tenderness'], f: ['Grasa', 'Fat'], c: ['Colágeno', 'Collagen'], v: ['Sabor', 'Flavour'] };
 const PRICE = [['', ''], ['Económico', 'Budget'], ['Precio medio', 'Mid-priced'], ['Precio alto', 'Pricey'], ['Premium', 'Premium']];
 const ZONES = {
   loin: ['Lomo', 'Loin'], rib: ['Costillar', 'Rib'], sirloin: ['Cadera', 'Sirloin'], round: ['Pierna', 'Round'], flank: ['Flanco', 'Flank'],
-  chuck: ['Cuarto delantero', 'Chuck'], brisket: ['Pecho', 'Brisket'], shank: ['Brazo y pierna', 'Shank'], head: ['Cabeza', 'Head'], tail: ['Cola', 'Tail'], offal: ['Vísceras', 'Offal'], mix: ['Mezcla', 'Blend']
+  chuck: ['Cuarto delantero', 'Chuck'], brisket: ['Pecho', 'Brisket'], shank: ['Brazo y pierna', 'Shank'], head: ['Cabeza', 'Head'], tail: ['Cola', 'Tail'], offal: ['Vísceras', 'Offal'], mix: ['Mezcla', 'Blend'], belly: ['Barriga', 'Belly'], whole: ['Entero', 'Whole']
 };
 
 // names: country -> [main, also]. m: method suitability 1-3. why: method -> [es, en].
@@ -2229,7 +2523,8 @@ const DONENESS = {
         'Ground beef is cooked through (71 °C / 160 °F) because grinding spreads the surface through the inside. And collagen-rich cuts — brisket, short rib, shank — are not ordered by doneness: they cook for hours to 90–96 °C (195–205 °F).',
         'A carne moída se cozinha por completo (71 °C) porque moer espalha por dentro o que estava na superfície. E os cortes com muito colágeno — peito, costela, músculo — não se pedem por ponto: cozinham por horas até 90–96 °C.'] }
   ],
-  safety: ['Referencia sanitaria (USDA): piezas enteras de res a 63 °C con 3 minutos de reposo; carne molida a 71 °C. Por debajo de eso es una decisión tuya.', 'Food-safety reference (USDA): whole cuts of beef to 63 °C / 145 °F with a 3-minute rest; ground beef to 71 °C / 160 °F. Below that is your own call.', 'Referência sanitária (USDA): peças inteiras de carne bovina a 63 °C com 3 minutos de descanso; carne moída a 71 °C. Abaixo disso a decisão é sua.']
+  porkNote: ['Cerdo: la escala empieza más arriba. No se pide azul ni rojo; el punto jugoso es 63 °C (rosado claro), y los cortes con mucha grasa —panceta, cabeza de lomo, secreto— saben mejor más cocidos.', 'Pork: the scale starts higher. It is not ordered blue or rare; the juicy point is 63 °C / 145 °F (pale pink), and fatty cuts — belly, collar, secreto — taste better cooked further.', 'Porco: a escala começa mais acima. Não se pede selado nem malpassado; o ponto suculento é 63 °C (rosado claro), e os cortes gordos — barriga, copa lombo, secreto — ficam melhores mais passados.'],
+  safety: ['Referencia sanitaria (USDA): piezas enteras de res o cerdo a 63 °C con 3 minutos de reposo; carne molida a 71 °C. Por debajo de eso es una decisión tuya.', 'Food-safety reference (USDA): whole cuts of beef or pork to 63 °C / 145 °F with a 3-minute rest; ground meat to 71 °C / 160 °F. Below that is your own call.', 'Referência sanitária (USDA): peças inteiras de carne bovina ou suína a 63 °C com 3 minutos de descanso; carne moída a 71 °C. Abaixo disso a decisão é sua.']
 };
 
 // Recommended doneness per cut. r: [from, to] level indexes; slow: judged by time, not by doneness;
@@ -2239,7 +2534,11 @@ const DONE_REC = {
   sb: { r: [2, 2], slow: 1 }, va: { r: [2, 3] }, en: { r: [2, 3] }, ha: { r: [1, 2] }, pl: { r: [2, 2], slow: 1 }, bp: { r: [2, 2] }, mc: { r: [1, 2], slow: 1 }, cp: { r: [2, 3] },
   hi: { r: [3, 3] }, cz: { r: [1, 2] }, ri: { r: [3, 3] },
   ma: { slow: 1 }, fa: { slow: 1 }, cs: { slow: 1 }, pe: { slow: 1 }, ag: { slow: 1 }, ps: { slow: 1 }, mo: { slow: 1 }, mu: { slow: 1 }, bo: { slow: 1 }, cl: { slow: 1 }, ch: { slow: 1 }, le: { slow: 1 }, mon: { slow: 1 }, pt: { slow: 1 },
-  mol: { safe: 1 }, chu: { crisp: 1 }, mj: { crisp: 1 }, tu: { soft: 1 }
+  mol: { safe: 1 }, chu: { crisp: 1 }, mj: { crisp: 1 }, tu: { soft: 1 },
+  // pork: whole cuts from 63 °C (level 3) up; nothing rarer
+  plo: { r: [3, 3], pork: 1 }, pso: { r: [3, 3], pork: 1 }, pch: { r: [3, 4], pork: 1 }, ppr: { r: [3, 3], pork: 1 }, ppl: { r: [3, 3], pork: 1 }, pse: { r: [4, 5], pork: 1 }, ppi: { r: [4, 5], pork: 1, slow: 1 },
+  pbo: { r: [4, 5], pork: 1, slow: 1 }, pbb: { slow: 1 }, pco: { slow: 1 }, ppa: { slow: 1 }, pcd: { slow: 1 }, ppt: { slow: 1 }, pca: { slow: 1 }, pcr: { slow: 1 }, pra: { slow: 1 }, pen: { slow: 1 },
+  ppn: { crisp: 1 }, ppp: { crisp: 1 }, por: { crisp: 1 }, pcu: { crisp: 1 }, ptr: { crisp: 1 }, pmo: { safe: 1 }, phi: { safe: 1 }
 };
 const DONE_NOTE = {
   r: ['Mejor entre {a} y {b}', 'Best between {a} and {b}', 'Melhor entre {a} e {b}'],
@@ -2248,15 +2547,16 @@ const DONE_NOTE = {
   both: ['A fuego alto y rápido, {x}. En olla no aplica el término: se cocina por horas.', 'Hot and fast, {x}. Braised, doneness does not apply: it cooks for hours.', 'Em fogo alto e rápido, {x}. Na panela o ponto não se aplica: cozinha por horas.'],
   safe: ['Carne molida: siempre cocida completa, 71 °C por dentro.', 'Ground beef: always cooked through, 71 °C / 160 °F inside.', 'Carne moída: sempre bem cozida, 71 °C por dentro.'],
   crisp: ['Se cocina completa y se dora hasta quedar crocante por fuera.', 'Cooked through and browned until crisp outside.', 'Cozinha por completo e doura até ficar crocante por fora.'],
+  pork: ['El cerdo no se sirve rojo: 63 °C con 3 minutos de reposo es el mínimo recomendado, y queda rosado muy claro.', 'Pork is not served rare: 63 °C (145 °F) with a 3-minute rest is the recommended minimum, and it comes out a very pale pink.', 'O porco não se serve malpassado: 63 °C com 3 minutos de descanso é o mínimo recomendado, e fica rosado bem claro.'],
   soft: ['No tiene término: se hornea hasta que el tuétano tiembla y se unta.', 'No doneness: roast until the marrow wobbles and spreads.', 'Não tem ponto: asse até o tutano tremer e ficar cremoso.']
 };
 
 // ---- Portions and times
 const PORTION = {
   appetite: [110, 150, 200],        // grams of cooked, edible meat per person
-  yield: { grill: 0.75, sear: 0.75, roast: 0.72, braise: 0.62, shred: 0.6, soup: 0.65, smoke: 0.5, stirfry: 0.8, fry: 0.8, raw: 1, grind: 0.75, skewer: 0.75, cure: 0.45, roll: 0.7, slice: 0.85 },
-  bone: { cs: 0.35, cl: 0.5, tb: 0.2, mu: 0.25, ps: 0.2, fa: 0.1, le: 0.15 },   // share of the weight you do not eat
-  fixed: { tu: 350, pt: 250 },      // grams per person, whatever the method
+  yield: { grill: 0.75, sear: 0.75, roast: 0.72, braise: 0.62, shred: 0.6, soup: 0.65, smoke: 0.5, stirfry: 0.8, fry: 0.8, raw: 1, grind: 0.75, skewer: 0.75, cure: 0.45, roll: 0.7, slice: 0.85, crisp: 0.55 },
+  bone: { cs: 0.35, cl: 0.5, tb: 0.2, mu: 0.25, ps: 0.2, fa: 0.1, le: 0.15, pch: 0.2, pbb: 0.45, pco: 0.4, pcd: 0.45, pra: 0.5, ppa: 0.2, pca: 0.6 },   // share of the weight you do not eat
+  fixed: { tu: 350, pt: 250, ppt: 350, pen: 650, por: 150, pcu: 120 },      // grams per person, whatever the method
   // minutes per side over high heat for a 2.5 cm steak, by doneness level
   side: [1.5, 2.5, 3.5, 4.5, 5.5, 7],
   // oven at 180 °C: minutes per 500 g by doneness level, after a 15-minute blast
@@ -2286,7 +2586,8 @@ const PHRASES = {
     skewer: { es: 'pinchos', pt: 'espetinhos', en: 'skewers', fr: 'des brochettes', it: 'spiedini' },
     cure: { es: 'curar', pt: 'curar', en: 'curing', fr: 'faire sécher', it: 'stagionare' },
     roll: { es: 'rellenar', pt: 'rechear', en: 'stuffing', fr: 'farcir', it: 'farcire' },
-    slice: { es: 'cortar en láminas finas', pt: 'cortar em fatias finas', en: 'slicing paper-thin', fr: 'couper en tranches très fines', it: 'tagliare a fettine sottilissime' }
+    slice: { es: 'cortar en láminas finas', pt: 'cortar em fatias finas', en: 'slicing paper-thin', fr: 'couper en tranches très fines', it: 'tagliare a fettine sottilissime' },
+    crisp: { es: 'hacer chicharrón', pt: 'fazer torresmo', en: 'crackling', fr: 'faire griller la couenne', it: 'fare i ciccioli' }
   },
   req: {
     grill: { es: 'En una pieza, de 3 cm de grueso.', pt: 'Em uma peça, com 3 cm de espessura.', en: 'In one piece, an inch and a quarter thick.', fr: 'En un seul morceau, de 3 cm d’épaisseur.', it: 'In un pezzo unico, spesso 3 cm.' },
@@ -2303,7 +2604,8 @@ const PHRASES = {
     skewer: { es: 'En cubos de 3 cm, todos iguales.', pt: 'Em cubos de 3 cm, todos iguais.', en: 'Cut into even one-inch cubes.', fr: 'En cubes de 3 cm, tous pareils.', it: 'A cubetti di 3 cm, tutti uguali.' },
     cure: { es: 'Una pieza entera, magra y sin telas.', pt: 'Uma peça inteira, magra e sem membranas.', en: 'A whole lean piece, membranes removed.', fr: 'Un morceau entier, maigre et dénervé.', it: 'Un pezzo intero, magro e senza pellicine.' },
     roll: { es: 'Abierto en libro para rellenar.', pt: 'Aberto em manta para rechear.', en: 'Butterflied for stuffing.', fr: 'Ouvert en portefeuille pour le farcir.', it: 'Aperto a libro per farcirlo.' },
-    slice: { es: 'Cortado en máquina, muy fino.', pt: 'Fatiado na máquina, bem fino.', en: 'Machine-sliced, very thin.', fr: 'Tranché à la machine, très fin.', it: 'Tagliato a macchina, molto sottile.' }
+    slice: { es: 'Cortado en máquina, muy fino.', pt: 'Fatiado na máquina, bem fino.', en: 'Machine-sliced, very thin.', fr: 'Tranché à la machine, très fin.', it: 'Tagliato a macchina, molto sottile.' },
+    crisp: { es: 'Con la piel y con su grasa.', pt: 'Com a pele e com a gordura.', en: 'Skin-on, with the fat.', fr: 'Avec la couenne et le gras.', it: 'Con la cotenna e il suo grasso.' }
   }
 };
 
@@ -2378,6 +2680,16 @@ const GLOSSARY = [
     d: ['En Argentina un bife es un filete grueso para la parrilla, y además nombra cortes: bife de chorizo (lomo ancho), bife ancho (ojo de bife). En Brasil y Portugal un «bife» es cualquier filete delgado de sartén. El bife de chorizo no tiene chorizo.', 'In Argentina a bife is a thick grilling steak, and it also names cuts: bife de chorizo (strip loin), bife ancho (ribeye). In Brazil and Portugal a “bife” is any thin pan steak. Bife de chorizo contains no chorizo.', 'Na Argentina um bife é um filé grosso para a grelha, e também dá nome a cortes: bife de chorizo (contrafilé), bife ancho (ancho). No Brasil e em Portugal “bife” é qualquer fatia fina de frigideira. O bife de chorizo não leva chouriço.'] },
   { id: 'mechar', g: 'trap', cut: 'sb', t: ['Mechar y desmechar', 'Mechar and desmechar', 'Mechar e desmechar'], aka: ['deshebrar · deshilachar', 'lard · shred', 'lardear · desfiar'],
     d: ['Mechar es meterle a la pieza tiras de tocino o verduras antes de cocinarla. Desmechar es lo contrario: deshacer la carne cocida en hebras. Lo mismo se dice deshebrar (México), deshilachar (Chile, Argentina) y desfiar (Brasil).', '“Mechar” is to lard: push strips of bacon or vegetables into the piece before cooking. “Desmechar” is the opposite: pulling cooked meat into shreds. The same idea is deshebrar (Mexico), deshilachar (Chile, Argentina) and desfiar (Brazil).', '“Mechar” é lardear: enfiar tiras de toucinho ou legumes na peça antes de cozinhar. “Desmechar” é o contrário: desfiar a carne cozida. O mesmo se diz deshebrar (México), deshilachar (Chile, Argentina) e desfiar (Brasil).'] },
+  { id: 'tocino', g: 'trap', cut: 'ppn', t: ['Tocino, tocineta, panceta, bacon', 'Tocino, tocineta, panceta, bacon', 'Tocino, tocineta, panceta, bacon'], aka: ['', '', 'toucinho'],
+    d: ['En Colombia «tocino» es la barriga fresca con piel (la del chicharrón) y «tocineta» es la curada y ahumada en lonjas. En México «tocino» ya es el ahumado. En España «tocino» es solo la grasa, y la barriga es «panceta». En Italia la pancetta es curada, no fresca.', 'In Colombia “tocino” is fresh skin-on belly (the chicharrón cut) and “tocineta” is the cured, smoked, sliced kind. In Mexico “tocino” already means smoked bacon. In Spain “tocino” is just the fat, and the belly is “panceta”. In Italy pancetta is cured, not fresh.', 'Na Colômbia “tocino” é a barriga fresca com pele (a do torresmo) e “tocineta” é a curada e defumada em fatias. No México “tocino” já é o bacon. Na Espanha “tocino” é só a gordura, e a barriga é “panceta”. No Brasil “toucinho” é a gordura com pele; na Itália a pancetta é curada, não fresca.'] },
+  { id: 'pernil', g: 'trap', cut: 'ppi', t: ['Pernil', 'Pernil', 'Pernil'], aka: ['', '', ''],
+    d: ['En Colombia, Venezuela, Argentina y Brasil es la pierna trasera. En Puerto Rico el pernil asado suele ser paleta. En Chile «pernil» es el codillo: si pides pernil para hornear te llevas otra cosa.', 'In Colombia, Venezuela, Argentina and Brazil it is the hind leg. In Puerto Rico roast pernil is usually shoulder. In Chile “pernil” is the hock: ask for one to roast and you get something else.', 'Na Colômbia, na Venezuela, na Argentina e no Brasil é a perna traseira. Em Porto Rico o pernil assado costuma ser paleta. No Chile “pernil” é o joelho: quem pede pernil para assar leva outra coisa.'] },
+  { id: 'chicharron', g: 'trap', cut: 'pcu', t: ['Chicharrón', 'Chicharrón', 'Chicharrón / Torresmo'], aka: ['', '', ''],
+    d: ['En Colombia y Centroamérica es barriga con carne, frita. En México puede ser solo el cuero inflado, o el «prensado» de recortes. En Perú y Bolivia es costilla o paleta frita en trozos. En España, según la región, son torreznos o una carne prensada.', 'In Colombia and Central America it is meaty fried belly. In Mexico it can be just the puffed skin, or “prensado”, pressed trimmings. In Peru and Bolivia it is fried chunks of rib or shoulder. In Spain, depending on the region, it is torreznos or a pressed meat.', 'Na Colômbia e na América Central é barriga com carne, frita. No México pode ser só a pele estufada, ou o “prensado” de aparas. No Peru e na Bolívia é costela ou paleta frita em pedaços. No Brasil o equivalente é o torresmo.'] },
+  { id: 'butt', g: 'trap', cut: 'pbo', t: ['Pork butt', 'Pork butt', 'Pork butt'], aka: ['Boston butt', 'Boston butt', 'Boston butt'],
+    d: ['No es la parte de atrás: «butt» es la parte alta de la paleta, la cabeza de lomo. El nombre viene de los barriles («butts») en que se empacaba en Boston. La pierna trasera es «ham».', 'It is not the rear end: the butt is the top of the shoulder. The name comes from the barrels (“butts”) it was packed in around Boston. The hind leg is the ham.', 'Não é a parte de trás: “butt” é a parte alta da paleta, a copa lombo. O nome vem dos barris (“butts”) em que era embalada em Boston. A perna traseira é “ham”.'] },
+  { id: 'iberico', g: 'grade', cut: 'pse', t: ['Ibérico y bellota', 'Ibérico and bellota', 'Ibérico e bellota'], aka: ['pata negra', 'pata negra', 'pata negra'],
+    d: ['Ibérico es la raza, de la península ibérica, que infiltra grasa en el músculo como ninguna otra. «De bellota» dice qué comió: bellotas en la dehesa durante la montanera. «De cebo» es ibérico criado con pienso. Secreto, presa y pluma son cortes propios de su despiece.', 'Ibérico is the breed, from the Iberian peninsula, which marbles like no other pig. “De bellota” says what it ate: acorns on the dehesa in the final months. “De cebo” is Ibérico raised on feed. Secreto, presa and pluma are cuts from its own butchery tradition.', 'Ibérico é a raça, da península ibérica, que entremeia gordura no músculo como nenhuma outra. “De bellota” diz o que comeu: bolotas no montado nos últimos meses. “De cebo” é ibérico criado com ração. Secreto, presa e pluma são cortes próprios do seu desmanche.'] },
   { id: 'chuleta', g: 'trap', t: ['Chuleta y chuletón', 'Chuleta and chuletón', 'Chuleta e chuletón'], aka: ['', '', ''],
     d: ['En España el chuletón es el lomo ancho con su hueso, muy grueso. En Colombia una «chuleta» suele ser un filete apanado (la chuleta valluna es de cerdo). En Venezuela y México la chuleta es de costillar, casi siempre de cerdo.', 'In Spain a chuletón is a very thick bone-in rib steak. In Colombia a “chuleta” is usually a breaded cutlet (chuleta valluna is pork). In Venezuela and Mexico a chuleta is a rib chop, almost always pork.', 'Na Espanha o chuletón é a costela do contrafilé com osso, bem grossa. Na Colômbia uma “chuleta” costuma ser um bife à milanesa (a chuleta valluna é de porco). Na Venezuela e no México a chuleta é da costela, quase sempre de porco.'] }
 ];
@@ -2390,7 +2702,7 @@ const PT = {
     TW: 'Taiwan', JP: 'Japão', KR: 'Coreia', VN: 'Vietnã', TH: 'Tailândia', ID: 'Indonésia', MY: 'Malásia', PH: 'Filipinas', KH: 'Camboja', MM: 'Mianmar', PK: 'Paquistão', IN: 'Índia', BD: 'Bangladesh', KZ: 'Cazaquistão', UZ: 'Uzbequistão', MN: 'Mongólia', AU: 'Austrália', NZ: 'Nova Zelândia', FJ: 'Fiji', INT: 'Geral' },
   props: { t: 'Maciez', f: 'Gordura', c: 'Colágeno', v: 'Sabor' },
   price: ['', 'Econômico', 'Preço médio', 'Preço alto', 'Premium'],
-  zones: { loin: 'Lombo', rib: 'Costela', sirloin: 'Alcatra', round: 'Traseiro', flank: 'Flanco', chuck: 'Dianteiro', brisket: 'Peito', shank: 'Braço e perna', head: 'Cabeça', tail: 'Rabo', offal: 'Miúdos', mix: 'Mistura' },
+  zones: { loin: 'Lombo', rib: 'Costela', sirloin: 'Alcatra', round: 'Traseiro', flank: 'Flanco', chuck: 'Dianteiro', brisket: 'Peito', shank: 'Braço e perna', head: 'Cabeça', tail: 'Rabo', offal: 'Miúdos', mix: 'Mistura', belly: 'Barriga', whole: 'Inteiro' },
   methods: {
     grill: { n: 'Churrasqueira', v: 'assar na churrasqueira', need: 'O fogo direto cozinha rápido e seco: pede um corte macio ou com boa gordura, porque o colágeno não chega a amolecer.', ask: 'Peça com 2,5 a 4 cm de espessura; mais fino resseca antes de dourar.' },
     sear: { n: 'Frigideira ou chapa', v: 'fazer na chapa', need: 'Calor muito alto e poucos minutos: funciona com músculos macios de fibra fina e alguma gordura entremeada.', ask: 'Tire da geladeira 30 min antes e seque bem: a umidade impede a crosta.' },
@@ -2406,7 +2718,8 @@ const PT = {
     skewer: { n: 'Espetinhos', v: 'fazer no espeto', need: 'Cubos pequenos em fogo direto: carne macia e com um pouco de gordura, que aguente sem ressecar.', ask: 'Peça em cubos de 3 cm, todos do mesmo tamanho.' },
     cure: { n: 'Curar ou secar', v: 'curar', need: 'Para secar ou curar busca-se um músculo magro, inteiro e de fibra regular: a gordura rança e os nervos ficam duros.', ask: 'Peça uma peça inteira, magra e sem membranas.' },
     roll: { n: 'Recheado ou enrolado', v: 'rechear', need: 'Para rechear ou enrolar serve uma peça de formato regular ou uma manta larga que se possa abrir e amarrar.', ask: 'Peça para abrirem em manta ou fazerem o bolso para o recheio.' },
-    slice: { n: 'Fatias finíssimas', v: 'fatiar fino', need: 'Cortada quase transparente, a carne cozinha em segundos: aqui é a gordura entremeada que dá o sabor.', ask: 'Peça para fatiarem na máquina, ou congele 1 hora para fatiar em casa.' }
+    slice: { n: 'Fatias finíssimas', v: 'fatiar fino', need: 'Cortada quase transparente, a carne cozinha em segundos: aqui é a gordura entremeada que dá o sabor.', ask: 'Peça para fatiarem na máquina, ou congele 1 hora para fatiar em casa.' },
+    crisp: { n: 'Torresmo ou fritura', v: 'fritar até ficar crocante', need: 'Para algo ficar crocante é preciso pele ou muita gordura: primeiro amacia-se com calor úmido e depois frita-se, quase sempre na própria gordura.', ask: 'Peça com pele e com a gordura; seque bem a pele antes de fritar.' }
   },
   cuts: {
     lf: { d: 'O músculo que menos trabalha do boi: fica por dentro, sob a coluna, e quase não carrega peso. Por isso é o mais macio e também o de sabor mais suave.', tip: 'Procure uma peça limpa, sem o cordão lateral. Rende uns 180 g por pessoa.', cook: '52–57 °C por dentro. Passado do ponto perde sua única vantagem.',
@@ -2484,6 +2797,282 @@ const PT = {
   }
 };
 
+// ---- Pork. Same shape as the beef cuts; texts are [español, English, português].
+// pieces name parts of the pig model ('*' = the whole animal).
+const PORK = [
+{ id: 'plo', n: 1, zone: 'loin', pieces: ['p_lo', 'p_ch'], muscle: 'Longissimus dorsi', t: 4, f: 2, c: 1, v: 2, price: 2,
+  names: { co: ['Lomo de cerdo', 'Cañón'], mx: ['Lomo de cerdo', 'Caña de lomo'], ar: ['Carré deshuesado', 'Lomo de cerdo'], cl: ['Lomo centro'], ve: ['Lomo de cochino'], br: ['Lombo'], es: ['Lomo', 'Cinta de lomo'], us: ['Pork loin', 'Boneless loin roast'], uk: ['Pork loin'], fr: ['Filet', 'Rôti dans le filet'], it: ['Lonza', 'Arista'] },
+  reg: [['Costa Caribe', 'Cañón de cerdo']],
+  d: ['El músculo largo del lomo, sin hueso. Tierno, magro y de sabor suave: es el corte de cerdo que más fácil se reseca.', 'The long muscle of the back, boneless. Tender, lean and mild: the pork cut that dries out most easily.', 'O músculo longo do dorso, sem osso. Macio, magro e de sabor suave: é o corte suíno que mais facilmente resseca.'],
+  tip: ['Pídelo con su capa de grasa: lo protege en el horno. Para apanar, en filetes de 1 cm.', 'Ask for it with its fat cap: it protects the meat in the oven. For breading, 1 cm (⅜ in) slices.', 'Peça com a capa de gordura: ela protege no forno. Para empanar, em bifes de 1 cm.'],
+  cook: ['63 °C por dentro y 5 minutos de reposo: rosado muy claro y jugoso. A 75 °C ya está seco.', '63 °C (145 °F) inside and a 5-minute rest: very pale pink and juicy. By 75 °C (165 °F) it is dry.', '63 °C por dentro e 5 minutos de descanso: rosado bem claro e suculento. A 75 °C já está seco.'],
+  m: { roast: 3, sear: 3, fry: 3, roll: 3, cure: 3, grill: 2, stirfry: 2, skewer: 2, slice: 2, braise: 2 },
+  why: { roast: ['Parejo y cilíndrico, se cocina igual de punta a punta; la capa de grasa lo baña. Hay que sacarlo a tiempo.', 'Even and cylindrical, it cooks the same from end to end, basted by its fat cap. It must come out on time.', 'Regular e cilíndrico, assa por igual de ponta a ponta; a capa de gordura o rega. É preciso tirar na hora.'],
+    fry: ['Magro y sin nervios, se aplana y se apana sin encogerse: chuleta valluna, tonkatsu, schnitzel.', 'Lean and free of sinew, it pounds flat and breads without shrinking: chuleta valluna, tonkatsu, schnitzel.', 'Magro e sem nervos, achata e empana sem encolher: chuleta valluna, tonkatsu, schnitzel.'],
+    roll: ['Se abre en libro o se le hace un túnel y admite cualquier relleno: lomo relleno, cañón relleno.', 'It butterflies or takes a tunnel through the centre and holds any stuffing.', 'Abre-se em manta ou faz-se um túnel e aceita qualquer recheio: lombo recheado.'],
+    cure: ['Magro y de forma regular, cura parejo: lomo embuchado, lonzino, tocino canadiense.', 'Lean and regular in shape, it cures evenly: lomo embuchado, lonzino, Canadian bacon.', 'Magro e de formato regular, cura por igual: lomo embuchado, lonzino, bacon canadense.'] } },
+
+{ id: 'pso', n: 2, zone: 'loin', pieces: ['p_so'], muscle: 'Psoas major', t: 5, f: 1, c: 1, v: 2, price: 3,
+  names: { co: ['Solomito de cerdo', 'Lomito'], mx: ['Filete de cerdo', 'Solomillo'], ar: ['Solomillo de cerdo'], cl: ['Filete de cerdo'], ve: ['Lomito de cochino'], br: ['Filé mignon suíno', 'Filezinho'], es: ['Solomillo de cerdo'], us: ['Pork tenderloin'], uk: ['Pork fillet', 'Tenderloin'], fr: ['Filet mignon'], it: ['Filetto di maiale'] },
+  reg: [],
+  d: ['Una tira delgada por dentro, bajo el lomo. El corte más tierno y más magro del cerdo; pesa unos 400–500 g.', 'A slim strip on the inside, under the loin. The most tender and leanest pork cut; it weighs about a pound.', 'Uma tira fina por dentro, sob o lombo. O corte mais macio e mais magro do porco; pesa uns 400–500 g.'],
+  tip: ['Quítale la tela plateada. Uno alcanza para dos o tres personas.', 'Remove the silverskin. One feeds two or three people.', 'Tire a membrana prateada. Um dá para duas ou três pessoas.'],
+  cook: ['Sellado fuerte y 63 °C por dentro: son pocos minutos. Es tan magro que no perdona.', 'A hard sear and 63 °C (145 °F) inside: it takes only minutes. It is so lean it forgives nothing.', 'Selagem forte e 63 °C por dentro: são poucos minutos. É tão magro que não perdoa.'],
+  m: { sear: 3, roast: 3, stirfry: 3, grill: 2, skewer: 2, fry: 2 },
+  why: { sear: ['Sin colágeno ni grasa, basta dorarlo y dejarlo rosado: medallones en diez minutos.', 'With no collagen or fat, it only needs browning and a pink centre: medallions in ten minutes.', 'Sem colágeno nem gordura, basta dourar e deixar rosado: medalhões em dez minutos.'],
+    roast: ['Entero se hornea en 20 minutos; envuelto en tocineta gana la grasa que le falta.', 'Whole, it roasts in 20 minutes; wrapped in bacon it gains the fat it lacks.', 'Inteiro assa em 20 minutos; enrolado em bacon ganha a gordura que lhe falta.'],
+    stirfry: ['Tierno incluso sin marinar: en tiras se cocina en un minuto de wok.', 'Tender even without a marinade: in strips it cooks in a minute in the wok.', 'Macio mesmo sem marinar: em tiras cozinha em um minuto de wok.'] } },
+
+{ id: 'pch', n: 3, zone: 'loin', pieces: ['p_ch', 'p_lo'], muscle: 'Longissimus dorsi + costilla', t: 4, f: 3, c: 1, v: 3, price: 2,
+  names: { co: ['Chuleta de cerdo'], mx: ['Chuleta de cerdo'], ar: ['Costeleta', 'Chuleta'], cl: ['Chuleta', 'Chuleta centro · Chuleta vetada'], ve: ['Chuleta de cochino'], br: ['Bisteca suína', 'Costeleta'], es: ['Chuleta de lomo', 'Chuleta de riñonada'], us: ['Pork chop', 'Rib chop · Loin chop'], uk: ['Pork chop', 'Loin chop'], fr: ['Côte de porc', 'Côte première · Côte filet'], it: ['Braciola', 'Costoletta · Lombata'] },
+  reg: [],
+  d: ['El lomo cortado en filetes con su hueso y su borde de grasa. El hueso y la grasa la hacen más jugosa que el lomo solo.', 'The loin cut into steaks with its bone and fat edge. Bone and fat make it juicier than the loin alone.', 'O lombo cortado em bifes com seu osso e sua borda de gordura. O osso e a gordura a deixam mais suculenta que o lombo sozinho.'],
+  tip: ['Pídela de 2,5 cm o más: delgada se seca antes de dorar. Hazle cortes al borde de grasa para que no se curve.', 'Ask for 1 inch or thicker: thin chops dry out before they brown. Snip the fat edge so it does not curl.', 'Peça com 2,5 cm ou mais: fina resseca antes de dourar. Faça cortes na borda de gordura para não encurvar.'],
+  cook: ['Fuego alto para dorar y luego medio, hasta 63 °C junto al hueso. Reposo de 5 minutos.', 'High heat to brown, then medium, to 63 °C (145 °F) by the bone. Rest 5 minutes.', 'Fogo alto para dourar e depois médio, até 63 °C junto ao osso. Descanso de 5 minutos.'],
+  m: { grill: 3, sear: 3, fry: 3, roast: 2, braise: 2, smoke: 2, cure: 2 },
+  why: { grill: ['El hueso frena la cocción y el borde de grasa gotea sobre la brasa: se dora sin secarse.', 'The bone slows the cooking and the fat edge drips onto the coals: it browns without drying.', 'O osso freia o cozimento e a borda de gordura pinga na brasa: doura sem ressecar.'],
+    sear: ['Gruesa, en sartén de hierro y bañada con mantequilla al final: costra dorada y centro rosado.', 'Thick, in a cast-iron pan and basted with butter at the end: a brown crust and a blush centre.', 'Grossa, em frigideira de ferro e regada com manteiga no fim: crosta dourada e centro rosado.'],
+    fry: ['Aplanada y apanada se cocina en tres minutos: kotlet schabowy, chuleta empanizada.', 'Pounded and breaded it cooks in three minutes: kotlet schabowy, breaded chops.', 'Batida e empanada cozinha em três minutos: kotlet schabowy, bisteca à milanesa.'] } },
+
+{ id: 'pbb', n: 4, zone: 'rib', pieces: ['p_ch'], muscle: 'Costillas dorsales · Intercostales', t: 3, f: 3, c: 3, v: 4, price: 3,
+  names: { co: ['Costillitas de lomo', 'Costillas baby back'], mx: ['Costillas baby back', 'Costillar de lomo'], ar: ['Ribs de lomo', 'Baby back ribs'], cl: ['Costillar de lomo', 'Baby back ribs'], ve: ['Costillitas de cochino', 'Baby back'], br: ['Costelinha', 'Costelinha de lombo'], es: ['Costillar de lomo', 'Costillas de lomo'], us: ['Baby back ribs', 'Loin back ribs'], uk: ['Baby back ribs', 'Loin ribs'], fr: ['Travers de dos', 'Baby back ribs'], it: ['Costine di lombo'] },
+  reg: [],
+  d: ['Las costillas cortas y curvas que quedan pegadas al lomo. Más magras, tiernas y pequeñas que la costilla de abajo.', 'The short, curved ribs that sit against the loin. Leaner, more tender and smaller than the spare ribs below.', 'As costelas curtas e curvas que ficam junto ao lombo. Mais magras, macias e pequenas que a costela de baixo.'],
+  tip: ['Quítale la membrana del lado del hueso: no se ablanda y no deja entrar el adobo. Un costillar da para dos.', 'Peel the membrane off the bone side: it never softens and blocks the rub. One rack feeds two.', 'Tire a membrana do lado do osso: não amolece e não deixa o tempero entrar. Uma peça dá para dois.'],
+  cook: ['Lento: 2,5–3 horas a 135 °C, envueltas la mitad del tiempo. Listas cuando la carne se retrae del hueso.', 'Slow: 2½–3 hours at 135 °C (275 °F), wrapped for half of it. Done when the meat pulls back from the bone.', 'Devagar: 2,5–3 horas a 135 °C, embrulhadas metade do tempo. Prontas quando a carne recua do osso.'],
+  m: { smoke: 3, grill: 3, roast: 3, braise: 2 },
+  why: { smoke: ['Tres horas de humo funden su colágeno sin secar una carne que es bastante magra.', 'Three hours of smoke melt the collagen without drying what is fairly lean meat.', 'Três horas de fumaça derretem o colágeno sem ressecar uma carne que é bastante magra.'],
+    grill: ['A fuego indirecto y glaseadas al final: la salsa se carameliza sobre la carne ya tierna.', 'Over indirect heat and glazed at the end: the sauce caramelises on meat that is already tender.', 'Em fogo indireto e pinceladas no fim: o molho carameliza sobre a carne já macia.'],
+    roast: ['Tapadas en el horno se cocinan en su vapor; destapadas al final, doran.', 'Covered in the oven they steam in their own juices; uncovered at the end, they brown.', 'Cobertas no forno cozinham no próprio vapor; descobertas no fim, douram.'] } },
+
+{ id: 'pco', n: 5, zone: 'rib', pieces: ['p_co'], muscle: 'Costillas esternales · Serratus', t: 2, f: 4, c: 4, v: 5, price: 2,
+  names: { co: ['Costilla de cerdo', 'Costillar'], mx: ['Costilla de cerdo', 'Costilla cargada'], ar: ['Pechito de cerdo', 'Ribs'], cl: ['Costillar de cerdo'], ve: ['Costilla de cochino'], br: ['Costela suína', 'Costelinha'], es: ['Costillas', 'Costillar · Churrasco de cerdo'], us: ['Spare ribs', 'St. Louis ribs'], uk: ['Spare ribs'], fr: ['Travers de porc'], it: ['Puntine', 'Spuntature · Costine'] },
+  reg: [],
+  d: ['Las costillas de abajo, sobre la barriga: más largas, planas y grasas que las de lomo, y con más sabor.', 'The lower ribs, over the belly: longer, flatter and fattier than back ribs, with more flavour.', 'As costelas de baixo, sobre a barriga: mais longas, planas e gordas que as do lombo, e com mais sabor.'],
+  tip: ['Recortada en rectángulo es el corte St. Louis. Para sopa o guiso, pídela en trozos de dos huesos.', 'Trimmed to a rectangle it is the St. Louis cut. For soups and stews, ask for two-bone pieces.', 'Aparada em retângulo é o corte St. Louis. Para sopa ou ensopado, peça em pedaços de dois ossos.'],
+  cook: ['Ahumada u horneada: 4–5 horas a 120–135 °C. Guisada: hora y media. Frita: primero se cocina en agua.', 'Smoked or roasted: 4–5 hours at 120–135 °C (250–275 °F). Braised: an hour and a half. Fried: simmer first.', 'Defumada ou assada: 4–5 horas a 120–135 °C. Ensopada: uma hora e meia. Frita: primeiro cozinha-se em água.'],
+  m: { smoke: 3, braise: 3, grill: 3, roast: 3, crisp: 3, soup: 3 },
+  why: { smoke: ['Más grasa y colágeno que la de lomo: aguanta cinco horas de humo y queda más jugosa.', 'More fat and collagen than back ribs: it stands five hours of smoke and ends up juicier.', 'Mais gordura e colágeno que a do lombo: aguenta cinco horas de fumaça e fica mais suculenta.'],
+    braise: ['El hueso y el cartílago espesan la salsa y la carne se suelta sola.', 'Bone and cartilage thicken the sauce and the meat lets go on its own.', 'O osso e a cartilagem engrossam o molho e a carne solta sozinha.'],
+    crisp: ['Cocida en agua hasta que esta se evapora, termina friéndose en su propia grasa: fritada, chicharrón de costilla.', 'Simmered until the water is gone, it finishes frying in its own fat: fritada, rib chicharrón.', 'Cozida em água até evaporar, termina fritando na própria gordura: fritada, torresmo de costela.'],
+    soup: ['Hueso, grasa y carne en cada trozo: da caldo con cuerpo y presa para servir.', 'Bone, fat and meat in every piece: it gives a full-bodied broth and meat to serve.', 'Osso, gordura e carne em cada pedaço: dá caldo com corpo e carne para servir.'] } },
+
+{ id: 'pbo', n: 6, zone: 'chuck', pieces: ['p_bo'], muscle: 'Varios músculos del cuello y la paleta alta', t: 3, f: 4, c: 4, v: 5, price: 2,
+  names: { co: ['Cabeza de lomo', 'Bondiola'], mx: ['Cabeza de lomo'], ar: ['Bondiola'], cl: ['Lomo vetado de cerdo'], ve: ['Bondiola', 'Cabeza de lomo'], br: ['Copa lombo', 'Sobrepaleta'], es: ['Aguja', 'Cabecero de lomo · Cabezada'], us: ['Boston butt', 'Pork butt · Pork shoulder'], uk: ['Shoulder', 'Collar · Neck end'], fr: ['Échine'], it: ['Coppa', 'Capocollo'] },
+  reg: [],
+  d: ['La parte alta de la paleta, donde el lomo llega al cuello. Varios músculos entreverados de grasa: el corte de cerdo más versátil y el que más perdona.', 'The top of the shoulder, where the loin meets the neck. Several muscles laced with fat: the most versatile and forgiving cut on the pig.', 'A parte alta da paleta, onde o lombo chega ao pescoço. Vários músculos entremeados de gordura: o corte suíno mais versátil e o que mais perdoa.'],
+  tip: ['Para desmechar, entera y con hueso (2–3 kg). Para la parrilla, en filetes de 2 cm.', 'For pulling, whole and bone-in (4–7 lb). For the grill, ¾-inch steaks.', 'Para desfiar, inteira e com osso (2–3 kg). Para a grelha, em bifes de 2 cm.'],
+  cook: ['Desmechada: lento hasta 93–96 °C por dentro. En filete a la parrilla: 65–70 °C, más que el lomo, para fundir la grasa.', 'Pulled: low and slow to 93–96 °C (200–205 °F) inside. As a grilled steak: 65–70 °C (150–160 °F), more than loin, to render the fat.', 'Desfiada: devagar até 93–96 °C por dentro. Em bife na grelha: 65–70 °C, mais que o lombo, para derreter a gordura.'],
+  m: { shred: 3, smoke: 3, braise: 3, roast: 3, grill: 3, grind: 3, cure: 3, skewer: 3, crisp: 3, slice: 2, stirfry: 2, soup: 2 },
+  why: { shred: ['Su grasa y su colágeno se funden en horas y la carne se deshace en hebras jugosas: cochinita pibil, pulled pork.', 'Its fat and collagen melt over hours and the meat falls into juicy strands: cochinita pibil, pulled pork.', 'Sua gordura e seu colágeno derretem em horas e a carne desmancha em fios suculentos: cochinita pibil, pulled pork.'],
+    smoke: ['Es el corte del pulled pork: tanta grasa entreverada que aguanta 10 horas sin secarse.', 'It is the pulled pork cut: so much fat through it that it takes 10 hours without drying.', 'É o corte do pulled pork: tanta gordura entremeada que aguenta 10 horas sem ressecar.'],
+    grill: ['En filetes, la grasa entreverada lo mantiene jugoso aunque se pase un poco: bondiola a la parrilla.', 'As steaks, the fat through it keeps it juicy even slightly overdone: grilled bondiola.', 'Em bifes, a gordura entremeada o mantém suculento mesmo passando um pouco: bondiola na grelha.'],
+    grind: ['Trae cerca de 25 % de grasa: la proporción justa para chorizos y salchichas sin añadir nada.', 'It carries about 25% fat: the right ratio for sausages with nothing added.', 'Traz cerca de 25 % de gordura: a proporção certa para linguiças sem acrescentar nada.'],
+    cure: ['Entera, salada y curada es la coppa o capocollo: las vetas de grasa la mantienen tierna.', 'Whole, salted and dried it becomes coppa or capocollo: the seams of fat keep it tender.', 'Inteira, salgada e curada é a copa ou capocollo: os veios de gordura a mantêm macia.'],
+    skewer: ['En láminas o cubos aguanta el fuego directo sin secarse: tacos al pastor, souvlaki, moo ping.', 'In slices or cubes it stands direct fire without drying: tacos al pastor, souvlaki, moo ping.', 'Em fatias ou cubos aguenta o fogo direto sem ressecar: tacos al pastor, souvlaki, moo ping.'],
+    crisp: ['Confitada en manteca y dorada al final: es la carne de las carnitas.', 'Confited in lard and browned at the end: this is the meat for carnitas.', 'Confitada em banha e dourada no fim: é a carne das carnitas.'] } },
+
+{ id: 'ppa', n: 7, zone: 'chuck', pieces: ['p_pa'], muscle: 'Triceps brachii · Biceps · Supraspinatus', t: 2, f: 3, c: 4, v: 4, price: 1,
+  names: { co: ['Brazuelo', 'Paleta de cerdo · Pernil delantero'], mx: ['Espaldilla', 'Paleta'], ar: ['Paleta de cerdo'], cl: ['Pulpa paleta', 'Paleta'], ve: ['Paleta de cochino'], br: ['Paleta suína'], es: ['Paleta', 'Paletilla'], us: ['Picnic shoulder', 'Picnic ham'], uk: ['Hand', 'Hand and spring'], fr: ['Palette', 'Épaule'], it: ['Spalla'] },
+  reg: [],
+  d: ['La parte baja de la paleta, sobre el codillo. Más trabajada y con más piel y hueso que la cabeza de lomo; de lo más económico.', 'The lower shoulder, above the hock. Harder-working, with more skin and bone than the butt; among the cheapest cuts.', 'A parte baixa da paleta, sobre o joelho. Mais trabalhada e com mais pele e osso que a copa lombo; das mais baratas.'],
+  tip: ['Con piel para hornear (pernil); sin piel y en trozos para guisar o moler.', 'Skin-on for roasting (pernil); skinless and cubed for stews or grinding.', 'Com pele para assar (pernil); sem pele e em pedaços para ensopar ou moer.'],
+  cook: ['Horno lento: 4–5 horas a 150 °C hasta 90 °C por dentro, y fuego fuerte al final para la piel.', 'Slow oven: 4–5 hours at 150 °C (300 °F) to 90 °C (195 °F) inside, then high heat for the skin.', 'Forno lento: 4–5 horas a 150 °C até 90 °C por dentro, e fogo forte no fim para a pele.'],
+  m: { shred: 3, braise: 3, roast: 3, smoke: 3, grind: 3, crisp: 3, soup: 2, cure: 2, skewer: 2 },
+  why: { shred: ['Mucho colágeno y fibras largas: tras horas de cocción se desmecha sola. Chilorio, pernil.', 'Plenty of collagen and long fibres: after hours it shreds itself. Chilorio, pernil.', 'Muito colágeno e fibras longas: depois de horas desfia sozinha. Chilorio, pernil.'],
+    braise: ['Firme y sabrosa, mantiene el trozo entero en el guiso y suelta gelatina a la salsa.', 'Firm and tasty, it holds its shape in the stew and gives gelatin to the sauce.', 'Firme e saborosa, mantém o pedaço inteiro no ensopado e solta gelatina no molho.'],
+    roast: ['Con piel y hueso es el pernil caribeño: la piel se vuelve cuerito crocante y protege la carne.', 'Skin-on and bone-in it is Caribbean pernil: the skin turns to crackling and shields the meat.', 'Com pele e osso é o pernil caribenho: a pele vira pururuca e protege a carne.'],
+    crisp: ['En trozos, cocida y luego frita en su grasa: griot, masitas, cochino frito.', 'Cubed, simmered and then fried in its own fat: griot, masitas, cochino frito.', 'Em pedaços, cozida e depois frita na própria gordura: griot, masitas, cochino frito.'] } },
+
+{ id: 'ppn', n: 8, zone: 'belly', pieces: ['p_pn'], muscle: 'Obliquus · Rectus abdominis · Cutaneus', t: 2, f: 5, c: 3, v: 5, price: 2,
+  names: { co: ['Tocino', 'Tocino carnudo · Panceta · Barriga'], mx: ['Pecho de cerdo', 'Panceta'], ar: ['Panceta', 'Panceta fresca'], cl: ['Panceta', 'Tocino'], ve: ['Tocineta', 'Panceta · Barriga de cochino'], br: ['Barriga', 'Panceta'], es: ['Panceta', 'Tocino entreverado'], us: ['Pork belly', 'Side pork'], uk: ['Pork belly'], fr: ['Poitrine', 'Lard maigre'], it: ['Pancetta', 'Pancia'] },
+  reg: [['Antioquia', 'Tocino carnudo'], ['Bogotá', 'Tocino'], ['Costa Caribe', 'Barriga de cerdo']],
+  d: ['La barriga: capas alternas de carne y grasa bajo la piel. De aquí salen el chicharrón, la tocineta y la panceta.', 'The belly: alternating layers of meat and fat under the skin. Chicharrón, bacon and pancetta all come from here.', 'A barriga: camadas alternadas de carne e gordura sob a pele. Daqui saem o torresmo, o bacon e a panceta.'],
+  tip: ['Busca tres o más vetas de carne. Con piel para chicharrón u horno; sin piel para curar o enrollar.', 'Look for three or more streaks of lean. Skin-on for crackling or roasting; skinless for curing or rolling.', 'Procure três ou mais veios de carne. Com pele para torresmo ou forno; sem pele para curar ou enrolar.'],
+  cook: ['Al horno: 2,5 horas a 150 °C y 20 minutos a 240 °C para la piel. Chicharrón: primero en agua, luego en su grasa.', 'Roasted: 2½ hours at 150 °C (300 °F), then 20 minutes at 240 °C (465 °F) for the skin. Chicharrón: in water first, then in its own fat.', 'No forno: 2,5 horas a 150 °C e 20 minutos a 240 °C para a pele. Torresmo: primeiro em água, depois na própria gordura.'],
+  m: { crisp: 3, roast: 3, braise: 3, cure: 3, smoke: 3, grill: 3, slice: 3, roll: 3, stirfry: 3, shred: 2, soup: 2, grind: 2 },
+  why: { crisp: ['Piel, grasa y carne en capas: la piel revienta, la grasa se funde y la carne se dora en ella. Chicharrón, torresmo, siu yuk.', 'Skin, fat and lean in layers: the skin puffs, the fat renders and the meat browns in it. Chicharrón, torresmo, siu yuk.', 'Pele, gordura e carne em camadas: a pele pururuca, a gordura derrete e a carne doura nela. Torresmo, chicharrón, siu yuk.'],
+    braise: ['Tras dos horas la grasa queda temblorosa y la carne se corta con palillos: hong shao rou, kakuni, thit kho.', 'After two hours the fat trembles and the meat cuts with chopsticks: hong shao rou, kakuni, thit kho.', 'Depois de duas horas a gordura fica trêmula e a carne se corta com hashi: hong shao rou, kakuni, thit kho.'],
+    cure: ['Salada y ahumada es tocineta; salada y seca, panceta. La grasa lleva el sabor del curado.', 'Salted and smoked it is bacon; salted and dried, pancetta. The fat carries the flavour of the cure.', 'Salgada e defumada é bacon; salgada e seca, panceta. A gordura carrega o sabor da cura.'],
+    grill: ['En lonjas gruesas sobre la plancha suelta su grasa y se dora en ella: samgyeopsal.', 'In thick slices on the griddle it renders and browns in its own fat: samgyeopsal.', 'Em fatias grossas na chapa solta a gordura e doura nela: samgyeopsal.'],
+    roll: ['Plana y ancha, se enrolla con hierbas y se amarra: porchetta, chashu.', 'Flat and wide, it rolls up with herbs and ties: porchetta, chashu.', 'Plana e larga, enrola-se com ervas e amarra-se: porchetta, chashu.'],
+    stirfry: ['Primero hervida y luego en láminas al wok: la grasa se dora sin quedar aceitosa. Hui guo rou.', 'Boiled first, then sliced into the wok: the fat browns without turning greasy. Twice-cooked pork.', 'Primeiro fervida e depois em fatias no wok: a gordura doura sem ficar oleosa. Hui guo rou.'] } },
+
+{ id: 'ppi', n: 9, zone: 'round', pieces: ['p_pi'], muscle: 'Semimembranosus · Biceps femoris · Quadriceps', t: 3, f: 2, c: 2, v: 3, price: 2,
+  names: { co: ['Pierna de cerdo', 'Pernil'], mx: ['Pierna de cerdo'], ar: ['Pernil', 'Jamón fresco'], cl: ['Pulpa pierna'], ve: ['Pernil'], br: ['Pernil'], es: ['Jamón fresco', 'Pierna'], us: ['Fresh ham', 'Pork leg'], uk: ['Leg of pork'], fr: ['Jambon frais', 'Cuisse'], it: ['Coscia', 'Cosciotto'] },
+  reg: [],
+  d: ['La pierna trasera entera: la pieza más grande del cerdo, magra y de fibra firme. Fresca se hornea; curada es jamón.', 'The whole hind leg: the biggest piece on the pig, lean and firm-grained. Fresh it is roasted; cured it is ham.', 'A perna traseira inteira: a maior peça do porco, magra e de fibra firme. Fresca vai ao forno; curada é presunto.'],
+  tip: ['Entera pesa 8–10 kg; pide media pierna o un trozo deshuesado. Para milanesa, en filetes contra la fibra.', 'Whole it weighs 18–22 lb; ask for a half or a boned piece. For cutlets, slices across the grain.', 'Inteira pesa 8–10 kg; peça meia perna ou um pedaço desossado. Para milanesa, em bifes contra a fibra.'],
+  cook: ['Horno a 160 °C, unos 50 minutos por kilo, hasta 68–70 °C por dentro. Marinada desde la víspera.', 'Oven at 160 °C (325 °F), about 25 minutes per pound, to 68–70 °C (155–160 °F) inside. Marinate overnight.', 'Forno a 160 °C, uns 50 minutos por quilo, até 68–70 °C por dentro. Marinada de véspera.'],
+  m: { roast: 3, cure: 3, fry: 3, sear: 2, braise: 2, stirfry: 2, grind: 2, skewer: 2, shred: 2, smoke: 2, roll: 2, crisp: 2 },
+  why: { roast: ['Grande, magra y con piel: es la pieza de fiesta, del pernil navideño al lechón asado cubano.', 'Big, lean and skin-on: the feast-day joint, from Christmas pernil to Cuban roast pork.', 'Grande, magra e com pele: é a peça de festa, do pernil de Natal ao lechón asado cubano.'],
+    cure: ['Su tamaño y su capa de grasa permiten curarla durante años: jamón ibérico, prosciutto, jamón serrano.', 'Its size and fat cover let it cure for years: jamón ibérico, prosciutto, serrano.', 'Seu tamanho e sua capa de gordura permitem curá-la por anos: jamón ibérico, prosciutto, presunto.'],
+    fry: ['Magra y de fibra pareja, da filetes grandes para apanar: schnitzel, milanesa de cerdo.', 'Lean and even-grained, it gives large slices for breading: schnitzel, pork milanesa.', 'Magra e de fibra regular, dá bifes grandes para empanar: schnitzel, milanesa de porco.'] } },
+
+{ id: 'pcd', n: 10, zone: 'shank', pieces: ['p_cdFL', 'p_cdFR', 'p_cdHL', 'p_cdHR'], muscle: 'Extensores y flexores · Tibia · Radio', t: 1, f: 3, c: 5, v: 4, price: 1,
+  names: { co: ['Codillo', 'Codito'], mx: ['Chamorro'], ar: ['Codillo', 'Garrón'], cl: ['Pernil'], ve: ['Codillo'], br: ['Joelho', 'Eisbein'], es: ['Codillo', 'Lacón'], us: ['Ham hock', 'Pork knuckle · Shank'], uk: ['Hock', 'Knuckle'], fr: ['Jarret', 'Jambonneau'], it: ['Stinco'] },
+  reg: [],
+  d: ['El tramo entre la pierna o la paleta y la pata: hueso, tendón y piel alrededor de poca carne muy sabrosa.', 'The stretch between leg or shoulder and the foot: bone, tendon and skin around a little very tasty meat.', 'O trecho entre o pernil ou a paleta e o pé: osso, tendão e pele em volta de pouca carne muito saborosa.'],
+  tip: ['El trasero tiene más carne. Calcula uno por persona. Ahumado, es para dar sabor a frijoles y sopas.', 'The hind one has more meat. Allow one per person. Smoked, it is for flavouring beans and soups.', 'O traseiro tem mais carne. Calcule um por pessoa. Defumado, serve para dar sabor a feijões e sopas.'],
+  cook: ['Hervido 2 horas hasta que esté tierno y luego al horno fuerte 30 minutos para que la piel reviente.', 'Simmer 2 hours until tender, then a hot oven for 30 minutes so the skin crackles.', 'Fervido 2 horas até ficar macio e depois forno forte por 30 minutos para a pele pururucar.'],
+  m: { braise: 3, soup: 3, roast: 3, smoke: 3, crisp: 3 },
+  why: { braise: ['Tendón y piel se vuelven gelatina: la carne se suelta del hueso y la salsa queda melosa. Chamorro, eisbein.', 'Tendon and skin turn to gelatin: the meat leaves the bone and the sauce turns silky. Chamorro, eisbein.', 'Tendão e pele viram gelatina: a carne solta do osso e o molho fica aveludado. Chamorro, eisbein.'],
+    soup: ['Da cuerpo y sabor a ollas enteras de frijoles, lentejas o repollo con muy poca carne.', 'It gives body and flavour to whole pots of beans, lentils or cabbage with very little meat.', 'Dá corpo e sabor a panelas inteiras de feijão, lentilha ou repolho com muito pouca carne.'],
+    roast: ['Precocido y luego al horno, la piel queda como vidrio y la carne melosa: schweinshaxe, stinco.', 'Simmered and then roasted, the skin shatters like glass over silky meat: schweinshaxe, stinco.', 'Pré-cozido e depois no forno, a pele fica como vidro e a carne macia: schweinshaxe, stinco.'],
+    crisp: ['Hervido y frito entero queda crocante por fuera y gelatinoso por dentro: crispy pata.', 'Boiled and deep-fried whole it is crisp outside and gelatinous inside: crispy pata.', 'Fervido e frito inteiro fica crocante por fora e gelatinoso por dentro: crispy pata.'] } },
+
+{ id: 'ppt', n: 11, zone: 'shank', pieces: ['p_ptFL', 'p_ptFR', 'p_ptHL', 'p_ptHR'], muscle: 'Piel · tendones · huesos del pie', t: 1, f: 3, c: 5, v: 3, price: 1,
+  names: { co: ['Pezuña', 'Patas de cerdo'], mx: ['Manitas de cerdo', 'Patitas'], ar: ['Patitas de cerdo'], cl: ['Patitas de chancho'], ve: ['Paticas de cochino'], br: ['Pé de porco'], es: ['Manitas', 'Pies de cerdo'], us: ['Pig’s feet', 'Trotters'], uk: ['Trotters'], fr: ['Pied de porc'], it: ['Piedino', 'Zampetto'] },
+  reg: [],
+  d: ['Piel, tendón y huesos pequeños: casi nada de carne y todo gelatina. Espesa cualquier caldo o guiso.', 'Skin, tendon and small bones: almost no meat and all gelatin. It thickens any broth or stew.', 'Pele, tendão e ossos pequenos: quase nada de carne e tudo gelatina. Engrossa qualquer caldo ou ensopado.'],
+  tip: ['Pídelas limpias y partidas a lo largo. Las delanteras son más carnosas.', 'Ask for them cleaned and split lengthwise. The front ones are meatier.', 'Peça limpos e partidos ao comprido. Os dianteiros são mais carnudos.'],
+  cook: ['2,5–3 horas a fuego bajo, o 45 minutos en olla a presión, hasta que el hueso salga solo.', '2½–3 hours at a low simmer, or 45 minutes under pressure, until the bones slip out.', '2,5–3 horas em fogo baixo, ou 45 minutos na pressão, até o osso sair sozinho.'],
+  m: { braise: 3, soup: 3, crisp: 2, roll: 2 },
+  why: { braise: ['Son colágeno casi puro: quedan melosas y dejan la salsa pegajosa. Manitas guisadas, jokbal.', 'They are almost pure collagen: they turn sticky-soft and leave the sauce clinging. Braised trotters, jokbal.', 'São colágeno quase puro: ficam macios e deixam o molho grudento. Pé de porco ensopado, jokbal.'],
+    soup: ['Ningún corte da más cuerpo al caldo: es la base del tonkotsu y de los frijoles con pezuña.', 'No cut gives broth more body: it is the base of tonkotsu and of beans with pig’s feet.', 'Nenhum corte dá mais corpo ao caldo: é a base do tonkotsu e do feijão com pé de porco.'] } },
+
+{ id: 'ppp', n: 12, zone: 'head', pieces: ['p_pp'], muscle: 'Grasa y músculo de la garganta', t: 2, f: 5, c: 3, v: 5, price: 1,
+  names: { co: ['Papada'], mx: ['Papada'], ar: ['Papada'], cl: ['Papada'], ve: ['Papada'], br: ['Papada'], es: ['Papada'], us: ['Jowl', 'Pork jowl'], uk: ['Jowl', 'Bath chap'], fr: ['Gorge'], it: ['Guanciale'] },
+  reg: [],
+  d: ['La grasa firme de debajo de la mandíbula, con vetas de carne. Más sabrosa y de grasa más dura que la barriga.', 'The firm fat under the jaw, streaked with lean. Tastier and firmer-fatted than belly.', 'A gordura firme de baixo da mandíbula, com veios de carne. Mais saborosa e de gordura mais firme que a barriga.'],
+  tip: ['Para curar, entera y con piel. Para embutidos, es la mejor grasa: no se derrite al picar.', 'For curing, whole and skin-on. For sausages it is the best fat: it does not smear when ground.', 'Para curar, inteira e com pele. Para embutidos, é a melhor gordura: não derrete ao moer.'],
+  cook: ['Curada, en dados y a fuego bajo hasta que suelte la grasa y quede crocante.', 'Cured, diced and cooked slowly until it renders and crisps.', 'Curada, em cubos e em fogo baixo até soltar a gordura e ficar crocante.'],
+  m: { cure: 3, crisp: 2, grind: 3, braise: 2, grill: 2 },
+  why: { cure: ['Salada y curada es el guanciale: su grasa se funde y perfuma la carbonara y la amatriciana.', 'Salted and dried it is guanciale: its fat melts and scents carbonara and amatriciana.', 'Salgada e curada é o guanciale: sua gordura derrete e perfuma a carbonara e a amatriciana.'],
+    grind: ['Grasa firme que no se embarra al moler: da la textura correcta a chorizos, patés y cotechino.', 'Firm fat that does not smear in the grinder: it gives sausages, pâtés and cotechino the right texture.', 'Gordura firme que não empasta ao moer: dá a textura certa a linguiças, patês e cotechino.'] } },
+
+{ id: 'pca', n: 13, zone: 'head', pieces: ['p_ca'], muscle: 'Piel · músculos de la cara · lengua', t: 1, f: 4, c: 5, v: 4, price: 1,
+  names: { co: ['Cabeza de cerdo'], mx: ['Cabeza de cerdo'], ar: ['Cabeza de cerdo'], cl: ['Cabeza de chancho'], ve: ['Cabeza de cochino'], br: ['Cabeça de porco'], es: ['Cabeza', 'Careta'], us: ['Pig’s head'], uk: ['Pig’s head'], fr: ['Tête de porc'], it: ['Testa', 'Testina'] },
+  reg: [],
+  d: ['Piel, cartílago, cachetes y lengua: mucha gelatina y carne muy sabrosa pegada al hueso.', 'Skin, cartilage, cheeks and tongue: a lot of gelatin and very tasty meat on the bone.', 'Pele, cartilagem, bochechas e língua: muita gelatina e carne muito saborosa junto ao osso.'],
+  tip: ['Pídela partida en dos y limpia. Media cabeza basta para una olla de pozole.', 'Ask for it split in two and cleaned. Half a head is enough for a pot of pozole.', 'Peça partida em duas e limpa. Meia cabeça basta para uma panela de pozole.'],
+  cook: ['3–4 horas a fuego bajo hasta que la carne se desprenda; el caldo cuaja al enfriarse.', '3–4 hours at a low simmer until the meat comes away; the broth sets as it cools.', '3–4 horas em fogo baixo até a carne soltar; o caldo vira gelatina ao esfriar.'],
+  m: { braise: 3, soup: 3, crisp: 3, roast: 2, shred: 2, grind: 2 },
+  why: { braise: ['Cocida y prensada en su propio caldo cuaja sola: queso de cerdo, brawn, sülze.', 'Simmered and pressed in its own stock it sets by itself: head cheese, brawn, sülze.', 'Cozida e prensada no próprio caldo gelifica sozinha: queijo de porco, brawn, sülze.'],
+    soup: ['Da el caldo y la carne del pozole: gelatina de la piel y sabor del hueso.', 'It gives pozole both its broth and its meat: gelatin from the skin and flavour from the bone.', 'Dá o caldo e a carne do pozole: gelatina da pele e sabor do osso.'],
+    crisp: ['Hervida, picada y pasada por la plancha queda crocante y gelatinosa a la vez: sisig, careta.', 'Boiled, chopped and seared it is crisp and gelatinous at once: sisig, careta.', 'Fervida, picada e passada na chapa fica crocante e gelatinosa ao mesmo tempo: sisig, careta.'] } },
+
+{ id: 'por', n: 14, zone: 'head', pieces: ['p_ca'], muscle: 'Cartílago y piel', t: 1, f: 2, c: 5, v: 2, price: 1,
+  names: { co: ['Oreja de cerdo'], mx: ['Oreja de cerdo'], ar: ['Oreja de cerdo'], cl: ['Oreja de chancho'], ve: ['Oreja de cochino'], br: ['Orelha'], es: ['Oreja'], us: ['Pig’s ears'], uk: ['Pig’s ears'], fr: ['Oreille de porc'], it: ['Orecchio'] },
+  reg: [],
+  d: ['Piel sobre una lámina de cartílago: sin carne. Se come por la textura, entre gelatinosa y crujiente.', 'Skin over a sheet of cartilage: no meat. It is eaten for texture, somewhere between gelatinous and crunchy.', 'Pele sobre uma lâmina de cartilagem: sem carne. Come-se pela textura, entre gelatinosa e crocante.'],
+  tip: ['Que vengan limpias y sin pelos; se repasan con soplete o cuchilla.', 'They should be clean and hairless; singe or scrape any that remain.', 'Devem vir limpas e sem pelos; repasse com maçarico ou lâmina.'],
+  cook: ['Hervidas 1,5–2 horas; luego en tiras a la plancha, fritas o en vinagreta.', 'Simmer 1½–2 hours; then slice and sear, fry or dress with vinaigrette.', 'Fervidas 1,5–2 horas; depois em tiras na chapa, fritas ou em vinagrete.'],
+  m: { braise: 3, crisp: 3, grill: 2, soup: 2 },
+  why: { braise: ['Dos horas ablandan la piel y dejan el cartílago con mordida: oreja guisada, en vinagreta.', 'Two hours soften the skin and leave the cartilage with bite: stewed ears, ears in vinaigrette.', 'Duas horas amaciam a pele e deixam a cartilagem com mordida: orelha ensopada, em vinagrete.'],
+    crisp: ['Ya cocida, a la plancha o frita: la piel se dora y el cartílago cruje. Oreja a la plancha, cuchifritos.', 'Once boiled, seared or fried: the skin browns and the cartilage crunches. Oreja a la plancha, cuchifritos.', 'Já cozida, na chapa ou frita: a pele doura e a cartilagem estala. Oreja a la plancha, cuchifritos.'] } },
+
+{ id: 'pcr', n: 15, zone: 'head', pieces: ['p_ca'], muscle: 'Masseter', t: 1, f: 3, c: 5, v: 5, price: 2,
+  names: { co: ['Cachete de cerdo', 'Carrillera'], mx: ['Cachete de cerdo'], ar: ['Carrillera', 'Cachete'], cl: ['Mejilla de cerdo', 'Carrillera'], ve: ['Cachete de cochino'], br: ['Bochecha suína'], es: ['Carrillada', 'Carrillera'], us: ['Pork cheeks'], uk: ['Pig cheeks'], fr: ['Joue de porc'], it: ['Guancia', 'Guancetta'] },
+  reg: [],
+  d: ['El músculo de masticar: una nuez de carne oscura llena de colágeno. Dura cruda, de las más melosas una vez guisada.', 'The chewing muscle: a nugget of dark meat full of collagen. Tough raw, among the silkiest once braised.', 'O músculo da mastigação: uma noz de carne escura cheia de colágeno. Dura crua, das mais macias depois de ensopada.'],
+  tip: ['Pídelas limpias de telas. Calcula tres o cuatro por persona: son pequeñas y merman.', 'Ask for them trimmed of membrane. Allow three or four each: they are small and shrink.', 'Peça limpas de membranas. Calcule três ou quatro por pessoa: são pequenas e encolhem.'],
+  cook: ['Doradas y luego 1,5–2 horas en vino o caldo, hasta cortarlas con cuchara.', 'Brown, then 1½–2 hours in wine or stock, until they cut with a spoon.', 'Douradas e depois 1,5–2 horas em vinho ou caldo, até cortar de colher.'],
+  m: { braise: 3, grill: 2, sear: 2 },
+  why: { braise: ['Tanto colágeno que la salsa queda como glaseado y la carne se deshace: carrilladas al vino tinto.', 'So much collagen that the sauce turns to glaze and the meat falls apart: cheeks in red wine.', 'Tanto colágeno que o molho vira glacê e a carne desmancha: bochechas ao vinho tinto.'] } },
+
+{ id: 'pcu', n: 16, zone: 'belly', pieces: ['p_pn', 'p_pi'], muscle: 'Piel', t: 1, f: 4, c: 5, v: 2, price: 1,
+  names: { co: ['Cuero', 'Piel de cerdo'], mx: ['Cuero', 'Cueritos'], ar: ['Cuero de cerdo'], cl: ['Cuero de chancho'], ve: ['Cuero de cochino'], br: ['Pele', 'Couro'], es: ['Corteza', 'Piel'], us: ['Pork skin', 'Rind'], uk: ['Rind', 'Pork skin'], fr: ['Couenne'], it: ['Cotenna', 'Cotica'] },
+  reg: [],
+  d: ['La piel sola, con o sin su capa de grasa. Colágeno casi puro: blanda si se guisa, inflada y crocante si se seca y se fríe.', 'The skin alone, with or without its layer of fat. Nearly pure collagen: soft when stewed, puffed and crisp when dried and fried.', 'A pele sozinha, com ou sem sua capa de gordura. Colágeno quase puro: macia se ensopada, estufada e crocante se seca e frita.'],
+  tip: ['Para chicharrón inflado, sin grasa. Para dar cuerpo a frijoles o cassoulet, en tiras.', 'For puffed rinds, without fat. To give body to beans or cassoulet, in strips.', 'Para torresmo estufado, sem gordura. Para dar corpo a feijões ou cassoulet, em tiras.'],
+  cook: ['Hervida 1 hora, raspada, seca al horno bajo durante horas y frita a 190 °C: se infla en segundos.', 'Simmer 1 hour, scrape, dry in a low oven for hours and fry at 190 °C (375 °F): it puffs in seconds.', 'Fervida 1 hora, raspada, seca em forno baixo por horas e frita a 190 °C: estufa em segundos.'],
+  m: { crisp: 3, braise: 3, soup: 2, grind: 2, roll: 2 },
+  why: { crisp: ['Seca y luego frita, el agua que queda en el colágeno se vuelve vapor y la infla: chicharrón de cuero, scratchings.', 'Dried then fried, the water left in the collagen turns to steam and puffs it: pork rinds, scratchings.', 'Seca e depois frita, a água que resta no colágeno vira vapor e a estufa: torresmo de pele, scratchings.'],
+    braise: ['Guisada suelta su gelatina y espesa la olla: cueritos, cassoulet, frijoles.', 'Stewed, it gives up its gelatin and thickens the pot: cueritos, cassoulet, beans.', 'Ensopada solta sua gelatina e engrossa a panela: cueritos, cassoulet, feijão.'] } },
+
+{ id: 'pse', n: 17, zone: 'belly', pieces: ['p_pa', 'p_pn'], muscle: 'Latissimus dorsi · Cutaneus trunci', t: 3, f: 5, c: 2, v: 5, price: 4,
+  names: { co: ['Secreto'], mx: ['Secreto'], ar: ['Matambrito de cerdo'], cl: ['Malaya de cerdo', 'Secreto'], ve: ['Secreto'], br: ['Secreto', 'Matambre suíno'], es: ['Secreto', 'Secreto ibérico'], us: ['Secreto', 'Pork skirt'], uk: ['Secreto'], fr: ['Secreto'], it: ['Secreto'] },
+  reg: [],
+  d: ['Una lámina delgada en forma de abanico, escondida entre la paleta y la panceta. En el cerdo ibérico es de los cortes más veteados que existen.', 'A thin, fan-shaped sheet hidden between the shoulder and the belly. On Ibérico pigs it is one of the most marbled cuts there is.', 'Uma manta fina em forma de leque, escondida entre a paleta e a barriga. No porco ibérico é dos cortes mais marmorizados que existem.'],
+  tip: ['El ibérico es mucho más graso que el de cerdo blanco. No le quites la grasa: es lo que lo hace especial.', 'Ibérico is far fattier than from white pigs. Do not trim the fat: it is the whole point.', 'O ibérico é muito mais gordo que o de porco branco. Não tire a gordura: é o que o torna especial.'],
+  cook: ['Fuego muy alto, 2–3 minutos por lado, solo con sal. Córtalo en tiras contra la fibra.', 'Very high heat, 2–3 minutes a side, salt only. Slice into strips across the grain.', 'Fogo muito alto, 2–3 minutos de cada lado, só com sal. Corte em tiras contra a fibra.'],
+  m: { grill: 3, sear: 3, roll: 2 },
+  why: { grill: ['Delgado y con la grasa entre las fibras: se dora por fuera en minutos y queda jugoso. Va mejor al punto que rosado.', 'Thin, with fat between the fibres: it browns in minutes and stays juicy. It is better cooked through than pink.', 'Fino e com a gordura entre as fibras: doura por fora em minutos e fica suculento. Fica melhor ao ponto que rosado.'],
+    sear: ['A la plancha se fríe en su propia grasa y queda con borde crocante.', 'On the griddle it fries in its own fat and gets a crisp edge.', 'Na chapa frita na própria gordura e fica com a borda crocante.'] } },
+
+{ id: 'ppr', n: 18, zone: 'chuck', pieces: ['p_bo'], muscle: 'Serratus ventralis', t: 4, f: 4, c: 1, v: 5, price: 4,
+  names: { co: ['Presa ibérica'], mx: ['Presa ibérica'], ar: ['Presa ibérica'], cl: ['Presa ibérica'], ve: ['Presa ibérica'], br: ['Presa ibérica'], es: ['Presa', 'Presa ibérica'], us: ['Presa', 'Ibérico shoulder steak'], uk: ['Presa'], fr: ['Presa'], it: ['Presa'] },
+  reg: [],
+  d: ['Un óvalo de carne muy veteada en la parte alta de la paleta, junto a la cabeza de lomo. Fuera de España casi no se separa: queda dentro del Boston butt.', 'An oval of heavily marbled meat at the top of the shoulder, next to the collar. Outside Spain it is rarely separated: it stays inside the Boston butt.', 'Um oval de carne muito marmorizada na parte alta da paleta, junto à copa lombo. Fora da Espanha quase não se separa: fica dentro do Boston butt.'],
+  tip: ['Es un corte del cerdo ibérico. Pesa 500–700 g: una presa da para dos o tres.', 'It is an Ibérico cut. It weighs 1–1½ lb: one presa feeds two or three.', 'É um corte do porco ibérico. Pesa 500–700 g: uma presa dá para duas ou três pessoas.'],
+  cook: ['Entera a la brasa hasta 60–63 °C: rosada por dentro. Reposa y corta en tajadas.', 'Whole over coals to 60–63 °C (140–145 °F): pink inside. Rest, then slice.', 'Inteira na brasa até 60–63 °C: rosada por dentro. Descanse e corte em fatias.'],
+  m: { grill: 3, sear: 3, roast: 2, cure: 2 },
+  why: { grill: ['Gruesa y muy infiltrada, se asa como un buen filete de res: costra por fuera y rosada por dentro.', 'Thick and heavily marbled, it grills like a good beef steak: crust outside, pink inside.', 'Grossa e muito marmorizada, assa como um bom bife bovino: crosta por fora e rosada por dentro.'],
+    sear: ['La grasa infiltrada se funde en la sartén y la baña: solo necesita sal gruesa.', 'The marbling melts in the pan and bastes it: it only needs coarse salt.', 'A gordura entremeada derrete na frigideira e a rega: só precisa de sal grosso.'] } },
+
+{ id: 'ppl', n: 19, zone: 'loin', pieces: ['p_bo', 'p_ch'], muscle: 'Extremo anterior del lomo', t: 4, f: 4, c: 1, v: 5, price: 4,
+  names: { co: ['Pluma ibérica'], mx: ['Pluma ibérica'], ar: ['Pluma ibérica'], cl: ['Pluma ibérica'], ve: ['Pluma ibérica'], br: ['Pluma ibérica'], es: ['Pluma', 'Pluma ibérica'], us: ['Pluma', 'Ibérico pluma'], uk: ['Pluma'], fr: ['Pluma'], it: ['Pluma'] },
+  reg: [],
+  d: ['Un triángulo pequeño en la punta delantera del lomo, donde se une a la paleta. Solo salen dos de unos 100 g por cerdo.', 'A small triangle at the front tip of the loin, where it meets the shoulder. A pig gives just two, of about 3½ oz each.', 'Um triângulo pequeno na ponta dianteira do lombo, onde se une à paleta. Só saem dois de uns 100 g por porco.'],
+  tip: ['Es un corte del cerdo ibérico y escaso. Calcula dos plumas por persona.', 'It is an Ibérico cut, and scarce. Allow two per person.', 'É um corte do porco ibérico e raro. Calcule duas plumas por pessoa.'],
+  cook: ['Fuego alto, 3 minutos por lado, hasta 60–63 °C. Es delgada: se pasa en un descuido.', 'High heat, 3 minutes a side, to 60–63 °C (140–145 °F). It is thin: it overcooks in a blink.', 'Fogo alto, 3 minutos de cada lado, até 60–63 °C. É fina: passa do ponto num descuido.'],
+  m: { grill: 3, sear: 3 },
+  why: { grill: ['Más tierna que el secreto y más jugosa que el lomo: fuego fuerte y nada más.', 'More tender than secreto and juicier than loin: fierce heat and nothing else.', 'Mais macia que o secreto e mais suculenta que o lombo: fogo forte e mais nada.'],
+    sear: ['Se dora rápido por su grasa infiltrada y queda rosada por dentro.', 'It browns fast thanks to its marbling and stays pink inside.', 'Doura rápido por sua gordura entremeada e fica rosada por dentro.'] } },
+
+{ id: 'pmo', n: 20, zone: 'mix', pieces: ['p_bo', 'p_pa'], muscle: 'Mezcla · Blend', t: 4, f: 4, c: 1, v: 3, price: 1,
+  names: { co: ['Carne molida de cerdo'], mx: ['Molida de cerdo'], ar: ['Carne picada de cerdo'], cl: ['Carne molida de cerdo'], ve: ['Carne molida de cochino'], br: ['Carne suína moída'], es: ['Carne picada de cerdo'], us: ['Ground pork'], uk: ['Pork mince'], fr: ['Porc haché', 'Chair à saucisse'], it: ['Macinato di maiale'] },
+  reg: [],
+  d: ['Casi siempre de paleta o cabeza de lomo. Más grasa y más suave de sabor que la de res: es la base de chorizos, albóndigas y rellenos de medio mundo.', 'Nearly always from the shoulder. Fattier and milder than ground beef: the base of sausages, meatballs and dumpling fillings across half the world.', 'Quase sempre de paleta ou copa lombo. Mais gorda e de sabor mais suave que a bovina: é a base de linguiças, almôndegas e recheios de meio mundo.'],
+  tip: ['Para chorizo, 25–30 % de grasa y molido grueso. Para empanadillas y albóndigas, 20 %.', 'For sausage, 25–30% fat and a coarse grind. For dumplings and meatballs, 20%.', 'Para linguiça, 25–30 % de gordura e moagem grossa. Para guiozas e almôndegas, 20 %.'],
+  cook: ['Siempre cocida completa: 71 °C por dentro.', 'Always cooked through: 71 °C (160 °F) inside.', 'Sempre bem cozida: 71 °C por dentro.'],
+  m: { grind: 3, stirfry: 3, grill: 2 },
+  why: { grind: ['Su grasa blanda mantiene jugosos los embutidos y liga los rellenos: chorizo, salchicha, xiaolongbao.', 'Its soft fat keeps sausages juicy and binds fillings: chorizo, bratwurst, xiaolongbao.', 'Sua gordura macia mantém os embutidos suculentos e liga os recheios: linguiça, chouriço, xiaolongbao.'],
+    stirfry: ['Suelta, se dora en un minuto y reparte su grasa por todo el plato: pad kra pao, mapo tofu.', 'Loose, it browns in a minute and spreads its fat through the dish: pad kra pao, mapo tofu.', 'Solta, doura em um minuto e espalha a gordura pelo prato: pad kra pao, mapo tofu.'] } },
+
+{ id: 'pra', n: 21, zone: 'tail', pieces: ['p_ra'], muscle: 'Vértebras caudales', t: 1, f: 4, c: 5, v: 3, price: 1,
+  names: { co: ['Rabo de cerdo', 'Cola'], mx: ['Colita de cerdo'], ar: ['Rabo de cerdo'], cl: ['Colita de chancho'], ve: ['Rabo de cochino'], br: ['Rabo', 'Rabinho'], es: ['Rabo de cerdo'], us: ['Pig tails'], uk: ['Pig’s tail'], fr: ['Queue de porc'], it: ['Codino'] },
+  reg: [],
+  d: ['Huesitos envueltos en piel y grasa. Poco que morder, pero mucha gelatina y sabor para la olla.', 'Small bones wrapped in skin and fat. Little to chew, but plenty of gelatin and flavour for the pot.', 'Ossinhos envoltos em pele e gordura. Pouco para morder, mas muita gelatina e sabor para a panela.'],
+  tip: ['Pídelo en trozos. Salado o ahumado es el que se usa para frijoles en el Caribe.', 'Ask for it in pieces. Salted or smoked is what Caribbean bean pots use.', 'Peça em pedaços. Salgado ou defumado é o que se usa em feijões no Caribe.'],
+  cook: ['1,5–2 horas en la olla; después se puede dorar a la parrilla o freír.', '1½–2 hours in the pot; it can then be grilled or fried to brown.', '1,5–2 horas na panela; depois pode-se dourar na grelha ou fritar.'],
+  m: { braise: 3, soup: 3, crisp: 2, grill: 2 },
+  why: { braise: ['Piel y cartílago se vuelven gelatina y la salsa queda pegajosa.', 'Skin and cartilage turn to gelatin and the sauce turns sticky.', 'Pele e cartilagem viram gelatina e o molho fica grudento.'],
+    soup: ['Da cuerpo y gusto ahumado a frijoles, lentejas y sopas con casi nada de carne.', 'It gives body and a smoky note to beans, lentils and soups with almost no meat.', 'Dá corpo e gosto defumado a feijões, lentilhas e sopas com quase nada de carne.'] } },
+
+{ id: 'phi', n: 22, zone: 'offal', pieces: ['p_vi'], muscle: 'Hepar', t: 4, f: 1, c: 1, v: 5, price: 1,
+  names: { co: ['Hígado de cerdo'], mx: ['Hígado de cerdo'], ar: ['Hígado de cerdo'], cl: ['Hígado de cerdo', 'Pana'], ve: ['Hígado de cochino'], br: ['Fígado suíno'], es: ['Hígado de cerdo'], us: ['Pork liver'], uk: ['Pig’s liver'], fr: ['Foie de porc'], it: ['Fegato di maiale'] },
+  reg: [],
+  d: ['Más fuerte de sabor que el de res. Casi nunca se come solo: es la base de patés, terrinas y embutidos de hígado.', 'Stronger than beef liver. It is rarely eaten on its own: it is the base of pâtés, terrines and liver sausages.', 'Mais forte de sabor que o bovino. Quase nunca se come sozinho: é a base de patês, terrines e embutidos de fígado.'],
+  tip: ['Remójalo en leche una hora para suavizarlo. Que esté brillante y sin manchas.', 'Soak it in milk for an hour to mellow it. It should be glossy and unblemished.', 'Deixe de molho em leite por uma hora para suavizar. Deve estar brilhante e sem manchas.'],
+  cook: ['En filetes: fuego alto y cocido completo, sin secarlo. En paté: 68–70 °C al baño maría.', 'Sliced: high heat and cooked through, without drying it. In pâté: 68–70 °C (155–160 °F) in a water bath.', 'Em bifes: fogo alto e bem cozido, sem ressecar. Em patê: 68–70 °C em banho-maria.'],
+  m: { grind: 3, sear: 3, braise: 2, fry: 2, roast: 2 },
+  why: { grind: ['Molido liga y da sabor profundo: paté de campaña, leberwurst, faggots.', 'Ground, it binds and gives deep flavour: country pâté, liverwurst, faggots.', 'Moído liga e dá sabor profundo: patê de campanha, leberwurst, faggots.'],
+    sear: ['Tierno y sin colágeno: solo necesita dorarse, con cebolla para compensar su sabor fuerte.', 'Tender, with no collagen: it only needs browning, with onion to balance its strong taste.', 'Macio e sem colágeno: só precisa dourar, com cebola para equilibrar o sabor forte.'] } },
+
+{ id: 'ptr', n: 23, zone: 'offal', pieces: ['p_vi'], muscle: 'Intestinum', t: 2, f: 4, c: 4, v: 3, price: 1,
+  names: { co: ['Tripa de cerdo', 'Chunchurria de cerdo'], mx: ['Tripa de cerdo'], ar: ['Chinchulín de cerdo', 'Tripa'], cl: ['Tripa de chancho'], ve: ['Tripa de cochino'], br: ['Tripa suína'], es: ['Tripa de cerdo'], us: ['Chitterlings', 'Chitlins · Casings'], uk: ['Chitterlings'], fr: ['Boyaux', 'Chaudin'], it: ['Budella'] },
+  reg: [],
+  d: ['El intestino. Limpio y salado es la funda natural de chorizos y salchichas; cocido y frito se come solo.', 'The intestine. Cleaned and salted it is the natural casing for sausages; boiled and fried it is eaten on its own.', 'O intestino. Limpo e salgado é a tripa natural de linguiças e salsichas; cozido e frito come-se sozinho.'],
+  tip: ['Cómprala ya lavada. Para embutir viene salada: se remoja antes de usar.', 'Buy it cleaned. For stuffing it comes salted: soak before use.', 'Compre já lavada. Para embutir vem salgada: deixe de molho antes de usar.'],
+  cook: ['Hervida 2–3 horas con vinagre y luego frita o a la brasa hasta dorar.', 'Simmer 2–3 hours with vinegar, then fry or grill until brown.', 'Fervida 2–3 horas com vinagre e depois frita ou na brasa até dourar.'],
+  m: { crisp: 3, grill: 3, braise: 3, soup: 2, grind: 2 },
+  why: { crisp: ['Ya blanda, se fríe hasta quedar crocante por fuera y cremosa por dentro.', 'Once tender, it fries until crisp outside and creamy inside.', 'Já macia, frita-se até ficar crocante por fora e cremosa por dentro.'],
+    grill: ['Su grasa se funde sobre la brasa y la deja dorada y crujiente.', 'Its fat renders over the coals and leaves it brown and crunchy.', 'Sua gordura derrete na brasa e a deixa dourada e crocante.'],
+    braise: ['Horas de cocción lenta la ablandan y le quitan el sabor fuerte: chitlins, andouillette.', 'Hours of slow cooking soften it and tame its strong flavour: chitlins, andouillette.', 'Horas de cozimento lento a amaciam e tiram o sabor forte: chitlins, andouillette.'] } },
+
+{ id: 'pen', n: 24, zone: 'whole', pieces: ['*'], muscle: 'El animal entero', t: 3, f: 4, c: 3, v: 4, price: 3,
+  names: { co: ['Lechón', 'Cerdo entero'], mx: ['Lechón'], ar: ['Lechón'], cl: ['Lechón', 'Chancho entero'], ve: ['Lechón', 'Cochino entero'], br: ['Leitão'], es: ['Cochinillo', 'Tostón · Lechón'], us: ['Suckling pig', 'Whole hog'], uk: ['Suckling pig'], fr: ['Cochon de lait', 'Porcelet'], it: ['Maialino', 'Porcetto'] },
+  reg: [['Tolima · Huila', 'Marrano para lechona']],
+  d: ['El cerdo entero. Lechal (4–6 kg, tres semanas) tiene carne muy tierna y piel fina; el adulto entero es el de la lechona y la barbacoa de cerdo entero.', 'The whole pig. A suckling pig (9–13 lb, three weeks old) has very tender meat and thin skin; the whole grown hog is for lechona and whole-hog barbecue.', 'O porco inteiro. O leitão de leite (4–6 kg, três semanas) tem carne muito macia e pele fina; o adulto inteiro é o da lechona e do churrasco de porco inteiro.'],
+  tip: ['Encárgalo con días de anticipación. Un lechal de 5 kg da para 6–8 personas.', 'Order it days ahead. An 11 lb suckling pig feeds 6–8.', 'Encomende com dias de antecedência. Um leitão de 5 kg dá para 6–8 pessoas.'],
+  cook: ['Lechal: 2,5–3 horas a 160–180 °C, con la piel seca para que quede como vidrio.', 'Suckling pig: 2½–3 hours at 160–180 °C (325–350 °F), with the skin dry so it turns to glass.', 'Leitão de leite: 2,5–3 horas a 160–180 °C, com a pele seca para ficar como vidro.'],
+  m: { roast: 3, roll: 3, smoke: 3, grill: 3, crisp: 2 },
+  why: { roast: ['Entero, la piel protege la carne y se vuelve crocante: cochinillo, leitão, lechon filipino.', 'Whole, the skin shields the meat and turns to crackling: cochinillo, leitão, Filipino lechon.', 'Inteiro, a pele protege a carne e pururuca: cochinillo, leitão, lechon filipino.'],
+    roll: ['Deshuesado y relleno, la propia piel es la envoltura: lechona tolimense, porchetta.', 'Boned and stuffed, its own skin is the wrapper: Tolima lechona, porchetta.', 'Desossado e recheado, a própria pele é o invólucro: lechona tolimense, porchetta.'],
+    smoke: ['Toda la noche sobre brasas suaves: cada parte se cocina en su grasa y luego se mezcla. Whole hog, kalua pig.', 'All night over gentle coals: every part cooks in its own fat and is then mixed. Whole hog, kalua pig.', 'A noite toda sobre brasas suaves: cada parte cozinha na própria gordura e depois se mistura. Whole hog, kalua pig.'],
+    grill: ['Abierto en cruz sobre la parrilla, con la piel hacia arriba casi todo el tiempo: lechón a la parrilla.', 'Butterflied on the grill, skin side up most of the time: grilled lechón.', 'Aberto na grelha, com a pele para cima quase o tempo todo: leitão na grelha.'] } }
+];
+
+// one list for the whole shop: every cut knows its species
+CUTS.forEach((c) => { c.sp = 'beef'; });
+PORK.forEach((c) => { c.sp = 'pork'; CUTS.push(c); });
+const SPECIES = {
+  beef: { n: ['Res', 'Beef', 'Boi'], animal: ['La res', 'The cow', 'O boi'], first: 'sb', dish: 'Ropa vieja', file: 'meshes.txt' },
+  pork: { n: ['Cerdo', 'Pork', 'Porco'], animal: ['El cerdo', 'The pig', 'O porco'], first: 'ppn', dish: 'Cochinita pibil', file: 'meshes_pork.txt' }
+};
+
 // ---- The butcher shop: room, cow, display case, butcher, camera and picking.
 const Shop = (function () {
   const T = window.THREE;
@@ -2497,11 +3086,12 @@ const Shop = (function () {
   // ------------------------------------------------------------ doneness look
   // core temperature (°C) -> colour of the centre, width of the grey ring (0..1 of half the thickness)
   const DONE_STOPS = [[44, [122, 20, 32], 0.05], [48, [142, 24, 38], 0.07], [52, [176, 31, 44], 0.12], [56.5, [198, 58, 69], 0.18], [61, [210, 112, 122], 0.28], [66, [189, 141, 132], 0.45], [70, [154, 124, 108], 1], [77, [134, 112, 95], 1]];
-  function doneLook(t) {
-    const S = DONE_STOPS; t = clamp(t, S[0][0], S[S.length - 1][0]);
+  const PORK_STOPS = [[44, [214, 138, 146], 0.05], [55, [222, 150, 154], 0.1], [60, [228, 168, 166], 0.2], [63, [232, 190, 182], 0.32], [68, [232, 208, 196], 0.6], [72, [226, 214, 200], 1], [77, [218, 206, 190], 1]];
+  function doneLook(t, sp) {
+    const S = sp === 'pork' ? PORK_STOPS : DONE_STOPS; t = clamp(t, S[0][0], S[S.length - 1][0]);
     let i = 0; while (i < S.length - 2 && t > S[i + 1][0]) i++;
     const a = S[i], b = S[i + 1], k = (t - a[0]) / (b[0] - a[0]);
-    return { core: [0, 1, 2].map((j) => Math.round(lerp(a[1][j], b[1][j], k))), band: lerp(a[2], b[2], k), ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160], wet: clamp((66 - t) / 18, 0, 1) };
+    return { core: [0, 1, 2].map((j) => Math.round(lerp(a[1][j], b[1][j], k))), band: lerp(a[2], b[2], k), ring: sp === 'pork' ? [222, 206, 190] : [138, 111, 96], crust: sp === 'pork' ? [140, 86, 40] : [59, 33, 20], fat: sp === 'pork' ? [244, 232, 214] : [236, 214, 160], wet: clamp((66 - t) / 18, 0, 1) };
   }
 
   // ------------------------------------------------------------ canvas textures
@@ -2611,7 +3201,7 @@ const Shop = (function () {
 
   // ------------------------------------------------------------ main
   function create(host, pack, cfg) {
-    const S = { view: 'shop', sel: null, recs: [], explode: 0, explodeAuto: 0, onPick: null, onHover: null, quality: 1 };
+    const S = { view: 'shop', sp: 'beef', sel: null, recs: [], explode: 0, explodeAuto: 0, onPick: null, onHover: null, quality: 1 };
     const renderer = new T.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
     const mobile = Math.min(window.innerWidth, window.innerHeight) < 600;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2));
@@ -2666,7 +3256,7 @@ const Shop = (function () {
       g.fillStyle = '#16382d'; g.fillRect(0, 0, W, H);
       g.strokeStyle = '#c9a04e'; g.lineWidth = 8; g.strokeRect(14, 14, W - 28, H - 28);
       g.fillStyle = '#e9d9ac'; g.textAlign = 'center'; g.textBaseline = 'middle';
-      let fs = 150; const txt = 'CARNICERÍA  ·  ATLAS DE LA RES';
+      let fs = 150; const txt = 'CARNICERÍA  ·  KORTE';
       do { g.font = '700 ' + fs + 'px "Zilla Slab", Rockwell, Georgia, serif'; fs -= 6; } while (g.measureText(txt).width > W - 140 && fs > 40);
       g.fillText(txt, W / 2, H / 2 + 8);
     }); signT.wrapS = signT.wrapT = T.ClampToEdgeWrapping;
@@ -2759,17 +3349,20 @@ const Shop = (function () {
     const strip = new T.Mesh(new T.BoxGeometry(3.9, 0.02, 0.03), new T.MeshBasicMaterial({ color: new T.Color(2.0, 1.85, 1.6) })); strip.position.set(2.685, 1.455, -0.78); counter.add(strip);
 
     // ---------------- cuts in the case + tags
-    const mats = pack.extra.mats || {};
+    const mats = Object.assign({}, pack.extra.mats || {});   // cut id -> material options; grows when a species is added
+    const meshes = Object.assign({}, pack.meshes);
     const caseCuts = {};          // id -> {group, mesh, slot}
     const pickables = [];
+    let pickNow = pickables;      // the pickables of the species on show
     const TAGW = 256, TAGH = 96, TCOLS = 6, TROWS = 6;
     const tagC = document.createElement('canvas'); tagC.width = TAGW * TCOLS; tagC.height = TAGH * TROWS;
     const tagT = new T.CanvasTexture(tagC); tagT.encoding = T.sRGBEncoding; tagT.anisotropy = 8;
     const tagMat = new T.MeshBasicMaterial({ map: tagT, toneMapped: false });
     const trayMat = std({ color: lin('#dfe2e3'), roughness: 0.35, metalness: 0.6 });
     const SC = 0.6;
-    cfg.cuts.forEach((cut, i) => {
-      const e = pack.meshes['cut.' + cut.id]; if (!e) return;
+    const spCuts = (sp) => cfg.cuts.filter((c) => (c.sp || 'beef') === sp);
+    const addCase = (sp) => spCuts(sp).forEach((cut, i) => {
+      const e = meshes['cut.' + cut.id]; if (!e) return;
       const r = Math.floor(i / CASE.cols), c = i % CASE.cols;
       const x = CASE.x0 + 0.165 + c * ((CASE.x1 - CASE.x0 - 0.33) / (CASE.cols - 1));
       const g = new T.Group(); g.position.set(x, rowY[r] + 0.012, rowZ[r] + 0.015); counter.add(g);
@@ -2778,18 +3371,21 @@ const Shop = (function () {
       const m = new T.Mesh(e.geo, mat); m.scale.setScalar(SC);
       const bb = e.geo.boundingBox; m.position.set(-(bb.min.x + bb.max.x) / 2 * SC, 0.004, -(bb.min.z + bb.max.z) / 2 * SC + 0.012);
       const fit = 0.285 / ((bb.max.x - bb.min.x) * SC); if (fit < 1) { m.scale.multiplyScalar(fit); m.position.multiplyScalar(fit); }
-      m.castShadow = true; m.userData.cut = cut.id; m.userData.where = 'case'; g.add(m); pickables.push(m);
+      m.castShadow = true; m.userData.cut = cut.id; m.userData.where = 'case'; m.userData.sp = sp; g.add(m); pickables.push(m);
       // price-tag style label
       const tg = new T.PlaneGeometry(0.16, 0.06);
       const u0 = (i % TCOLS) / TCOLS, v0 = 1 - (Math.floor(i / TCOLS) + 1) / TROWS;
       const uv = tg.attributes.uv; for (let k = 0; k < uv.count; k++) uv.setXY(k, u0 + uv.getX(k) / TCOLS, v0 + uv.getY(k) / TROWS);
-      const tag = new T.Mesh(tg, tagMat); tag.position.set(0, 0.034, 0.118); tag.rotation.x = -0.5; tag.userData.cut = cut.id; tag.userData.where = 'case'; g.add(tag); pickables.push(tag);
-      caseCuts[cut.id] = { group: g, mesh: m, mat, x, row: r, baseY: m.position.y };
+      const tag = new T.Mesh(tg, tagMat); tag.position.set(0, 0.034, 0.118); tag.rotation.x = -0.5; tag.userData.cut = cut.id; tag.userData.where = 'case'; tag.userData.sp = sp; g.add(tag); pickables.push(tag);
+      g.visible = sp === S.sp;
+      caseCuts[cut.id] = { group: g, mesh: m, mat, x, row: r, baseY: m.position.y, sp };
     });
+    addCase('beef');
     function setTags(nameOf) {
       const g = tagC.getContext('2d');
       g.fillStyle = '#fff'; g.fillRect(0, 0, tagC.width, tagC.height);
-      cfg.cuts.forEach((cut, i) => {
+      if (nameOf) S.nameOf = nameOf; else nameOf = S.nameOf; if (!nameOf) return;
+      spCuts(S.sp).forEach((cut, i) => {
         const x = (i % TCOLS) * TAGW, y = Math.floor(i / TCOLS) * TAGH;
         g.fillStyle = '#fbf8ef'; g.fillRect(x, y, TAGW, TAGH);
         g.strokeStyle = '#a3242f'; g.lineWidth = 6; g.strokeRect(x + 5, y + 5, TAGW - 10, TAGH - 10);
@@ -2810,7 +3406,7 @@ const Shop = (function () {
     function setBlockCut(id) {
       if (id === blockId) return; blockId = id;
       if (blockMesh) { blockHolder.remove(blockMesh); blockMesh.material.dispose(); blockMesh = null; }
-      const e = id && pack.meshes['cut.' + id]; if (!e) { if (S.grain) setGrain(true); return; }
+      const e = id && meshes['cut.' + id]; if (!e) { blockId = null; if (S.grain) setGrain(true); return; }
       const mat = MeshLib.fleshMaterial(Object.assign({}, mats[id]));
       blockMesh = new T.Mesh(e.geo, mat); blockMesh.castShadow = true; blockMesh.receiveShadow = true;
       const bb = e.geo.boundingBox; const L = bb.max.x - bb.min.x; const k = Math.min(1, 0.46 / L);
@@ -2868,9 +3464,9 @@ const Shop = (function () {
         m.rotation.x = -a * Math.PI / 180; m.position.set(0, 0, zs[i] - 0.085); doneHolder.add(m);
       });
     })();
-    function setDoneness(t) {
+    function setDoneness(t, sp) {
       S.done = t != null; doneHolder.visible = S.done; if (blockMesh) blockMesh.visible = !S.done; if (grainMesh) grainMesh.visible = !S.done;
-      if (S.done) { const L = doneLook(t); const c = (a, u) => u.value.setRGB(a[0] / 255, a[1] / 255, a[2] / 255).convertSRGBToLinear();
+      if (S.done) { const L = doneLook(t, sp); const c = (a, u) => u.value.setRGB(a[0] / 255, a[1] / 255, a[2] / 255).convertSRGBToLinear();
         c(L.core, DU.uCore); c(L.ring, DU.uRing); c(L.crust, DU.uCrust); c(L.fat, DU.uFatC); DU.uBand.value = L.band; DU.uWet.value = L.wet; }
       if (S.view === 'block') applyView('keep');
       dirty();
@@ -2888,7 +3484,7 @@ const Shop = (function () {
       if (grainMesh) { blockHolder.remove(grainMesh); grainMesh.material.map.dispose(); grainMesh.material.dispose(); grainMesh.geometry.dispose(); grainMesh = null; }
       const kind = blockId ? grainOf(blockId) : null;
       if (S.grain && blockMesh && kind === 'h') {
-        const e = pack.meshes['cut.' + blockId], bb = e.geo.boundingBox, k = blockMesh.userData.k;
+        const e = meshes['cut.' + blockId], bb = e.geo.boundingBox, k = blockMesh.userData.k;
         const w = (bb.max.x - bb.min.x) * k, d = (bb.max.z - bb.min.z) * k;
         const g = mats[blockId].grainDir, gl = Math.hypot(g[0], g[2]) || 1, gx = g[0] / gl, gz = g[2] / gl;
         const PX = 1400, cw = Math.round(w * PX), ch = Math.round(d * PX);
@@ -2927,39 +3523,65 @@ const Shop = (function () {
     const pl = cyl(1.75, 1.82, 0.13, std({ map: plankT, roughness: 0.55 }), 0, 0.065, 0, plinth, 56); pl.scale.z = 0.62;
     const ring = new T.Mesh(new T.TorusGeometry(1.76, 0.014, 8, 80), brass); ring.rotation.x = Math.PI / 2; ring.scale.y = 0.62; ring.position.y = 0.13; plinth.add(ring);
     const cow = new T.Group(); cow.position.copy(COW); cow.rotation.y = COW_YAW; scene.add(cow);
-    const cowIn = new T.Group(); cowIn.position.set(0.1, -0.005, 0); cow.add(cowIn);
     const pieces = {};            // name -> {group, hide, flesh, meta, off, cur}
-    const CC = [-0.05, 0.98];
-    for (const m of pack.list) {
-      if (!m.name.startsWith('cow.')) continue;
+    const animals = {};           // species -> group holding its pieces
+    const ANIMAL = { beef: { prefix: 'cow.', cc: [-0.05, 0.98], at: [0.1, -0.005, 0], face: { marb: 0.1, marbScale: 60, seams: 1, seamScale: 5, ribs: 1 }, inner: {} },
+      pork: { prefix: 'pig.', cc: [-0.12, 0.80], at: [0.12, -0.005, 0], face: { meat: '#d58a8c', meat2: '#b96a70', fat: '#f6ece2', marb: 0.08, marbScale: 60, seams: 1, seamScale: 5, ribs: 0 }, inner: { meat: '#cf7b80', meat2: '#b6636a' } } };
+    const addAnimal = (pk, sp) => {
+     const A = ANIMAL[sp], CC = A.cc;
+     const cowIn = animals[sp] = new T.Group(); cowIn.position.fromArray(A.at); cowIn.visible = sp === S.sp; cow.add(cowIn);
+     for (const m of pk.list) {
+      if (!m.name.startsWith(A.prefix)) continue;
       const [, pname, kind] = m.name.split('.');
+      const offal = /vi$/.test(m.cut);
       let p = pieces[pname];
       if (!p) {
-        p = pieces[pname] = { name: pname, group: new T.Group(), meta: m, cur: V3(0, 0, 0), glow: 0, glowT: 0, dim: 0, dimT: 0 };
+        p = pieces[pname] = { name: pname, sp, cc: CC, group: new T.Group(), meta: m, cur: V3(0, 0, 0), glow: 0, glowT: 0, dim: 0, dimT: 0 };
         const dx = m.cen[0] - CC[0], dy = m.cen[1] - CC[1];
         p.dir = V3(dx * 0.62, dy * 0.62 + 0.22, m.side * 0.34);
-        if (m.internal) p.dir = V3(dx * 0.3, dy * 0.3 + 0.12, (m.side || 1) * 1.0 + (m.cut === 'vi' ? 0.25 : 0));
+        if (m.internal) p.dir = V3(dx * 0.3, dy * 0.3 + 0.12, (m.side || 1) * 1.0 + (offal ? 0.25 : 0));
         if (m.cut === 'ha') p.dir.z = -1.05;
         p.cen = V3(m.cen[0], m.cen[1], m.cen[2]);
         cowIn.add(p.group);
       }
-      const geo = pack.meshes[m.name].geo;
+      const geo = pk.meshes[m.name].geo;
       let mesh;
       if (kind === 'hide') { mesh = new T.Mesh(geo, new T.MeshStandardMaterial({ vertexColors: true, roughness: 0.8, metalness: 0, envMapIntensity: 0.4 })); p.hide = mesh; }
       else {
-        const o = m.internal ? (m.cut === 'vi' ? { meat: '#7a3a36', meat2: '#5b2623', marb: 0, gloss: 0.8, rough: 0.3, bone: 0 } : { marb: m.cut === 'lf' ? 0.05 : 0.25, marbScale: 80, grain: 0.85, grainDir: m.cut === 'en' ? [0, 0, 1] : [1, 0, 0], bone: 0 })
-          : { marb: 0.1, marbScale: 60, seams: 1, seamScale: 5, ribs: 1 };
+        const o = m.internal ? (offal ? { meat: '#7a3a36', meat2: '#5b2623', marb: 0, gloss: 0.8, rough: 0.3, bone: 0 } : Object.assign({ marb: m.cut === 'lf' || sp === 'pork' ? 0.05 : 0.25, marbScale: 80, grain: 0.85, grainDir: m.cut === 'en' ? [0, 0, 1] : [1, 0, 0], bone: 0 }, A.inner))
+          : A.face;
         mesh = new T.Mesh(geo, MeshLib.fleshMaterial(o)); p.flesh = mesh;
       }
-      mesh.castShadow = true; mesh.receiveShadow = true; mesh.userData.piece = pname; mesh.userData.where = 'cow';
+      mesh.castShadow = true; mesh.receiveShadow = true; mesh.userData.piece = pname; mesh.userData.where = 'cow'; mesh.userData.sp = sp;
       p.group.add(mesh); pickables.push(mesh);
-    }
-    // eyes
-    if (pieces.ch) for (const s of [1, -1]) { const e = new T.Mesh(new T.SphereGeometry(0.021, 14, 10), new T.MeshStandardMaterial({ color: 0x050505, roughness: 0.08 })); e.position.set(-1.212, 1.372, 0.112 * s); pieces.ch.group.add(e); }
+     }
+     // eyes
+     const eye = (pc, x, y, z, r) => { if (pieces[pc]) for (const s of [1, -1]) { const e = new T.Mesh(new T.SphereGeometry(r, 14, 10), new T.MeshStandardMaterial({ color: 0x050505, roughness: 0.08 })); e.position.set(x, y, z * s); pieces[pc].group.add(e); } };
+     if (sp === 'beef') eye('ch', -1.212, 1.372, 0.112, 0.021); else eye('p_ca', -1.262, 0.962, 0.155, 0.02);
+    };
+    addAnimal(pack, 'beef');
     const pieceOfCut = {};        // cut id -> [piece names]
-    cfg.cuts.forEach((c) => { pieceOfCut[c.id] = c.pieces.flatMap((id) => Object.keys(pieces).filter((n) => n === id || n === id + 'L' || n === id + 'R')); });
     const cutOfPiece = {};        // piece -> primary cut id (first cut that lists it)
-    cfg.cuts.forEach((c) => pieceOfCut[c.id].forEach((n) => { if (!(n in cutOfPiece)) cutOfPiece[n] = c.id; }));
+    function mapPieces() {
+      const names = Object.keys(pieces);
+      cfg.cuts.forEach((c) => { const sp = c.sp || 'beef';
+        pieceOfCut[c.id] = c.pieces[0] === '*' ? names.filter((n) => pieces[n].sp === sp && !pieces[n].meta.internal) : c.pieces.flatMap((id) => names.filter((n) => pieces[n].sp === sp && (n === id || n === id + 'L' || n === id + 'R'))); });
+      cfg.cuts.forEach((c) => { if (c.pieces[0] !== '*') pieceOfCut[c.id].forEach((n) => { if (!(n in cutOfPiece)) cutOfPiece[n] = c.id; }); });
+    }
+    mapPieces();
+    function setSpecies(sp) {
+      S.sp = sp;
+      for (const k in animals) animals[k].visible = k === sp;
+      for (const id in caseCuts) caseCuts[id].group.visible = caseCuts[id].sp === sp;
+      pickNow = pickables.filter((m) => !m.userData.sp || m.userData.sp === sp);
+      setTags(); if (S.view === 'cow') applyView('keep'); dirty();
+    }
+    // a second animal arrives in its own pack, fetched the first time it is asked for
+    function addSpecies(sp, pk) {
+      if (animals[sp]) return;
+      Object.assign(meshes, pk.meshes); Object.assign(mats, pk.extra.mats || {});
+      addAnimal(pk, sp); addCase(sp); mapPieces(); setSpecies(S.sp); refreshTargets();
+    }
 
     // ---------------- the butcher
     const man = new T.Group(); man.position.set(-0.35, 0, -2.2); scene.add(man);
@@ -2990,12 +3612,12 @@ const Shop = (function () {
     // ---------------- camera rig
     const rig = { target: V3(0, 1.2, -1.2), yaw: 0, pitch: 0.1, dist: 10, tT: V3(0, 1.2, -1.2), tYaw: 0, tPitch: 0.1, tDist: 10, zoom: 1, panX: 0 };
     let W = 1, H = 1, PANEL = 0;
-    const cowWorld = () => V3(COW.x + 0.05, 1.08, COW.z);
+    const cowWorld = () => V3(COW.x + 0.05, S.sp === 'pork' ? 0.84 : 1.08, COW.z);
     function viewPreset(v) {
       const vt = Math.tan(T.MathUtils.degToRad(camera.fov / 2));
       const effW = Math.max(120, W - PANEL), asp = effW / H;
       const fit = (wc, hc) => Math.max(wc / (2 * vt * asp), hc / (2 * vt));
-      if (v === 'cow') return { t: cowWorld(), yaw: 0.25, pitch: 0.12, dist: fit(3.9 + S.explodeNow * 2.2, 2.5 + S.explodeNow * 1.2), yawLim: [-9, 9], pitchLim: [-0.05, 1.2] };
+      if (v === 'cow') return { t: cowWorld(), yaw: 0.25, pitch: 0.12, dist: fit(3.9 + S.explodeNow * 2.2, (S.sp === 'pork' ? 2.1 : 2.5) + S.explodeNow * 1.2), yawLim: [-9, 9], pitchLim: [-0.05, 1.2] };
       if (v === 'case') { const cw = asp > 1.6 ? 4.2 : asp > 1.05 ? 2.5 : 1.5; return { t: V3(2.68 + rig.panX, 1.06, -1.2), yaw: 0, pitch: 0.86, dist: fit(cw, 1.05), yawLim: [-0.5, 0.5], pitchLim: [0.35, 1.25], pan: Math.max(0, (4.1 - cw) / 2 + 0.1) }; }
       if (v === 'block') { const bl = S.done ? 0.25 : Math.max(0.22, blockLen); return { t: V3(BLOCK.x - 0.04, BLOCK_TOP + 0.03, BLOCK.z), yaw: 0.3, pitch: 0.72, dist: fit(bl * 1.75, bl * 1.05), yawLim: [-9, 9], pitchLim: [0.12, 1.35] }; }
       const wide = asp > 1.45;
@@ -3058,7 +3680,7 @@ const Shop = (function () {
       const r = el.getBoundingClientRect();
       ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       ray.setFromCamera(ndc, camera);
-      const h = ray.intersectObjects(pickables, false)[0];
+      const h = ray.intersectObjects(pickNow, false)[0];
       if (!h) return null;
       const u = h.object.userData;
       return { cut: u.cut || cutOfPiece[u.piece], where: u.where, piece: u.piece };
@@ -3141,8 +3763,8 @@ const Shop = (function () {
         p.glow = lerp(p.glow, gT, k); p.dim = lerp(p.dim, p.dimT || 0, k); p.pop = lerp(p.pop || 0, p.popT || 0, k);
         const e = S.explodeNow;
         const popK = p.pop * (0.05 + 0.1 * (1 - Math.min(1, e * 2)));
-        p.group.position.set(p.dir.x * e + (p.cen.x - CC[0]) * popK * 0.5, p.dir.y * e + popK * 0.35, p.dir.z * e + (p.meta.internal ? 0 : 0));
-        const dimK = 1 - 0.55 * p.dim;
+        p.group.position.set(p.dir.x * e + (p.cen.x - p.cc[0]) * popK * 0.5, p.dir.y * e + popK * 0.35, p.dir.z * e + (p.meta.internal ? 0 : 0));
+        const dimK = 1 - (p.sp === 'pork' ? 0.3 : 0.55) * p.dim;
         if (p.hide) { p.hide.material.color.setRGB(dimK, dimK * (1 - 0.3 * p.glow), dimK * (1 - 0.78 * p.glow)); p.hide.material.emissive.copy(gold).multiplyScalar(0.16 * p.glow); }
         if (p.flesh) { const U = p.flesh.material.userData.U; U.uTint.value.setScalar(dimK); U.uGlow.value.copy(gold).multiplyScalar(0.3 * p.glow); }
       }
@@ -3183,7 +3805,7 @@ const Shop = (function () {
     requestAnimationFrame(frame);
     const ro = new ResizeObserver(() => resize()); ro.observe(host);
 
-    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setDoneness, setGrain, grainOf, setPose, talk, anchorOf, resize, dirty,
+    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setDoneness, setGrain, grainOf, setSpecies, addSpecies, has: (sp) => !!animals[sp], setPose, talk, anchorOf, resize, dirty,
       state: S, caseCuts, pieces, pieceOfCut,
       set onPick(f) { S.onPick = f; }, set onHover(f) { S.onHover = f; },
       zoomBy(f) { rig.zoom = clamp(rig.zoom * f, 0.4, 1.5); rig.tDist = preset.dist * rig.zoom; dirty(); },
@@ -3247,7 +3869,7 @@ function AtlasTools(A) {
   const pick = (a) => a[rnd(a.length)];
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const on = (t) => st.tab === 4 && st.tool === t;
-  const cutOpts = (sel) => CUTS.map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(cname(c))}</option>`).join('');
+  const cutOpts = (sel) => A.cuts().map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(cname(c))}</option>`).join('');
   const ctryOpts = (sel) => COUNTRIES.map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
   const topMethods = (cut) => Object.keys(cut.m).sort((a, b) => cut.m[b] - cut.m[a]);
 
@@ -3270,7 +3892,7 @@ function AtlasTools(A) {
   const dname = (i, c) => DONENESS.names[c || st.country][i];
   const dfull = (i, c) => { const n = dname(i, c); return n[0] + (n[2] ? ', ' + n[2] : ''); };
   const orderPhrase = (i, c) => DONENESS.order[lp(c)].replace('{x}', dfull(i, c));
-  const look = (t) => (typeof Shop !== 'undefined' && Shop.doneLook ? Shop.doneLook(t) : { core: [198, 58, 69], band: 0.2, ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160] });
+  const look = (t) => (typeof Shop !== 'undefined' && Shop.doneLook ? Shop.doneLook(t, st.sp) : { core: [198, 58, 69], band: 0.2, ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160] });
   function doneRec(cut) {
     const r = DONE_REC[cut.id] || {};
     const nm = (i) => `<b lang="${cl()}">${esc(lower(dname(i)[0]))}</b>`;
@@ -3279,6 +3901,7 @@ function AtlasTools(A) {
       const a = r.r[0], b = r.r[1], same = a === b || dname(a)[0] === dname(b)[0];
       range = (same ? esc(tx(DONE_NOTE.r1)).replace('{a}', nm(a)) : esc(tx(DONE_NOTE.r)).replace('{a}', nm(a)).replace('{b}', nm(b))) + ` (${LV[a].t[0]}–${LV[b].t[1]} °C)`;
     }
+    if (r.pork) range += '. ' + esc(tx(DONE_NOTE.pork)).replace(/\.$/, '');
     if (r.r && r.slow) return { html: esc(tx(DONE_NOTE.both)).replace('{x}', range.charAt(0).toLowerCase() + range.slice(1)), lvl: r.r[0] };
     if (r.r) return { html: range + '.', lvl: r.r[0] };
     const k = r.slow ? 'slow' : r.safe ? 'safe' : r.crisp ? 'crisp' : r.soft ? 'soft' : null;
@@ -3287,7 +3910,7 @@ function AtlasTools(A) {
 
   function rDone() {
     const s = S();
-    $('#toolbody').innerHTML = `<p class="note">${esc(s.dnHint)}</p>
+    $('#toolbody').innerHTML = `<p class="note">${esc(s.dnHint)}</p>${st.sp === 'pork' ? `<p class="whybox">${esc(tx(DONENESS.porkNote))}</p>` : ''}
       <div class="donebox"><div class="steakx" id="dnSteak" role="img"><i></i></div><div class="dnread" id="dnRead"></div></div>
       <input type="range" class="wide" id="temp" min="${DONENESS.min}" max="${DONENESS.max}" step="1" value="${st.temp}" aria-label="${esc(s.temp)}">
       <div class="chips" id="dnChips"></div>
@@ -3317,14 +3940,14 @@ function AtlasTools(A) {
     $('#dnTable').innerHTML = LV.map((l, k) => `<tr data-lvl="${k}" class="${k === i ? 'me' : ''}"><td class="num">${l.t[0]}–${l.t[1]}</td>${cell(k, st.trFrom)}${cell(k, me)}</tr>`).join('');
     const cut = BY[st.sel], rec = cut && doneRec(cut);
     $('#dnCut').innerHTML = rec && rec.html ? `<h4>${esc(s.dnFor)} ${esc(lower(cname(cut)))}</h4><p class="whybox">${rec.html}</p>${rec.lvl != null ? `<div class="row" style="margin-top:8px"><button class="btn ghost" data-lvl="${rec.lvl}">${esc(s.dnSet)}</button></div>` : ''}` : '';
-    const sh = A.shop(); if (sh && on('done')) { sh.setDoneness(t); sh.setChalk(s.tools.done[0], [n[0], `${t} °C · ${F(t)} °F`]); }
+    const sh = A.shop(); if (sh && on('done')) { sh.setDoneness(t, st.sp); sh.setChalk(s.tools.done[0], [n[0], `${t} °C · ${F(t)} °F`]); }
   }
 
   // ------------------------------------------------------------ substitutes
   function subsOf(id) {
     const a = BY[id], co = {};
     DISHES.forEach((d) => { if (d.b === id) d.a.forEach((x) => { co[x] = (co[x] || 0) + 1; }); else if (d.a.includes(id)) co[d.b] = (co[d.b] || 0) + 1; });
-    return CUTS.filter((c) => c.id !== id).map((c) => {
+    return CUTS.filter((c) => c.id !== id && c.sp === a.sp).map((c) => {
       const shared = topMethods(a).filter((m) => a.m[m] >= 2 && c.m[m] >= 2);
       const sim = 6 - (Math.abs(a.t - c.t) + Math.abs(a.f - c.f) + Math.abs(a.c - c.c));
       return { c, shared, s: Math.min(8, co[c.id] || 0) * 1.2 + sim * 1.3 + shared.length * 1.5 };
@@ -3431,7 +4054,7 @@ function AtlasTools(A) {
   // ------------------------------------------------------------ comparison
   function rCmp() {
     const s = S();
-    if (!st.cmp || !BY[st.cmp[0]] || !BY[st.cmp[1]]) { const o = subsOf(st.sel)[0]; st.cmp = [st.sel, o ? o.c.id : (st.sel === 'la' ? 'ba' : 'la')]; }
+    if (!st.cmp || !BY[st.cmp[0]] || !BY[st.cmp[1]]) { const o = subsOf(st.sel)[0]; st.cmp = [st.sel, o ? o.c.id : A.cuts().find((c) => c.id !== st.sel).id]; }
     const a = BY[st.cmp[0]], b = BY[st.cmp[1]];
     const bar = (v) => `<span class="b" role="img" aria-label="${v} / 5">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= v ? 'on' : ''}"></i>`).join('')}</span>`;
     const best = (c) => topMethods(c).filter((m) => c.m[m] === 3).slice(0, 4).map((m) => esc(tx(METHODS[m].n))).join(' · ') || '—';
@@ -3472,10 +4095,11 @@ function AtlasTools(A) {
   const ROUND = 8;
   function findable() {
     const sh = A.shop(); if (!sh) return [];
-    const primary = {}; CUTS.forEach((c) => (sh.pieceOfCut[c.id] || []).forEach((n) => { if (!(n in primary)) primary[n] = c.id; }));
-    return CUTS.filter((c) => { const ps = sh.pieceOfCut[c.id] || []; return ps.length && ps.every((n) => !sh.pieces[n].meta.internal && primary[n] === c.id); });
+    const primary = {}; CUTS.forEach((c) => c.pieces[0] !== '*' && (sh.pieceOfCut[c.id] || []).forEach((n) => { if (!(n in primary)) primary[n] = c.id; }));
+    return A.cuts().filter((c) => { const ps = sh.pieceOfCut[c.id] || []; return ps.length && ps.every((n) => !sh.pieces[n].meta.internal && primary[n] === c.id); });
   }
   function newQ() {
+    const CUTS = A.cuts();
     const s = S(), kinds = ['name', 'name', 'method', 'done'], fd = findable(); if (fd.length > 4) kinds.push('find', 'find');
     const kind = pick(kinds);
     if (kind === 'find') { const c = pick(fd); return { kind, id: c.id, text: s.qzFind.replace('{x}', lower(cname(c))) }; }
@@ -3719,16 +4343,18 @@ function AtlasTools(A) {
   const SYN = { grill: 'asar asado parrilla brasa bbq barbecue carbon grill grilled barbacoa churrasco churrasqueira grelha grelhar brasa', sear: 'plancha sarten sellar bistec steak pan seared sear griddle frigideira chapa bife selar', roast: 'horno hornear roast rosbif asado al horno oven forno assar assado rosbife',
     braise: 'guisar guiso estofar estofado sudar sudado braise stew braised cazuela olla presion pressure cooker slow cooker ensopado ensopar cozido panela pressao guisado', shred: 'desmechar mechada deshebrar deshilachar shred shredded pulled ropa vieja desfiar desfiada', soup: 'sopa caldo sancocho cocido puchero soup broth stock consome sopa caldo cozido',
     smoke: 'ahumar ahumado smoke smoked low and slow fuego lento al palo defumar defumado fogo lento', stirfry: 'saltear salteado wok tiras stir fry strips fajitas saltear salteado tiras', fry: 'apanar apanado empanizar milanesa freir frito breaded fried schnitzel cutlet empanar milanesa fritar frito', raw: 'crudo tartar carpaccio raw tataki cru tartar carpaccio',
-    grind: 'moler molida picada hamburguesa albondigas ground mince burger meatballs moer moida hamburguer almondegas', skewer: 'pinchos chuzos brochetas anticuchos skewer kebab kabob satay espetinho espeto', cure: 'curar secar seca cecina tasajo jerky cure cured dried salar curar secar carne seca charque', roll: 'rellenar relleno enrollar arrollado stuffed rolled roulade rechear recheado enrolado', slice: 'laminas lonchas finas hot pot shabu sukiyaki thin sliced shaved fatias finas fatiar' };
+    grind: 'moler molida picada hamburguesa albondigas ground mince burger meatballs moer moida hamburguer almondegas', skewer: 'pinchos chuzos brochetas anticuchos skewer kebab kabob satay espetinho espeto', cure: 'curar secar seca cecina tasajo jerky cure cured dried salar curar secar carne seca charque', roll: 'rellenar relleno enrollar arrollado stuffed rolled roulade rechear recheado enrolado', crisp: 'chicharron chicharrones crocante crujiente freir frito fritura torrezno cuerito crackling cracklings crispy deep fry torresmo pururuca', slice: 'laminas lonchas finas hot pot shabu sukiyaki thin sliced shaved fatias finas fatiar' };
 
   // ------------------------------------------------------------ state
-  const st = { lang: 'es', country: 'co', tab: 0, view: 'shop', sel: 'sb', explode: 0, budget: 0, answer: null, dishQ: '', dishC: '', dishM: '', trFrom: 'us', voice: false, cutMethod: null, shown: 40 };
+  const st = { lang: 'es', country: 'co', sp: 'beef', last: {}, tab: 0, view: 'shop', sel: 'sb', explode: 0, budget: 0, answer: null, dishQ: '', dishC: '', dishM: '', trFrom: 'us', voice: false, cutMethod: null, shown: 40 };
   const ls = { get(k) { try { return localStorage.getItem('atlas-' + k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem('atlas-' + k, v); } catch (e) { } } };
   if (STR[ls.get('lang')]) st.lang = ls.get('lang');
   else if (/^pt/i.test(navigator.language || '')) st.lang = 'pt';
   else if (!/^es/i.test(navigator.language || 'es')) st.lang = 'en';
   if (COUNTRIES.some((c) => c.id === ls.get('country'))) st.country = ls.get('country');
   if (st.country === st.trFrom) st.trFrom = 'co';
+  if (SPECIES[ls.get('sp')]) st.sp = ls.get('sp');
+  const cutsNow = () => CUTS.filter((c) => c.sp === st.sp);
   const L = () => STR[st.lang];
   const LI = { es: 0, en: 1, pt: 2 };
   const tx = (p) => !p ? '' : Array.isArray(p) ? (p[LI[st.lang]] || p[0] || '') : (p[st.lang] || p.es || '');
@@ -3795,7 +4421,7 @@ function AtlasTools(A) {
   function rankMethod(m, budget) {
     const slow = /braise|shred|soup|smoke/.test(m), fast = /grill|sear|stirfry|raw|skewer|slice|roast/.test(m);
     const fit = (c) => m === 'grind' ? c.f * 0.9 + c.v * 0.5 : slow ? c.c * 1.0 + c.f * 0.45 + c.v * 0.2 : fast ? c.t * 1.0 + c.f * 0.4 + c.v * 0.3 : c.t * 0.6 + (6 - c.f) * 0.7;
-    let list = CUTS.filter((c) => c.m[m] >= 2).map((c) => ({ c, s: c.m[m] * 10 + (c.why && c.why[m] ? 3 : 0) + fit(c) + (budget === 1 ? (5 - c.price) * 2.5 : budget === 2 ? c.price * 2.5 : 0) }));
+    let list = cutsNow().filter((c) => c.m[m] >= 2).map((c) => ({ c, s: c.m[m] * 10 + (c.why && c.why[m] ? 3 : 0) + fit(c) + (budget === 1 ? (5 - c.price) * 2.5 : budget === 2 ? c.price * 2.5 : 0) }));
     if (budget === 1) list = list.filter((x) => x.c.price <= 2); if (budget === 2) list = list.filter((x) => x.c.price >= 3);
     return list.sort((a, b) => b.s - a.s || a.c.n - b.c.n).slice(0, 6).map((x) => x.c);
   }
@@ -3808,7 +4434,7 @@ function AtlasTools(A) {
     const a = st.answer, scn = tools.scene();
     const recs = scn ? scn.recs : a && a.cuts ? a.cuts : [];
     shop.setSelection(scn ? scn.sel : st.sel); shop.setRecs(recs); shop.setBlockCut(st.sel);
-    shop.setDoneness(scn && scn.done != null ? scn.done : null);
+    shop.setDoneness(scn && scn.done != null ? scn.done : null, st.sp);
     if (!!st.grain !== !!shop.state.grain) shop.setGrain(st.grain);
     if (scn) shop.setChalk(scn.chalk[0], scn.chalk[1]);
     else if (a && a.cuts && a.cuts.length) shop.setChalk(a.title || L().example, [cname(BY[a.cuts[0]])].concat(a.cuts.slice(1, 3).map((id, i) => (i ? '' : L().alsoWork.toLowerCase() + ': ') + lower(cname(BY[id])))).slice(0, 3));
@@ -3853,6 +4479,7 @@ function AtlasTools(A) {
   function selectCut(id, opts) {
     opts = opts || {};
     if (!BY[id]) return;
+    setSpecies(BY[id].sp, true);
     st.sel = id; st.cutMethod = null;
     if (!opts.keepAnswer && st.answer && st.answer.cuts && !st.answer.cuts.includes(id)) st.answer = Object.assign({}, st.answer, { cuts: [] });
     if (opts.tab !== false) setTab(1);
@@ -3863,6 +4490,7 @@ function AtlasTools(A) {
   }
   function showDish(d, opts) {
     const cuts = [d.b].concat(d.a);
+    setSpecies(BY[d.b].sp, true);
     st.answer = { type: 'dish', d, cuts, title: d.n.replace(/\s*\(.*?\)\s*/g, ' ').trim(), example: opts && opts.example };
     st.sel = d.b; st.cutMethod = d.m;
     setTab(0); renderButcher();
@@ -3877,6 +4505,25 @@ function AtlasTools(A) {
     setTab(0); renderButcher(); setView('cow'); if (shop) shop.talk(2200);
     sync3D(); renderCut();
   }
+  // ---- species: the shop sells one animal at a time; the other one's models load when first asked for
+  const packs = {};
+  function ensurePack(sp) {
+    if (!shop || shop.has(sp) || packs[sp]) return;
+    toast(L().loading);
+    packs[sp] = fetchPack(SPECIES[sp].file).then((buf) => { shop.addSpecies(sp, MeshLib.parsePack(buf)); shop.setTags((c) => cname(c)); sync3D(); renderCut(); })
+      .catch((err) => { console.error(err); packs[sp] = null; toast(L().loadFail); });
+  }
+  function exampleOf(sp) { const d = DISHES.find((x) => x.n === SPECIES[sp].dish); return { type: 'dish', d, cuts: [d.b].concat(d.a), title: d.n, example: true }; }
+  function setSpecies(sp, quiet) {
+    if (!SPECIES[sp] || sp === st.sp) return;
+    st.last[st.sp] = st.sel; st.sp = sp; ls.set('sp', sp);
+    st.cmp = null; st.quiz = null; st.dishCut = null; st.dishC = ''; st.calc.m = null; st.calc.lvl = null; st.shopM = null;
+    if (shop) { shop.setSpecies(sp); ensurePack(sp); }
+    if (quiet) { if (st.answer && st.answer.cuts && st.answer.cuts.some((id) => BY[id].sp !== sp)) { st.answer = exampleOf(sp); renderButcher(); } renderStatic(); return; }
+    st.answer = exampleOf(sp); st.sel = st.last[sp] || st.answer.d.b; st.cutMethod = null;
+    if (st.tab === 4 && st.tool === 'quiz') st.tool = null;
+    renderAll();
+  }
   function go(e) {
     if (!e) return;
     $('#q').value = ''; hideSug();
@@ -3889,7 +4536,7 @@ function AtlasTools(A) {
   // ---- free-form questions answered by Claude (when the page is allowed to)
   let sample = null, tts = null, ctl = null;
   function catalog() {
-    return CUTS.map((c) => `${c.id}: ${cname(c)} (US: ${c.names.us[0]}) | tender ${c.t}/5 fat ${c.f}/5 collagen ${c.c}/5 price ${c.price}/4 | best: ${Object.keys(c.m).filter((m) => c.m[m] === 3).join(', ')}`).join('\n');
+    return cutsNow().map((c) => `${c.id}: ${cname(c)} (US: ${c.names.us[0]}) | tender ${c.t}/5 fat ${c.f}/5 collagen ${c.c}/5 price ${c.price}/4 | best: ${Object.keys(c.m).filter((m) => c.m[m] === 3).join(', ')}`).join('\n');
   }
   async function askClaude(q) {
     const S = L();
@@ -3898,8 +4545,8 @@ function AtlasTools(A) {
     if (!sample) { st.answer = { type: 'none', q, near: search(q.split(' ')[0], 5) }; renderButcher(); return; }
     if (ctl) ctl.abort(); ctl = new AbortController();
     const rules = `You are Don Rafa, a master butcher behind the counter of a neighbourhood shop. The customer shops in ${tx(ctry(st.country))}. Answer in ${({ es: 'Spanish', en: 'English', pt: 'Brazilian Portuguese' })[st.lang]}, warmly and concretely, in at most 110 words, plain text, no markdown, no lists.\n` +
-      `Recommend only beef cuts from this catalogue, and call them by the name given here (the name used where the customer shops). Explain WHY the cut suits the preparation using its tenderness, fat, collagen and grain, and give one practical tip (thickness, doneness temperature in °C, or how to ask for it).\n` +
-      `If the question is not about beef, cooking or buying meat, say briefly that you only know about beef.\n` +
+      `Recommend only ${st.sp} cuts from this catalogue, and call them by the name given here (the name used where the customer shops). Explain WHY the cut suits the preparation using its tenderness, fat, collagen and grain, and give one practical tip (thickness, doneness temperature in °C, or how to ask for it).\n` +
+      `If the question is not about meat, cooking or buying meat, say briefly that you only know about meat.\n` +
       `Your reply MUST start with one line exactly like "CUTS: id1,id2" listing 1 to 3 catalogue ids, best first (or "CUTS:" alone if none apply). Then a blank line, then the answer.\n\nCATALOGUE (id: name | properties | best methods)\n${catalog()}`;
     try {
       if (shop) shop.talk(6000);
@@ -4018,7 +4665,7 @@ function AtlasTools(A) {
     box.innerHTML = `<div class="card">
       <div><div class="meta">${String(cut.n).padStart(2, '0')} · ${esc(tx(ZONES[cut.zone]))} · ${esc(tx(PRICE[cut.price]))}</div>
         <h2 lang="${me.lang}">${esc(cname(cut))}</h2>${calt(cut) ? `<div class="also" lang="${me.lang}">${esc(S.aka)}: ${esc(calt(cut))}</div>` : ''}</div>
-      <div class="row"><button class="btn ghost" data-view="block">${esc(S.seeCase)}</button><button class="btn ghost" data-view="cow">${esc(S.views.cow)}</button><button class="btn ghost" data-view="case">${esc(S.views.case)}</button></div>
+      <div class="row"><button class="btn ghost" data-view="block">${esc(S.seeCase)}</button><button class="btn ghost" data-view="cow">${esc(tx(SPECIES[st.sp].animal))}</button><button class="btn ghost" data-view="case">${esc(S.views.case)}</button></div>
       ${tools.cutActions(cut)}
       <p>${esc(tx(cut.d))}</p>
       ${internal ? `<p class="note">${esc(S.internal)}</p>` : ''}
@@ -4037,12 +4684,12 @@ function AtlasTools(A) {
 
   function filteredDishes() {
     const q = norm(st.dishQ);
-    return DISHES.filter((d) => (!st.dishC || d.cc === st.dishC) && (!st.dishM || d.m === st.dishM) && (!st.dishCut || d.b === st.dishCut || d.a.includes(st.dishCut)) && (!q || d.k.includes(q) || norm(cname(BY[d.b])).includes(q)));
+    return DISHES.filter((d) => BY[d.b].sp === st.sp && (!st.dishC || d.cc === st.dishC) && (!st.dishM || d.m === st.dishM) && (!st.dishCut || d.b === st.dishCut || d.a.includes(st.dishCut)) && (!q || d.k.includes(q) || norm(cname(BY[d.b])).includes(q)));
   }
   function renderDishes(keepFocus) {
     const S = L(), box = $('#dishsec');
     const list = filteredDishes();
-    const codes = [...new Set(DISHES.map((d) => d.cc))].sort((a, b) => cuisineName(a).localeCompare(cuisineName(b)));
+    const codes = [...new Set(DISHES.filter((d) => BY[d.b].sp === st.sp).map((d) => d.cc))].sort((a, b) => cuisineName(a).localeCompare(cuisineName(b)));
     if (!keepFocus) {
       box.innerHTML = `<div class="filters"><input id="dq" type="search" placeholder="${esc(S.search)}" value="${esc(st.dishQ)}" autocomplete="off">
         <select id="dc" aria-label="${esc(S.anyCuisine)}"><option value="">${esc(S.anyCuisine)}</option>${codes.map((c) => `<option value="${c}"${c === st.dishC ? ' selected' : ''}>${esc(cuisineName(c))}</option>`).join('')}</select>
@@ -4060,7 +4707,7 @@ function AtlasTools(A) {
     box.innerHTML = `<p class="note">${esc(S.trHelp)}</p>
       <div class="filters"><label class="field"><span>${esc(S.from)}</span><select id="trA">${opt(A)}</select></label><label class="field"><span>${esc(S.to)}</span><select id="trB">${opt(B)}</select></label></div>
       <div class="tscroll"><table><thead><tr><th>#</th><th>${esc(tx(ctry(A)))}</th><th>${esc(tx(ctry(B)))}</th></tr></thead><tbody>
-      ${CUTS.map((c) => `<tr data-cut="${c.id}"><td class="num">${String(c.n).padStart(2, '0')}</td><td lang="${ctry(A).lang}"><b>${esc(c.names[A][0])}</b>${c.names[A][1] ? `<small>${esc(c.names[A][1])}</small>` : ''}</td><td lang="${ctry(B).lang}"><b>${esc(c.names[B][0])}</b>${c.names[B][1] ? `<small>${esc(c.names[B][1])}</small>` : ''}</td></tr>`).join('')}
+      ${cutsNow().map((c) => `<tr data-cut="${c.id}"><td class="num">${String(c.n).padStart(2, '0')}</td><td lang="${ctry(A).lang}"><b>${esc(c.names[A][0])}</b>${c.names[A][1] ? `<small>${esc(c.names[A][1])}</small>` : ''}</td><td lang="${ctry(B).lang}"><b>${esc(c.names[B][0])}</b>${c.names[B][1] ? `<small>${esc(c.names[B][1])}</small>` : ''}</td></tr>`).join('')}
       </tbody></table></div>
       <div class="foot"><p>${esc(S.approx)}</p><p>${esc(S.sources)}: <a href="https://www.fsis.usda.gov/sites/default/files/media_file/documents/chile-list-of-accepted-cuts.pdf" target="_blank" rel="noopener">USDA FSIS</a>, <a href="https://www.usa-beef.org/wp-content/uploads/2020/07/1063.GU%C3%8DA_beef-cuts_espa%C3%B1ol_09oct13.pdf" target="_blank" rel="noopener">USMEF</a>, <a href="https://www.beefresearch.org/resources/product-quality/fact-sheets/ranking-of-beef-muscles-for-tenderness" target="_blank" rel="noopener">Beef Research</a>, <a href="https://www.contextoganadero.com/blog/como-pides-tu-corte-de-carne-nombres-segun-la-ciudad-y-el-pais" target="_blank" rel="noopener">CONtexto Ganadero</a>, <a href="https://www.sirhuila.gov.co/media/ZbRepository/ZbFiles/2025/8/8cfd49b2019e4778b5cf3a5a81204933.pdf" target="_blank" rel="noopener">SIPSA</a>, <a href="https://cbs.izt.uam.mx/nacameh/volumenes/v8n1/Nacameh_v8n1_001_Montero_etal.pdf" target="_blank" rel="noopener">Nacameh</a>, <a href="https://www.mexconnect.com/?p=1093" target="_blank" rel="noopener">MexConnect</a>, <a href="https://www.directoalpaladar.com/cultura-gastronomica/cortes-carne-argentinos-utilizados-asados-como-se-llaman-espana" target="_blank" rel="noopener">Directo al Paladar</a>.</p></div>`;
   }
@@ -4072,19 +4719,20 @@ function AtlasTools(A) {
     $('#countryBtn').innerHTML = `<span class="code">${me.id.toUpperCase()}</span>${esc(tx(me).split(' · ')[0])}`;
     $('#langBtn').textContent = st.lang.toUpperCase(); $('#langBtn').setAttribute('aria-label', S.language + ': ' + LANGS[st.lang]);
     document.querySelectorAll('#tabs button').forEach((b, i) => { b.textContent = S.tabs[i]; });
-    document.querySelectorAll('#views button').forEach((b) => { b.textContent = S.views[b.dataset.v]; });
+    document.querySelectorAll('#views button').forEach((b) => { b.textContent = b.dataset.v === 'cow' ? tx(SPECIES[st.sp].animal) : S.views[b.dataset.v]; });
+    $('#species').innerHTML = Object.keys(SPECIES).map((k) => `<button data-sp="${k}" aria-pressed="${k === st.sp}">${esc(tx(SPECIES[k].n))}</button>`).join('');
     $('#cowtools span').textContent = S.explode; $('#hint').textContent = S.hint;
-    $('#askLabel').textContent = S.askLabel; $('#q').placeholder = S.askPh; $('#go').textContent = S.askBtn;
+    $('#askLabel').textContent = S.askLabel; $('#q').placeholder = st.sp === 'pork' ? 'lechona, carnitas, pulled pork, tonkatsu…' : S.askPh; $('#go').textContent = S.askBtn;
     $('#orMethod').textContent = S.orMethod; $('#exLabel').textContent = S.examples;
-    $('#methods').innerHTML = Object.keys(METHODS).map((m) => `<button class="chip" data-method="${m}">${esc(tx(METHODS[m].n))}</button>`).join('');
-    const ex = st.country === 'co' ? ['Posta negra cartagenera', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Milanesa'] : ['Ropa vieja', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Sancocho de costilla'];
+    $('#methods').innerHTML = Object.keys(METHODS).filter((m) => cutsNow().some((c) => c.m[m] >= 2)).map((m) => `<button class="chip" data-method="${m}">${esc(tx(METHODS[m].n))}</button>`).join('');
+    const ex = st.sp === 'pork' ? ['Lechona tolimense', 'Carolina pulled pork', 'Cochinita pibil', 'Tonkatsu', 'Porchetta', 'Chicharrón colombiano'] : st.country === 'co' ? ['Posta negra cartagenera', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Milanesa'] : ['Ropa vieja', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Sancocho de costilla'];
     $('#examples').innerHTML = ex.map((n) => { const d = DISHES.find((x) => x.n === n); return d ? `<button class="chip" data-dish="${d.i}">${esc(n.replace(/\s*\(.*\)/, ''))}</button>` : ''; }).join('');
     $('#settings h3').textContent = S.settings; $('#setLangL').textContent = S.language; $('#setWhereL').textContent = S.where; $('#setVoiceL').textContent = S.voice;
     $('#setLang').innerHTML = Object.keys(LANGS).map((l) => `<button data-lang="${l}" aria-pressed="${st.lang === l}">${LANGS[l]}</button>`).join('');
     $('#setCountry').innerHTML = COUNTRIES.map((c) => `<option value="${c.id}"${c.id === st.country ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
     $('#setVoice').innerHTML = `<button data-voice="1" aria-pressed="${st.voice}">${esc(S.on)}</button><button data-voice="0" aria-pressed="${!st.voice}">${esc(S.off)}</button>`;
     $('#voiceField').hidden = !tts;
-    $('#loading h2').textContent = 'Atlas de la Res'; $('#loadmsg').textContent = S.loading;
+    $('#loading h2').textContent = 'Korte'; $('#loadmsg').textContent = S.loading;
   }
   function renderAll() {
     buildIndex(); renderStatic(); renderButcher(); renderCut();
@@ -4122,6 +4770,7 @@ function AtlasTools(A) {
       if (!b) return;
       const d = b.dataset;
       if (tools.click(b, d)) return;
+      if (d.sp) return setSpecies(d.sp);
       if (d.s != null) return go(sug[+d.s]);
       if (d.near != null) return go(st.answer.near[+d.near]);
       if (d.dish != null) return showDish(DISHES[+d.dish]);
@@ -4187,7 +4836,7 @@ function AtlasTools(A) {
     if (dish) p.set('d', slug(dish.n)); else p.set('c', st.sel);
     p.set('p', st.country); p.set('l', st.lang);
     let base = ''; try { base = location.href.split('#')[0]; } catch (e) { }
-    const url = base + '#' + p.toString(), title = 'Atlas de la Res · ' + (dish ? dish.n : cname(BY[st.sel]));
+    const url = base + '#' + p.toString(), title = 'Korte · ' + (dish ? dish.n : cname(BY[st.sel]));
     if (navigator.share) navigator.share({ title, url }).catch(() => { }); else copy(url, tools.t('linkCopied'));
   }
   function applyHash(first) {
@@ -4205,7 +4854,7 @@ function AtlasTools(A) {
     };
   }
   function refresh() { const y = $('#pbody').scrollTop; renderButcher(); renderCut(); if (st.tab === 2) renderDishes(true); if (st.tab === 4) tools.render(); $('#pbody').scrollTop = y; }
-  const tools = AtlasTools({ $, esc, norm, st, ls, tx, BY, DISHES, cname, calt, ctry, lower, cuisineName, L, whyOf, dishesOf, dishRow, selectCut, setView, setTab, setCountry, sync3D, say, canSay, toast, copy, share, refresh, shop: () => shop });
+  const tools = AtlasTools({ cuts: cutsNow, $, esc, norm, st, ls, tx, BY, DISHES, cname, calt, ctry, lower, cuisineName, L, whyOf, dishesOf, dishRow, selectCut, setView, setTab, setCountry, sync3D, say, canSay, toast, copy, share, refresh, shop: () => shop });
 
   // ------------------------------------------------------------ boot
   function start(saved) {
@@ -4213,8 +4862,7 @@ function AtlasTools(A) {
     if (STR[saved.lang]) st.lang = saved.lang; if (saved.country) st.country = saved.country;
     const linked = applyHash(true);
     wire(); buildIndex(); renderStatic();
-    const d0 = DISHES.find((d) => d.n === 'Ropa vieja');
-    st.answer = { type: 'dish', d: d0, cuts: [d0.b].concat(d0.a), title: d0.n, example: true }; st.sel = d0.b; st.cutMethod = d0.m;
+    st.answer = exampleOf(st.sp); st.sel = st.answer.d.b; st.cutMethod = st.answer.d.m;
     setTab(saved.tab || 0); renderButcher(); renderCut();
     if (linked) linked();
     window.addEventListener('hashchange', () => { const f = applyHash(false); if (f) f(); });
@@ -4237,24 +4885,28 @@ function AtlasTools(A) {
     else if (r === 3) { const v = (T[a[n - 3]] << 10) | (T[a[n - 2]] << 4) | (T[a[n - 1]] >> 2); out[o++] = (v >> 8) & 255; out[o++] = v & 255; }
     return out.buffer;
   }
-  function load3D() {
-    const bar = $('#loading .bar b'), fail = () => { $('#loadmsg').textContent = L().loadFail; $('#loading .bar').hidden = true; setTimeout(() => $('#loading').classList.add('done'), 2600); };
-    if (!window.THREE) return fail();
-    fetch('meshes.txt').then(async (r) => {
+  function fetchPack(file, onProgress) {
+    return fetch(file).then(async (r) => {
       if (!r.ok) throw new Error('http ' + r.status);
       const total = (r.headers.get('content-encoding') ? 0 : +r.headers.get('content-length')) || 6500000;
       if (!r.body || !r.body.getReader) return b64(new Uint8Array(await r.arrayBuffer()));
       const rd = r.body.getReader(); const chunks = []; let n = 0;
-      for (;;) { const { done, value } = await rd.read(); if (done) break; chunks.push(value); n += value.length; bar.style.width = Math.min(96, 4 + 92 * n / total) + '%'; }
+      for (;;) { const { done, value } = await rd.read(); if (done) break; chunks.push(value); n += value.length; if (onProgress) onProgress(n / total); }
       const out = new Uint8Array(n); let o = 0; for (const c of chunks) { out.set(c, o); o += c.length; }
       return b64(out);
-    }).then((buf) => {
+    });
+  }
+  function load3D() {
+    const bar = $('#loading .bar b'), fail = () => { $('#loadmsg').textContent = L().loadFail; $('#loading .bar').hidden = true; setTimeout(() => $('#loading').classList.add('done'), 2600); };
+    if (!window.THREE) return fail();
+    fetchPack('meshes.txt', (k) => { bar.style.width = Math.min(96, 4 + 92 * k) + '%'; }).then((buf) => {
       const pack = MeshLib.parsePack(buf);
       const wide = () => window.matchMedia('(min-width: 881px)').matches;
       shop = Shop.create($('#gl'), pack, { cuts: CUTS, panelWidth: () => wide() ? $('#panel').offsetWidth + 14 : 0, onFrame: drawTags });
       shop.onPick = (h) => { if (tools.pickCow(h)) return; if (!h || !h.cut) return; if (h.where === 'case') selectCut(h.cut, { view: 'block', keepAnswer: true }); else if (h.where === 'block') setTab(1); else selectCut(h.cut, { keepAnswer: true }); };
       shop.onHover = (h, e) => { const el = $('#hover'), scn = tools.scene(); if (!h || !h.cut || (scn && scn.quiet)) { el.hidden = true; return; } const r = $('#stage').getBoundingClientRect(); el.hidden = false; el.textContent = cname(BY[h.cut]); el.style.left = (e.clientX - r.left) + 'px'; el.style.top = (e.clientY - r.top) + 'px'; };
       shop.setTags((c) => cname(c));
+      if (st.sp !== 'beef') { shop.setSpecies(st.sp); ensurePack(st.sp); }
       setView(st.view); sync3D();
       const done = () => { $('#loading').classList.add('done'); shop.setPose('wave', 2200); shop.dirty(); };
       (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { shop.setTags((c) => cname(c)); sync3D(); setTimeout(done, 350); });
