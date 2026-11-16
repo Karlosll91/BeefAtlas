@@ -35,3 +35,23 @@ console.log('dishes', n, 'cuts', CUTS.length, 'errors', errs.length);
 console.log(errs.slice(0, 60).join('\n'));
 console.log('by method', JSON.stringify(byM)); console.log('by cut', JSON.stringify(byCut));
 console.log('cuisines', Object.keys(byCC).length, JSON.stringify(Object.entries(byCC).sort((a, b) => b[1] - a[1]).slice(0, 25)));
+
+// ---- doneness, glossary, phrases and the Portuguese layer
+{
+  const x = {}, e2 = [];
+  new Function('x', src + fs.readFileSync('src/data_extra.js', 'utf8') + fs.readFileSync('src/data_pt.js', 'utf8') + '\nObject.assign(x,{DONENESS,DONE_REC,PORTION,PHRASES,GLOSSARY,GLOSS_GROUPS,PT});')(x);
+  const tri = (p, w) => { if (!Array.isArray(p) || p.length !== 3 || p.some((s) => typeof s !== 'string')) e2.push('triple ' + w); };
+  for (const k of COUNTRIES) { const n = x.DONENESS.names[k.id]; if (!n || n.length !== x.DONENESS.levels.length || n.some((v) => !v[0])) e2.push('doneness names ' + k.id); if (!x.DONENESS.order[k.lang.slice(0, 2)]) e2.push('order phrase ' + k.lang); if (!x.PT.countries[k.id]) e2.push('pt country ' + k.id); }
+  x.DONENESS.levels.forEach((l) => { tri(l.n, l.id); tri(l.d, l.id); });
+  x.DONENESS.pitfalls.forEach((p, i) => { tri(p.t, 'pitfall' + i); tri(p.d, 'pitfall' + i); });
+  for (const c of CUTS) {
+    if (!x.DONE_REC[c.id]) e2.push('no doneness rule ' + c.id);
+    const o = x.PT.cuts[c.id]; if (!o || !o.d || !o.tip || !o.cook) { e2.push('pt cut ' + c.id); continue; }
+    for (const m in (c.why || {})) if (!(o.why || {})[m]) e2.push('pt why ' + c.id + ' ' + m);
+  }
+  for (const m in METHODS) { if (!x.PORTION.yield[m]) e2.push('yield ' + m); const o = x.PT.methods[m]; if (!o || !o.n || !o.v || !o.need || !o.ask) e2.push('pt method ' + m);
+    for (const l of ['es', 'pt', 'en', 'fr', 'it']) if (!x.PHRASES.method[m] || !x.PHRASES.method[m][l] || !x.PHRASES.req[m][l]) e2.push('phrase ' + m + ' ' + l); }
+  const gid = new Set();
+  for (const g of x.GLOSSARY) { tri(g.t, g.id); tri(g.aka, g.id); tri(g.d, g.id); if (gid.has(g.id)) e2.push('dup term ' + g.id); gid.add(g.id); if (!x.GLOSS_GROUPS[g.g]) e2.push('group ' + g.id); if (g.cut && !ids.has(g.cut)) e2.push('term cut ' + g.id); }
+  console.log('extra: glossary', x.GLOSSARY.length, 'errors', e2.length); console.log(e2.join('\n'));
+}

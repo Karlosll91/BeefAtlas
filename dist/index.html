@@ -80,8 +80,8 @@ button { cursor: pointer }
 .pill { display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--line); background: var(--paper-2); border-radius: 999px; padding: 6px 11px; font-size: 13px; font-weight: 600; white-space: nowrap }
 .pill:hover { border-color: var(--ink) }
 .pill .code { font-family: var(--mono); font-size: 11px; color: var(--crimson) }
-#tabs { display: grid; grid-template-columns: repeat(4, 1fr); border-bottom: 1px solid var(--line); background: var(--paper-2) }
-#tabs button { border: 0; background: transparent; padding: 10px 4px 9px; font-weight: 600; font-size: 13.5px; color: var(--muted); border-bottom: 3px solid transparent; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+#tabs { display: grid; grid-template-columns: repeat(5, 1fr); border-bottom: 1px solid var(--line); background: var(--paper-2) }
+#tabs button { border: 0; background: transparent; padding: 10px 2px 9px; font-weight: 600; font-size: 13px; color: var(--muted); border-bottom: 3px solid transparent; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
 #tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--crimson); background: var(--paper) }
 #pbody { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin }
 .sec { padding: 14px 14px 22px; display: flex; flex-direction: column; gap: 14px }
@@ -185,6 +185,85 @@ td.num { font-family: var(--mono); color: var(--muted); font-size: 12px; width: 
 .foot { font-size: 12.5px; color: var(--muted); display: flex; flex-direction: column; gap: 6px }
 .foot a { color: var(--ink) }
 
+/* ---- tools ("More" tab) */
+#toast { position: absolute; z-index: 9; left: 50%; bottom: 22px; transform: translateX(-50%); padding: 9px 16px; border-radius: 999px; background: #17261F; color: #fff; font-weight: 600; font-size: 13.5px; box-shadow: var(--shadow); white-space: nowrap; max-width: calc(100% - 24px); overflow: hidden; text-overflow: ellipsis }
+.toolgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px }
+.tool { text-align: left; border: 1px solid var(--line); background: var(--paper); border-radius: 12px; padding: 12px; display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 2px 10px; align-items: start; min-height: 86px }
+.tool:hover { border-color: var(--ink); background: var(--paper-2) }
+.tool:first-child { grid-column: 1 / -1; border: 2px solid var(--crimson) }
+.tool .ic { grid-row: span 2; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--green); color: var(--paper); font-family: var(--display); font-weight: 700; font-size: 16px }
+.tool .tt { font-family: var(--display); font-weight: 700; font-size: 17px; line-height: 1.15 }
+.tool .ss { grid-column: 2; font-size: 12.5px; color: var(--muted); line-height: 1.35 }
+.badge { font-style: normal; font-family: var(--mono); font-size: 11px; background: var(--gold); color: var(--gold-ink); border-radius: 999px; padding: 1px 7px; vertical-align: 2px }
+.toolhead { display: flex; align-items: center; gap: 10px }
+.toolhead h2 { font-family: var(--display); font-weight: 700; font-size: 23px; line-height: 1.1; margin: 0; min-width: 0 }
+.toolbody { display: flex; flex-direction: column; gap: 14px }
+.toolbody h4 { margin: 0 0 6px; font-family: var(--mono); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); font-weight: 600 }
+.toolbody p { margin: 0 }
+.acts .btn.ghost[aria-pressed="true"] { border-color: var(--brass); color: var(--brass) }
+.btn.ghost[aria-pressed="true"] { border-color: var(--ink) }
+.filters input[type="number"] { grid-column: auto; width: 100%; padding: 8px 10px; font-size: 15px }
+.filters .field { min-width: 0 } .filters select { width: 100% }
+input.wide { width: 100%; accent-color: var(--crimson); margin: 0; height: 28px }
+
+/* doneness */
+.donebox { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 14px; align-items: center; padding: 14px; border-radius: 12px; background: var(--paper-2); border: 1px solid var(--line) }
+.steakx { --core: #c63a45; --ring: #8a6f60; --crust: #3b2114; --band: 0.2; position: relative; height: 66px; border-radius: 20px 26px 26px 20px / 30px; background: var(--core); overflow: hidden;
+  box-shadow: inset 0 0 0 4px var(--crust), inset 0 0 calc(var(--band) * 26px + 3px) calc(var(--band) * 27px + 5px) var(--ring), 0 3px 8px rgba(0, 0, 0, 0.25) }
+.steakx i { position: absolute; right: 0; top: 0; bottom: 0; width: 13%; background: linear-gradient(90deg, rgba(236, 214, 160, 0), #ecd6a0 45%, #d9b871); box-shadow: inset -4px 0 0 var(--crust), inset 0 4px 0 var(--crust), inset 0 -4px 0 var(--crust) }
+.dnread .big { font-family: var(--display); font-weight: 700; font-size: 25px; line-height: 1.08; text-wrap: balance }
+.dnread .also { color: var(--muted); font-size: 13px; margin-top: 2px }
+.dnread .tnum { font-family: var(--mono); font-size: 13px; margin-top: 6px; color: var(--crimson); font-weight: 600 }
+.say { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border-radius: 10px; border: 2px solid var(--crimson); background: var(--paper) }
+.sayline { font-family: var(--display); font-weight: 600; font-size: 19px; line-height: 1.25 }
+.acc { border: 1px solid var(--line); border-radius: var(--r); overflow: hidden }
+.acc details + details { border-top: 1px dashed var(--line) }
+.acc summary { cursor: pointer; padding: 9px 12px; font-weight: 700; font-size: 14.5px; list-style-position: outside; margin-left: 18px }
+.acc summary small { display: block; font-weight: 400; color: var(--muted); font-size: 12.5px }
+.acc details[open] { background: var(--paper-2) }
+.acc details p { padding: 0 12px 11px 12px; font-size: 14px }
+.acc details .row { padding: 0 12px 12px }
+tr.me td { background: var(--paper-2) } tr.me td.num { color: var(--crimson); font-weight: 600 }
+td.num { white-space: nowrap }
+
+/* counter card */
+.shopcard { display: flex; flex-direction: column; gap: 11px; padding: 16px; border-radius: 14px; background: var(--paper-2); border: 1px solid var(--line) }
+.shopcard .huge { font-family: var(--display); font-weight: 700; font-size: clamp(34px, 9vw, 46px); line-height: 1; text-wrap: balance }
+.shopcard .also { color: var(--muted); font-size: 15px; margin-top: -6px }
+.shopcard h4 { margin: 0 0 3px }
+
+/* calculator */
+.stepper { display: inline-flex; align-items: center; border: 1px solid var(--line); border-radius: 999px; background: var(--paper-2); padding: 3px; align-self: flex-start }
+.stepper button { width: 32px; height: 32px; border-radius: 50%; border: 0; background: var(--paper); font-weight: 700; font-size: 17px; line-height: 1 }
+.stepper b { min-width: 34px; text-align: center; font-family: var(--mono) }
+.toolbody .seg button { padding: 6px 10px; font-size: 13px }
+
+/* comparison */
+.cmp { display: grid; grid-template-columns: minmax(0, 0.7fr) minmax(0, 1fr) minmax(0, 1fr); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; font-size: 13.5px }
+.cmp > div { padding: 8px 9px; border-top: 1px dashed var(--line); min-width: 0 }
+.cmp > div:nth-child(-n+3) { border-top: 0; background: var(--paper-2) }
+.cmp .cl { font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted) }
+.cmp .ch { display: flex; align-items: center; gap: 6px; font-family: var(--display); font-size: 16px; line-height: 1.1 }
+.cmp .ch i { font-style: normal; font-family: var(--mono); font-size: 11px; width: 20px; height: 20px; flex: 0 0 auto; display: grid; place-items: center; border-radius: 50%; background: var(--gold); color: var(--gold-ink) }
+.cmp .b { display: grid; grid-template-columns: repeat(5, 1fr); gap: 3px; margin-top: 5px } .cmp .b i { height: 9px; border-radius: 2px; background: var(--line) } .cmp .b i.on { background: var(--crimson) }
+.cmp .btn.ghost { min-height: 32px; padding: 0 10px; font-size: 12.5px }
+
+/* quiz */
+.quiz button:disabled { cursor: default; opacity: 1 } .quiz button { align-items: center }
+.quiz button.ok { border-color: #2f7d4f; background: rgba(47, 125, 79, 0.14) } .quiz button.ok .rk { background: #2f7d4f; color: #fff; border-color: #2f7d4f }
+.quiz button.no { border-color: var(--crimson); background: rgba(163, 36, 47, 0.1) } .quiz button.no .rk { background: var(--crimson); color: var(--crimson-ink); border-color: var(--crimson) }
+.quiz .rk { grid-row: auto }
+
+/* shopping list */
+.shoplist { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column }
+.shoplist li { display: flex; align-items: center; gap: 4px; padding: 7px 0; border-bottom: 1px dashed var(--line) }
+.shoplist label { display: flex; align-items: flex-start; gap: 9px; flex: 1; min-width: 0; cursor: pointer }
+.shoplist input { width: 18px; height: 18px; margin: 2px 0 0; accent-color: var(--crimson); flex: 0 0 auto }
+.shoplist small { display: block; color: var(--muted); font-size: 12.5px }
+.shoplist li.done span { text-decoration: line-through; color: var(--muted) }
+.mini { width: 32px; height: 32px; flex: 0 0 auto; border-radius: 50%; border: 1px solid var(--line); background: var(--paper); font-size: 14px; line-height: 1 }
+.mini:hover { border-color: var(--ink) }
+
 @media (max-width: 880px) {
   #stage { flex: 0 0 43%; min-height: 250px }
   #panel { position: relative; right: auto; top: auto; bottom: auto; width: auto; flex: 1 1 auto; min-height: 0; border-radius: 14px 14px 0 0; margin-top: -12px; border: 0; border-top: 1px solid var(--line); box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.25) }
@@ -194,6 +273,8 @@ td.num { font-family: var(--mono); color: var(--muted); font-size: 12px; width: 
   #hint { display: none }
   #settings { right: 10px; top: auto; bottom: 10px; position: fixed }
   .sec { padding: 12px 16px 26px }
+  #toast { position: fixed; bottom: 14px }
+  #tabs button { font-size: 12.5px }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important } }
 
@@ -221,7 +302,7 @@ td.num { font-family: var(--mono); color: var(--muted); font-size: 12px; width: 
       <button class="pill" id="langBtn"></button>
       <button class="pill" id="gear" aria-label="Ajustes · Settings" aria-haspopup="dialog">⚙</button>
     </div>
-    <div id="tabs" role="tablist"><button role="tab" aria-selected="true"></button><button role="tab" aria-selected="false"></button><button role="tab" aria-selected="false"></button><button role="tab" aria-selected="false"></button></div>
+    <div id="tabs" role="tablist"><button role="tab" aria-selected="true"></button><button role="tab" aria-selected="false"></button><button role="tab" aria-selected="false"></button><button role="tab" aria-selected="false"></button><button role="tab" aria-selected="false"></button></div>
     <div id="pbody">
       <section class="sec" id="butchersec">
         <form class="ask" id="askform" autocomplete="off">
@@ -236,8 +317,10 @@ td.num { font-family: var(--mono); color: var(--muted); font-size: 12px; width: 
       <section class="sec" id="cutsec" hidden><div id="cutcard"></div></section>
       <section class="sec" id="dishsec" hidden></section>
       <section class="sec" id="trsec" hidden></section>
+      <section class="sec" id="moresec" hidden></section>
     </div>
   </aside>
+  <div id="toast" role="status" aria-live="polite" hidden></div>
   <div id="settings" role="dialog" aria-label="Ajustes" hidden>
     <h3>Ajustes</h3>
     <div class="field"><span id="setLangL"></span><div class="seg" id="setLang"></div></div>
@@ -1468,7 +1551,7 @@ Carne para una cena especial|INT|sear|lf|ba,la,tb|el corte para lucirse|the cut 
 <script>
 // ---- mesh pack loader and materials (shared by the app and the test viewer)
 const MeshLib = (function () {
-  const T = THREE;
+  const T = window.THREE;
 
   function parsePack(buf) {
     const dv = new DataView(buf);
@@ -2080,14 +2163,346 @@ const CUTS = [
   why: { soup: ['Es la fuente de gelatina más concentrada de la res: sopa de pata, mocotó, caldo de pata, cow foot soup.', 'It is the most concentrated source of gelatin on the animal: sopa de pata, mocotó, cow foot soup.'] } }
 ];
 
+// ---- Doneness, glossary, shop phrases and portion rules. Text triples are [español, English, português].
+
+// Core temperature after resting, °C. names[country] has one entry per level: [term, also, qualifier].
+// A qualifier is what to add when the country uses one word for two neighbouring levels.
+const DONENESS = {
+  min: 44, max: 77,
+  levels: [
+    { id: 'blue', t: [46, 49], n: ['Azul', 'Blue', 'Selada'],
+      d: ['Sellada por fuera; por dentro cruda y apenas tibia. Blanda como carne cruda.', 'Seared outside; raw and barely warm inside. As soft as raw meat.', 'Selada por fora; por dentro crua e apenas morna. Macia como carne crua.'] },
+    { id: 'rare', t: [50, 54], n: ['Rojo', 'Rare', 'Malpassada'],
+      d: ['Centro rojo y fresco, apenas caliente. Muy blanda y con mucho jugo.', 'Cool red centre, just warm. Very soft and very juicy.', 'Centro vermelho e fresco, apenas quente. Muito macia e suculenta.'] },
+    { id: 'mr', t: [55, 58], n: ['Medio rojo', 'Medium rare', 'Ao ponto para mal'],
+      d: ['Centro rojo-rosado y caliente. La grasa empieza a fundirse: el punto que más se recomienda para cortes tiernos.', 'Warm red-pink centre. The fat starts to melt: the point most often recommended for tender cuts.', 'Centro vermelho-rosado e quente. A gordura começa a derreter: o ponto mais recomendado para cortes macios.'] },
+    { id: 'med', t: [59, 63], n: ['Medio', 'Medium', 'Ao ponto'],
+      d: ['Rosada de lado a lado, sin rojo. Más firme y todavía jugosa.', 'Pink from edge to edge, no red. Firmer and still juicy.', 'Rosada de ponta a ponta, sem vermelho. Mais firme e ainda suculenta.'] },
+    { id: 'mw', t: [64, 68], n: ['Tres cuartos', 'Medium well', 'Ao ponto para bem'],
+      d: ['Apenas un hilo rosado en el centro. Firme y con poco jugo.', 'Just a trace of pink in the centre. Firm, with little juice.', 'Só um fio rosado no centro. Firme e com pouco suco.'] },
+    { id: 'well', t: [69, 77], n: ['Bien cocido', 'Well done', 'Bem passada'],
+      d: ['Gris-marrón de lado a lado. Firme y seca, salvo en cortes con mucha grasa.', 'Grey-brown all the way through. Firm and dry, except in very fatty cuts.', 'Cinza-marrom de ponta a ponta. Firme e seca, salvo em cortes muito gordos.'] }
+  ],
+  names: {
+    co: [['Azul'], ['Un cuarto', 'Rojo'], ['Medio', 'Término medio', 'tirando a rojo'], ['Medio', 'Término medio', 'tirando a tres cuartos'], ['Tres cuartos'], ['Bien asado', 'Bien cocido']],
+    mx: [['Azul'], ['Rojo inglés', 'A la inglesa'], ['Medio rojo'], ['Término medio'], ['Tres cuartos'], ['Bien cocido']],
+    ar: [['Vuelta y vuelta'], ['Bien jugoso'], ['Jugoso'], ['A punto'], ['Pasado de punto'], ['Bien cocido', 'Cocido']],
+    cl: [['Azul', 'Vuelta y vuelta'], ['A la inglesa'], ['A punto', '', 'tirando a rojo'], ['A punto'], ['Tres cuartos'], ['Bien cocido']],
+    ve: [['Azul', 'Vuelta y vuelta'], ['Rojo', 'Poco cocido'], ['Término medio', '', 'tirando a rojo'], ['Término medio'], ['Tres cuartos'], ['Bien cocido']],
+    br: [['Selada', 'Bleu'], ['Malpassada', 'Mal passada'], ['Ao ponto para mal', 'Ao ponto para menos'], ['Ao ponto'], ['Ao ponto para bem', 'Ao ponto para mais'], ['Bem passada']],
+    es: [['Muy poco hecho', 'Vuelta y vuelta'], ['Poco hecho'], ['Al punto', 'Punto menos', 'tirando a poco hecho'], ['Al punto'], ['Hecho', 'Punto más · Pasado'], ['Muy hecho']],
+    us: [['Blue rare', 'Blue'], ['Rare'], ['Medium rare'], ['Medium'], ['Medium well'], ['Well done']],
+    uk: [['Blue'], ['Rare'], ['Medium rare'], ['Medium'], ['Medium well'], ['Well done']],
+    fr: [['Bleu'], ['Saignant'], ['À point'], ['À point', 'Rosé', 'bien rosé'], ['Cuit'], ['Bien cuit']],
+    it: [['Blu', 'Molto al sangue'], ['Al sangue'], ['Media', 'Media cottura', 'tendente al sangue'], ['Media', 'Media cottura'], ['Ben cotta', '', 'non troppo'], ['Ben cotta']]
+  },
+  // how to say it at the table, by language of the country
+  order: { es: '{x}, por favor.', pt: '{x}, por favor.', en: '{x}, please.', fr: '{x}, s’il vous plaît.', it: '{x}, per favore.' },
+  ask: { es: '¿Qué término?', pt: 'Qual o ponto da carne?', en: 'How would you like it cooked?', fr: 'Quelle cuisson ?', it: 'Che cottura?' },
+  pitfalls: [
+    { t: ['«A punto» no es igual en todas partes', '“A punto” is not the same everywhere', '“Ao ponto” não é igual em todo lugar'],
+      d: ['À point en Francia sale rojo-rosado (55–58 °C). Al punto en España queda parecido. A punto en Argentina y Chile y ao ponto en Brasil salen rosados o más hechos (60 °C o más). Si te gusta jugosa, en Argentina pide «jugoso».',
+        'À point in France comes red-pink (55–58 °C / 131–136 °F). Al punto in Spain is similar. A punto in Argentina and Chile, and ao ponto in Brazil, come pink or more cooked (60 °C / 140 °F and up). If you like it juicy, in Argentina ask for “jugoso”.',
+        'À point na França vem vermelho-rosado (55–58 °C). Al punto na Espanha é parecido. A punto na Argentina e no Chile e ao ponto no Brasil vêm rosados ou mais passados (60 °C ou mais). Se você gosta suculenta, na Argentina peça “jugoso”.'] },
+    { t: ['«Tres cuartos» no viaja', '“Tres cuartos” does not travel', '“Tres cuartos” não viaja'],
+      d: ['Se usa en Colombia, México, Venezuela y Chile. En Argentina se dice «pasado de punto», en España «hecho», en Brasil «ao ponto para bem» y en inglés «medium well». «Three quarters» no significa nada en un restaurante.',
+        'It is used in Colombia, Mexico, Venezuela and Chile. Argentina says “pasado de punto”, Spain “hecho”, Brazil “ao ponto para bem”, and English “medium well”. “Three quarters” means nothing in a restaurant.',
+        'Usa-se na Colômbia, no México, na Venezuela e no Chile. Na Argentina diz-se “pasado de punto”, na Espanha “hecho”, no Brasil “ao ponto para bem” e em inglês “medium well”. “Three quarters” não quer dizer nada num restaurante.'] },
+    { t: ['«Medium» es más hecho que «medio»', '“Medio” is rarer than “medium”', '“Medium” é mais passado que “medio”'],
+      d: ['En Estados Unidos y Reino Unido, medium es rosado sin nada de rojo (59–63 °C). Si en tu país pides término medio y te llega con centro rojo, allá pide «medium rare».',
+        'In the US and UK, medium is pink with no red at all (59–63 °C / 138–145 °F). In much of Latin America “término medio” arrives with a red centre: that is closer to medium rare.',
+        'Nos Estados Unidos e no Reino Unido, medium é rosado sem nenhum vermelho (59–63 °C). “Término medio” em boa parte da América Latina chega com o centro vermelho: equivale a “medium rare”.'] },
+    { t: ['«A la inglesa» solo existe en español', '“A la inglesa” exists only in Spanish', '“A la inglesa” só existe em espanhol'],
+      d: ['En México y Chile, «a la inglesa» o «rojo inglés» es carne roja por dentro. En inglés se dice «rare». En Francia, «à l’anglaise» es otra cosa: hervido en agua con sal.',
+        'In Mexico and Chile, “a la inglesa” or “rojo inglés” means red inside. In English just say “rare”. In France, “à l’anglaise” is something else: boiled in salted water.',
+        'No México e no Chile, “a la inglesa” ou “rojo inglés” é carne vermelha por dentro. Em inglês diz-se “rare”. Na França, “à l’anglaise” é outra coisa: cozido em água e sal.'] },
+    { t: ['«Jugoso» es un término, no un elogio', '“Jugoso” is a doneness, not a compliment', '“Jugoso” é um ponto, não um elogio'],
+      d: ['En Argentina y Uruguay «jugoso» es un punto de cocción: centro rojo-rosado. En el resto de países solo quiere decir que tiene jugo, y no le dice nada al parrillero.',
+        'In Argentina and Uruguay “jugoso” is a doneness level: a red-pink centre. Elsewhere it only means “juicy” and tells the cook nothing.',
+        'Na Argentina e no Uruguai “jugoso” é um ponto da carne: centro vermelho-rosado. Nos outros países só quer dizer suculento, e não diz nada ao churrasqueiro.'] },
+    { t: ['Cada país corre la escala', 'Each country shifts the scale', 'Cada país desloca a escala'],
+      d: ['En Francia, Italia y España la cocina tiende a dejar la carne un paso más roja de lo que pides; en buena parte de América Latina, un paso más cocida. Si te importa, describe el centro: «rojo», «rosado» o «sin rosado».',
+        'Kitchens in France, Italy and Spain tend to cook one step rarer than you ask; in much of Latin America, one step more done. If it matters, describe the centre: “red”, “pink” or “no pink”.',
+        'Na França, na Itália e na Espanha a cozinha tende a deixar a carne um ponto mais vermelha do que você pede; em boa parte da América Latina, um ponto mais passada. Se isso importa, descreva o centro: “vermelho”, “rosado” ou “sem rosado”.'] },
+    { t: ['El término no aplica a todo', 'Doneness does not apply to everything', 'O ponto não vale para tudo'],
+      d: ['La carne molida se cocina completa (71 °C) porque moler reparte por dentro lo que estaba en la superficie. Y los cortes con mucho colágeno —pecho, costilla, morrillo— no se piden por término: se cocinan por horas hasta 90–96 °C.',
+        'Ground beef is cooked through (71 °C / 160 °F) because grinding spreads the surface through the inside. And collagen-rich cuts — brisket, short rib, shank — are not ordered by doneness: they cook for hours to 90–96 °C (195–205 °F).',
+        'A carne moída se cozinha por completo (71 °C) porque moer espalha por dentro o que estava na superfície. E os cortes com muito colágeno — peito, costela, músculo — não se pedem por ponto: cozinham por horas até 90–96 °C.'] }
+  ],
+  safety: ['Referencia sanitaria (USDA): piezas enteras de res a 63 °C con 3 minutos de reposo; carne molida a 71 °C. Por debajo de eso es una decisión tuya.', 'Food-safety reference (USDA): whole cuts of beef to 63 °C / 145 °F with a 3-minute rest; ground beef to 71 °C / 160 °F. Below that is your own call.', 'Referência sanitária (USDA): peças inteiras de carne bovina a 63 °C com 3 minutos de descanso; carne moída a 71 °C. Abaixo disso a decisão é sua.']
+};
+
+// Recommended doneness per cut. r: [from, to] level indexes; slow: judged by time, not by doneness;
+// safe: cook through; crisp: cook until golden; soft: roast until it wobbles.
+const DONE_REC = {
+  lf: { r: [1, 2] }, la: { r: [2, 3] }, ba: { r: [2, 3] }, tb: { r: [1, 2] }, ca: { r: [2, 3] }, pa: { r: [2, 2] }, co: { r: [2, 2] },
+  sb: { r: [2, 2], slow: 1 }, va: { r: [2, 3] }, en: { r: [2, 3] }, ha: { r: [1, 2] }, pl: { r: [2, 2], slow: 1 }, bp: { r: [2, 2] }, mc: { r: [1, 2], slow: 1 }, cp: { r: [2, 3] },
+  hi: { r: [3, 3] }, cz: { r: [1, 2] }, ri: { r: [3, 3] },
+  ma: { slow: 1 }, fa: { slow: 1 }, cs: { slow: 1 }, pe: { slow: 1 }, ag: { slow: 1 }, ps: { slow: 1 }, mo: { slow: 1 }, mu: { slow: 1 }, bo: { slow: 1 }, cl: { slow: 1 }, ch: { slow: 1 }, le: { slow: 1 }, mon: { slow: 1 }, pt: { slow: 1 },
+  mol: { safe: 1 }, chu: { crisp: 1 }, mj: { crisp: 1 }, tu: { soft: 1 }
+};
+const DONE_NOTE = {
+  r: ['Mejor entre {a} y {b}', 'Best between {a} and {b}', 'Melhor entre {a} e {b}'],
+  r1: ['Mejor en {a}', 'Best at {a}', 'Melhor em {a}'],
+  slow: ['No se pide por término: se cocina lento, por horas, hasta que el colágeno se funde (90–96 °C por dentro).', 'Not ordered by doneness: it cooks low and slow for hours until the collagen melts (90–96 °C / 195–205 °F inside).', 'Não se pede por ponto: cozinha devagar, por horas, até o colágeno derreter (90–96 °C por dentro).'],
+  both: ['A fuego alto y rápido, {x}. En olla no aplica el término: se cocina por horas.', 'Hot and fast, {x}. Braised, doneness does not apply: it cooks for hours.', 'Em fogo alto e rápido, {x}. Na panela o ponto não se aplica: cozinha por horas.'],
+  safe: ['Carne molida: siempre cocida completa, 71 °C por dentro.', 'Ground beef: always cooked through, 71 °C / 160 °F inside.', 'Carne moída: sempre bem cozida, 71 °C por dentro.'],
+  crisp: ['Se cocina completa y se dora hasta quedar crocante por fuera.', 'Cooked through and browned until crisp outside.', 'Cozinha por completo e doura até ficar crocante por fora.'],
+  soft: ['No tiene término: se hornea hasta que el tuétano tiembla y se unta.', 'No doneness: roast until the marrow wobbles and spreads.', 'Não tem ponto: asse até o tutano tremer e ficar cremoso.']
+};
+
+// ---- Portions and times
+const PORTION = {
+  appetite: [110, 150, 200],        // grams of cooked, edible meat per person
+  yield: { grill: 0.75, sear: 0.75, roast: 0.72, braise: 0.62, shred: 0.6, soup: 0.65, smoke: 0.5, stirfry: 0.8, fry: 0.8, raw: 1, grind: 0.75, skewer: 0.75, cure: 0.45, roll: 0.7, slice: 0.85 },
+  bone: { cs: 0.35, cl: 0.5, tb: 0.2, mu: 0.25, ps: 0.2, fa: 0.1, le: 0.15 },   // share of the weight you do not eat
+  fixed: { tu: 350, pt: 250 },      // grams per person, whatever the method
+  // minutes per side over high heat for a 2.5 cm steak, by doneness level
+  side: [1.5, 2.5, 3.5, 4.5, 5.5, 7],
+  // oven at 180 °C: minutes per 500 g by doneness level, after a 15-minute blast
+  roast: [10, 12, 15, 18, 22, 25]
+};
+
+// ---- What to say at the counter, by language of the country (lang prefix)
+const PHRASES = {
+  hello: { es: 'Buenos días.', pt: 'Bom dia.', en: 'Hello.', fr: 'Bonjour.', it: 'Buongiorno.' },
+  want: { es: 'Quisiera {q} de {cut}, por favor.', pt: 'Queria {q} de {cut}, por favor.', en: 'I would like {q} of {cut}, please.', fr: 'Je voudrais {q} de {cut}, s’il vous plaît.', it: 'Vorrei {q} di {cut}, per favore.' },
+  want0: { es: 'Quisiera {cut}, por favor.', pt: 'Queria {cut}, por favor.', en: 'I would like some {cut}, please.', fr: 'Je voudrais du {cut}, s’il vous plaît.', it: 'Vorrei {cut}, per favore.' },
+  for: { es: 'Es para {m}.', pt: 'É para {m}.', en: 'It is for {m}.', fr: 'C’est pour {m}.', it: 'È per {m}.' },
+  have: { es: '¿Tiene este corte?', pt: 'O senhor tem este corte?', en: 'Do you have this cut?', fr: 'Avez-vous ce morceau ?', it: 'Ha questo taglio?' },
+  thanks: { es: 'Gracias.', pt: 'Obrigado.', en: 'Thank you.', fr: 'Merci.', it: 'Grazie.' },
+  method: {
+    grill: { es: 'asar a la parrilla', pt: 'fazer na churrasqueira', en: 'grilling', fr: 'griller au barbecue', it: 'fare alla griglia' },
+    sear: { es: 'hacer a la plancha', pt: 'fazer na frigideira', en: 'pan-searing', fr: 'poêler', it: 'cuocere in padella' },
+    roast: { es: 'hacer al horno', pt: 'assar no forno', en: 'roasting', fr: 'rôtir au four', it: 'fare arrosto al forno' },
+    braise: { es: 'un guiso', pt: 'um ensopado', en: 'a stew', fr: 'un ragoût', it: 'uno stufato' },
+    shred: { es: 'desmechar', pt: 'desfiar', en: 'shredding', fr: 'effilocher', it: 'sfilacciare' },
+    soup: { es: 'una sopa', pt: 'uma sopa', en: 'soup', fr: 'un bouillon', it: 'un brodo' },
+    smoke: { es: 'ahumar', pt: 'defumar', en: 'smoking', fr: 'fumer', it: 'affumicare' },
+    stirfry: { es: 'saltear en tiras', pt: 'saltear em tiras', en: 'a stir-fry', fr: 'faire sauter en lanières', it: 'saltare a straccetti' },
+    fry: { es: 'apanar', pt: 'fazer à milanesa', en: 'breading and frying', fr: 'paner', it: 'fare le cotolette' },
+    raw: { es: 'comer crudo', pt: 'comer cru', en: 'eating raw', fr: 'manger cru', it: 'mangiare crudo' },
+    grind: { es: 'moler', pt: 'moer', en: 'grinding', fr: 'hacher', it: 'macinare' },
+    skewer: { es: 'pinchos', pt: 'espetinhos', en: 'skewers', fr: 'des brochettes', it: 'spiedini' },
+    cure: { es: 'curar', pt: 'curar', en: 'curing', fr: 'faire sécher', it: 'stagionare' },
+    roll: { es: 'rellenar', pt: 'rechear', en: 'stuffing', fr: 'farcir', it: 'farcire' },
+    slice: { es: 'cortar en láminas finas', pt: 'cortar em fatias finas', en: 'slicing paper-thin', fr: 'couper en tranches très fines', it: 'tagliare a fettine sottilissime' }
+  },
+  req: {
+    grill: { es: 'En una pieza, de 3 cm de grueso.', pt: 'Em uma peça, com 3 cm de espessura.', en: 'In one piece, an inch and a quarter thick.', fr: 'En un seul morceau, de 3 cm d’épaisseur.', it: 'In un pezzo unico, spesso 3 cm.' },
+    sear: { es: 'En filetes de 2,5 cm de grueso.', pt: 'Em bifes de 2,5 cm de espessura.', en: 'Cut into one-inch steaks.', fr: 'En tranches de 2,5 cm d’épaisseur.', it: 'A fette spesse 2,5 cm.' },
+    roast: { es: 'En una sola pieza y amarrado.', pt: 'Em uma peça só e amarrado.', en: 'In one piece, tied.', fr: 'En un seul morceau, ficelé.', it: 'In un pezzo unico, legato.' },
+    braise: { es: 'En trozos de 4 a 5 cm.', pt: 'Em cubos de 4 a 5 cm.', en: 'Cut into two-inch chunks.', fr: 'En morceaux de 4 à 5 cm.', it: 'A pezzi di 4–5 cm.' },
+    shred: { es: 'En una sola pieza, sin cortar.', pt: 'Em uma peça só, sem cortar.', en: 'In one piece, uncut.', fr: 'En un seul morceau, sans le couper.', it: 'In un pezzo unico, senza tagliarlo.' },
+    soup: { es: 'Con hueso y en trozos.', pt: 'Com osso e em pedaços.', en: 'Bone-in, cut into pieces.', fr: 'Avec l’os, en morceaux.', it: 'Con l’osso, a pezzi.' },
+    smoke: { es: 'Entero y con toda la grasa.', pt: 'Inteiro e com toda a gordura.', en: 'Whole, with the fat left on.', fr: 'Entier, avec tout le gras.', it: 'Intero, con tutto il grasso.' },
+    stirfry: { es: 'En tiras delgadas, contra la fibra.', pt: 'Em tiras finas, contra a fibra.', en: 'Cut into thin strips across the grain.', fr: 'En fines lanières, en travers de la fibre.', it: 'A striscioline sottili, contro fibra.' },
+    fry: { es: 'En filetes delgados, de medio centímetro, aplanados.', pt: 'Em bifes finos, de meio centímetro, batidos.', en: 'In thin slices, a quarter inch, pounded flat.', fr: 'En escalopes fines d’un demi-centimètre, aplaties.', it: 'A fettine sottili di mezzo centimetro, battute.' },
+    raw: { es: 'Es para comer crudo: la pieza entera, limpia y de hoy.', pt: 'É para comer cru: a peça inteira, limpa e de hoje.', en: 'It is to eat raw: a whole trimmed piece, cut today.', fr: 'C’est pour manger cru : un morceau entier, paré, du jour.', it: 'È da mangiare crudo: un pezzo intero, pulito, di oggi.' },
+    grind: { es: 'Molido delante de mí, una sola pasada.', pt: 'Moído na hora, uma passada só.', en: 'Ground fresh, one pass.', fr: 'Haché devant moi, un seul passage.', it: 'Macinato al momento, una sola passata.' },
+    skewer: { es: 'En cubos de 3 cm, todos iguales.', pt: 'Em cubos de 3 cm, todos iguais.', en: 'Cut into even one-inch cubes.', fr: 'En cubes de 3 cm, tous pareils.', it: 'A cubetti di 3 cm, tutti uguali.' },
+    cure: { es: 'Una pieza entera, magra y sin telas.', pt: 'Uma peça inteira, magra e sem membranas.', en: 'A whole lean piece, membranes removed.', fr: 'Un morceau entier, maigre et dénervé.', it: 'Un pezzo intero, magro e senza pellicine.' },
+    roll: { es: 'Abierto en libro para rellenar.', pt: 'Aberto em manta para rechear.', en: 'Butterflied for stuffing.', fr: 'Ouvert en portefeuille pour le farcir.', it: 'Aperto a libro per farcirlo.' },
+    slice: { es: 'Cortado en máquina, muy fino.', pt: 'Fatiado na máquina, bem fino.', en: 'Machine-sliced, very thin.', fr: 'Tranché à la machine, très fin.', it: 'Tagliato a macchina, molto sottile.' }
+  }
+};
+
+// ---- Glossary. g: group (meat, butcher, cook, grade, trap). cut: a cut that shows the idea.
+const GLOSS_GROUPS = { meat: ['La carne', 'The meat', 'A carne'], butcher: ['En la carnicería', 'At the butcher’s', 'No açougue'], cook: ['En la cocina', 'In the kitchen', 'Na cozinha'], grade: ['Razas y calidades', 'Breeds and grades', 'Raças e classificações'], trap: ['Palabras trampa', 'Trap words', 'Palavras-armadilha'] };
+const GLOSSARY = [
+  { id: 'marbling', g: 'meat', cut: 'ba', t: ['Marmoleo', 'Marbling', 'Marmoreio'], aka: ['grasa infiltrada · veteado', 'intramuscular fat', 'gordura entremeada'],
+    d: ['Las vetas finas de grasa dentro del músculo. Se funden al cocinar y dan jugo y sabor; es lo que más pesa en la calidad de un corte para parrilla.', 'The fine streaks of fat inside the muscle. They melt during cooking and give juice and flavour; it is what counts most in the quality of a grilling cut.', 'Os veios finos de gordura dentro do músculo. Derretem ao cozinhar e dão suculência e sabor; é o que mais pesa na qualidade de um corte para grelha.'] },
+  { id: 'collagen', g: 'meat', cut: 'mu', t: ['Colágeno', 'Collagen', 'Colágeno'], aka: ['tejido conectivo', 'connective tissue', 'tecido conjuntivo'],
+    d: ['La proteína que mantiene unidas las fibras. Abunda en los músculos que más trabajan. A fuego rápido queda dura; tras horas de calor húmedo se vuelve gelatina y deja la carne melosa.', 'The protein that holds the fibres together. Hard-working muscles have the most. Cooked fast it stays tough; after hours of moist heat it turns to gelatin and makes the meat silky.', 'A proteína que mantém as fibras unidas. Abunda nos músculos que mais trabalham. Em fogo rápido fica dura; depois de horas de calor úmido vira gelatina e deixa a carne macia e untuosa.'] },
+  { id: 'grain', g: 'meat', cut: 'sb', t: ['Fibra', 'Grain', 'Fibra'], aka: ['hebra · veta', 'muscle fibres', 'sentido da fibra'],
+    d: ['La dirección en que corren las fibras del músculo. Se ve como líneas paralelas en la superficie del corte.', 'The direction the muscle fibres run. You can see it as parallel lines on the surface of the cut.', 'A direção em que correm as fibras do músculo. Dá para ver como linhas paralelas na superfície do corte.'] },
+  { id: 'against', g: 'cook', cut: 'en', t: ['A contrafibra', 'Against the grain', 'Contra a fibra'], aka: ['contra la veta · al través', 'across the grain', 'contra o fio'],
+    d: ['Tajar en perpendicular a las fibras. Así cada bocado tiene fibras cortas y se siente tierno; a favor de la fibra, el mismo corte queda correoso. Es decisivo en sobrebarriga, vacío y entraña.', 'Slicing at right angles to the fibres. Every bite then has short fibres and feels tender; sliced with the grain the same cut is chewy. It is decisive for flank, bavette and skirt.', 'Fatiar perpendicular às fibras. Assim cada pedaço tem fibras curtas e fica macio; a favor da fibra, o mesmo corte fica borrachudo. É decisivo na fraldinha e na entranha.'] },
+  { id: 'myoglobin', g: 'meat', t: ['Mioglobina', 'Myoglobin', 'Mioglobina'], aka: ['el «jugo rojo»', 'the “red juice”', 'o “suco vermelho”'],
+    d: ['La proteína que le da el color rojo a la carne. El líquido rojo del plato es agua con mioglobina, no sangre. Con el calor pasa de rojo a rosado y luego a gris: eso es lo que muestra el término de cocción.', 'The protein that makes beef red. The red liquid on the plate is water with myoglobin, not blood. Heat turns it from red to pink to grey: that is what doneness shows.', 'A proteína que dá a cor vermelha à carne. O líquido vermelho do prato é água com mioglobina, não sangue. Com o calor passa de vermelho a rosado e depois a cinza: é isso que o ponto da carne mostra.'] },
+  { id: 'fatcap', g: 'meat', cut: 'pa', t: ['Capa de grasa', 'Fat cap', 'Capa de gordura'], aka: ['grasa de cobertura', 'external fat', 'gordura de cobertura'],
+    d: ['La grasa exterior que cubre algunos cortes. Protege la carne del fuego y la baña al fundirse. No dejes que te la quiten: se recorta después de cocinar.', 'The outer fat that covers some cuts. It shields the meat from the fire and bastes it as it melts. Do not let the butcher remove it: trim after cooking.', 'A gordura externa que cobre alguns cortes. Protege a carne do fogo e a rega ao derreter. Não deixe tirarem: apare depois de assar.'] },
+  { id: 'silverskin', g: 'butcher', t: ['Tela', 'Silverskin', 'Membrana'], aka: ['pellejo · telilla · nervio', 'sinew · membrane', 'pele prateada · nervo'],
+    d: ['La membrana plateada que envuelve algunos músculos. No se ablanda con ningún método: se quita con el cuchillo antes de cocinar. «Limpio» en la carnicería quiere decir sin telas.', 'The silvery membrane that wraps some muscles. No cooking method softens it: cut it off before cooking. “Trimmed” at the butcher’s means without it.', 'A membrana prateada que envolve alguns músculos. Não amolece com nenhum método: tira-se com a faca antes de cozinhar. “Limpo” no açougue quer dizer sem membranas.'] },
+  { id: 'primal', g: 'butcher', t: ['Corte primario', 'Primal cut', 'Corte primário'], aka: ['pieza mayor', 'wholesale cut', 'peça inteira'],
+    d: ['Las piezas grandes en que se divide la media canal (lomo, pierna, cuarto delantero…). De ellas salen los cortes que ves en la vitrina. Cada país traza las líneas en un sitio distinto: por eso las equivalencias nunca son exactas.', 'The large pieces a side of beef is first divided into (loin, round, chuck…). Retail cuts come from them. Every country draws the lines in a different place, which is why equivalents are never exact.', 'As peças grandes em que se divide a meia carcaça (lombo, traseiro, dianteiro…). Delas saem os cortes da vitrine. Cada país traça as linhas num lugar diferente: por isso as equivalências nunca são exatas.'] },
+  { id: 'bonein', g: 'butcher', cut: 'tb', t: ['Con hueso', 'Bone-in', 'Com osso'], aka: ['', '', ''],
+    d: ['El hueso frena la cocción junto a él y la carne pegada queda más jugosa. A cambio pagas peso que no te comes: calcula un 20–40 % más por persona.', 'The bone slows cooking next to it, so the meat against it stays juicier. In exchange you pay for weight you do not eat: allow 20–40% more per person.', 'O osso freia o cozimento junto dele e a carne colada fica mais suculenta. Em troca você paga peso que não come: calcule 20–40 % a mais por pessoa.'] },
+  { id: 'butterfly', g: 'butcher', cut: 'mc', t: ['Abrir en libro', 'Butterfly', 'Abrir em manta'], aka: ['abrir en mariposa', 'open like a book', 'borboletear'],
+    d: ['Cortar una pieza por la mitad sin separarla del todo, para abrirla como un libro. Queda más delgada y ancha: lista para rellenar, enrollar o asar más rápido.', 'Cutting a piece through the middle without separating it, so it opens like a book. It ends up thinner and wider: ready to stuff, roll or cook faster.', 'Cortar uma peça ao meio sem separá-la de todo, para abri-la como um livro. Fica mais fina e larga: pronta para rechear, enrolar ou assar mais rápido.'] },
+  { id: 'tenderize', g: 'butcher', cut: 'cp', t: ['Tiernizar', 'Tenderize', 'Amaciar'], aka: ['aplanar · ablandar', 'pound', 'bater o bife'],
+    d: ['Romper las fibras a golpes (mazo), con cuchillas o con un marinado ácido o enzimático (piña, papaya). Sirve para filetes delgados de pierna; no arregla un corte con mucho colágeno.', 'Breaking the fibres by pounding, with blades, or with an acidic or enzymatic marinade (pineapple, papaya). It helps thin leg steaks; it will not fix a collagen-heavy cut.', 'Romper as fibras batendo (martelo), com lâminas ou com uma marinada ácida ou enzimática (abacaxi, mamão). Serve para bifes finos do traseiro; não resolve um corte com muito colágeno.'] },
+  { id: 'ratio', g: 'butcher', cut: 'mol', t: ['80/20', '80/20', '80/20'], aka: ['proporción carne/grasa', 'lean-to-fat ratio', 'proporção carne/gordura'],
+    d: ['La proporción de carne magra y grasa en la carne molida. 80/20 es la clásica de hamburguesa; 90/10 sirve para salsas y rellenos, pero en hamburguesa queda seca.', 'The proportion of lean meat to fat in ground beef. 80/20 is the classic burger blend; 90/10 suits sauces and fillings but makes a dry burger.', 'A proporção de carne magra e gordura na carne moída. 80/20 é a clássica de hambúrguer; 90/10 serve para molhos e recheios, mas no hambúrguer fica seca.'] },
+  { id: 'dryage', g: 'meat', cut: 'ba', t: ['Maduración en seco', 'Dry-aging', 'Maturação a seco'], aka: ['dry aged', 'dry-aged', 'dry aged'],
+    d: ['La pieza reposa semanas en cámara fría, sin empaque. Pierde agua, las enzimas ablandan las fibras y aparece un sabor a nuez y queso. Merma mucho, por eso cuesta más.', 'The piece rests for weeks in a cold room, unwrapped. It loses water, enzymes soften the fibres and a nutty, cheesy flavour develops. The loss is large, hence the price.', 'A peça descansa semanas em câmara fria, sem embalagem. Perde água, as enzimas amaciam as fibras e surge um sabor de nozes e queijo. A perda é grande, por isso custa mais.'] },
+  { id: 'wetage', g: 'meat', t: ['Maduración en húmedo', 'Wet-aging', 'Maturação úmida'], aka: ['madurada al vacío', 'vacuum-aged', 'maturada a vácuo'],
+    d: ['La carne madura dentro de su empaque al vacío. Se ablanda igual, sin perder peso ni cambiar mucho de sabor. Es lo normal en la carne de supermercado.', 'The meat ages inside its vacuum pack. It tenderises just the same, without losing weight or changing much in flavour. It is the norm for supermarket beef.', 'A carne matura dentro da embalagem a vácuo. Amacia do mesmo jeito, sem perder peso nem mudar muito de sabor. É o normal na carne de supermercado.'] },
+  { id: 'maillard', g: 'cook', t: ['Reacción de Maillard', 'Maillard reaction', 'Reação de Maillard'], aka: ['la costra · el dorado', 'browning', 'a crosta dourada'],
+    d: ['La reacción entre proteínas y azúcares que forma la costra dorada y su sabor, por encima de unos 140 °C. Necesita superficie seca: por eso se seca la carne antes de ponerla al fuego.', 'The reaction between proteins and sugars that forms the brown crust and its flavour, above about 140 °C / 285 °F. It needs a dry surface, which is why you pat the meat dry first.', 'A reação entre proteínas e açúcares que forma a crosta dourada e seu sabor, acima de uns 140 °C. Precisa de superfície seca: por isso se seca a carne antes de levá-la ao fogo.'] },
+  { id: 'sear', g: 'cook', t: ['Sellar', 'Sear', 'Selar'], aka: ['marcar · dorar', 'brown', 'dourar'],
+    d: ['Dorar la superficie a fuego muy alto. Da sabor y costra; no «cierra los poros» ni retiene los jugos, eso es un mito.', 'Browning the surface over very high heat. It gives flavour and crust; it does not “seal in the juices” — that is a myth.', 'Dourar a superfície em fogo muito alto. Dá sabor e crosta; não “fecha os poros” nem segura os sucos, isso é mito.'] },
+  { id: 'reverse', g: 'cook', cut: 'tb', t: ['Sellado inverso', 'Reverse sear', 'Selagem reversa'], aka: ['', '', ''],
+    d: ['Para piezas de más de 4 cm: primero calor suave (horno o lado frío de la parrilla, 110–130 °C) hasta quedar 8–10 °C por debajo del término, y al final el sellado fuerte. Queda del mismo color de borde a borde.', 'For pieces thicker than 4 cm (1½ in): gentle heat first (oven or the cool side of the grill, 110–130 °C / 225–265 °F) until 8–10 °C below the target, then a hard sear. The colour is even from edge to edge.', 'Para peças com mais de 4 cm: primeiro calor suave (forno ou lado frio da grelha, 110–130 °C) até ficar 8–10 °C abaixo do ponto, e no fim a selagem forte. Fica da mesma cor de ponta a ponta.'] },
+  { id: 'rest', g: 'cook', t: ['Reposo', 'Resting', 'Descanso'], aka: ['', '', ''],
+    d: ['Dejar la carne quieta después del fuego: 5 minutos un filete, 15–20 una pieza grande. Los jugos se espesan y se quedan en la carne en vez de irse a la tabla.', 'Leaving the meat alone after cooking: 5 minutes for a steak, 15–20 for a roast. The juices thicken and stay in the meat instead of running onto the board.', 'Deixar a carne quieta depois do fogo: 5 minutos um bife, 15–20 uma peça grande. Os sucos engrossam e ficam na carne em vez de irem para a tábua.'] },
+  { id: 'carryover', g: 'cook', t: ['Cocción residual', 'Carryover cooking', 'Cocção residual'], aka: ['', '', ''],
+    d: ['La carne sigue subiendo de temperatura al sacarla del fuego: unos 3 °C un filete y hasta 8 °C una pieza grande. Por eso se retira antes de llegar al término.', 'Meat keeps heating after it leaves the fire: about 3 °C (5 °F) for a steak and up to 8 °C (15 °F) for a large roast. That is why you pull it before the target.', 'A carne continua esquentando ao sair do fogo: uns 3 °C um bife e até 8 °C uma peça grande. Por isso se tira antes de chegar ao ponto.'] },
+  { id: 'lowslow', g: 'cook', cut: 'pe', t: ['Bajo y lento', 'Low and slow', 'Fogo baixo e lento'], aka: ['fuego lento', '', 'low and slow'],
+    d: ['Cocinar a 110–135 °C durante muchas horas, con humo o sin él. Es la única forma de volver tiernos los cortes grandes con mucho colágeno y grasa.', 'Cooking at 110–135 °C (225–275 °F) for many hours, with or without smoke. It is the only way to make large, collagen-rich, fatty cuts tender.', 'Cozinhar a 110–135 °C por muitas horas, com ou sem fumaça. É o único jeito de deixar macios os cortes grandes com muito colágeno e gordura.'] },
+  { id: 'sousvide', g: 'cook', t: ['Sous vide', 'Sous vide', 'Sous vide'], aka: ['cocción al vacío', 'water-bath cooking', 'cozimento a vácuo'],
+    d: ['La carne va en bolsa al vacío dentro de un baño de agua a la temperatura exacta del término. No se puede pasar de punto; al final se sella en sartén para darle costra.', 'The meat goes in a vacuum bag into a water bath held at the exact target temperature. It cannot overcook; it gets a quick sear at the end for the crust.', 'A carne vai em saco a vácuo num banho de água na temperatura exata do ponto. Não tem como passar do ponto; no fim sela-se na frigideira para dar crosta.'] },
+  { id: 'brine', g: 'cook', cut: 'pe', t: ['Salmuera', 'Brine', 'Salmoura'], aka: ['curar', 'cure', 'cura'],
+    d: ['Agua con sal (y a veces azúcar y especias) donde la carne reposa horas o días. La sal entra, sazona por dentro y ayuda a retener agua. Con sal de cura es la base del corned beef y el pastrami.', 'Salted water (sometimes with sugar and spices) in which meat rests for hours or days. The salt works in, seasons the inside and helps hold water. With curing salt it is the base of corned beef and pastrami.', 'Água com sal (e às vezes açúcar e especiarias) onde a carne descansa horas ou dias. O sal entra, tempera por dentro e ajuda a reter água. Com sal de cura é a base do corned beef e do pastrami.'] },
+  { id: 'steer', g: 'grade', t: ['Novillo, ternera, vaca', 'Steer, veal, cow', 'Novilho, vitela, vaca'], aka: ['', '', ''],
+    d: ['Novillo: macho castrado joven, la carne estándar. Ternera: animal de menos de un año, carne pálida y suave (en España «ternera» es casi toda la carne de res joven). Vaca vieja: carne oscura, grasa amarilla y mucho sabor, muy apreciada en el norte de España.', 'Steer: a young castrated male, the standard beef. Veal: an animal under a year old, pale and mild (in Spain “ternera” covers most young beef). Old cow: dark meat, yellow fat and deep flavour, prized in northern Spain.', 'Novilho: macho castrado jovem, a carne padrão. Vitela: animal com menos de um ano, carne clara e suave (na Espanha “ternera” é quase toda a carne bovina jovem). Vaca velha: carne escura, gordura amarela e muito sabor, muito apreciada no norte da Espanha.'] },
+  { id: 'zebu', g: 'grade', cut: 'mo', t: ['Cebú', 'Zebu', 'Zebu'], aka: ['Brahman · Nelore', 'Bos indicus', 'Nelore · Brahman'],
+    d: ['El ganado de giba, adaptado al trópico: la mayoría de la res en Colombia, Brasil y Venezuela. Carne magra y de fibra firme, con menos marmoleo que las razas europeas. Solo él tiene morrillo (cupim).', 'Humped cattle adapted to the tropics: most of the beef in Colombia, Brazil and Venezuela. Lean, firm-grained meat with less marbling than European breeds. Only zebu has the hump cut (cupim).', 'O gado de cupim, adaptado aos trópicos: a maior parte do rebanho no Brasil, na Colômbia e na Venezuela. Carne magra e de fibra firme, com menos marmoreio que as raças europeias. Só ele tem cupim.'] },
+  { id: 'angus', g: 'grade', t: ['Angus', 'Angus', 'Angus'], aka: ['Aberdeen Angus', 'Aberdeen Angus', 'Aberdeen Angus'],
+    d: ['Raza británica que marmolea con facilidad. «Angus» en una etiqueta habla de la raza, no del grado de calidad: puede haber Angus corriente y Angus excelente.', 'A British breed that marbles easily. “Angus” on a label tells you the breed, not the quality grade: there is ordinary Angus and excellent Angus.', 'Raça britânica que marmoriza com facilidade. “Angus” no rótulo fala da raça, não da classificação de qualidade: há Angus comum e Angus excelente.'] },
+  { id: 'wagyu', g: 'grade', t: ['Wagyu', 'Wagyu', 'Wagyu'], aka: ['Kobe · A5', 'Kobe · A5', 'Kobe · A5'],
+    d: ['Razas japonesas con marmoleo extremo. En Japón se califica con letra (rendimiento, A–C) y número (calidad, 1–5): A5 es el máximo. Kobe es wagyu de una región concreta. Se sirve en porciones pequeñas: es muy graso.', 'Japanese breeds with extreme marbling. Japan grades it with a letter (yield, A–C) and a number (quality, 1–5): A5 is the top. Kobe is wagyu from one specific region. It is served in small portions: it is very rich.', 'Raças japonesas com marmoreio extremo. No Japão classifica-se com letra (rendimento, A–C) e número (qualidade, 1–5): A5 é o máximo. Kobe é wagyu de uma região específica. Serve-se em porções pequenas: é muito gorduroso.'] },
+  { id: 'usda', g: 'grade', t: ['Prime, Choice, Select', 'Prime, Choice, Select', 'Prime, Choice, Select'], aka: ['grados USDA', 'USDA grades', 'classificação USDA'],
+    d: ['Los grados de calidad de Estados Unidos, según el marmoleo y la edad del animal. Prime es el más marmoleado (restaurantes), Choice el intermedio y más común, Select el más magro.', 'The US quality grades, based on marbling and the animal’s age. Prime is the most marbled (steakhouses), Choice the common middle, Select the leanest.', 'As classificações de qualidade dos Estados Unidos, segundo o marmoreio e a idade do animal. Prime é a mais marmorizada (restaurantes), Choice a intermediária e mais comum, Select a mais magra.'] },
+  { id: 'grass', g: 'grade', t: ['De pasto o de grano', 'Grass-fed or grain-fed', 'A pasto ou a grão'], aka: ['pastoreo · feedlot', 'pasture · feedlot', 'pasto · confinamento'],
+    d: ['La res de pasto da carne más magra, de grasa amarillenta y sabor más intenso; es lo habitual en Colombia, Argentina, Uruguay y Brasil. La terminada con grano marmolea más y sabe más suave; es lo habitual en Estados Unidos.', 'Grass-fed cattle give leaner beef with yellowish fat and a stronger flavour; it is the norm in Colombia, Argentina, Uruguay and Brazil. Grain-finished beef marbles more and tastes milder; it is the norm in the US.', 'O boi de pasto dá carne mais magra, de gordura amarelada e sabor mais intenso; é o habitual no Brasil, na Argentina, no Uruguai e na Colômbia. O terminado a grão marmoriza mais e tem sabor mais suave; é o habitual nos Estados Unidos.'] },
+  { id: 'churrasco', g: 'trap', t: ['Churrasco', 'Churrasco', 'Churrasco'], aka: ['', '', ''],
+    d: ['En Brasil es el asado entero, la parrillada. En Argentina y Uruguay, un bife delgado a la plancha. En Colombia y Ecuador, un filete grueso a la parrilla (a menudo de lomo ancho) con chimichurri. En Chile, un sándwich de carne en láminas.', 'In Brazil it is the whole barbecue. In Argentina and Uruguay, a thin griddled steak. In Colombia and Ecuador, a thick grilled steak (often strip loin) with chimichurri. In Chile, a sandwich of thinly sliced beef.', 'No Brasil é o assado todo, a churrascada. Na Argentina e no Uruguai, um bife fino na chapa. Na Colômbia e no Equador, um bife grosso na grelha (muitas vezes de contrafilé) com chimichurri. No Chile, um sanduíche de carne em fatias.'] },
+  { id: 'asado', g: 'trap', cut: 'cs', t: ['Asado', 'Asado', 'Asado'], aka: ['', '', ''],
+    d: ['En casi todo el mundo hispano es carne a la parrilla. En Argentina y Uruguay es además un corte: el costillar («asado de tira»). Y en Venezuela el «asado negro» no va a la parrilla: es muchacho guisado en salsa oscura.', 'In most of the Spanish-speaking world it means grilled meat. In Argentina and Uruguay it is also a cut: the short ribs (“asado de tira”). And Venezuela’s “asado negro” never sees a grill: it is eye of round braised in a dark sauce.', 'Em quase todo o mundo hispânico é carne na grelha. Na Argentina e no Uruguai é também um corte: a costela (“asado de tira”). E na Venezuela o “asado negro” não vai à grelha: é lagarto cozido em molho escuro.'] },
+  { id: 'lomo', g: 'trap', cut: 'lf', t: ['Lomo', 'Lomo', 'Lomo / Lombo'], aka: ['', '', ''],
+    d: ['En Argentina «lomo» a secas es el lomo fino (tenderloin). En Colombia hay que decir cuál: lomo fino o lomo ancho. En España el «lomo» de vacuno es el lomo ancho, y el fino se llama solomillo. En Perú, el «lomo» del lomo saltado es lomo fino.', 'In Argentina plain “lomo” is the tenderloin. In Colombia you must say which: lomo fino (tenderloin) or lomo ancho (strip loin). In Spain beef “lomo” is the strip loin and the tenderloin is “solomillo”. In Peru, the “lomo” in lomo saltado is tenderloin.', 'Na Argentina “lomo” sozinho é o filé mignon. Na Colômbia é preciso dizer qual: lomo fino (filé mignon) ou lomo ancho (contrafilé). Na Espanha o “lomo” bovino é o contrafilé, e o filé mignon chama-se solomillo.'] },
+  { id: 'solomo', g: 'trap', cut: 'la', t: ['Solomillo, solomo, solomito', 'Solomillo, solomo, solomito', 'Solomillo, solomo, solomito'], aka: ['', '', ''],
+    d: ['Parecen la misma palabra y no lo son. Solomillo (España) y solomito (Antioquia, Colombia) son el lomo fino. Solomo (Venezuela) es el lomo ancho: «solomo de cuerito» es el bife con su grasa.', 'They look like one word and are not. Solomillo (Spain) and solomito (Antioquia, Colombia) are the tenderloin. Solomo (Venezuela) is the strip loin: “solomo de cuerito” is strip steak with its fat on.', 'Parecem a mesma palavra e não são. Solomillo (Espanha) e solomito (Antioquia, Colômbia) são o filé mignon. Solomo (Venezuela) é o contrafilé: “solomo de cuerito” é o bife com sua gordura.'] },
+  { id: 'bife', g: 'trap', cut: 'ba', t: ['Bife', 'Bife', 'Bife'], aka: ['', '', ''],
+    d: ['En Argentina un bife es un filete grueso para la parrilla, y además nombra cortes: bife de chorizo (lomo ancho), bife ancho (ojo de bife). En Brasil y Portugal un «bife» es cualquier filete delgado de sartén. El bife de chorizo no tiene chorizo.', 'In Argentina a bife is a thick grilling steak, and it also names cuts: bife de chorizo (strip loin), bife ancho (ribeye). In Brazil and Portugal a “bife” is any thin pan steak. Bife de chorizo contains no chorizo.', 'Na Argentina um bife é um filé grosso para a grelha, e também dá nome a cortes: bife de chorizo (contrafilé), bife ancho (ancho). No Brasil e em Portugal “bife” é qualquer fatia fina de frigideira. O bife de chorizo não leva chouriço.'] },
+  { id: 'mechar', g: 'trap', cut: 'sb', t: ['Mechar y desmechar', 'Mechar and desmechar', 'Mechar e desmechar'], aka: ['deshebrar · deshilachar', 'lard · shred', 'lardear · desfiar'],
+    d: ['Mechar es meterle a la pieza tiras de tocino o verduras antes de cocinarla. Desmechar es lo contrario: deshacer la carne cocida en hebras. Lo mismo se dice deshebrar (México), deshilachar (Chile, Argentina) y desfiar (Brasil).', '“Mechar” is to lard: push strips of bacon or vegetables into the piece before cooking. “Desmechar” is the opposite: pulling cooked meat into shreds. The same idea is deshebrar (Mexico), deshilachar (Chile, Argentina) and desfiar (Brazil).', '“Mechar” é lardear: enfiar tiras de toucinho ou legumes na peça antes de cozinhar. “Desmechar” é o contrário: desfiar a carne cozida. O mesmo se diz deshebrar (México), deshilachar (Chile, Argentina) e desfiar (Brasil).'] },
+  { id: 'chuleta', g: 'trap', t: ['Chuleta y chuletón', 'Chuleta and chuletón', 'Chuleta e chuletón'], aka: ['', '', ''],
+    d: ['En España el chuletón es el lomo ancho con su hueso, muy grueso. En Colombia una «chuleta» suele ser un filete apanado (la chuleta valluna es de cerdo). En Venezuela y México la chuleta es de costillar, casi siempre de cerdo.', 'In Spain a chuletón is a very thick bone-in rib steak. In Colombia a “chuleta” is usually a breaded cutlet (chuleta valluna is pork). In Venezuela and Mexico a chuleta is a rib chop, almost always pork.', 'Na Espanha o chuletón é a costela do contrafilé com osso, bem grossa. Na Colômbia uma “chuleta” costuma ser um bife à milanesa (a chuleta valluna é de porco). Na Venezuela e no México a chuleta é da costela, quase sempre de porco.'] }
+];
+
+// ---- Português (Brasil): third language for the texts in data_cuts.js. Applied at start-up; anything missing falls back to Spanish.
+const PT = {
+  countries: { co: 'Colômbia', mx: 'México', ar: 'Argentina · Uruguai', cl: 'Chile', ve: 'Venezuela', br: 'Brasil', es: 'Espanha', us: 'Estados Unidos', uk: 'Reino Unido', fr: 'França', it: 'Itália' },
+  cuisine: { CO: 'Colômbia', UY: 'Uruguai', PE: 'Peru', EC: 'Equador', BO: 'Bolívia', PY: 'Paraguai', DO: 'Rep. Dominicana', HT: 'Haiti', TT: 'Trinidad e Tobago', PA: 'Panamá', NI: 'Nicarágua', CA: 'Canadá', IE: 'Irlanda', FR: 'França', BE: 'Bélgica', IT: 'Itália', ES: 'Espanha', DE: 'Alemanha', AT: 'Áustria', CH: 'Suíça', NL: 'Países Baixos',
+    HU: 'Hungria', CZ: 'Tchéquia', PL: 'Polônia', UA: 'Ucrânia', RU: 'Rússia', AM: 'Armênia', GE: 'Geórgia', RS: 'Sérvia', BA: 'Bósnia', BG: 'Bulgária', SE: 'Suécia', FI: 'Finlândia', NO: 'Noruega', GR: 'Grécia', TR: 'Turquia', LB: 'Líbano', JO: 'Jordânia', IR: 'Irã', EG: 'Egito', SA: 'Arábia Saudita', IQ: 'Iraque', MA: 'Marrocos', ET: 'Etiópia', NG: 'Nigéria', KE: 'Quênia', ZA: 'África do Sul', BW: 'Botsuana', MG: 'Madagascar',
+    TW: 'Taiwan', JP: 'Japão', KR: 'Coreia', VN: 'Vietnã', TH: 'Tailândia', ID: 'Indonésia', MY: 'Malásia', PH: 'Filipinas', KH: 'Camboja', MM: 'Mianmar', PK: 'Paquistão', IN: 'Índia', BD: 'Bangladesh', KZ: 'Cazaquistão', UZ: 'Uzbequistão', MN: 'Mongólia', AU: 'Austrália', NZ: 'Nova Zelândia', FJ: 'Fiji', INT: 'Geral' },
+  props: { t: 'Maciez', f: 'Gordura', c: 'Colágeno', v: 'Sabor' },
+  price: ['', 'Econômico', 'Preço médio', 'Preço alto', 'Premium'],
+  zones: { loin: 'Lombo', rib: 'Costela', sirloin: 'Alcatra', round: 'Traseiro', flank: 'Flanco', chuck: 'Dianteiro', brisket: 'Peito', shank: 'Braço e perna', head: 'Cabeça', tail: 'Rabo', offal: 'Miúdos', mix: 'Mistura' },
+  methods: {
+    grill: { n: 'Churrasqueira', v: 'assar na churrasqueira', need: 'O fogo direto cozinha rápido e seco: pede um corte macio ou com boa gordura, porque o colágeno não chega a amolecer.', ask: 'Peça com 2,5 a 4 cm de espessura; mais fino resseca antes de dourar.' },
+    sear: { n: 'Frigideira ou chapa', v: 'fazer na chapa', need: 'Calor muito alto e poucos minutos: funciona com músculos macios de fibra fina e alguma gordura entremeada.', ask: 'Tire da geladeira 30 min antes e seque bem: a umidade impede a crosta.' },
+    roast: { n: 'Forno', v: 'assar no forno', need: 'O forno seco pede uma peça inteira, regular e macia, ou uma capa de gordura que a proteja.', ask: 'Peça em uma peça só e amarrada para assar por igual.' },
+    braise: { n: 'Ensopado ou panela', v: 'ensopar', need: 'O cozimento úmido e longo (2–3 h em fogo baixo) transforma o colágeno em gelatina: aqui ganham os cortes duros e baratos.', ask: 'Peça em cubos de 4–5 cm; cubos pequenos ressecam.' },
+    shred: { n: 'Desfiar', v: 'desfiar', need: 'Para desfiar é preciso fibras longas e paralelas com colágeno: depois de 2–3 h de cozimento úmido elas se separam em fios suculentos.', ask: 'Peça em uma peça só e cozinhe inteira; desfia-se no fim.' },
+    soup: { n: 'Sopa ou caldo', v: 'fazer sopa', need: 'Um bom caldo sai de osso, tutano e tecido conjuntivo: são eles que dão corpo e sabor ao líquido.', ask: 'Peça com osso e em pedaços; o osso é metade do sabor.' },
+    smoke: { n: 'Defumado ou fogo lento', v: 'defumar', need: 'Muitas horas a 110–135 °C: a gordura derrete e o colágeno se desfaz. Precisa de uma peça grande, gorda e com tecido conjuntivo.', ask: 'Peça inteira e sem aparar a gordura; apara-se em casa.' },
+    stirfry: { n: 'Salteado ou tiras', v: 'saltear', need: 'Tiras finas em fogo altíssimo por 1–2 minutos: é preciso carne magra e macia, cortada contra a fibra.', ask: 'Peça para cortarem em tiras contra a fibra, ou congele um pouco para fatiar fino em casa.' },
+    fry: { n: 'À milanesa ou bife', v: 'empanar ou fritar', need: 'Um bife fino e regular que cozinha em dois minutos: servem os cortes magros do traseiro, sem nervos.', ask: 'Peça em bifes de meio centímetro, batidos.' },
+    raw: { n: 'Cru', v: 'servir cru', need: 'Cru não há calor que amacie: usa-se o músculo mais macio e magro, muito fresco e sem nervos.', ask: 'Diga ao açougueiro que é para comer cru e peça a peça inteira, limpa e do dia.' },
+    grind: { n: 'Moída', v: 'moer', need: 'Para moer importa a proporção: cerca de 80 % de carne e 20 % de gordura dá suculência e sabor; mais magra fica seca.', ask: 'Escolha a peça e peça para moerem na sua frente, uma passada só para hambúrguer.' },
+    skewer: { n: 'Espetinhos', v: 'fazer no espeto', need: 'Cubos pequenos em fogo direto: carne macia e com um pouco de gordura, que aguente sem ressecar.', ask: 'Peça em cubos de 3 cm, todos do mesmo tamanho.' },
+    cure: { n: 'Curar ou secar', v: 'curar', need: 'Para secar ou curar busca-se um músculo magro, inteiro e de fibra regular: a gordura rança e os nervos ficam duros.', ask: 'Peça uma peça inteira, magra e sem membranas.' },
+    roll: { n: 'Recheado ou enrolado', v: 'rechear', need: 'Para rechear ou enrolar serve uma peça de formato regular ou uma manta larga que se possa abrir e amarrar.', ask: 'Peça para abrirem em manta ou fazerem o bolso para o recheio.' },
+    slice: { n: 'Fatias finíssimas', v: 'fatiar fino', need: 'Cortada quase transparente, a carne cozinha em segundos: aqui é a gordura entremeada que dá o sabor.', ask: 'Peça para fatiarem na máquina, ou congele 1 hora para fatiar em casa.' }
+  },
+  cuts: {
+    lf: { d: 'O músculo que menos trabalha do boi: fica por dentro, sob a coluna, e quase não carrega peso. Por isso é o mais macio e também o de sabor mais suave.', tip: 'Procure uma peça limpa, sem o cordão lateral. Rende uns 180 g por pessoa.', cook: '52–57 °C por dentro. Passado do ponto perde sua única vantagem.',
+      why: { sear: 'Quase não tem colágeno nem gordura, então basta uma selagem forte e curta; a manteiga ou o bacon dão a gordura que lhe falta.', roast: 'Seu formato cilíndrico e regular assa por igual de ponta a ponta, ideal para Wellington ou Chateaubriand.', raw: 'É a fibra mais fina e sem nervos do boi: desmancha na boca mesmo sem cozimento, por isso é o corte do tartar e do carpaccio.', stirfry: 'Macio até em tiras grossas: não precisa de marinada e aguenta o fogo alto de um lomo saltado ou de um estrogonofe.' } },
+    la: { d: 'O músculo longo do lombo, por cima do filé mignon. Macio, de fibra compacta e com uma borda de gordura que o rega enquanto assa.', tip: 'Procure gordura branca e firme na borda e veios finos por dentro. Não deixe tirarem toda a gordura.', cook: '54–60 °C por dentro; descanse 5 minutos antes de cortar.',
+      why: { grill: 'É macio sem ajuda e sua borda de gordura derrete sobre a brasa: o equilíbrio clássico entre sabor e maciez.', sear: 'A fibra compacta forma uma crosta uniforme e o interior fica rosado sem esforço.', roast: 'Inteiro e com a capa de gordura para cima é o rosbife por excelência: corta-se em fatias limpas.' } },
+    ba: { d: 'A parte do lombo que fica dentro do costilhar. É o corte mais marmorizado: a capa (spinalis) que rodeia o olho é para muitos o melhor bocado do boi.', tip: 'Escolha o que tiver mais veios finos de gordura e uma capa generosa. Com osso demora mais, mas fica mais suculento.', cook: '55–60 °C: precisa chegar ao ponto para a gordura derreter.',
+      why: { grill: 'A gordura entremeada derrete e o rega por dentro: é o corte que mais perdoa um minuto a mais.', sear: 'Tanta gordura intramuscular dá uma crosta profunda e um interior suculento só com sal.', roast: 'Inteiro e com osso é o prime rib: o osso e a gordura o protegem durante o forno lento.', slice: 'Em fatias, seus veios de gordura derretem em segundos: por isso é o corte do sukiyaki, do shabu-shabu e do bulgogi.' } },
+    tb: { d: 'Dois cortes em um, unidos pelo osso em T: de um lado contrafilé, do outro filé mignon. Se a parte do filé é grande chama-se porterhouse.', tip: 'Peça com pelo menos 4 cm de espessura; fino, o lado do filé passa do ponto antes do outro.', cook: '52–57 °C. Deixe o lado do filé longe do fogo mais forte.',
+      why: { grill: 'O osso freia o cozimento junto dele e deixa a carne mais suculenta; grosso e na brasa é a bistecca alla fiorentina.' } },
+    ca: { d: 'O grande músculo da alcatra. Trabalha mais que o lombo, então é menos macio, mas tem mais sabor e custa menos.', tip: 'Peça o centro (miolo), que é a parte mais regular e macia.', cook: '55–60 °C; além disso fica firme. Corte contra a fibra.',
+      why: { grill: 'Magra mas saborosa: bom bife de grelha pela metade do preço do lombo, desde que não passe do ponto.', skewer: 'Aguenta o cubo sem desmanchar e tem sabor suficiente para uma marinada forte: é a carne do espetinho e do shish kebab.', stirfry: 'Fibra curta e pouca gordura: em tiras contra a fibra fica macia em um minuto de wok.' } },
+    pa: { d: 'Um triângulo que cobre a alcatra, com uma capa grossa de gordura. Na Colômbia fatia-se ao comprido; cortada na largura em bifes grossos é a picanha brasileira.', tip: 'Uma boa picanha pesa entre 1 e 1,5 kg; maior já inclui parte do coxão duro. Não deixe tirarem a gordura.', cook: '54–58 °C. Comece pelo lado da gordura em fogo médio.',
+      why: { grill: 'Sua capa de gordura de mais de um centímetro derrete e a rega enquanto doura: por isso assa-se inteira ou em meias-luas, com a gordura.', roast: 'Com a gordura para cima ela se rega sozinha no forno e fica rosada de lado a lado.', skewer: 'Dobrada em C no espeto, com a gordura por fora: assim se faz no rodízio.' } },
+    co: { d: 'Peça triangular na parte baixa da alcatra. Suculenta e de bom sabor, com a fibra que muda de direção no meio da peça.', tip: 'Repare para onde corre a fibra em cada metade: fatia-se em duas direções diferentes.', cook: '54–58 °C, inteira, e fatiada fina contra a fibra.',
+      why: { grill: 'Assa-se inteira, selada e depois em fogo indireto: fica suculenta por dentro com pouca perda.', smoke: 'É o corte do churrasco estilo Santa Maria: uma hora de fumaça de lenha e fatia-se como um brisket pequeno.' } },
+    sb: { d: 'O músculo plano do abdômen: largo, de fibra longa e grossa que corre ao comprido. Muito sabor e pouca gordura.', tip: 'Para desfiar peça inteiro; para a grelha, de espessura regular. Sempre se fatia contra a fibra.', cook: 'Na grelha: fogo alto e não mais de 57 °C. Na panela: 2–3 horas até desmanchar.',
+      why: { shred: 'Suas fibras longas e paralelas se separam em fios perfeitos: é a carne da ropa vieja e da carne desfiada.', braise: 'Cozido devagar em molho, o colágeno entre as fibras vira gelatina e a peça fica macia sem desmanchar.', grill: 'Marinado, em fogo muito alto e fatiado fino contra a fibra: assim uma carne fibrosa fica macia.', stirfry: 'Em tiras contra a fibra absorve a marinada e fica macio: é a carne clássica do beef and broccoli.', roll: 'Plano e largo, abre-se, recheia-se e enrola-se com facilidade: braciole, matambre, sobrebarriga recheada.' } },
+    va: { d: 'O flanco entre as costelas e a alcatra. Fibra grossa e solta, com uma membrana de gordura por fora: suculenta e de sabor intenso.', tip: 'Deixe a membrana externa: fica crocante e protege a carne.', cook: 'Inteira em fogo médio 40–50 min, ou em bifes em fogo alto. 55–60 °C.',
+      why: { grill: 'Inteira e devagar, a gordura externa doura e o interior fica suculento: é um dos cortes centrais do asado argentino.', stirfry: 'Sua fibra aberta segura a marinada: por isso é a carne da carne asada das taquerias e de muitos salteados.' } },
+    en: { d: 'O diafragma: uma tira longa e fina por dentro das costelas. Fibra muito marcada que corre na largura e sabor intenso, quase de fígado.', tip: 'Peça com a membrana se quiser crocante ao estilo argentino, ou limpa para tacos e fajitas.', cook: 'Fogo muito alto, 2–3 minutos por lado. Corte em pedaços e depois contra a fibra.',
+      why: { grill: 'Fina e com gordura entre as fibras: doura por fora antes de ressecar por dentro. É das carnes com mais sabor na grelha.', stirfry: 'É a carne original das fajitas: fibra aberta que pega a marinada e se corta em tiras contra a fibra.' } },
+    ha: { d: 'Fica pendurado no diafragma junto aos rins e só há um por boi. Dois lóbulos unidos por um nervo central; sabor profundo, de ferro.', tip: 'Peça para tirarem o nervo do centro: ficam duas tiras prontas para a frigideira.', cook: 'Fogo alto e não mais de 55 °C: bem passado fica duro.',
+      why: { sear: 'Macio e muito saboroso se ficar vermelho por dentro: é o bife de bistrô francês, onglet à l’échalote.' } },
+    ma: { d: 'Uma manta fina entre o couro e as costelas, o músculo com que o boi espanta as moscas. Larga, fina e com gordura de um lado.', tip: 'Para enrolar peça inteiro e regular; para a grelha, amaciado ou fervido antes em leite.', cook: 'Enrolado: fervido 2 horas. Na grelha: devagar, 40 minutos, ou pré-cozido.',
+      why: { roll: 'É uma manta natural: cobre-se de recheio, enrola-se e amarra-se. Assim nasce o matambre arrollado.', braise: 'Confitado devagar na própria gordura fica macio: é o suadero dos tacos da Cidade do México.' } },
+    fa: { d: 'A parte baixa do costilhar, sob as costelas. Camadas alternadas de carne e gordura, com fibra longa.', tip: 'Para desfiar peça a parte mais carnuda; a mais gorda serve para moer ou para caldo.', cook: '2–3 horas na panela, 45 minutos na panela de pressão.',
+      why: { shred: 'Fibra longa com gordura entre as camadas: desfia fácil e não fica seca. É a carne das empanadas e da carne en polvo.', soup: 'A gordura e o tecido entre as camadas dão corpo ao caldo, e a carne fica macia para servir na sopa.', cure: 'É o corte do pastrami clássico e do bacon bovino: aguenta a salmoura e a fumaça sem ressecar graças à gordura.' } },
+    cs: { d: 'Costelas com sua carne: osso, gordura e músculo em camadas. Muito colágeno, muita gordura e o sabor mais intenso do boi.', tip: 'Para caldo, em pedaços com osso. Para grelha, em tira de 2 cm cortada através do osso. Para forno, blocos de 8 cm.', cook: 'Ensopada: 3 horas até 93 °C. Em tira na grelha: fogo médio, 40 minutos.',
+      why: { braise: 'Tem tanto colágeno que, depois de três horas, o molho engrossa sozinho e a carne solta do osso.', soup: 'Osso, tutano e gordura no mesmo pedaço: por isso o caldo de costela tem tanto sabor com tão poucos ingredientes.', smoke: 'Seis a oito horas de fumaça derretem sua gordura e seu colágeno: são as “dino ribs” do churrasco texano.', grill: 'Cortada em tira fina através do osso cozinha antes de endurecer: asado de tira argentino ou galbi coreano.' } },
+    pe: { d: 'Os peitorais sustentam mais da metade do peso do boi, por isso têm muitíssimo colágeno. Dois músculos: o plano (magro) e a ponta (gorda).', tip: 'Para defumar peça inteiro, com plano e ponta, e com meio centímetro de gordura por cima.', cook: 'Longo e lento até 93–96 °C por dentro; depois descanso de uma hora.',
+      why: { smoke: 'É o corte emblemático do defumado: 10–14 horas transformam seu colágeno em gelatina e a capa de gordura o protege todo esse tempo.', braise: 'Com cozimento úmido e lento fica macio e suculento; corta-se em fatias que não desmancham.', cure: 'Aguenta dias de salmoura: daqui saem o corned beef e o pastrami.', soup: 'Sua gordura e seu colágeno dão um caldo com corpo: é a carne do pho, do puchero e do cozido.' } },
+    ag: { d: 'A continuação do ancho em direção ao pescoço: vários músculos unidos por veios de gordura e colágeno. Dos cortes com mais sabor do boi.', tip: 'Para moer é a melhor peça sozinha: traz cerca de 20 % de gordura. Para ensopar, em pedaços grandes.', cook: 'Ensopado: 2,5–3 horas. Em bife fino: fogo alto e rápido.',
+      why: { braise: 'Seus veios de gordura e colágeno derretem na panela: dá o ensopado mais suculento e o molho com mais corpo.', grind: 'Traz naturalmente a proporção 80/20 de carne e gordura, e muito sabor: é a base de um bom hambúrguer.', shred: 'Depois de três horas desmancha em fios grossos e suculentos: a carne da barbacoa, da birria e do pot roast.', smoke: 'Defumado como um brisket pequeno fica tão suculento quanto, na metade do tempo: pulled beef.' } },
+    pl: { d: 'O ombro do boi: magro, de vários músculos. Um deles, o que fica sobre a paleta (flat iron), é dos mais macios do animal.', tip: 'Para bife peça a parte plana de cima da paleta; o resto, em pedaços para ensopar.', cook: 'Ensopado: 2 horas. Flat iron: frigideira quente até 55 °C.',
+      why: { braise: 'Magra mas com colágeno suficiente: dá um ensopado de pedaços inteiros e firmes que não desmancham, a bom preço.', sear: 'O músculo infraespinhal (flat iron) está entre os mais macios segundo as medições de corte: um bife fino a preço de carne de panela.' } },
+    ps: { d: 'O pescoço se mexe o dia todo: é duro, cheio de colágeno e de sabor profundo. Dos mais baratos e rendosos para a panela.', tip: 'Com osso para caldo; sem osso e em pedaços para ensopados longos ou para moer.', cook: '3 horas em fogo baixo, ou 50 minutos na panela de pressão.',
+      why: { soup: 'Osso e muito tecido conjuntivo: solta gelatina e dá um caldo escuro e com corpo.', braise: 'Com paciência o colágeno vira gelatina e a carne fica macia: é o corte do pot-au-feu e do goulash.' } },
+    mo: { d: 'A giba do gado zebu, a raça mais comum no Brasil e na Colômbia. Gordura entremeada com carne de fibra longa: duro se apressado, amanteigado se lhe dão tempo.', tip: 'Só existe em gado zebu. Peça inteiro, de 1 a 2 kg, para assar devagar.', cook: 'Embrulhado e lento: 4–5 horas a 150 °C, ou primeiro na panela de pressão e depois na brasa.',
+      why: { smoke: 'Sua gordura entremeada precisa de horas para derreter; então fica tão macio que se corta de colher. É o cupim do churrasco brasileiro.', braise: 'Na panela ou na pressão, a gordura derrete no molho e a carne fica desmanchando.' } },
+    mu: { d: 'A parte baixa do braço e da perna: o músculo com mais tendão e colágeno do boi. Em rodela com osso traz também o tutano.', tip: 'Em rodelas de 3–4 cm com osso para ossobuco; sem osso e inteiro para cozido.', cook: '2,5–3 horas em fogo baixo: não há atalho, salvo a panela de pressão.',
+      why: { soup: 'Tendão, osso e tutano: é a peça que mais solta gelatina, e a que dá o caldo mais substancioso.', braise: 'Depois de três horas o tendão vira gelatina e o molho fica brilhante e grudento: ossobuco, jarret, chambarete.' } },
+    bp: { d: 'O quadríceps: uma bola magra na parte dianteira da perna. Pouca gordura, fibra regular e sabor suave.', tip: 'Para bife ou milanesa, em fatias contra a fibra; para moer, dá uma carne bem magra.', cook: 'Em bife fino: um minuto de cada lado. Inteiro no forno: não mais de 57 °C.',
+      why: { fry: 'Magro, sem nervos e fácil de fatiar por igual: fica macio à milanesa porque cozinha em dois minutos.', stirfry: 'Quase sem gordura nem tecido conjuntivo: em tiras finas cozinha na hora sem soltar água.' } },
+    bo: { d: 'A parte de fora da perna. Magro e de fibra firme: endurece com calor seco e brilha no cozimento lento.', tip: 'Peça inteiro para carne de panela; em pedaços para ensopar.', cook: '2–2,5 horas na panela; fatiar contra a fibra.',
+      why: { braise: 'Magro e firme, mantém a forma depois de horas de cozimento e fatia limpo: é a carne da posta sudada e do sauerbraten.', cure: 'Um músculo grande, magro e regular: seca de maneira uniforme. Daqui saem a cecina, o biltong e a carne de sol.' } },
+    mc: { d: 'Um cilindro perfeito de carne magra na parte de trás da perna. Dos menos macios nas medições, mas regular e fácil de fatiar.', tip: 'Peça inteiro. Para rechear, que o açougueiro abra o túnel pelo centro.', cook: 'Em molho: 2 horas. Como rosbife: 52–55 °C e fatiado bem fino.',
+      why: { roll: 'Seu formato de cilindro regular fura-se e recheia-se pelo centro: lagarto recheado, muchacho relleno.', braise: 'Cozido inteiro em molho e fatiado em rodelas iguais: posta negra, vitel toné, asado negro venezuelano.', cure: 'Magro, sem veios e de formato regular: cura por igual. É o corte da bresaola.' } },
+    cp: { d: 'A face interna da perna: seu músculo maior e mais macio. Magro, de fibra fina e sem nervos.', tip: 'É a peça do bife do dia a dia e da milanesa: peça em bifes finos contra a fibra.', cook: 'Em bife: fogo alto, um minuto por lado. Inteiro: forno até 55 °C.',
+      why: { fry: 'Magro, largo e sem nervos: dá bifes grandes e regulares que não encolhem. É a carne da milanesa e do bife a cavalo.', cure: 'Grande e magro, corta-se em mantas longas a favor da fibra: carne-seca, tasajo, jerky.', stirfry: 'Magro e de fibra fina: em tiras fica macio e pega bem os molhos.' } },
+    cl: { d: 'Vértebras rodeadas de carne e cartilagem. Pouca carne, mas a que mais gelatina dá: molhos brilhantes e grudentos.', tip: 'Peça cortado pelas juntas; os pedaços grossos da base têm mais carne.', cook: '3–4 horas, até a carne soltar do osso.',
+      why: { braise: 'A cartilagem de cada vértebra derrete no molho e o deixa espesso e brilhante: rabada, rabo de toro, coda alla vaccinara.', soup: 'Nenhum corte dá um caldo com tanto corpo: a sopa de rabo vira gelatina ao esfriar.' } },
+    ch: { d: 'O músculo com que o boi mastiga o dia inteiro: duríssimo cru e, bem cozido, o mais macio que existe.', tip: 'Peça limpo de membranas. Calcule um por pessoa: perde quase a metade.', cook: '3–4 horas em líquido, ou 8 horas em baixa temperatura.',
+      why: { braise: 'Tem mais colágeno que quase qualquer outro músculo: depois de horas de cozimento corta-se de colher e o molho fica como um glaceado.', shred: 'Cozido no vapor até desmanchar é a barbacoa de cachete dos tacos do norte do México.' } },
+    le: { d: 'Um músculo denso e gordo, coberto por uma pele grossa que se tira depois de cozinhar. Textura macia e sabor delicado.', tip: 'Cozinha-se inteira e com pele; descasca-se quente. Uma língua dá 5–6 porções.', cook: 'Fervida 2,5–3 horas (1 hora na pressão), descascada, e depois em molho ou na chapa.',
+      why: { braise: 'Sua gordura distribuída por todo o músculo a deixa macia e suculenta depois de fervida: língua ao molho, língua ao vinagrete, tacos de lengua.' } },
+    mol: { d: 'Não é um corte, e sim uma decisão: de que peça se mói e com quanta gordura. O acém sozinho já traz a proporção ideal; com peito ou costela ganha sabor.', tip: 'Hambúrguer: acém, 20 % de gordura, moagem grossa. Molhos e recheios: patinho ou paleta, 10 %.', cook: 'A carne moída se cozinha por completo: 71 °C por dentro.',
+      why: { grind: 'Moer rompe as fibras, então a maciez vem da moagem e o sabor vem da gordura: por isso se usam cortes duros e saborosos do dianteiro.' } },
+    mon: { d: 'O estômago do boi. O de favo (barrete) é o mais apreciado. Quase puro colágeno: sabor suave e textura que absorve o molho.', tip: 'Compre já lavado e branqueado. Peça o de favo para sopas.', cook: '2–3 horas até ficar macio, ou 45 minutos na panela de pressão.',
+      why: { soup: 'É colágeno quase puro: engrossa o caldo e seus favos seguram o sabor. Dobradinha, mondongo, menudo, callos.' } },
+    hi: { d: 'Macio, sem fibra e de sabor forte. Endurece e amarga em segundos se passar do ponto.', tip: 'Peça em bifes de 1 cm, sem a película. O de vitela é mais suave.', cook: 'Fogo alto, 1–2 minutos por lado: rosado no centro.',
+      why: { sear: 'Não tem colágeno para amaciar: só precisa dourar por fora. Fígado acebolado, fegato alla veneziana.' } },
+    cz: { d: 'Um músculo puro, magro e denso, que trabalha sem parar. Sabor de carne concentrado; firme, mas macio se cortado fino.', tip: 'Peça limpo de gordura e veias, em cubos ou fatias.', cook: 'Marinado e em fogo muito alto por 2–3 minutos; ou ensopado 2 horas. O meio-termo fica duro.',
+      why: { skewer: 'Magro, firme e de sabor forte, aguenta a marinada de pimenta e vinagre: é a carne dos anticuchos.' } },
+    ri: { d: 'Lobulado e de sabor muito marcado. Deixa-se antes de molho em água com vinagre ou leite para suavizar.', tip: 'Peça aberto e sem o centro branco.', cook: 'Salteado rápido 3–4 minutos, ou ensopado lento por uma hora.',
+      why: { sear: 'Rápido e em fogo alto fica macio e rosado: rins ao xerez. No steak and kidney pie, por outro lado, é ensopado.' } },
+    chu: { d: 'O intestino delgado, trançado ou em espiral. Muita gordura: doura até ficar crocante por fora.', tip: 'Compre já lavado. Costuma-se ferver antes de fritar ou assar.', cook: 'Fervido 30 minutos e depois frito ou na brasa até dourar.',
+      why: { grill: 'Sua gordura derrete e o frita por fora: crocante por fora, cremoso por dentro. Chunchullo, chinchulines, tacos de tripa.' } },
+    mj: { d: 'O timo da vitela, uma glândula que desaparece no animal adulto. Cremosa por dentro, delicada, sem gosto de miúdo.', tip: 'Branqueia-se, tira-se a película e prensa-se antes de dourar.', cook: 'Branqueada 5 minutos e depois na chapa ou na brasa até dourar.',
+      why: { grill: 'Dourada devagar na brasa com limão fica crocante por fora e cremosa por dentro: indispensável no asado argentino.' } },
+    tu: { d: 'Os ossos longos das pernas, cheios de medula gordurosa. Assado, o tutano se espalha como manteiga; na panela, enriquece qualquer caldo.', tip: 'Para assar peça cortado ao comprido (canoa); para caldo, em rodelas.', cook: 'Forno a 220 °C por 15–20 minutos, até tremer.',
+      why: { roast: 'O tutano é gordura quase pura: o forno forte o deixa trêmulo e cremoso em um quarto de hora.', soup: 'Os ossos soltam gelatina e o tutano dá gordura e sabor: a base de um fundo escuro ou de um bom pho.' } },
+    pt: { d: 'Pele, tendão e osso: nada de carne e tudo colágeno. Deixa os caldos espessos e grudentos.', tip: 'Compre limpo, pelado e cortado em pedaços.', cook: '3–4 horas, ou uma hora longa na panela de pressão.',
+      why: { soup: 'É a fonte de gelatina mais concentrada do boi: mocotó, sopa de pata, caldo de pata, cow foot soup.' } }
+  }
+};
+
 // ---- The butcher shop: room, cow, display case, butcher, camera and picking.
 const Shop = (function () {
-  const T = THREE;
+  const T = window.THREE;
   const lin = MeshLib.lin;
   const V3 = (x, y, z) => new T.Vector3(x, y, z);
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  // ------------------------------------------------------------ doneness look
+  // core temperature (°C) -> colour of the centre, width of the grey ring (0..1 of half the thickness)
+  const DONE_STOPS = [[44, [122, 20, 32], 0.05], [48, [142, 24, 38], 0.07], [52, [176, 31, 44], 0.12], [56.5, [198, 58, 69], 0.18], [61, [210, 112, 122], 0.28], [66, [189, 141, 132], 0.45], [70, [154, 124, 108], 1], [77, [134, 112, 95], 1]];
+  function doneLook(t) {
+    const S = DONE_STOPS; t = clamp(t, S[0][0], S[S.length - 1][0]);
+    let i = 0; while (i < S.length - 2 && t > S[i + 1][0]) i++;
+    const a = S[i], b = S[i + 1], k = (t - a[0]) / (b[0] - a[0]);
+    return { core: [0, 1, 2].map((j) => Math.round(lerp(a[1][j], b[1][j], k))), band: lerp(a[2], b[2], k), ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160], wet: clamp((66 - t) / 18, 0, 1) };
+  }
 
   // ------------------------------------------------------------ canvas textures
   function canvasTex(w, h, draw, opts) {
@@ -2395,7 +2810,7 @@ const Shop = (function () {
     function setBlockCut(id) {
       if (id === blockId) return; blockId = id;
       if (blockMesh) { blockHolder.remove(blockMesh); blockMesh.material.dispose(); blockMesh = null; }
-      const e = id && pack.meshes['cut.' + id]; if (!e) return;
+      const e = id && pack.meshes['cut.' + id]; if (!e) { if (S.grain) setGrain(true); return; }
       const mat = MeshLib.fleshMaterial(Object.assign({}, mats[id]));
       blockMesh = new T.Mesh(e.geo, mat); blockMesh.castShadow = true; blockMesh.receiveShadow = true;
       const bb = e.geo.boundingBox; const L = bb.max.x - bb.min.x; const k = Math.min(1, 0.46 / L);
@@ -2403,7 +2818,107 @@ const Shop = (function () {
       blockMesh.position.set(-(bb.min.x + bb.max.x) / 2 * k, 0, -(bb.min.z + bb.max.z) / 2 * k);
       blockMesh.userData.cut = id; blockMesh.userData.where = 'block';
       blockHolder.add(blockMesh); blockHolder.userData.drop = 1; blockHolder.rotation.y = 0;
-      blockLen = Math.max(L, (bb.max.z - bb.min.z) * 1.3) * k; if (S.view === 'block') applyView('keep');
+      blockLen = Math.max(L, (bb.max.z - bb.min.z) * 1.3) * k; blockMesh.visible = !S.done; if (S.grain) setGrain(true); if (S.view === 'block') applyView('keep');
+    }
+
+    // ---------------- doneness: a cooked steak sliced open on the block, coloured by core temperature
+    const HW = 0.055, HT = 0.02, SL = 0.018;
+    const doneHolder = new T.Group(); doneHolder.position.set(BLOCK.x - 0.04, BLOCK_TOP + 0.002, BLOCK.z); doneHolder.visible = false; counter.add(doneHolder);
+    const DU = { uCore: { value: new T.Color() }, uRing: { value: new T.Color() }, uCrust: { value: new T.Color() }, uFatC: { value: new T.Color() }, uBand: { value: 0.2 }, uWet: { value: 0.5 } };
+    function steakMaterial(off) {
+      const m = new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5, metalness: 0 }); m.envMapIntensity = 0.22;
+      const U = Object.assign({ uOff: { value: off } }, DU);
+      m.onBeforeCompile = (sh) => {
+        Object.assign(sh.uniforms, U);
+        sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vSP; varying vec3 vSN;').replace('#include <begin_vertex>', '#include <begin_vertex>\nvSP = position; vSN = normal;');
+        sh.fragmentShader = sh.fragmentShader
+          .replace('#include <common>', `#include <common>
+            varying vec3 vSP; varying vec3 vSN; uniform vec3 uCore, uRing, uCrust, uFatC; uniform float uBand, uWet, uOff; float sRough;
+            ${MeshLib.NOISE}`)
+          .replace('#include <color_fragment>', `
+            vec2 q = abs(vSP.xy - vec2(0.0, ${HT})) - vec2(${HW}, ${HT}) + 0.011;
+            float sd = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - 0.011;
+            float n = vnoise(vSP * 260.0), n2 = vnoise(vSP * 60.0 + 3.0 + uOff * 40.0);
+            float u = clamp(-sd / ${HT} + (n2 - 0.5) * 0.07, 0.0, 1.0);
+            float face = step(0.9, abs(vSN.z));
+            vec3 inner = mix(uRing, uCore, smoothstep(uBand * 0.55, uBand * 1.2 + 0.06, u)) * (0.88 + 0.22 * n);
+            vec3 fc = mix(uCrust, inner * 0.78, smoothstep(0.05, 0.17, u));
+            float fat = smoothstep(${HW} - 0.012, ${HW} - 0.008, vSP.x + (n2 - 0.5) * 0.006);
+            fc = mix(fc, uFatC * (0.6 + 0.14 * n), fat * smoothstep(0.06, 0.16, u));
+            vec3 cr = uCrust * (0.7 + 0.7 * n2);
+            float mk = abs(fract((vSP.x * 0.75 + (vSP.z + uOff) * 0.66) / 0.03) - 0.5);
+            cr = mix(cr, vec3(0.012, 0.007, 0.005), (1.0 - smoothstep(0.1, 0.16, mk)) * step(0.4, abs(vSN.y)) * 0.85);
+            cr = mix(cr, vec3(0.42, 0.25, 0.08) * (0.8 + 0.4 * n2), step(0.5, vSN.x) * 0.75);
+            diffuseColor.rgb = mix(cr, fc, face);
+            sRough = mix(0.8, mix(0.7, 0.42, uWet), face);
+          `)
+          .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = sRough;');
+      };
+      m.customProgramCacheKey = () => 'steak2';
+      return m;
+    }
+    (function buildSteak() {
+      const sh = new T.Shape(), r = 0.011, w = HW, h = 2 * HT;
+      sh.moveTo(-w + r, 0); sh.lineTo(w - r, 0); sh.absarc(w - r, r, r, -Math.PI / 2, 0, false); sh.lineTo(w, h - r); sh.absarc(w - r, h - r, r, 0, Math.PI / 2, false);
+      sh.lineTo(-w + r, h); sh.absarc(-w + r, h - r, r, Math.PI / 2, Math.PI, false); sh.lineTo(-w, r); sh.absarc(-w + r, r, r, Math.PI, Math.PI * 1.5, false);
+      const geo = new T.ExtrudeGeometry(sh, { depth: SL, bevelEnabled: false, curveSegments: 6 });
+      const lean = [90, 64, 55, 52, 50, 50, 50], zs = [0, 0.016, 0.044, 0.072, 0.1, 0.128, 0.156];
+      lean.forEach((a, i) => {
+        const m = new T.Mesh(geo, steakMaterial(i * 0.031)); m.castShadow = true; m.receiveShadow = true;
+        m.rotation.x = -a * Math.PI / 180; m.position.set(0, 0, zs[i] - 0.085); doneHolder.add(m);
+      });
+    })();
+    function setDoneness(t) {
+      S.done = t != null; doneHolder.visible = S.done; if (blockMesh) blockMesh.visible = !S.done; if (grainMesh) grainMesh.visible = !S.done;
+      if (S.done) { const L = doneLook(t); const c = (a, u) => u.value.setRGB(a[0] / 255, a[1] / 255, a[2] / 255).convertSRGBToLinear();
+        c(L.core, DU.uCore); c(L.ring, DU.uRing); c(L.crust, DU.uCrust); c(L.fat, DU.uFatC); DU.uBand.value = L.band; DU.uWet.value = L.wet; }
+      if (S.view === 'block') applyView('keep');
+      dirty();
+    }
+
+    // ---------------- grain: arrows along the muscle fibres and the line to slice on, laid over the cut on the block
+    let grainMesh = null;
+    function grainOf(id) {
+      const o = mats[id]; if (!o || !(o.grain > 0.4) || !o.grainDir) return null;
+      const g = o.grainDir, len = Math.hypot(g[0], g[1], g[2]) || 1;
+      return Math.abs(g[1]) / len > 0.7 ? 'v' : 'h';
+    }
+    function setGrain(on) {
+      S.grain = !!on;
+      if (grainMesh) { blockHolder.remove(grainMesh); grainMesh.material.map.dispose(); grainMesh.material.dispose(); grainMesh.geometry.dispose(); grainMesh = null; }
+      const kind = blockId ? grainOf(blockId) : null;
+      if (S.grain && blockMesh && kind === 'h') {
+        const e = pack.meshes['cut.' + blockId], bb = e.geo.boundingBox, k = blockMesh.userData.k;
+        const w = (bb.max.x - bb.min.x) * k, d = (bb.max.z - bb.min.z) * k;
+        const g = mats[blockId].grainDir, gl = Math.hypot(g[0], g[2]) || 1, gx = g[0] / gl, gz = g[2] / gl;
+        const PX = 1400, cw = Math.round(w * PX), ch = Math.round(d * PX);
+        const tex = canvasTex(cw, ch, (c) => {
+          c.translate(cw / 2, ch / 2); c.lineCap = 'round';
+          const R = Math.hypot(cw, ch) / 2, ang = Math.atan2(gz, gx);
+          c.save(); c.rotate(ang);
+          // fibres: gold arrows
+          c.strokeStyle = '#f0b429'; c.fillStyle = '#f0b429'; c.lineWidth = 7; c.shadowColor = 'rgba(0,0,0,0.55)'; c.shadowBlur = 6;
+          const step = Math.max(38, Math.min(cw, ch) / 4.2);
+          for (let y = -R; y <= R; y += step) for (let x = -R + ((y / step) % 2 ? 60 : 0); x < R; x += 190) {
+            c.beginPath(); c.moveTo(x, y); c.lineTo(x + 105, y); c.stroke();
+            c.beginPath(); c.moveTo(x + 128, y); c.lineTo(x + 100, y - 13); c.lineTo(x + 100, y + 13); c.closePath(); c.fill();
+          }
+          // where the knife goes: white dashed lines across the fibres
+          c.strokeStyle = '#ffffff'; c.lineWidth = 9; c.setLineDash([26, 20]);
+          for (const x of [-0.16 * Math.max(cw, ch), 0.16 * Math.max(cw, ch)]) { c.beginPath(); c.moveTo(x, -R); c.lineTo(x, R); c.stroke(); }
+          c.restore();
+          // soft oval mask so nothing hangs past the meat
+          c.globalCompositeOperation = 'destination-in';
+          const gr = c.createRadialGradient(0, 0, 0, 0, 0, 1); gr.addColorStop(0, '#000'); gr.addColorStop(0.72, '#000'); gr.addColorStop(0.9, 'rgba(0,0,0,0)');
+          c.scale(cw / 2, ch / 2); c.fillStyle = gr; c.fillRect(-1, -1, 2, 2);
+        });
+        tex.wrapS = tex.wrapT = T.ClampToEdgeWrapping;
+        grainMesh = new T.Mesh(new T.PlaneGeometry(w, d), new T.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, depthWrite: false, toneMapped: false }));
+        grainMesh.rotation.x = -Math.PI / 2; grainMesh.position.set(0, bb.max.y * k * 0.92 + 0.002, 0); grainMesh.renderOrder = 5; grainMesh.visible = !S.done;
+        blockHolder.add(grainMesh);
+      }
+      dirty();
+      return kind;
     }
 
     // ---------------- the cow
@@ -2482,7 +2997,7 @@ const Shop = (function () {
       const fit = (wc, hc) => Math.max(wc / (2 * vt * asp), hc / (2 * vt));
       if (v === 'cow') return { t: cowWorld(), yaw: 0.25, pitch: 0.12, dist: fit(3.9 + S.explodeNow * 2.2, 2.5 + S.explodeNow * 1.2), yawLim: [-9, 9], pitchLim: [-0.05, 1.2] };
       if (v === 'case') { const cw = asp > 1.6 ? 4.2 : asp > 1.05 ? 2.5 : 1.5; return { t: V3(2.68 + rig.panX, 1.06, -1.2), yaw: 0, pitch: 0.86, dist: fit(cw, 1.05), yawLim: [-0.5, 0.5], pitchLim: [0.35, 1.25], pan: Math.max(0, (4.1 - cw) / 2 + 0.1) }; }
-      if (v === 'block') { const bl = Math.max(0.22, blockLen); return { t: V3(BLOCK.x - 0.04, BLOCK_TOP + 0.03, BLOCK.z), yaw: 0.3, pitch: 0.72, dist: fit(bl * 1.75, bl * 1.05), yawLim: [-9, 9], pitchLim: [0.12, 1.35] }; }
+      if (v === 'block') { const bl = S.done ? 0.25 : Math.max(0.22, blockLen); return { t: V3(BLOCK.x - 0.04, BLOCK_TOP + 0.03, BLOCK.z), yaw: 0.3, pitch: 0.72, dist: fit(bl * 1.75, bl * 1.05), yawLim: [-9, 9], pitchLim: [0.12, 1.35] }; }
       const wide = asp > 1.45;
       return wide ? { t: V3(0.15, 1.4, -1.0), yaw: 0, pitch: 0.08, dist: fit(10.6, 3.3), yawLim: [-0.45, 0.45], pitchLim: [-0.02, 0.5] }
         : { t: V3(-1.35, 1.3, -0.8), yaw: 0.04, pitch: 0.08, dist: fit(7.4, 3.0), yawLim: [-0.6, 0.6], pitchLim: [-0.02, 0.5] };
@@ -2644,7 +3159,7 @@ const Shop = (function () {
         const d = blockHolder.userData.drop || 0;
         if (d > 0.002) { blockHolder.userData.drop = still ? 0 : d * Math.pow(0.002, dt); active = true; }
         blockMesh.position.y = (blockHolder.userData.drop || 0) * 0.35;
-        if (S.view === 'block' && !still && !ptrs.size) { blockHolder.rotation.y += dt * 0.25; active = true; }
+        if (S.view === 'block' && !still && !ptrs.size && !S.done) { blockHolder.rotation.y += dt * 0.25; active = true; }
       }
       // butcher
       if (poseUntil && now > poseUntil) { poseUntil = 0; pose = S.view === 'cow' ? 'cow' : S.view === 'case' ? 'case' : S.view === 'block' ? 'block' : 'idle'; }
@@ -2668,15 +3183,457 @@ const Shop = (function () {
     requestAnimationFrame(frame);
     const ro = new ResizeObserver(() => resize()); ro.observe(host);
 
-    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setPose, talk, anchorOf, resize, dirty,
+    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setDoneness, setGrain, grainOf, setPose, talk, anchorOf, resize, dirty,
       state: S, caseCuts, pieces, pieceOfCut,
       set onPick(f) { S.onPick = f; }, set onHover(f) { S.onHover = f; },
       zoomBy(f) { rig.zoom = clamp(rig.zoom * f, 0.4, 1.5); rig.tDist = preset.dist * rig.zoom; dirty(); },
       resetView() { rig.zoom = 1; rig.panX = 0; applyView(false); },
       focusCase(id) { const c = caseCuts[id]; if (c && preset && preset.pan) { rig.panX = clamp(c.x - 2.68, -preset.pan, preset.pan); applyView('keep'); } } };
   }
-  return { create };
+  return { create, doneLook };
 })();
+
+// ---- The "More" tab: doneness, counter card, portions, comparison, glossary, quiz, favourites and shopping list.
+// Built by app.js, which passes in its helpers (A). Returns the hooks app.js calls.
+function AtlasTools(A) {
+  'use strict';
+  const { $, esc, norm, st, ls, tx, BY, DISHES, cname, calt, ctry, lower, cuisineName } = A;
+
+  const T = {
+    es: { back: 'Volver', menu: 'Herramientas',
+      tools: { done: ['Términos de cocción', 'Azul, medio, tres cuartos… y cómo se dice en cada país'], shop: ['Modo carnicería', 'Una tarjeta para mostrar en el mostrador, en el idioma del lugar'], calc: ['Porciones y tiempos', 'Cuánta carne comprar y cuánto cocinarla'], cmp: ['Comparar cortes', 'Dos cortes lado a lado'], gloss: ['Glosario', 'Marmoleo, maduración, contrafibra y palabras trampa'], quiz: ['Quiz', '¿Cuánto sabes de cortes?'], list: ['Mi lista', 'Favoritos y lista de compras'] },
+      dnHint: 'Mueve el control: el filete de la tabla cambia de color por dentro.', temp: 'Temperatura interna', dnHow: 'Cómo pedirlo en {c}', waiter: 'Te preguntarán', listen: 'Escuchar', dnEach: 'Este punto en cada país', dnScale: 'La escala completa', dnA: 'Como lo pido en', dnB: 'Cómo se pide en', dnFor: 'Para', dnTraps: 'Malentendidos frecuentes', dnSet: 'Verlo en el filete', core: 'Centro',
+      shCut: 'Corte', shIn: 'Compro en', shHome: 'En mi país', shFor: 'Es para', shQty: 'Cantidad (g)', shSay: 'Dilo así', shMeans: 'Qué estás diciendo', shHomeName: 'En {c} lo conoces como', shNo: 'Si no lo tienen, también sirve', shPoint: 'El corte está resaltado en la res: si hay dudas, muéstrale la pantalla al carnicero.', shAny: 'Sin especificar',
+      people: 'Personas', appetite: ['Poco', 'Normal', 'Con hambre'], appL: 'Apetito', method: 'Preparación', buy: 'Compra', perPerson: 'por persona', bone: 'Incluye el peso del hueso.', yieldNote: 'Al cocinar pierde cerca de {p} % de su peso.', time: 'Tiempo y temperatura', thick: 'Grosor', doneness: 'Término', perSide: '{a} min por lado a fuego alto', pull: 'Retírala a {t} °C: en el reposo sube a {u} °C.', restMin: 'Reposo: {m} min antes de cortar.', thickTip: 'Con más de 4 cm conviene el sellado inverso: calor suave hasta {t} °C y sellado fuerte al final.', roastT: 'Horno: 15 min a 220 °C y luego unos {m} min a 180 °C.', slowT: 'Aquí no manda el término sino el tiempo:', approx: 'Tiempos aproximados: el termómetro manda.', addList: 'Añadir a la lista', toShop: 'Mostrar al carnicero',
+      of: 'de', cmpA: 'Corte A', cmpB: 'Corte B', best: 'Mejor para', price: 'Precio', zone: 'Zona', recipes: 'Recetas', open: 'Ver ficha', cooking: 'Cocción',
+      glSearch: 'Buscar término…', glNone: 'No tengo ese término.', seeCut: 'Ver un ejemplo',
+      qzIntro: 'Ocho preguntas sobre cortes, nombres y términos.', qzFind: 'Toca en la res: ¿dónde está {x}?', qzName: 'En {c}, ¿cómo se llama {x}?', qzMethod: '¿Cuál de estos cortes es el mejor para {m}?', qzDone: 'En {c} pides la carne «{x}». ¿Cómo llega?', right: '¡Correcto!', wrong: 'No era ese.', itWas: 'Era', next: 'Siguiente', score: 'Puntaje', again: 'Otra ronda', qzEnd: 'Ronda terminada: {a} de {b}.', qzOf: 'Pregunta {a} de {b}', qzTap: 'Gira la res y toca el corte.',
+      favs: 'Favoritos', noFav: 'Aún no tienes favoritos. Toca ☆ en un corte o en una receta.', shopList: 'Lista de compras', noList: 'La lista está vacía. Añade cortes desde su ficha o desde la calculadora.', copy: 'Copiar lista', clear: 'Vaciar', copied: 'Lista copiada', listHint: 'Los nombres se muestran como se piden en {c}. Cambia el país y la lista se traduce sola.', added: 'Añadido a la lista', linkCopied: 'Enlace copiado', fav: 'Favorito', share: 'Compartir', addL: 'A la lista', remove: 'Quitar',
+      grain: 'Ver la fibra', grainOff: 'Ocultar la fibra', grainH: 'Flechas doradas: hacia dónde corre la fibra. Líneas blancas: por dónde pasa el cuchillo, a contrafibra. Es una guía aproximada.', grainV: 'En este corte la fibra va de arriba abajo: el filete ya viene cortado a contrafibra.',
+      subs: 'Si no lo consigues', subWhy: 'También sirve para', cheaper: 'más económico', pricier: 'más caro', doneRec: 'Término recomendado', seeDone: 'Ver los términos', term: 'Término', word: 'Glosario' },
+    en: { back: 'Back', menu: 'Tools',
+      tools: { done: ['Doneness', 'Rare, medium, well done… and what each country calls them'], shop: ['At the counter', 'A card to show the butcher, in the local language'], calc: ['Portions and times', 'How much to buy and how long to cook it'], cmp: ['Compare cuts', 'Two cuts side by side'], gloss: ['Glossary', 'Marbling, aging, against the grain and trap words'], quiz: ['Quiz', 'How well do you know your cuts?'], list: ['My list', 'Favourites and shopping list'] },
+      dnHint: 'Move the slider: the steak on the block changes colour inside.', temp: 'Core temperature', dnHow: 'How to order it in {c}', waiter: 'They will ask', listen: 'Listen', dnEach: 'This point in each country', dnScale: 'The full scale', dnA: 'How I order it in', dnB: 'How to order it in', dnFor: 'For', dnTraps: 'Common misunderstandings', dnSet: 'See it on the steak', core: 'Centre',
+      shCut: 'Cut', shIn: 'I am shopping in', shHome: 'Back home', shFor: 'It is for', shQty: 'Amount (g)', shSay: 'Say it like this', shMeans: 'What you are saying', shHomeName: 'In {c} you know it as', shNo: 'If they do not have it, this also works', shPoint: 'The cut is highlighted on the cow: when in doubt, show the butcher your screen.', shAny: 'Not specified',
+      people: 'People', appetite: ['Light', 'Normal', 'Hungry'], appL: 'Appetite', method: 'Preparation', buy: 'Buy', perPerson: 'per person', bone: 'Includes the weight of the bone.', yieldNote: 'It loses about {p}% of its weight in cooking.', time: 'Time and temperature', thick: 'Thickness', doneness: 'Doneness', perSide: '{a} min per side over high heat', pull: 'Pull it at {t} °C: it rises to {u} °C as it rests.', restMin: 'Rest: {m} min before slicing.', thickTip: 'Over 4 cm (1½ in), reverse sear: gentle heat to {t} °C, then a hard sear.', roastT: 'Oven: 15 min at 220 °C (425 °F), then about {m} min at 180 °C (350 °F).', slowT: 'Here time rules, not doneness:', approx: 'Times are approximate: the thermometer decides.', addList: 'Add to list', toShop: 'Show the butcher',
+      of: 'of', cmpA: 'Cut A', cmpB: 'Cut B', best: 'Best for', price: 'Price', zone: 'Zone', recipes: 'Recipes', open: 'Open card', cooking: 'Cooking',
+      glSearch: 'Search a term…', glNone: 'I do not have that term.', seeCut: 'See an example',
+      qzIntro: 'Eight questions about cuts, names and doneness.', qzFind: 'Tap the cow: where is the {x}?', qzName: 'In {c}, what is {x} called?', qzMethod: 'Which of these cuts is best to {m}?', qzDone: 'In {c} you order your steak “{x}”. How does it arrive?', right: 'Correct!', wrong: 'Not that one.', itWas: 'It was', next: 'Next', score: 'Score', again: 'Another round', qzEnd: 'Round over: {a} out of {b}.', qzOf: 'Question {a} of {b}', qzTap: 'Turn the cow and tap the cut.',
+      favs: 'Favourites', noFav: 'No favourites yet. Tap ☆ on a cut or a recipe.', shopList: 'Shopping list', noList: 'The list is empty. Add cuts from their card or from the calculator.', copy: 'Copy list', clear: 'Clear', copied: 'List copied', listHint: 'Names are shown as you would ask for them in {c}. Change the country and the list translates itself.', added: 'Added to the list', linkCopied: 'Link copied', fav: 'Favourite', share: 'Share', addL: 'Add to list', remove: 'Remove',
+      grain: 'Show the grain', grainOff: 'Hide the grain', grainH: 'Gold arrows: the way the fibres run. White lines: where the knife goes, across the grain. It is an approximate guide.', grainV: 'In this cut the fibres run top to bottom: the steak is already cut across the grain.',
+      subs: 'If you cannot find it', subWhy: 'It also works for', cheaper: 'cheaper', pricier: 'pricier', doneRec: 'Recommended doneness', seeDone: 'See doneness', term: 'Doneness', word: 'Glossary' },
+    pt: { back: 'Voltar', menu: 'Ferramentas',
+      tools: { done: ['Ponto da carne', 'Malpassada, ao ponto, bem passada… e como se diz em cada país'], shop: ['Modo açougue', 'Um cartão para mostrar no balcão, no idioma do lugar'], calc: ['Porções e tempos', 'Quanta carne comprar e quanto tempo cozinhar'], cmp: ['Comparar cortes', 'Dois cortes lado a lado'], gloss: ['Glossário', 'Marmoreio, maturação, contra a fibra e palavras-armadilha'], quiz: ['Quiz', 'Quanto você sabe de cortes?'], list: ['Minha lista', 'Favoritos e lista de compras'] },
+      dnHint: 'Mova o controle: o bife na tábua muda de cor por dentro.', temp: 'Temperatura interna', dnHow: 'Como pedir em: {c}', waiter: 'Vão perguntar', listen: 'Ouvir', dnEach: 'Este ponto em cada país', dnScale: 'A escala completa', dnA: 'Como eu peço em', dnB: 'Como se pede em', dnFor: 'Para', dnTraps: 'Mal-entendidos frequentes', dnSet: 'Ver no bife', core: 'Centro',
+      shCut: 'Corte', shIn: 'Compro em', shHome: 'No meu país', shFor: 'É para', shQty: 'Quantidade (g)', shSay: 'Diga assim', shMeans: 'O que você está dizendo', shHomeName: 'Em {c} você conhece como', shNo: 'Se não tiverem, também serve', shPoint: 'O corte está destacado no boi: na dúvida, mostre a tela ao açougueiro.', shAny: 'Sem especificar',
+      people: 'Pessoas', appetite: ['Pouco', 'Normal', 'Com fome'], appL: 'Apetite', method: 'Preparo', buy: 'Compre', perPerson: 'por pessoa', bone: 'Inclui o peso do osso.', yieldNote: 'Ao cozinhar perde cerca de {p} % do peso.', time: 'Tempo e temperatura', thick: 'Espessura', doneness: 'Ponto', perSide: '{a} min de cada lado em fogo alto', pull: 'Tire a {t} °C: no descanso sobe a {u} °C.', restMin: 'Descanso: {m} min antes de cortar.', thickTip: 'Com mais de 4 cm vale a selagem reversa: calor suave até {t} °C e selagem forte no fim.', roastT: 'Forno: 15 min a 220 °C e depois uns {m} min a 180 °C.', slowT: 'Aqui manda o tempo, não o ponto:', approx: 'Tempos aproximados: quem manda é o termômetro.', addList: 'Adicionar à lista', toShop: 'Mostrar ao açougueiro',
+      of: 'de', cmpA: 'Corte A', cmpB: 'Corte B', best: 'Melhor para', price: 'Preço', zone: 'Região', recipes: 'Receitas', open: 'Ver ficha', cooking: 'Cozimento',
+      glSearch: 'Buscar termo…', glNone: 'Não tenho esse termo.', seeCut: 'Ver um exemplo',
+      qzIntro: 'Oito perguntas sobre cortes, nomes e pontos.', qzFind: 'Toque no boi: onde fica {x}?', qzName: 'Em: {c}, como se chama {x}?', qzMethod: 'Qual destes cortes é o melhor para {m}?', qzDone: 'Em: {c}, você pede a carne “{x}”. Como ela chega?', right: 'Correto!', wrong: 'Não era esse.', itWas: 'Era', next: 'Próxima', score: 'Pontos', again: 'Outra rodada', qzEnd: 'Rodada terminada: {a} de {b}.', qzOf: 'Pergunta {a} de {b}', qzTap: 'Gire o boi e toque no corte.',
+      favs: 'Favoritos', noFav: 'Você ainda não tem favoritos. Toque em ☆ num corte ou numa receita.', shopList: 'Lista de compras', noList: 'A lista está vazia. Adicione cortes pela ficha ou pela calculadora.', copy: 'Copiar lista', clear: 'Esvaziar', copied: 'Lista copiada', listHint: 'Os nomes aparecem como se pedem em: {c}. Mude o país e a lista se traduz sozinha.', added: 'Adicionado à lista', linkCopied: 'Link copiado', fav: 'Favorito', share: 'Compartilhar', addL: 'Para a lista', remove: 'Tirar',
+      grain: 'Ver a fibra', grainOff: 'Ocultar a fibra', grainH: 'Setas douradas: para onde corre a fibra. Linhas brancas: por onde passa a faca, contra a fibra. É um guia aproximado.', grainV: 'Neste corte a fibra vai de cima a baixo: o bife já vem cortado contra a fibra.',
+      subs: 'Se você não achar', subWhy: 'Também serve para', cheaper: 'mais barato', pricier: 'mais caro', doneRec: 'Ponto recomendado', seeDone: 'Ver os pontos', term: 'Ponto', word: 'Glossário' }
+  };
+  const S = () => T[st.lang];
+  const ICON = { done: '°C', shop: '☞', calc: '⚖', cmp: '⇄', gloss: 'Aa', quiz: '?', list: '★' };
+  const ORDER = ['done', 'shop', 'calc', 'cmp', 'gloss', 'quiz', 'list'];
+  const LOC = { es: 'es-CO', en: 'en-US', pt: 'pt-BR' };
+  const lp = (c) => ctry(c || st.country).lang.slice(0, 2);
+  const cl = (c) => ctry(c || st.country).lang;
+  const F = (t) => Math.round(t * 9 / 5 + 32);
+  const nf = (x, d) => Number(x).toLocaleString(LOC[st.lang], { maximumFractionDigits: d == null ? 1 : d });
+  const wt = (g) => (g >= 1000 ? nf(g / 1000, 2) + ' kg' : nf(g, 0) + ' g') + (st.lang === 'en' ? ` (${nf(g / 453.6, 1)} lb)` : '');
+  const rnd = (n) => Math.floor(Math.random() * n);
+  const pick = (a) => a[rnd(a.length)];
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const on = (t) => st.tab === 4 && st.tool === t;
+  const cutOpts = (sel) => CUTS.map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(cname(c))}</option>`).join('');
+  const ctryOpts = (sel) => COUNTRIES.map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
+  const topMethods = (cut) => Object.keys(cut.m).sort((a, b) => cut.m[b] - cut.m[a]);
+
+  // ------------------------------------------------------------ state kept between visits
+  Object.assign(st, { tool: null, temp: 57, calc: { n: 4, app: 1, m: null, th: 2.5, lvl: null }, cmp: null, glossQ: '', quiz: null, shopQty: 0, shopM: null, grain: false });
+  const load = (k, d) => { try { const v = JSON.parse(ls.get(k)); return v == null ? d : v; } catch (e) { return d; } };
+  const fav = { c: new Set(load('favc', []).filter((id) => BY[id])), d: new Set(load('favd', [])) };
+  let list = load('list', []).filter((x) => x && BY[x.id]);
+  const save = () => { ls.set('favc', JSON.stringify([...fav.c])); ls.set('favd', JSON.stringify([...fav.d])); ls.set('list', JSON.stringify(list)); };
+  function addList(id, g, note) {
+    const cur = list.find((x) => x.id === id && (x.note || '') === (note || '') && !x.done);
+    if (cur) { if (g) cur.g = g; } else list.push({ id, g: g || 0, note: note || '', done: false });
+    save(); A.toast(S().added);
+  }
+
+  // ------------------------------------------------------------ doneness
+  const LV = DONENESS.levels;
+  const levelOf = (t) => { for (let i = 0; i < LV.length; i++) if (t <= LV[i].t[1]) return i; return LV.length - 1; };
+  const mid = (i) => Math.round((LV[i].t[0] + LV[i].t[1]) / 2);
+  const dname = (i, c) => DONENESS.names[c || st.country][i];
+  const dfull = (i, c) => { const n = dname(i, c); return n[0] + (n[2] ? ', ' + n[2] : ''); };
+  const orderPhrase = (i, c) => DONENESS.order[lp(c)].replace('{x}', dfull(i, c));
+  const look = (t) => (typeof Shop !== 'undefined' && Shop.doneLook ? Shop.doneLook(t) : { core: [198, 58, 69], band: 0.2, ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160] });
+  function doneRec(cut) {
+    const r = DONE_REC[cut.id] || {};
+    const nm = (i) => `<b lang="${cl()}">${esc(lower(dname(i)[0]))}</b>`;
+    let range = '';
+    if (r.r) {
+      const a = r.r[0], b = r.r[1], same = a === b || dname(a)[0] === dname(b)[0];
+      range = (same ? esc(tx(DONE_NOTE.r1)).replace('{a}', nm(a)) : esc(tx(DONE_NOTE.r)).replace('{a}', nm(a)).replace('{b}', nm(b))) + ` (${LV[a].t[0]}–${LV[b].t[1]} °C)`;
+    }
+    if (r.r && r.slow) return { html: esc(tx(DONE_NOTE.both)).replace('{x}', range.charAt(0).toLowerCase() + range.slice(1)), lvl: r.r[0] };
+    if (r.r) return { html: range + '.', lvl: r.r[0] };
+    const k = r.slow ? 'slow' : r.safe ? 'safe' : r.crisp ? 'crisp' : r.soft ? 'soft' : null;
+    return { html: k ? esc(tx(DONE_NOTE[k])) : '', lvl: null };
+  }
+
+  function rDone() {
+    const s = S();
+    $('#toolbody').innerHTML = `<p class="note">${esc(s.dnHint)}</p>
+      <div class="donebox"><div class="steakx" id="dnSteak" role="img"><i></i></div><div class="dnread" id="dnRead"></div></div>
+      <input type="range" class="wide" id="temp" min="${DONENESS.min}" max="${DONENESS.max}" step="1" value="${st.temp}" aria-label="${esc(s.temp)}">
+      <div class="chips" id="dnChips"></div>
+      <p id="dnDesc"></p>
+      <div class="say" id="dnPhrase"></div>
+      <div><h4>${esc(s.dnEach)}</h4><div class="names" id="dnEach"></div></div>
+      <div><h4>${esc(s.dnScale)}</h4><div class="filters"><label class="field"><span>${esc(s.dnA)}</span><select id="dnA">${ctryOpts(st.trFrom)}</select></label><label class="field"><span>${esc(s.dnB)}</span><select id="dnB">${ctryOpts(st.country)}</select></label></div>
+        <div class="tscroll" style="margin-top:8px"><table><thead><tr><th>°C</th><th>${esc(tx(ctry(st.trFrom)))}</th><th>${esc(tx(ctry(st.country)))}</th></tr></thead><tbody id="dnTable"></tbody></table></div></div>
+      <div id="dnCut"></div>
+      <div><h4>${esc(s.dnTraps)}</h4><div class="acc">${DONENESS.pitfalls.map((p) => `<details><summary>${esc(tx(p.t))}</summary><p>${esc(tx(p.d))}</p></details>`).join('')}</div></div>
+      <p class="note">${esc(tx(DONENESS.safety))}</p>`;
+    uDone();
+  }
+  function uDone() {
+    if (!$('#dnSteak')) return;
+    const s = S(), t = st.temp, i = levelOf(t), L = look(t), me = st.country, rgb = (a) => `rgb(${a.join(',')})`;
+    const sk = $('#dnSteak'); sk.style.setProperty('--core', rgb(L.core)); sk.style.setProperty('--ring', rgb(L.ring)); sk.style.setProperty('--crust', rgb(L.crust)); sk.style.setProperty('--band', L.band.toFixed(3));
+    sk.setAttribute('aria-label', tx(LV[i].d));
+    const n = dname(i);
+    $('#dnRead').innerHTML = `<div class="lbl">${esc(tx(ctry(me)))}</div><div class="big" lang="${cl()}">${esc(n[0])}</div>${n[2] || n[1] ? `<div class="also" lang="${cl()}">${esc([n[2], n[1]].filter(Boolean).join(' · '))}</div>` : ''}<div class="tnum">${t} °C · ${F(t)} °F</div>`;
+    $('#dnChips').innerHTML = LV.map((l, k) => `<button class="chip" data-lvl="${k}" aria-pressed="${k === i}" lang="${cl()}">${esc(dname(k)[0])}<small>${l.t[0]}°</small></button>`).join('');
+    $('#dnDesc').textContent = tx(LV[i].d);
+    $('#dnPhrase').innerHTML = `<div class="lbl">${esc(s.dnHow.replace('{c}', tx(ctry(me))))}</div><div class="sayline" lang="${cl()}">«${esc(orderPhrase(i))}»</div>
+      <div class="row">${A.canSay() ? `<button class="btn ghost" data-say="dn">▶ ${esc(s.listen)}</button>` : ''}<span class="note">${esc(s.waiter)}: <i lang="${cl()}">${esc(DONENESS.ask[lp()])}</i></span></div>`;
+    $('#dnEach').innerHTML = COUNTRIES.map((c) => { const x = dname(i, c.id); return `<div class="r${c.id === me ? ' me' : ''}"><span class="cd">${c.id.toUpperCase()}</span><span class="ct">${esc(tx(c))}</span><span class="nm" lang="${c.lang}"><b>${esc(x[0])}</b>${x[1] || x[2] ? `<span>${esc([x[2], x[1]].filter(Boolean).join(' · '))}</span>` : ''}</span></div>`; }).join('');
+    const cell = (k, c) => { const x = dname(k, c); return `<td lang="${cl(c)}"><b>${esc(x[0])}</b>${x[2] ? `<small>${esc(x[2])}</small>` : ''}</td>`; };
+    $('#dnTable').innerHTML = LV.map((l, k) => `<tr data-lvl="${k}" class="${k === i ? 'me' : ''}"><td class="num">${l.t[0]}–${l.t[1]}</td>${cell(k, st.trFrom)}${cell(k, me)}</tr>`).join('');
+    const cut = BY[st.sel], rec = cut && doneRec(cut);
+    $('#dnCut').innerHTML = rec && rec.html ? `<h4>${esc(s.dnFor)} ${esc(lower(cname(cut)))}</h4><p class="whybox">${rec.html}</p>${rec.lvl != null ? `<div class="row" style="margin-top:8px"><button class="btn ghost" data-lvl="${rec.lvl}">${esc(s.dnSet)}</button></div>` : ''}` : '';
+    const sh = A.shop(); if (sh && on('done')) { sh.setDoneness(t); sh.setChalk(s.tools.done[0], [n[0], `${t} °C · ${F(t)} °F`]); }
+  }
+
+  // ------------------------------------------------------------ substitutes
+  function subsOf(id) {
+    const a = BY[id], co = {};
+    DISHES.forEach((d) => { if (d.b === id) d.a.forEach((x) => { co[x] = (co[x] || 0) + 1; }); else if (d.a.includes(id)) co[d.b] = (co[d.b] || 0) + 1; });
+    return CUTS.filter((c) => c.id !== id).map((c) => {
+      const shared = topMethods(a).filter((m) => a.m[m] >= 2 && c.m[m] >= 2);
+      const sim = 6 - (Math.abs(a.t - c.t) + Math.abs(a.f - c.f) + Math.abs(a.c - c.c));
+      return { c, shared, s: Math.min(8, co[c.id] || 0) * 1.2 + sim * 1.3 + shared.length * 1.5 };
+    }).filter((x) => x.shared.length).sort((x, y) => y.s - x.s || x.c.n - y.c.n).slice(0, 3);
+  }
+  function subsHtml(cut) {
+    const s = S(), list = subsOf(cut.id); if (!list.length) return '';
+    return `<div><h4>${esc(s.subs)}</h4><ul class="alts">${list.map((x, i) => `<li><button data-cut="${x.c.id}"><span class="rk">${i + 1}</span><span class="nm" lang="${cl()}">${esc(cname(x.c))}${x.c.price !== cut.price ? ` <span>· ${esc(x.c.price < cut.price ? s.cheaper : s.pricier)}</span>` : ''}</span><span class="wy">${esc(s.subWhy)} ${esc(x.shared.slice(0, 3).map((m) => lower(tx(METHODS[m].n))).join(', '))}.</span></button></li>`).join('')}</ul></div>`;
+  }
+
+  // ------------------------------------------------------------ pieces the cut card and the dish answer borrow
+  function cutActions(cut) {
+    const s = S(), f = fav.c.has(cut.id);
+    return `<div class="row acts"><button class="btn ghost" data-fav="c:${cut.id}" aria-pressed="${f}">${f ? '★' : '☆'} ${esc(s.fav)}</button><button class="btn ghost" data-add="${cut.id}">+ ${esc(s.addL)}</button><button class="btn ghost" data-tool="shop">${esc(s.tools.shop[0])}</button><button class="btn ghost" data-share="c">${esc(s.share)}</button></div>`;
+  }
+  function cutSections(cut) {
+    const s = S(), sh = A.shop(), rec = doneRec(cut), g = sh ? sh.grainOf(cut.id) : null;
+    let h = '';
+    if (rec.html) h += `<div><h4>${esc(s.doneRec)}</h4><p>${rec.html}</p>${rec.lvl != null ? `<div class="row" style="margin-top:8px"><button class="btn ghost" data-tool="done" data-at="${rec.lvl}">${esc(s.seeDone)}</button></div>` : ''}</div>`;
+    if (g) h += `<div><h4>${esc(tx(GLOSSARY.find((x) => x.id === 'against').t))}</h4><div class="row"><button class="btn ghost" data-grain="1" aria-pressed="${st.grain}">${esc(st.grain ? s.grainOff : s.grain)}</button></div>${st.grain ? `<p class="note" style="margin-top:8px">${esc(g === 'v' ? s.grainV : s.grainH)}</p>` : ''}</div>`;
+    return h + subsHtml(cut);
+  }
+  function dishActions(d) {
+    const s = S(), f = fav.d.has(d.n);
+    return `<button class="btn ghost" data-fav="d:${d.i}" aria-pressed="${f}">${f ? '★' : '☆'} ${esc(s.fav)}</button><button class="btn ghost" data-add="${d.b}" data-note="${esc(d.n)}">+ ${esc(s.addL)}</button><button class="btn ghost" data-tool="calc" data-m="${d.m}">${esc(s.tools.calc[0])}</button><button class="btn ghost" data-share="d:${d.i}">${esc(s.share)}</button>`;
+  }
+
+  // ------------------------------------------------------------ at the counter
+  function qtyText(g, c) {
+    if (c === 'us') { const v = Math.max(0.25, Math.round(g / 453.6 * 4) / 4); return v.toLocaleString('en-US') + ' lb'; }
+    return g >= 1000 ? (g / 1000).toLocaleString(cl(c), { maximumFractionDigits: 2 }) + ' kg' : g + ' g';
+  }
+  function shopLines(cut, c, m, g, k) {
+    const name = lower(cname(cut, c));
+    let want = (g ? PHRASES.want[k] : PHRASES.want0[k]).replace('{q}', g ? qtyText(g, c) : '').replace('{cut}', name);
+    if (k === 'fr') want = want.replace(/ de (?=[aeiouhéèêâîôœ])/i, ' d’');
+    const out = [PHRASES.hello[k], want];
+    if (m && PHRASES.method[m]) out.push(PHRASES.for[k].replace('{m}', PHRASES.method[m][k]), PHRASES.req[m][k]);
+    return out;
+  }
+  function rShop() {
+    const s = S(), cut = BY[st.sel], c = st.country, k = lp(c);
+    const ms = topMethods(cut); const m = st.shopM && cut.m[st.shopM] ? st.shopM : (st.cutMethod && cut.m[st.cutMethod] ? st.cutMethod : null);
+    const lines = shopLines(cut, c, m, st.shopQty, k), mine = shopLines(cut, c, m, st.shopQty, st.lang);
+    const home = st.trFrom !== c && norm(cname(cut, st.trFrom)) !== norm(cname(cut)) ? cname(cut, st.trFrom) : '';
+    const sub = subsOf(cut.id).slice(0, 2);
+    $('#toolbody').innerHTML = `<div class="filters">
+        <label class="field"><span>${esc(s.shCut)}</span><select id="shCut">${cutOpts(cut.id)}</select></label>
+        <label class="field"><span>${esc(s.shIn)}</span><select id="shIn">${ctryOpts(c)}</select></label>
+        <label class="field"><span>${esc(s.shFor)}</span><select id="shM"><option value="">${esc(s.shAny)}</option>${ms.map((x) => `<option value="${x}"${x === m ? ' selected' : ''}>${esc(tx(METHODS[x].n))}</option>`).join('')}</select></label>
+        <label class="field"><span>${esc(s.shQty)}</span><input id="shQty" type="number" inputmode="numeric" min="0" step="50" value="${st.shopQty || ''}" placeholder="—"></label>
+        <label class="field" style="grid-column:1 / -1"><span>${esc(s.shHome)}</span><select id="shHome">${ctryOpts(st.trFrom)}</select></label></div>
+      <article class="shopcard">
+        <div class="lbl">${esc(tx(ctry(c)))} · ${String(cut.n).padStart(2, '0')}</div>
+        <div class="huge" lang="${cl(c)}">${esc(cname(cut))}</div>
+        ${calt(cut) ? `<div class="also" lang="${cl(c)}">${esc(calt(cut))}</div>` : ''}
+        <div class="say"><div class="lbl">${esc(s.shSay)}</div>${lines.map((l) => `<div class="sayline" lang="${cl(c)}">${esc(l)}</div>`).join('')}
+          ${A.canSay() ? `<div class="row"><button class="btn ghost" data-say="shop">▶ ${esc(s.listen)}</button></div>` : ''}</div>
+        ${k !== st.lang ? `<div><h4>${esc(s.shMeans)}</h4><p class="note">${esc(mine.join(' '))}</p></div>` : ''}
+        ${home ? `<p>${esc(s.shHomeName.replace('{c}', tx(ctry(st.trFrom))))} <b lang="${cl(st.trFrom)}">${esc(home)}</b>.</p>` : ''}
+        ${sub.length ? `<p>${esc(s.shNo)}: ${sub.map((x) => `<b lang="${cl(c)}">${esc(lower(cname(x.c)))}</b>`).join(', ')}.</p>` : ''}
+        <p class="note">${esc(tx(cut.tip))}</p>
+      </article>
+      <p class="note">${esc(s.shPoint)}</p>`;
+  }
+
+  // ------------------------------------------------------------ portions and times
+  function portion(cut, m, app) {
+    if (PORTION.fixed[cut.id]) return PORTION.fixed[cut.id] * [0.75, 1, 1.3][app];
+    return PORTION.appetite[app] / ((PORTION.yield[m] || 0.7) * (1 - (PORTION.bone[cut.id] || 0)));
+  }
+  function calcNow() {
+    const cut = BY[st.sel], k = st.calc, ms = topMethods(cut);
+    const m = k.m && cut.m[k.m] ? k.m : (st.cutMethod && cut.m[st.cutMethod] ? st.cutMethod : ms[0]);
+    const pp = Math.round(portion(cut, m, k.app) / 10) * 10, total = Math.ceil(pp * k.n / 50) * 50;
+    const r = (DONE_REC[cut.id] || {}).r, lvl = k.lvl != null ? k.lvl : r ? r[0] : 2;
+    return { cut, m, ms, pp, total, r, lvl };
+  }
+  function rCalc() {
+    const s = S(), k = st.calc, c = calcNow(), cut = c.cut;
+    const fast = c.r && (c.m === 'grill' || c.m === 'sear'), roast = c.r && c.m === 'roast';
+    const target = mid(c.lvl);
+    let time = '';
+    if (fast) {
+      const side = Math.max(0.5, Math.round(PORTION.side[c.lvl] * Math.pow(k.th / 2.5, 1.3) * 2) / 2);
+      time = `<p><b>${esc(s.perSide.replace('{a}', nf(side)))}</b>. ${esc(s.pull.replace('{t}', target - 3).replace('{u}', target))} ${esc(s.restMin.replace('{m}', Math.max(5, Math.round(k.th * 2))))}</p>${k.th >= 4 ? `<p class="note">${esc(s.thickTip.replace('{t}', target - 9))}</p>` : ''}`;
+    } else if (roast) {
+      time = `<p><b>${esc(s.roastT.replace('{m}', Math.round(PORTION.roast[c.lvl] * c.total / 500 / 5) * 5))}</b> ${esc(s.pull.replace('{t}', target - 5).replace('{u}', target))} ${esc(s.restMin.replace('{m}', 15))}</p>`;
+    } else time = `<p>${c.r ? '' : esc(s.slowT) + ' '}${esc(tx(cut.cook))}</p>`;
+    const lvSel = `<label class="field"><span>${esc(s.doneness)}</span><select id="cLvl">${LV.map((l, i) => `<option value="${i}"${i === c.lvl ? ' selected' : ''}>${esc(dname(i)[0])} · ${mid(i)} °C</option>`).join('')}</select></label>`;
+    $('#toolbody').innerHTML = `<div class="filters">
+        <label class="field"><span>${esc(s.shCut)}</span><select id="cCut">${cutOpts(cut.id)}</select></label>
+        <label class="field"><span>${esc(s.method)}</span><select id="cM">${c.ms.map((x) => `<option value="${x}"${x === c.m ? ' selected' : ''}>${esc(tx(METHODS[x].n))}</option>`).join('')}</select></label>
+        <div class="field"><span>${esc(s.people)}</span><div class="stepper"><button data-step="-1" aria-label="−">−</button><b id="cN">${k.n}</b><button data-step="1" aria-label="+">+</button></div></div>
+        <div class="field"><span>${esc(s.appL)}</span><div class="seg">${s.appetite.map((a, i) => `<button data-app="${i}" aria-pressed="${i === k.app}">${esc(a)}</button>`).join('')}</div></div></div>
+      <article class="ans"><div class="tagline"><span>${esc(s.buy)}</span></div>
+        <h2><em>${esc(wt(c.total))}</em> ${esc(s.of)} ${esc(lower(cname(cut)))}</h2>
+        <p>${esc(wt(c.pp))} ${esc(s.perPerson)}. ${PORTION.bone[cut.id] || PORTION.fixed[cut.id] ? esc(s.bone) + ' ' : ''}${PORTION.fixed[cut.id] ? '' : esc(s.yieldNote.replace('{p}', Math.round((1 - (PORTION.yield[c.m] || 0.7)) * 100)))}</p>
+        <div class="row"><button class="btn ghost" data-add="${cut.id}" data-g="${c.total}">+ ${esc(s.addList)}</button><button class="btn ghost" data-tool="shop" data-g="${c.total}" data-m="${c.m}">${esc(s.toShop)}</button></div></article>
+      <div><h4>${esc(s.time)}</h4>${fast ? `<div class="filters" style="margin-bottom:10px"><label class="field"><span>${esc(s.thick)}</span><select id="cTh">${[1.5, 2, 2.5, 3, 4, 5].map((x) => `<option value="${x}"${x === k.th ? ' selected' : ''}>${nf(x)} cm${st.lang === 'en' ? ` (${nf(x / 2.54, 1)} in)` : ''}</option>`).join('')}</select></label>${lvSel}</div>` : roast ? `<div class="filters" style="margin-bottom:10px">${lvSel}</div>` : ''}
+        ${time}<p class="note">${esc(tx(METHODS[c.m].ask))} ${esc(s.approx)}</p></div>`;
+  }
+
+  // ------------------------------------------------------------ comparison
+  function rCmp() {
+    const s = S();
+    if (!st.cmp || !BY[st.cmp[0]] || !BY[st.cmp[1]]) { const o = subsOf(st.sel)[0]; st.cmp = [st.sel, o ? o.c.id : (st.sel === 'la' ? 'ba' : 'la')]; }
+    const a = BY[st.cmp[0]], b = BY[st.cmp[1]];
+    const bar = (v) => `<span class="b" role="img" aria-label="${v} / 5">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= v ? 'on' : ''}"></i>`).join('')}</span>`;
+    const best = (c) => topMethods(c).filter((m) => c.m[m] === 3).slice(0, 4).map((m) => esc(tx(METHODS[m].n))).join(' · ') || '—';
+    const rec = (c) => doneRec(c).html || '—';
+    const row = (lbl, x, y) => `<div class="cl">${esc(lbl)}</div><div>${x}</div><div>${y}</div>`;
+    $('#toolbody').innerHTML = `<div class="filters"><label class="field"><span>${esc(s.cmpA)}</span><select id="cmpA">${cutOpts(a.id)}</select></label><label class="field"><span>${esc(s.cmpB)}</span><select id="cmpB">${cutOpts(b.id)}</select></label></div>
+      <div class="cmp">
+        ${row('', `<b class="ch" lang="${cl()}"><i>1</i>${esc(cname(a))}</b>`, `<b class="ch" lang="${cl()}"><i>2</i>${esc(cname(b))}</b>`)}
+        ${row(s.zone, esc(tx(ZONES[a.zone])), esc(tx(ZONES[b.zone])))}
+        ${row(s.price, esc(tx(PRICE[a.price])), esc(tx(PRICE[b.price])))}
+        ${['t', 'f', 'c', 'v'].map((p) => row(tx(PROPS[p]), bar(a[p]), bar(b[p]))).join('')}
+        ${row(s.best, best(a), best(b))}
+        ${row(s.cooking, esc(tx(a.cook)), esc(tx(b.cook)))}
+        ${row(s.doneRec, rec(a), rec(b))}
+        ${row(s.recipes, String(A.dishesOf(a.id).length), String(A.dishesOf(b.id).length))}
+        ${row('', `<button class="btn ghost" data-cut="${a.id}">${esc(s.open)}</button>`, `<button class="btn ghost" data-cut="${b.id}">${esc(s.open)}</button>`)}
+      </div>
+      <p>${esc(tx(a.d))}</p><p>${esc(tx(b.d))}</p>`;
+  }
+
+  // ------------------------------------------------------------ glossary
+  const gkey = (g) => norm(g.t.join(' ') + ' ' + g.aka.join(' '));
+  function rGloss() {
+    $('#toolbody').innerHTML = `<div class="filters"><input id="glq" type="search" placeholder="${esc(S().glSearch)}" value="${esc(st.glossQ)}" autocomplete="off"></div><div id="gllist"></div>`;
+    uGloss();
+  }
+  function uGloss(openId) {
+    const s = S(), q = norm(st.glossQ), box = $('#gllist'); if (!box) return;
+    const hit = GLOSSARY.filter((g) => !q || gkey(g).includes(q) || norm(tx(g.d)).includes(q));
+    box.innerHTML = hit.length ? Object.keys(GLOSS_GROUPS).map((grp) => {
+      const items = hit.filter((g) => g.g === grp); if (!items.length) return '';
+      return `<h4 style="margin-top:14px">${esc(tx(GLOSS_GROUPS[grp]))}</h4><div class="acc">${items.map((g) => `<details id="gl-${g.id}"${g.id === openId || (q && hit.length <= 3) ? ' open' : ''}><summary>${esc(tx(g.t))}${tx(g.aka) ? `<small>${esc(tx(g.aka))}</small>` : ''}</summary><p>${esc(tx(g.d))}</p>${g.cut ? `<div class="row"><button class="btn ghost" data-cut="${g.cut}">${esc(s.seeCut)}: ${esc(lower(cname(BY[g.cut])))}</button></div>` : ''}</details>`).join('')}</div>`;
+    }).join('') : `<p class="note">${esc(s.glNone)}</p>`;
+    if (openId) { const el = $('#gl-' + openId); if (el && el.scrollIntoView) el.scrollIntoView({ block: 'center' }); }
+  }
+
+  // ------------------------------------------------------------ quiz
+  const ROUND = 8;
+  function findable() {
+    const sh = A.shop(); if (!sh) return [];
+    const primary = {}; CUTS.forEach((c) => (sh.pieceOfCut[c.id] || []).forEach((n) => { if (!(n in primary)) primary[n] = c.id; }));
+    return CUTS.filter((c) => { const ps = sh.pieceOfCut[c.id] || []; return ps.length && ps.every((n) => !sh.pieces[n].meta.internal && primary[n] === c.id); });
+  }
+  function newQ() {
+    const s = S(), kinds = ['name', 'name', 'method', 'done'], fd = findable(); if (fd.length > 4) kinds.push('find', 'find');
+    const kind = pick(kinds);
+    if (kind === 'find') { const c = pick(fd); return { kind, id: c.id, text: s.qzFind.replace('{x}', lower(cname(c))) }; }
+    if (kind === 'name') {
+      for (let n = 0; n < 40; n++) {
+        const c = pick(CUTS), x = pick(COUNTRIES.filter((k) => k.id !== st.country));
+        if (norm(c.names[x.id][0]) === norm(cname(c))) continue;
+        const others = shuffle(CUTS.filter((o) => o.id !== c.id && norm(o.names[x.id][0]) !== norm(c.names[x.id][0]))).slice(0, 3);
+        const opts = shuffle([c].concat(others));
+        return { kind, id: c.id, x: x.id, text: s.qzName.replace('{c}', tx(x)).replace('{x}', lower(cname(c))), opts: opts.map((o) => ({ t: o.names[x.id][0], lang: x.lang, ok: o.id === c.id })), why: `${cname(c)} = ${c.names[x.id][0]} (${tx(x)})` };
+      }
+    }
+    if (kind === 'method') {
+      const ms = Object.keys(METHODS).filter((m) => CUTS.some((c) => c.m[m] === 3) && CUTS.filter((c) => !c.m[m]).length >= 3);
+      const m = pick(ms), c = pick(CUTS.filter((x) => x.m[m] === 3)), others = shuffle(CUTS.filter((x) => !x.m[m])).slice(0, 3);
+      return { kind, id: c.id, text: s.qzMethod.replace('{m}', tx(METHODS[m].v)), opts: shuffle([c].concat(others)).map((o) => ({ t: cname(o), lang: cl(), ok: o.id === c.id })), why: A.whyOf(c, m) };
+    }
+    for (let n = 0; n < 40; n++) {
+      const x = pick(COUNTRIES), i = rnd(LV.length), nm = DONENESS.names[x.id];
+      if (nm.filter((e) => e[0] === nm[i][0]).length > 1) continue;
+      const first = (k) => tx(LV[k].d).split('. ')[0].replace(/\.$/, '');
+      const idx = shuffle([0, 1, 2, 3, 4, 5].filter((k) => k !== i)).slice(0, 3).concat(i).sort((a, b) => a - b);
+      return { kind: 'done', lvl: i, text: s.qzDone.replace('{c}', tx(x)).replace('{x}', nm[i][0]), opts: idx.map((k) => ({ t: first(k), ok: k === i })), why: `${nm[i][0]} (${tx(x)}): ${LV[i].t[0]}–${LV[i].t[1]} °C` };
+    }
+    return newQ();
+  }
+  function startQuiz() { st.quiz = { i: 0, score: 0, q: null, ans: null }; nextQ(); }
+  function nextQ() {
+    const z = st.quiz; z.ans = null; z.i++;
+    z.q = z.i > ROUND ? null : newQ();
+    if (z.q && z.q.kind === 'find') A.setView('cow');
+    rQuiz(); A.sync3D();
+  }
+  function answer(ok, k) {
+    const z = st.quiz; if (!z || !z.q || z.ans) return;
+    z.ans = { ok, k }; if (ok) z.score++;
+    rQuiz(); A.sync3D();
+  }
+  function rQuiz() {
+    const s = S(), z = st.quiz, box = $('#toolbody'); if (!box || !z) return;
+    if (!z.q) { box.innerHTML = `<article class="ans"><h2>${esc(s.qzEnd.replace('{a}', z.score).replace('{b}', ROUND))}</h2><div class="row"><button class="btn" data-qz="again">${esc(s.again)}</button></div></article>`; return; }
+    const q = z.q, a = z.ans;
+    box.innerHTML = `<div class="tagline note">${esc(s.qzOf.replace('{a}', z.i).replace('{b}', ROUND))} · ${esc(s.score)}: ${z.score}</div>
+      <article class="ans"><h2>${esc(q.text)}</h2>
+        ${q.kind === 'find' ? (a ? '' : `<p class="note">${esc(s.qzTap)}</p>`) : `<ul class="alts quiz">${q.opts.map((o, k) => `<li><button data-qz="${k}"${a ? ' disabled' : ''} class="${a ? (o.ok ? 'ok' : a.k === k ? 'no' : '') : ''}"><span class="rk">${'ABCD'[k]}</span><span class="nm"${o.lang ? ` lang="${o.lang}"` : ''}>${esc(o.t)}</span></button></li>`).join('')}</ul>`}
+        ${a ? `<p class="whybox"><b>${esc(a.ok ? s.right : s.wrong)}</b> ${q.kind === 'find' ? (a.ok ? '' : `${esc(s.itWas)} ${esc(lower(tx(ZONES[BY[q.id].zone])))}: `) + esc(tx(BY[q.id].d)) : esc(q.why)}</p><div class="row"><button class="btn" data-qz="next">${esc(s.next)}</button>${q.id ? `<button class="btn ghost" data-cut="${q.id}">${esc(s.open)}</button>` : ''}</div>` : ''}
+      </article>`;
+  }
+
+  // ------------------------------------------------------------ favourites and shopping list
+  function listText() {
+    return list.map((x) => `${x.done ? '✓' : '•'} ${cname(BY[x.id])}${x.g ? ' — ' + wt(x.g) : ''}${x.note ? ' (' + x.note + ')' : ''}`).join('\n');
+  }
+  function rList() {
+    const s = S(), fc = [...fav.c].map((id) => BY[id]), fd = DISHES.filter((d) => fav.d.has(d.n));
+    $('#toolbody').innerHTML = `<div><h4>${esc(s.shopList)}</h4>
+        ${list.length ? `<ul class="shoplist">${list.map((x, i) => `<li class="${x.done ? 'done' : ''}"><label><input type="checkbox" data-chk="${i}"${x.done ? ' checked' : ''}><span><b lang="${cl()}">${esc(cname(BY[x.id]))}</b>${x.g ? ` · ${esc(wt(x.g))}` : ''}${x.note ? `<small>${esc(x.note)}</small>` : ''}</span></label><button class="mini" data-cut="${x.id}" aria-label="${esc(s.open)}">›</button><button class="mini" data-tool="shop" data-sel="${x.id}" data-g="${x.g || 0}" aria-label="${esc(s.toShop)}">☞</button><button class="mini" data-rm="${i}" aria-label="${esc(s.remove)}">✕</button></li>`).join('')}</ul>
+          <div class="row" style="margin-top:10px"><button class="btn ghost" data-act="copy">${esc(s.copy)}</button><button class="btn ghost" data-act="clear">${esc(s.clear)}</button></div><p class="note" style="margin-top:8px">${esc(s.listHint.replace('{c}', tx(ctry(st.country))))}</p>`
+        : `<p class="note">${esc(s.noList)}</p>`}</div>
+      <div><h4>${esc(s.favs)}</h4>
+        ${fc.length || fd.length ? `${fc.length ? `<div class="chips">${fc.map((c) => `<button class="chip" data-cut="${c.id}" lang="${cl()}">★ ${esc(cname(c))}</button>`).join('')}</div>` : ''}${fd.length ? `<ul class="dishlist" style="margin-top:8px">${fd.map(A.dishRow).join('')}</ul>` : ''}` : `<p class="note">${esc(s.noFav)}</p>`}</div>`;
+  }
+
+  // ------------------------------------------------------------ the tab itself
+  const RENDER = { done: rDone, shop: rShop, calc: rCalc, cmp: rCmp, gloss: rGloss, quiz: rQuiz, list: rList };
+  function render() {
+    const s = S(), box = $('#moresec'); if (!box) return;
+    if (!st.tool || !RENDER[st.tool]) {
+      st.tool = null;
+      box.innerHTML = `<div class="lbl">${esc(s.menu)}</div><div class="toolgrid">${ORDER.map((k) => `<button class="tool" data-tool="${k}"><span class="ic" aria-hidden="true">${ICON[k]}</span><span class="tt">${esc(s.tools[k][0])}${k === 'list' && list.filter((x) => !x.done).length ? ` <i class="badge">${list.filter((x) => !x.done).length}</i>` : ''}</span><span class="ss">${esc(s.tools[k][1])}</span></button>`).join('')}</div>`;
+      return;
+    }
+    box.innerHTML = `<div class="toolhead"><button class="btn ghost" data-back="1">‹ ${esc(s.back)}</button><h2>${esc(s.tools[st.tool][0])}</h2></div><div id="toolbody" class="toolbody"></div>`;
+    if (st.tool === 'quiz' && !st.quiz) startQuiz(); else RENDER[st.tool]();
+  }
+  function open(tool, d) {
+    d = d || {};
+    if (d.sel && BY[d.sel]) A.selectCut(d.sel, { tab: false, keepAnswer: true });
+    st.tool = tool;
+    if (tool === 'done' && d.at != null) st.temp = mid(+d.at);
+    if (tool === 'shop') { st.shopQty = d.g != null ? +d.g : st.shopQty; if (d.m) st.shopM = d.m; }
+    if (tool === 'calc' && d.m) st.calc.m = d.m;
+    if (tool === 'quiz') st.quiz = null;
+    A.setTab(4); $('#pbody').scrollTop = 0;
+    A.setView(tool === 'done' ? 'block' : tool === 'shop' || tool === 'cmp' || tool === 'quiz' ? 'cow' : st.view);
+    A.sync3D();
+  }
+  function sayNow(what) {
+    if (what === 'dn') return A.say(orderPhrase(levelOf(st.temp)), cl());
+    if (what === 'shop') { const cut = BY[st.sel], m = st.shopM && cut.m[st.shopM] ? st.shopM : (st.cutMethod && cut.m[st.cutMethod] ? st.cutMethod : null); return A.say(shopLines(cut, st.country, m, st.shopQty, lp()).join(' '), cl()); }
+  }
+  function click(b, d) {
+    if (d.tool) { open(d.tool, d); return true; }
+    if (d.back) { st.tool = null; render(); A.sync3D(); $('#pbody').scrollTop = 0; return true; }
+    if (d.lvl != null) { st.temp = mid(+d.lvl); const r = $('#temp'); if (r) r.value = st.temp; uDone(); return true; }
+    if (d.say) { sayNow(d.say); return true; }
+    if (d.fav) { const [k, v] = d.fav.split(':'); const key = k === 'c' ? v : DISHES[+v].n, set = fav[k]; if (set.has(key)) set.delete(key); else set.add(key); save(); A.refresh(); return true; }
+    if (d.add) { addList(d.add, +d.g || 0, d.note || ''); if (on('list')) rList(); return true; }
+    if (d.share) { A.share(d.share); return true; }
+    if (d.grain) { st.grain = !st.grain; if (st.grain) A.setView('block'); A.sync3D(); A.refresh(); return true; }
+    if (d.qz != null) { if (d.qz === 'again') startQuiz(); else if (d.qz === 'next') nextQ(); else { const o = st.quiz && st.quiz.q && st.quiz.q.opts && st.quiz.q.opts[+d.qz]; if (o) answer(!!o.ok, +d.qz); } return true; }
+    if (d.step) { st.calc.n = Math.min(40, Math.max(1, st.calc.n + (+d.step))); rCalc(); return true; }
+    if (d.app != null) { st.calc.app = +d.app; rCalc(); return true; }
+    if (d.rm != null) { list.splice(+d.rm, 1); save(); rList(); return true; }
+    if (d.act === 'clear') { list = []; save(); rList(); return true; }
+    if (d.act === 'copy') { A.copy(listText(), S().copied); return true; }
+    return false;
+  }
+  function input(t) {
+    if (t.id === 'temp') { st.temp = +t.value; uDone(); return true; }
+    if (t.id === 'glq') { st.glossQ = t.value; uGloss(); return true; }
+    return false;
+  }
+  function change(t) {
+    const v = t.value;
+    if (t.dataset && t.dataset.chk != null) { const x = list[+t.dataset.chk]; if (x) { x.done = t.checked; save(); rList(); } return true; }
+    if (t.id === 'dnA' || t.id === 'shHome') { st.trFrom = v; render(); return true; }
+    if (t.id === 'dnB' || t.id === 'shIn') { A.setCountry(v); return true; }
+    if (t.id === 'shCut' || t.id === 'cCut') { st.calc.m = null; st.calc.lvl = null; st.shopM = null; A.selectCut(v, { tab: false, keepAnswer: true, view: st.view }); render(); return true; }
+    if (t.id === 'shM') { st.shopM = v || null; if (!v) st.cutMethod = null; rShop(); return true; }
+    if (t.id === 'shQty') { st.shopQty = Math.max(0, Math.round(+v || 0)); rShop(); return true; }
+    if (t.id === 'cM') { st.calc.m = v; rCalc(); return true; }
+    if (t.id === 'cTh') { st.calc.th = +v; rCalc(); return true; }
+    if (t.id === 'cLvl') { st.calc.lvl = +v; rCalc(); return true; }
+    if (t.id === 'cmpA' || t.id === 'cmpB') { st.cmp[t.id === 'cmpA' ? 0 : 1] = v; rCmp(); A.sync3D(); return true; }
+    return false;
+  }
+  // a tap on the cow while a "find it" question is open
+  function pickCow(h) {
+    const z = st.quiz; if (!on('quiz') || !z || !z.q || z.q.kind !== 'find') return false;
+    if (z.ans || !h || h.where !== 'cow') return true;
+    const sh = A.shop(); answer((sh.pieceOfCut[z.q.id] || []).includes(h.piece), -1);
+    return true;
+  }
+  // what the 3D scene should show while a tool is open (null: the usual selection)
+  function scene() {
+    const s = S();
+    if (on('done')) return { sel: st.sel, recs: [], tags: false, done: st.temp, chalk: [s.tools.done[0], [dname(levelOf(st.temp))[0], `${st.temp} °C · ${F(st.temp)} °F`]] };
+    if (on('cmp') && st.cmp) return { sel: null, recs: st.cmp, tags: true, chalk: [s.tools.cmp[0], st.cmp.map((id) => cname(BY[id]))] };
+    if (on('quiz') && st.quiz) { const z = st.quiz, show = z.q && z.ans && z.q.id ? z.q.id : null; return { sel: show, recs: [], tags: !!show, quiet: !show && !!z.q && z.q.kind === 'find', chalk: ['Quiz', [`${z.score} / ${ROUND}`]] }; }
+    if (on('shop') || on('calc')) return { sel: st.sel, recs: [], tags: true, chalk: [tx(ZONES[BY[st.sel].zone]), [cname(BY[st.sel])]] };
+    return null;
+  }
+  // entries for the search box
+  function index(push) {
+    const s = S();
+    GLOSSARY.forEach((g) => push({ ty: 'term', id: 'g:' + g.id, t: tx(g.t), s: s.word + ' · ' + tx(GLOSS_GROUPS[g.g]), k: gkey(g), w: 1, lbl: s.word }));
+    const seen = {};
+    COUNTRIES.forEach((c) => DONENESS.names[c.id].forEach((n, i) => { const key = norm(n[0]) + ':' + i; (seen[key] = seen[key] || { n: n[0], i, cs: [] }).cs.push(c.id); }));
+    Object.values(seen).forEach((e) => push({ ty: 'term', id: 'd:' + e.i + ':' + norm(e.n), t: e.n, s: `${tx(LV[e.i].n)} · ${LV[e.i].t[0]}–${LV[e.i].t[1]} °C · ${e.cs.map((x) => x.toUpperCase()).join(' ')}`, k: norm(e.n), w: e.cs.includes(st.country) ? 3 : 1, lbl: s.term }));
+  }
+  function go(id) {
+    const [k, v] = id.split(':');
+    if (k === 'd') return open('done', { at: +v });
+    st.glossQ = ''; open('gloss'); uGloss(v);
+  }
+  return { render, open, click, input, change, pickCow, scene, index, go, cutActions, cutSections, dishActions, on, t: (k) => S()[k], label: (k) => S().tools[k][0], more: () => ({ es: 'Más', en: 'More', pt: 'Mais' })[st.lang] };
+}
 
 // ---- Interface: language, country, search, the butcher's answers, cut card, recipes, translator.
 (function () {
@@ -2685,10 +3642,19 @@ const Shop = (function () {
   const esc = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const norm = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9぀-ヿ㐀-鿿가-힯 ]+/g, ' ').replace(/\s+/g, ' ').trim();
   const BY = Object.fromEntries(CUTS.map((c) => [c.id, c]));
+  // Portuguese rides as a third entry on every [español, English] pair
+  (function applyPT() {
+    COUNTRIES.forEach((c) => { c.pt = PT.countries[c.id]; });
+    for (const m in METHODS) { const o = PT.methods[m]; if (o) ['n', 'v', 'need', 'ask'].forEach((f) => { METHODS[m][f][2] = o[f]; }); }
+    for (const k in PROPS) PROPS[k][2] = PT.props[k];
+    PRICE.forEach((x, i) => { x[2] = PT.price[i]; });
+    for (const z in ZONES) ZONES[z][2] = PT.zones[z];
+    CUTS.forEach((c) => { const o = PT.cuts[c.id]; if (!o) return; ['d', 'tip', 'cook'].forEach((f) => { c[f][2] = o[f]; }); for (const m in (o.why || {})) if (c.why && c.why[m]) c.why[m][2] = o.why[m]; });
+  })();
 
   // ------------------------------------------------------------ strings
   const STR = {
-    es: { eyebrow: 'Carnicería', butcher: 'Don Rafa', role: 'Carnicero · pregúntale lo que quieras', tabs: ['Carnicero', 'Corte', 'Recetas', 'Traductor'],
+    es: { eyebrow: 'Carnicería', butcher: 'Don Rafa', role: 'Carnicero · pregúntale lo que quieras', tabs: ['Carnicero', 'Corte', 'Recetas', 'Traductor', 'Más'],
       views: { shop: 'Tienda', cow: 'La res', case: 'Vitrina', block: 'El corte' }, explode: 'Separar cortes', hint: 'Arrastra para girar · toca un corte',
       askLabel: '¿Qué vas a cocinar?', askPh: 'ropa vieja, brisket, sancocho, picanha…', askBtn: 'Preguntar', orMethod: 'O dime cómo la vas a preparar', examples: 'Prueba con',
       settings: 'Ajustes', language: 'Idioma', where: '¿Dónde compras la carne?', voice: 'Voz del carnicero', on: 'Sí', off: 'No',
@@ -2702,7 +3668,7 @@ const Shop = (function () {
       hello: 'Bienvenido. Dime qué vas a cocinar y te digo qué corte pedir, por qué, y cómo se llama aquí.', loading: 'Afilando los cuchillos…', loadFail: 'No se pudo cargar la tienda en 3D. El resto funciona igual.',
       zone: 'Zona', internal: 'Va por dentro: separa los cortes para verlo.', sources: 'Fuentes', approx: 'Las equivalencias son aproximadas: cada país despieza la res de forma distinta y los nombres cambian entre carnicerías. Si dudas, muestra el corte en la res.',
       count: (n) => `${n} recetas`, speak: 'Escuchar', pageOf: 'de' },
-    en: { eyebrow: 'Butcher shop', butcher: 'Don Rafa', role: 'Butcher · ask him anything', tabs: ['Butcher', 'Cut', 'Recipes', 'Translator'],
+    en: { eyebrow: 'Butcher shop', butcher: 'Don Rafa', role: 'Butcher · ask him anything', tabs: ['Butcher', 'Cut', 'Recipes', 'Translator', 'More'],
       views: { shop: 'Shop', cow: 'The cow', case: 'Display case', block: 'The cut' }, explode: 'Separate cuts', hint: 'Drag to turn · tap a cut',
       askLabel: 'What are you cooking?', askPh: 'ropa vieja, brisket, pot roast, picanha…', askBtn: 'Ask', orMethod: 'Or tell me how you will cook it', examples: 'Try',
       settings: 'Settings', language: 'Language', where: 'Where do you buy your beef?', voice: "Butcher's voice", on: 'On', off: 'Off',
@@ -2715,8 +3681,23 @@ const Shop = (function () {
       askClaude: 'Ask Don Rafa', claudeFail: 'I could not ask right now. Try again in a moment.', claudeOff: 'Free-form questions need permission for this page to use Claude.', stop: 'Stop',
       hello: 'Welcome. Tell me what you are cooking and I will tell you which cut to ask for, why, and what it is called here.', loading: 'Sharpening the knives…', loadFail: 'The 3D shop could not load. Everything else still works.',
       zone: 'Zone', internal: 'It sits inside: separate the cuts to see it.', sources: 'Sources', approx: 'Equivalents are approximate: each country breaks the carcass down differently and names vary between butchers. When in doubt, point at the cut on the cow.',
-      count: (n) => `${n} recipes`, speak: 'Listen', pageOf: 'of' }
+      count: (n) => `${n} recipes`, speak: 'Listen', pageOf: 'of' },
+    pt: { eyebrow: 'Açougue', butcher: 'Don Rafa', role: 'Açougueiro · pergunte o que quiser', tabs: ['Açougueiro', 'Corte', 'Receitas', 'Tradutor', 'Mais'],
+      views: { shop: 'Loja', cow: 'O boi', case: 'Vitrine', block: 'O corte' }, explode: 'Separar cortes', hint: 'Arraste para girar · toque num corte',
+      askLabel: 'O que você vai cozinhar?', askPh: 'ropa vieja, brisket, rabada, picanha…', askBtn: 'Perguntar', orMethod: 'Ou me diga como vai preparar', examples: 'Experimente',
+      settings: 'Ajustes', language: 'Idioma', where: 'Onde você compra a carne?', voice: 'Voz do açougueiro', on: 'Sim', off: 'Não',
+      dish: 'Receita', cut: 'Corte', method: 'Método', example: 'Exemplo', for: 'Para', ask: 'peça', inC: 'em', recipeSays: 'A receita ({c}) chama de', alsoWork: 'Também servem', howAsk: 'Como pedir', cooking: 'Cozimento',
+      seeCut: 'Ver ficha do corte', seeCase: 'Ver de perto', bestFor: 'Os melhores cortes para', budget: ['Todos', 'Econômicos', 'Nobres'], why: 'Por quê',
+      aka: 'Também', props: 'Como é', inCountries: 'Como se chama em cada país', inRegions: 'Na Colômbia, por região', regionDefault: 'Em quase todo o país pede-se como', goodFor: 'Para que serve', notFor: 'toque num método para ver por quê',
+      tip: 'Ao comprar', muscle: 'Músculo', dishesWith: 'Receitas com este corte', more: 'Ver mais', allDishes: 'receitas', search: 'Buscar receita…', anyCuisine: 'Todas as cozinhas', anyMethod: 'Todos os métodos',
+      from: 'A receita vem de', to: 'Eu compro em', trHelp: 'Escolha de onde vem a receita e onde você compra. Toque numa linha para ver o corte.', noName: 'sem nome próprio',
+      thinking: 'Don Rafa está pensando', claudeNote: 'Resposta gerada pelo Claude com o catálogo da loja.', notFound: 'Não tenho essa receita anotada.', notFoundHelp: 'Tente o nome do prato, do corte ou do método (grelhar, ensopar, desfiar…).', closest: 'O mais parecido que tenho',
+      askClaude: 'Perguntar ao Don Rafa', claudeFail: 'Não consegui consultar agora. Tente de novo daqui a pouco.', claudeOff: 'Para perguntas livres é preciso permitir que a página use o Claude.', stop: 'Parar',
+      hello: 'Bem-vindo. Diga o que vai cozinhar e eu digo que corte pedir, por quê, e como se chama aqui.', loading: 'Afiando as facas…', loadFail: 'Não foi possível carregar a loja em 3D. O resto funciona igual.',
+      zone: 'Região', internal: 'Fica por dentro: separe os cortes para ver.', sources: 'Fontes', approx: 'As equivalências são aproximadas: cada país divide o boi de um jeito e os nomes mudam entre açougues. Na dúvida, mostre o corte no boi.',
+      count: (n) => `${n} receitas`, speak: 'Ouvir', pageOf: 'de' }
   };
+  const LANGS = { es: 'Español', en: 'English', pt: 'Português' };
 
   const CUISINE = {};
   ('CO:Colombia|Colombia;MX:México|Mexico;AR:Argentina|Argentina;UY:Uruguay|Uruguay;CL:Chile|Chile;VE:Venezuela|Venezuela;PE:Perú|Peru;EC:Ecuador|Ecuador;BO:Bolivia|Bolivia;PY:Paraguay|Paraguay;BR:Brasil|Brazil;' +
@@ -2727,6 +3708,7 @@ const Shop = (function () {
     'CN:China|China;HK:Hong Kong|Hong Kong;TW:Taiwán|Taiwan;JP:Japón|Japan;KR:Corea|Korea;VN:Vietnam|Vietnam;TH:Tailandia|Thailand;ID:Indonesia|Indonesia;MY:Malasia|Malaysia;PH:Filipinas|Philippines;KH:Camboya|Cambodia;LA:Laos|Laos;MM:Myanmar|Myanmar;' +
     'PK:Pakistán|Pakistan;IN:India|India;BD:Bangladés|Bangladesh;LK:Sri Lanka|Sri Lanka;NP:Nepal|Nepal;KZ:Kazajistán|Kazakhstan;UZ:Uzbekistán|Uzbekistan;MN:Mongolia|Mongolia;AU:Australia|Australia;NZ:Nueva Zelanda|New Zealand;FJ:Fiyi|Fiji;WS:Samoa|Samoa;INT:General|General')
     .split(';').forEach((s) => { const [k, v] = s.split(':'); CUISINE[k] = v.split('|'); });
+  for (const k in PT.cuisine) if (CUISINE[k]) CUISINE[k][2] = PT.cuisine[k];
   const NAMESET = { CO: 'co', MX: 'mx', AR: 'ar', UY: 'ar', PY: 'ar', CL: 'cl', VE: 've', BR: 'br', ES: 'es', US: 'us', CA: 'us', UK: 'uk', IE: 'uk', AU: 'uk', NZ: 'uk', ZA: 'uk', FR: 'fr', BE: 'fr', IT: 'it' };
 
   const DISHES = $('#dishes').textContent.split('\n').map((l) => l.trim()).filter((l) => l && l[0] !== '#').map((l, i) => {
@@ -2734,20 +3716,22 @@ const Shop = (function () {
   });
   // a dish may use a cut in a way its card does not list yet: record it as a workable use
   DISHES.forEach((d) => { if (BY[d.b] && !BY[d.b].m[d.m]) BY[d.b].m[d.m] = 1; });
-  const SYN = { grill: 'asar asado parrilla brasa bbq barbecue carbon grill grilled barbacoa', sear: 'plancha sarten sellar bistec steak pan seared sear griddle', roast: 'horno hornear roast rosbif asado al horno oven',
-    braise: 'guisar guiso estofar estofado sudar sudado braise stew braised cazuela olla presion pressure cooker slow cooker', shred: 'desmechar mechada deshebrar deshilachar shred shredded pulled ropa vieja', soup: 'sopa caldo sancocho cocido puchero soup broth stock consome',
-    smoke: 'ahumar ahumado smoke smoked low and slow fuego lento al palo', stirfry: 'saltear salteado wok tiras stir fry strips fajitas', fry: 'apanar apanado empanizar milanesa freir frito breaded fried schnitzel cutlet', raw: 'crudo tartar carpaccio raw tataki',
-    grind: 'moler molida picada hamburguesa albondigas ground mince burger meatballs', skewer: 'pinchos chuzos brochetas anticuchos skewer kebab kabob satay', cure: 'curar secar seca cecina tasajo jerky cure cured dried salar', roll: 'rellenar relleno enrollar arrollado stuffed rolled roulade', slice: 'laminas lonchas finas hot pot shabu sukiyaki thin sliced shaved' };
+  const SYN = { grill: 'asar asado parrilla brasa bbq barbecue carbon grill grilled barbacoa churrasco churrasqueira grelha grelhar brasa', sear: 'plancha sarten sellar bistec steak pan seared sear griddle frigideira chapa bife selar', roast: 'horno hornear roast rosbif asado al horno oven forno assar assado rosbife',
+    braise: 'guisar guiso estofar estofado sudar sudado braise stew braised cazuela olla presion pressure cooker slow cooker ensopado ensopar cozido panela pressao guisado', shred: 'desmechar mechada deshebrar deshilachar shred shredded pulled ropa vieja desfiar desfiada', soup: 'sopa caldo sancocho cocido puchero soup broth stock consome sopa caldo cozido',
+    smoke: 'ahumar ahumado smoke smoked low and slow fuego lento al palo defumar defumado fogo lento', stirfry: 'saltear salteado wok tiras stir fry strips fajitas saltear salteado tiras', fry: 'apanar apanado empanizar milanesa freir frito breaded fried schnitzel cutlet empanar milanesa fritar frito', raw: 'crudo tartar carpaccio raw tataki cru tartar carpaccio',
+    grind: 'moler molida picada hamburguesa albondigas ground mince burger meatballs moer moida hamburguer almondegas', skewer: 'pinchos chuzos brochetas anticuchos skewer kebab kabob satay espetinho espeto', cure: 'curar secar seca cecina tasajo jerky cure cured dried salar curar secar carne seca charque', roll: 'rellenar relleno enrollar arrollado stuffed rolled roulade rechear recheado enrolado', slice: 'laminas lonchas finas hot pot shabu sukiyaki thin sliced shaved fatias finas fatiar' };
 
   // ------------------------------------------------------------ state
   const st = { lang: 'es', country: 'co', tab: 0, view: 'shop', sel: 'sb', explode: 0, budget: 0, answer: null, dishQ: '', dishC: '', dishM: '', trFrom: 'us', voice: false, cutMethod: null, shown: 40 };
   const ls = { get(k) { try { return localStorage.getItem('atlas-' + k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem('atlas-' + k, v); } catch (e) { } } };
-  if (ls.get('lang') === 'en' || ls.get('lang') === 'es') st.lang = ls.get('lang');
+  if (STR[ls.get('lang')]) st.lang = ls.get('lang');
+  else if (/^pt/i.test(navigator.language || '')) st.lang = 'pt';
   else if (!/^es/i.test(navigator.language || 'es')) st.lang = 'en';
   if (COUNTRIES.some((c) => c.id === ls.get('country'))) st.country = ls.get('country');
   if (st.country === st.trFrom) st.trFrom = 'co';
   const L = () => STR[st.lang];
-  const tx = (p) => !p ? '' : Array.isArray(p) ? (p[st.lang === 'es' ? 0 : 1] || '') : (p[st.lang] || '');
+  const LI = { es: 0, en: 1, pt: 2 };
+  const tx = (p) => !p ? '' : Array.isArray(p) ? (p[LI[st.lang]] || p[0] || '') : (p[st.lang] || p.es || '');
   const cname = (cut, c) => cut.names[c || st.country][0];
   const calt = (cut, c) => cut.names[c || st.country][1] || '';
   const ctry = (id) => COUNTRIES.find((c) => c.id === id);
@@ -2767,6 +3751,7 @@ const Shop = (function () {
       cut.reg.forEach((r) => r[1].split(/·|\(|\)/).map((x) => x.trim()).filter((x) => x.length > 2).forEach((x) => INDEX.push({ ty: 'cut', id: cut.id, t: x, s: 'Colombia · ' + r[0] + ' → ' + cname(cut), k: norm(x), w: 1 })));
     });
     Object.keys(METHODS).forEach((m) => INDEX.push({ ty: 'method', id: m, t: tx(METHODS[m].n), s: L().bestFor + ' ' + tx(METHODS[m].v), k: norm(METHODS[m].n.join(' ') + ' ' + METHODS[m].v.join(' ') + ' ' + SYN[m]), w: 2 }));
+    tools.index((e) => INDEX.push(e));
     DISHES.forEach((d) => INDEX.push({ ty: 'dish', id: d.i, t: d.n, s: cuisineName(d.cc) + ' · ' + tx(d.g), k: d.k, w: 2 + (d.cc === st.country.toUpperCase() ? 1 : 0) }));
   }
   function search(q, limit) {
@@ -2779,6 +3764,7 @@ const Shop = (function () {
       else if (toks.length > 1 && toks.every((t) => e.k.includes(t))) sc = 22;
       if (!sc) continue;
       if (e.ty === 'method' && sc < 100) sc = Math.min(sc, 40);
+      if (e.ty === 'term' && sc < 45) continue;
       out.push({ e, sc: sc + e.w * 2 - Math.min(10, e.k.length / 12) });
     }
     out.sort((a, b) => b.sc - a.sc);
@@ -2790,19 +3776,19 @@ const Shop = (function () {
   // ------------------------------------------------------------ expert logic
   function generic(cut, m) {
     // fallback reason built from the cut's properties
-    const es = [], en = [];
+    const es = [], en = [], pt = [];
     if (m === 'braise' || m === 'soup' || m === 'shred' || m === 'smoke') {
-      if (cut.c >= 4) { es.push('tiene mucho colágeno que se vuelve gelatina con la cocción larga'); en.push('it has plenty of collagen that turns to gelatin with long cooking'); }
-      else if (cut.c === 3) { es.push('tiene colágeno suficiente para quedar jugoso tras una cocción larga'); en.push('it has enough collagen to stay juicy through long cooking'); }
-      else { es.push('es magro: queda bien si no se cocina de más'); en.push('it is lean: fine as long as it is not overcooked'); }
-      if (cut.f >= 4) { es.push('y su grasa lo mantiene húmedo'); en.push('and its fat keeps it moist'); }
+      if (cut.c >= 4) { es.push('tiene mucho colágeno que se vuelve gelatina con la cocción larga'); en.push('it has plenty of collagen that turns to gelatin with long cooking'); pt.push('tem muito colágeno que vira gelatina com o cozimento longo'); }
+      else if (cut.c === 3) { es.push('tiene colágeno suficiente para quedar jugoso tras una cocción larga'); en.push('it has enough collagen to stay juicy through long cooking'); pt.push('tem colágeno suficiente para ficar suculento depois de um cozimento longo'); }
+      else { es.push('es magro: queda bien si no se cocina de más'); en.push('it is lean: fine as long as it is not overcooked'); pt.push('é magro: fica bom se não cozinhar demais'); }
+      if (cut.f >= 4) { es.push('y su grasa lo mantiene húmedo'); en.push('and its fat keeps it moist'); pt.push('e sua gordura o mantém úmido'); }
     } else {
-      if (cut.t >= 4) { es.push('es de los cortes más tiernos'); en.push('it is among the most tender cuts'); }
-      else if (cut.t === 3) { es.push('es medianamente tierno, mejor cortado contra la fibra'); en.push('it is moderately tender, best sliced across the grain'); }
-      else { es.push('es firme: necesita corte fino o marinado'); en.push('it is firm: it needs thin slicing or a marinade'); }
-      if (cut.f >= 4) { es.push('con buena grasa infiltrada'); en.push('with good marbling'); } else if (cut.f <= 1) { es.push('y muy magro'); en.push('and very lean'); }
+      if (cut.t >= 4) { es.push('es de los cortes más tiernos'); en.push('it is among the most tender cuts'); pt.push('é dos cortes mais macios'); }
+      else if (cut.t === 3) { es.push('es medianamente tierno, mejor cortado contra la fibra'); en.push('it is moderately tender, best sliced across the grain'); pt.push('é medianamente macio, melhor cortado contra a fibra'); }
+      else { es.push('es firme: necesita corte fino o marinado'); en.push('it is firm: it needs thin slicing or a marinade'); pt.push('é firme: precisa de corte fino ou marinada'); }
+      if (cut.f >= 4) { es.push('con buena grasa infiltrada'); en.push('with good marbling'); pt.push('com bom marmoreio'); } else if (cut.f <= 1) { es.push('y muy magro'); en.push('and very lean'); pt.push('e muito magro'); }
     }
-    const s = st.lang === 'es' ? es.join(' ') : en.join(' ');
+    const s = ({ es, en, pt })[st.lang].join(' ');
     return s.charAt(0).toUpperCase() + s.slice(1) + '.';
   }
   const whyOf = (cut, m) => (cut.why && cut.why[m]) ? tx(cut.why[m]) : generic(cut, m);
@@ -2819,10 +3805,13 @@ const Shop = (function () {
   let shop = null;
   function sync3D() {
     if (!shop) return;
-    const a = st.answer;
-    const recs = a && a.cuts ? a.cuts : [];
-    shop.setSelection(st.sel); shop.setRecs(recs); shop.setBlockCut(st.sel);
-    if (a && a.cuts && a.cuts.length) shop.setChalk(a.title || L().example, [cname(BY[a.cuts[0]])].concat(a.cuts.slice(1, 3).map((id, i) => (i ? '' : L().alsoWork.toLowerCase() + ': ') + lower(cname(BY[id])))).slice(0, 3));
+    const a = st.answer, scn = tools.scene();
+    const recs = scn ? scn.recs : a && a.cuts ? a.cuts : [];
+    shop.setSelection(scn ? scn.sel : st.sel); shop.setRecs(recs); shop.setBlockCut(st.sel);
+    shop.setDoneness(scn && scn.done != null ? scn.done : null);
+    if (!!st.grain !== !!shop.state.grain) shop.setGrain(st.grain);
+    if (scn) shop.setChalk(scn.chalk[0], scn.chalk[1]);
+    else if (a && a.cuts && a.cuts.length) shop.setChalk(a.title || L().example, [cname(BY[a.cuts[0]])].concat(a.cuts.slice(1, 3).map((id, i) => (i ? '' : L().alsoWork.toLowerCase() + ': ') + lower(cname(BY[id])))).slice(0, 3));
     else if (st.sel) shop.setChalk(tx(ZONES[BY[st.sel].zone]), [cname(BY[st.sel]), tx(BY[st.sel].cook).split('.')[0]]);
     drawTags();
   }
@@ -2838,12 +3827,15 @@ const Shop = (function () {
   function drawTags() {
     if (!shop) return;
     const box = $('#tags'); const want = [];
-    const a = st.answer; const recs = a && a.cuts ? a.cuts : [];
-    recs.forEach((id, i) => want.push({ id, cls: i ? 'alt' : '', n: i + 1 }));
-    if (st.sel && !recs.includes(st.sel)) want.push({ id: st.sel, cls: '', n: BY[st.sel].n });
+    const a = st.answer, scn = tools.scene(); const recs = scn ? scn.recs : a && a.cuts ? a.cuts : [];
+    const sel = scn ? scn.sel : st.sel;
+    if (!scn || scn.tags) {
+      recs.forEach((id, i) => want.push({ id, cls: i && !scn ? 'alt' : '', n: i + 1 }));
+      if (sel && !recs.includes(sel)) want.push({ id: sel, cls: '', n: BY[sel].n });
+    }
     const keep = new Set();
     for (const w of want) {
-      if (st.view === 'block' && w.id !== st.sel) continue;
+      if (st.view === 'block' && w.id !== sel) continue;
       if ((st.view === 'shop' || narrow()) && w.cls) continue;
       const p = shop.anchorOf(w.id); if (!p || !p.vis) continue;
       let el = tagEls.get(w.id);
@@ -2888,7 +3880,8 @@ const Shop = (function () {
   function go(e) {
     if (!e) return;
     $('#q').value = ''; hideSug();
-    if (e.ty === 'dish') showDish(DISHES[e.id]);
+    if (e.ty === 'term') tools.go(e.id);
+    else if (e.ty === 'dish') showDish(DISHES[e.id]);
     else if (e.ty === 'method') showMethod(e.id);
     else selectCut(e.id);
   }
@@ -2904,7 +3897,7 @@ const Shop = (function () {
     setTab(0); renderButcher();
     if (!sample) { st.answer = { type: 'none', q, near: search(q.split(' ')[0], 5) }; renderButcher(); return; }
     if (ctl) ctl.abort(); ctl = new AbortController();
-    const rules = `You are Don Rafa, a master butcher behind the counter of a neighbourhood shop. The customer shops in ${tx(ctry(st.country))}. Answer in ${st.lang === 'es' ? 'Spanish' : 'English'}, warmly and concretely, in at most 110 words, plain text, no markdown, no lists.\n` +
+    const rules = `You are Don Rafa, a master butcher behind the counter of a neighbourhood shop. The customer shops in ${tx(ctry(st.country))}. Answer in ${({ es: 'Spanish', en: 'English', pt: 'Brazilian Portuguese' })[st.lang]}, warmly and concretely, in at most 110 words, plain text, no markdown, no lists.\n` +
       `Recommend only beef cuts from this catalogue, and call them by the name given here (the name used where the customer shops). Explain WHY the cut suits the preparation using its tenderness, fat, collagen and grain, and give one practical tip (thickness, doneness temperature in °C, or how to ask for it).\n` +
       `If the question is not about beef, cooking or buying meat, say briefly that you only know about beef.\n` +
       `Your reply MUST start with one line exactly like "CUTS: id1,id2" listing 1 to 3 catalogue ids, best first (or "CUTS:" alone if none apply). Then a blank line, then the answer.\n\nCATALOGUE (id: name | properties | best methods)\n${catalog()}`;
@@ -2948,7 +3941,8 @@ const Shop = (function () {
     st.tab = i;
     document.querySelectorAll('#tabs button').forEach((b, k) => b.setAttribute('aria-selected', k === i));
     document.querySelectorAll('#pbody > section').forEach((s, k) => { s.hidden = k !== i; });
-    if (i === 2) renderDishes(); if (i === 3) renderTranslator();
+    if (i === 2) renderDishes(); if (i === 3) renderTranslator(); if (i === 4) tools.render();
+    sync3D();
   }
   function ticket(cut, extra, goLabel) {
     return `<button class="ticket" data-cut="${cut.id}"><span class="n">${String(cut.n).padStart(2, '0')}</span><span class="t" lang="${ctry(st.country).lang}">${esc(cname(cut))}${extra ? `<small>${extra}</small>` : ''}</span><span class="go">${esc(goLabel || L().seeCut)} ›</span></button>`;
@@ -2976,7 +3970,7 @@ const Shop = (function () {
         ${d.a.length ? `<div><h4>${esc(S.alsoWork)}</h4>${altList(d.a, d.m)}</div>` : ''}
         <div><h4>${esc(S.howAsk)}</h4><p>${esc(tx(M.ask))} ${esc(tx(cut.tip))}</p></div>
         <div><h4>${esc(S.cooking)}</h4><p>${esc(tx(cut.cook))}</p></div>
-        <div class="row">${ttsBtn()}</div>
+        <div class="row acts">${tools.dishActions(d)}${ttsBtn()}</div>
       </article>`;
     } else if (a.type === 'method') {
       const M = METHODS[a.m];
@@ -2998,11 +3992,12 @@ const Shop = (function () {
       </article>`;
     } else {
       h = `<article class="ans"><div class="tagline"><span>“${esc(a.q)}”</span></div><h2>${esc(S.notFound)}</h2><p>${esc(a.msg || S.notFoundHelp)}</p>
-        ${a.near && a.near.length ? `<div><h4>${esc(S.closest)}</h4><div class="chips">${a.near.map((e, i) => `<button class="chip" data-near="${i}">${esc(e.t)}<small>${esc(e.ty === 'dish' ? S.dish : e.ty === 'cut' ? S.cut : S.method)}</small></button>`).join('')}</div></div>` : ''}</article>`;
+        ${a.near && a.near.length ? `<div><h4>${esc(S.closest)}</h4><div class="chips">${a.near.map((e, i) => `<button class="chip" data-near="${i}">${esc(e.t)}<small>${esc(tyLabel(e))}</small></button>`).join('')}</div></div>` : ''}</article>`;
     }
     box.innerHTML = h;
     if (!(a && a.type === 'ai' && a.text)) $('#pbody').scrollTop = 0;
   }
+  const tyLabel = (e) => e.lbl || (e.ty === 'dish' ? L().dish : e.ty === 'cut' ? L().cut : L().method);
   function ttsBtn() { return tts ? `<button class="btn ghost" id="speak">${esc(L().speak)}</button>` : ''; }
   function answerText() {
     const a = st.answer; if (!a) return '';
@@ -3024,6 +4019,7 @@ const Shop = (function () {
       <div><div class="meta">${String(cut.n).padStart(2, '0')} · ${esc(tx(ZONES[cut.zone]))} · ${esc(tx(PRICE[cut.price]))}</div>
         <h2 lang="${me.lang}">${esc(cname(cut))}</h2>${calt(cut) ? `<div class="also" lang="${me.lang}">${esc(S.aka)}: ${esc(calt(cut))}</div>` : ''}</div>
       <div class="row"><button class="btn ghost" data-view="block">${esc(S.seeCase)}</button><button class="btn ghost" data-view="cow">${esc(S.views.cow)}</button><button class="btn ghost" data-view="case">${esc(S.views.case)}</button></div>
+      ${tools.cutActions(cut)}
       <p>${esc(tx(cut.d))}</p>
       ${internal ? `<p class="note">${esc(S.internal)}</p>` : ''}
       <div><h4>${esc(S.props)}</h4><div class="bars">${bars}</div><p class="note" style="margin-top:8px">${esc(S.muscle)}: <i>${esc(cut.muscle)}</i></p></div>
@@ -3031,6 +4027,7 @@ const Shop = (function () {
         <p class="whybox" style="margin-top:10px">${esc(whyOf(cut, cm))}</p></div>
       <div><h4>${esc(S.cooking)}</h4><p>${esc(tx(cut.cook))}</p></div>
       <div><h4>${esc(S.tip)}</h4><p>${esc(tx(cut.tip))}</p></div>
+      ${tools.cutSections(cut)}
       <div><h4>${esc(S.inCountries)}</h4><div class="names">${names}</div></div>
       ${st.country === 'co' || cut.reg.length ? `<div><h4>${esc(S.inRegions)}</h4>${cut.reg.length ? `<ul class="regs">${cut.reg.map((r) => `<li><span>${esc(r[0])}</span><b>${esc(r[1])}</b></li>`).join('')}</ul>` : `<p class="note">${esc(S.regionDefault)} <b>${esc(cut.names.co[0])}</b>.</p>`}</div>` : ''}
       ${ds.length ? `<div><h4>${esc(S.dishesWith)} · ${ds.length}</h4><ul class="dishlist">${ds.slice(0, 8).map(dishRow).join('')}</ul>${ds.length > 8 ? `<div class="row" style="margin-top:8px"><button class="btn ghost" id="moreDishes">${esc(S.more)} (${ds.length})</button></div>` : ''}</div>` : ''}
@@ -3073,7 +4070,7 @@ const Shop = (function () {
     $('#brand .eyebrow').textContent = S.eyebrow;
     $('#phead .nm').textContent = S.butcher; $('#phead .sub').textContent = S.role;
     $('#countryBtn').innerHTML = `<span class="code">${me.id.toUpperCase()}</span>${esc(tx(me).split(' · ')[0])}`;
-    $('#langBtn').textContent = st.lang === 'es' ? 'EN' : 'ES'; $('#langBtn').setAttribute('aria-label', st.lang === 'es' ? 'Switch to English' : 'Cambiar a español');
+    $('#langBtn').textContent = st.lang.toUpperCase(); $('#langBtn').setAttribute('aria-label', S.language + ': ' + LANGS[st.lang]);
     document.querySelectorAll('#tabs button').forEach((b, i) => { b.textContent = S.tabs[i]; });
     document.querySelectorAll('#views button').forEach((b) => { b.textContent = S.views[b.dataset.v]; });
     $('#cowtools span').textContent = S.explode; $('#hint').textContent = S.hint;
@@ -3083,7 +4080,7 @@ const Shop = (function () {
     const ex = st.country === 'co' ? ['Posta negra cartagenera', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Milanesa'] : ['Ropa vieja', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Sancocho de costilla'];
     $('#examples').innerHTML = ex.map((n) => { const d = DISHES.find((x) => x.n === n); return d ? `<button class="chip" data-dish="${d.i}">${esc(n.replace(/\s*\(.*\)/, ''))}</button>` : ''; }).join('');
     $('#settings h3').textContent = S.settings; $('#setLangL').textContent = S.language; $('#setWhereL').textContent = S.where; $('#setVoiceL').textContent = S.voice;
-    $('#setLang').innerHTML = `<button data-lang="es" aria-pressed="${st.lang === 'es'}">Español</button><button data-lang="en" aria-pressed="${st.lang === 'en'}">English</button>`;
+    $('#setLang').innerHTML = Object.keys(LANGS).map((l) => `<button data-lang="${l}" aria-pressed="${st.lang === l}">${LANGS[l]}</button>`).join('');
     $('#setCountry').innerHTML = COUNTRIES.map((c) => `<option value="${c.id}"${c.id === st.country ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
     $('#setVoice').innerHTML = `<button data-voice="1" aria-pressed="${st.voice}">${esc(S.on)}</button><button data-voice="0" aria-pressed="${!st.voice}">${esc(S.off)}</button>`;
     $('#voiceField').hidden = !tts;
@@ -3091,10 +4088,10 @@ const Shop = (function () {
   }
   function renderAll() {
     buildIndex(); renderStatic(); renderButcher(); renderCut();
-    if (st.tab === 2) renderDishes(); if (st.tab === 3) renderTranslator();
+    if (st.tab === 2) renderDishes(); if (st.tab === 3) renderTranslator(); if (st.tab === 4) tools.render();
     if (shop) { shop.setTags((c) => cname(c)); sync3D(); }
   }
-  function setLang(l) { st.lang = l; ls.set('lang', l); if (st.answer && st.answer.type === 'method') st.answer.title = tx(METHODS[st.answer.m].n); renderAll(); }
+  function setLang(l) { if (!STR[l]) return; st.lang = l; ls.set('lang', l); if (st.answer && st.answer.type === 'method') st.answer.title = tx(METHODS[st.answer.m].n); renderAll(); }
   function setCountry(c) { st.country = c; ls.set('country', c); if (st.trFrom === c) st.trFrom = c === 'us' ? 'co' : 'us'; if (st.answer && st.answer.type === 'method') st.answer.cuts = rankMethod(st.answer.m, st.budget).map((x) => x.id); renderAll(); }
 
   // ------------------------------------------------------------ suggestions
@@ -3104,7 +4101,7 @@ const Shop = (function () {
     const S = L(); sug = search($('#q').value, 8); active = -1;
     const box = $('#sug');
     if (!sug.length) { box.hidden = true; return; }
-    box.innerHTML = sug.map((e, i) => `<li><button data-s="${i}"><span class="ty">${esc(e.ty === 'dish' ? S.dish : e.ty === 'cut' ? S.cut : S.method)}</span><span class="tt">${esc(e.t)}</span><span class="ss">${esc(e.s)}</span></button></li>`).join('');
+    box.innerHTML = sug.map((e, i) => `<li><button data-s="${i}"><span class="ty">${esc(tyLabel(e))}</span><span class="tt">${esc(e.t)}</span><span class="ss">${esc(e.s)}</span></button></li>`).join('');
     box.hidden = false;
   }
 
@@ -3119,11 +4116,12 @@ const Shop = (function () {
     $('#askform').addEventListener('submit', (e) => { e.preventDefault(); submit(); });
     document.addEventListener('click', (e) => {
       const t = e.target;
-      const b = t.closest('button, tr[data-cut]');
+      const b = t.closest('button, tr[data-cut], tr[data-lvl]');
       if (!t.closest('.ask')) hideSug();
       if (!t.closest('#settings') && !t.closest('#countryBtn') && !t.closest('#gear')) $('#settings').hidden = true;
       if (!b) return;
       const d = b.dataset;
+      if (tools.click(b, d)) return;
       if (d.s != null) return go(sug[+d.s]);
       if (d.near != null) return go(st.answer.near[+d.near]);
       if (d.dish != null) return showDish(DISHES[+d.dish]);
@@ -3135,7 +4133,7 @@ const Shop = (function () {
       if (d.v) { setView(d.v); return; }
       if (d.lang) return setLang(d.lang);
       if (d.voice != null) { st.voice = d.voice === '1'; renderStatic(); return; }
-      if (b.id === 'langBtn') return setLang(st.lang === 'es' ? 'en' : 'es');
+      if (b.id === 'langBtn') { const ks = Object.keys(LANGS); return setLang(ks[(ks.indexOf(st.lang) + 1) % ks.length]); }
       if (b.id === 'countryBtn' || b.id === 'gear') { $('#settings').hidden = !$('#settings').hidden; return; }
       if (b.id === 'moreDishes') { st.dishCut = st.sel; st.dishQ = ''; st.dishC = ''; st.dishM = ''; st.shown = 40; setTab(2); return; }
       if (b.id === 'clearCut') { st.dishCut = null; renderDishes(); return; }
@@ -3144,9 +4142,10 @@ const Shop = (function () {
       if (b.id === 'speak') return speak();
       if (b.parentElement && b.parentElement.id === 'tabs') return setTab([...b.parentElement.children].indexOf(b));
     });
-    $('#pbody').addEventListener('input', (e) => { if (e.target.id === 'dq') { st.dishQ = e.target.value; st.shown = 40; renderDishes(true); } });
+    $('#pbody').addEventListener('input', (e) => { if (tools.input(e.target)) return; if (e.target.id === 'dq') { st.dishQ = e.target.value; st.shown = 40; renderDishes(true); } });
     $('#pbody').addEventListener('change', (e) => {
       const t = e.target;
+      if (tools.change(t)) return;
       if (t.id === 'dc') { st.dishC = t.value; st.shown = 40; renderDishes(true); }
       if (t.id === 'dm') { st.dishM = t.value; st.shown = 40; renderDishes(true); }
       if (t.id === 'trA') { st.trFrom = t.value; renderTranslator(); }
@@ -3160,14 +4159,65 @@ const Shop = (function () {
     try { await tts.speak(answerText(), { language: st.lang, voice: 'rounded' }); } catch (e) { if (e && e.code === 'not_granted') { tts = null; renderStatic(); renderButcher(); } }
   }
 
+  // ------------------------------------------------------------ voice, toast, links
+  const synth = window.speechSynthesis || null;
+  const canSay = () => !!(synth || tts);
+  function say(text, lang) {
+    if (synth) {
+      try {
+        synth.cancel();
+        const u = new SpeechSynthesisUtterance(text), vs = synth.getVoices();
+        u.lang = lang; u.rate = 0.92;
+        const v = vs.find((x) => x.lang === lang) || vs.find((x) => x.lang.slice(0, 2) === lang.slice(0, 2)); if (v) u.voice = v;
+        synth.speak(u); return;
+      } catch (e) { }
+    }
+    if (tts) tts.speak(text, { language: lang.slice(0, 2), voice: 'rounded' }).catch(() => { });
+  }
+  let toastT = 0;
+  function toast(msg) { const el = $('#toast'); el.textContent = msg; el.hidden = false; clearTimeout(toastT); toastT = setTimeout(() => { el.hidden = true; }, 2200); }
+  function copy(text, msg) {
+    const old = () => { const ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); } catch (e) { } ta.remove(); toast(msg); };
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(() => toast(msg), old); else old();
+  }
+  // links: #c=<cut>&p=<country>&l=<language>, #d=<dish>, #t=<tool>
+  const slug = (s) => norm(s).replace(/ /g, '-');
+  function share(what) {
+    const p = new URLSearchParams(), dish = what[0] === 'd' ? DISHES[+what.slice(2)] : null;
+    if (dish) p.set('d', slug(dish.n)); else p.set('c', st.sel);
+    p.set('p', st.country); p.set('l', st.lang);
+    let base = ''; try { base = location.href.split('#')[0]; } catch (e) { }
+    const url = base + '#' + p.toString(), title = 'Atlas de la Res · ' + (dish ? dish.n : cname(BY[st.sel]));
+    if (navigator.share) navigator.share({ title, url }).catch(() => { }); else copy(url, tools.t('linkCopied'));
+  }
+  function applyHash(first) {
+    let h = ''; try { h = location.hash.slice(1); } catch (e) { }
+    if (!h) return;
+    const p = new URLSearchParams(h), l = p.get('l'), c = p.get('p');
+    let again = false;
+    if (STR[l] && l !== st.lang) { st.lang = l; again = true; }
+    if (COUNTRIES.some((x) => x.id === c) && c !== st.country) { st.country = c; if (st.trFrom === c) st.trFrom = c === 'us' ? 'co' : 'us'; again = true; }
+    if (again && !first) renderAll();
+    return () => {
+      const d = p.get('d') && DISHES.find((x) => slug(x.n) === p.get('d'));
+      if (d) showDish(d); else if (BY[p.get('c')]) selectCut(p.get('c'), { view: 'cow' });
+      else if (p.get('t')) tools.open(p.get('t'));
+    };
+  }
+  function refresh() { const y = $('#pbody').scrollTop; renderButcher(); renderCut(); if (st.tab === 2) renderDishes(true); if (st.tab === 4) tools.render(); $('#pbody').scrollTop = y; }
+  const tools = AtlasTools({ $, esc, norm, st, ls, tx, BY, DISHES, cname, calt, ctry, lower, cuisineName, L, whyOf, dishesOf, dishRow, selectCut, setView, setTab, setCountry, sync3D, say, canSay, toast, copy, share, refresh, shop: () => shop });
+
   // ------------------------------------------------------------ boot
   function start(saved) {
     saved = saved || {};
-    if (saved.lang) st.lang = saved.lang; if (saved.country) st.country = saved.country;
+    if (STR[saved.lang]) st.lang = saved.lang; if (saved.country) st.country = saved.country;
+    const linked = applyHash(true);
     wire(); buildIndex(); renderStatic();
     const d0 = DISHES.find((d) => d.n === 'Ropa vieja');
     st.answer = { type: 'dish', d: d0, cuts: [d0.b].concat(d0.a), title: d0.n, example: true }; st.sel = d0.b; st.cutMethod = d0.m;
     setTab(saved.tab || 0); renderButcher(); renderCut();
+    if (linked) linked();
+    window.addEventListener('hashchange', () => { const f = applyHash(false); if (f) f(); });
     load3D();
     if (window.claude && window.claude.use) {
       window.claude.use('sample').then((s) => { sample = s || null; }).catch(() => { });
@@ -3202,10 +4252,10 @@ const Shop = (function () {
       const pack = MeshLib.parsePack(buf);
       const wide = () => window.matchMedia('(min-width: 881px)').matches;
       shop = Shop.create($('#gl'), pack, { cuts: CUTS, panelWidth: () => wide() ? $('#panel').offsetWidth + 14 : 0, onFrame: drawTags });
-      shop.onPick = (h) => { if (!h || !h.cut) return; if (h.where === 'case') selectCut(h.cut, { view: 'block', keepAnswer: true }); else if (h.where === 'block') setTab(1); else selectCut(h.cut, { keepAnswer: true }); };
-      shop.onHover = (h, e) => { const el = $('#hover'); if (!h || !h.cut) { el.hidden = true; return; } const r = $('#stage').getBoundingClientRect(); el.hidden = false; el.textContent = cname(BY[h.cut]); el.style.left = (e.clientX - r.left) + 'px'; el.style.top = (e.clientY - r.top) + 'px'; };
+      shop.onPick = (h) => { if (tools.pickCow(h)) return; if (!h || !h.cut) return; if (h.where === 'case') selectCut(h.cut, { view: 'block', keepAnswer: true }); else if (h.where === 'block') setTab(1); else selectCut(h.cut, { keepAnswer: true }); };
+      shop.onHover = (h, e) => { const el = $('#hover'), scn = tools.scene(); if (!h || !h.cut || (scn && scn.quiet)) { el.hidden = true; return; } const r = $('#stage').getBoundingClientRect(); el.hidden = false; el.textContent = cname(BY[h.cut]); el.style.left = (e.clientX - r.left) + 'px'; el.style.top = (e.clientY - r.top) + 'px'; };
       shop.setTags((c) => cname(c));
-      setView('shop'); sync3D();
+      setView(st.view); sync3D();
       const done = () => { $('#loading').classList.add('done'); shop.setPose('wave', 2200); shop.dirty(); };
       (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { shop.setTags((c) => cname(c)); sync3D(); setTimeout(done, 350); });
       window.__shop = shop;
