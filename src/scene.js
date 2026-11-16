@@ -1,11 +1,22 @@
 // ---- The butcher shop: room, cow, display case, butcher, camera and picking.
 const Shop = (function () {
-  const T = THREE;
+  const T = window.THREE;
   const lin = MeshLib.lin;
   const V3 = (x, y, z) => new T.Vector3(x, y, z);
   const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
   const lerp = (a, b, t) => a + (b - a) * t;
   const reduceMotion = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+
+  // ------------------------------------------------------------ doneness look
+  // core temperature (°C) -> colour of the centre, width of the grey ring (0..1 of half the thickness)
+  const DONE_STOPS = [[44, [122, 20, 32], 0.05], [48, [142, 24, 38], 0.07], [52, [176, 31, 44], 0.12], [56.5, [198, 58, 69], 0.18], [61, [210, 112, 122], 0.28], [66, [189, 141, 132], 0.45], [70, [154, 124, 108], 1], [77, [134, 112, 95], 1]];
+  function doneLook(t) {
+    const S = DONE_STOPS; t = clamp(t, S[0][0], S[S.length - 1][0]);
+    let i = 0; while (i < S.length - 2 && t > S[i + 1][0]) i++;
+    const a = S[i], b = S[i + 1], k = (t - a[0]) / (b[0] - a[0]);
+    return { core: [0, 1, 2].map((j) => Math.round(lerp(a[1][j], b[1][j], k))), band: lerp(a[2], b[2], k), ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160], wet: clamp((66 - t) / 18, 0, 1) };
+  }
 
   // ------------------------------------------------------------ canvas textures
   function canvasTex(w, h, draw, opts) {
@@ -313,7 +324,7 @@ const Shop = (function () {
     function setBlockCut(id) {
       if (id === blockId) return; blockId = id;
       if (blockMesh) { blockHolder.remove(blockMesh); blockMesh.material.dispose(); blockMesh = null; }
-      const e = id && pack.meshes['cut.' + id]; if (!e) return;
+      const e = id && pack.meshes['cut.' + id]; if (!e) { if (S.grain) setGrain(true); return; }
       const mat = MeshLib.fleshMaterial(Object.assign({}, mats[id]));
       blockMesh = new T.Mesh(e.geo, mat); blockMesh.castShadow = true; blockMesh.receiveShadow = true;
       const bb = e.geo.boundingBox; const L = bb.max.x - bb.min.x; const k = Math.min(1, 0.46 / L);
@@ -321,7 +332,107 @@ const Shop = (function () {
       blockMesh.position.set(-(bb.min.x + bb.max.x) / 2 * k, 0, -(bb.min.z + bb.max.z) / 2 * k);
       blockMesh.userData.cut = id; blockMesh.userData.where = 'block';
       blockHolder.add(blockMesh); blockHolder.userData.drop = 1; blockHolder.rotation.y = 0;
-      blockLen = Math.max(L, (bb.max.z - bb.min.z) * 1.3) * k; if (S.view === 'block') applyView('keep');
+      blockLen = Math.max(L, (bb.max.z - bb.min.z) * 1.3) * k; blockMesh.visible = !S.done; if (S.grain) setGrain(true); if (S.view === 'block') applyView('keep');
+    }
+
+    // ---------------- doneness: a cooked steak sliced open on the block, coloured by core temperature
+    const HW = 0.055, HT = 0.02, SL = 0.018;
+    const doneHolder = new T.Group(); doneHolder.position.set(BLOCK.x - 0.04, BLOCK_TOP + 0.002, BLOCK.z); doneHolder.visible = false; counter.add(doneHolder);
+    const DU = { uCore: { value: new T.Color() }, uRing: { value: new T.Color() }, uCrust: { value: new T.Color() }, uFatC: { value: new T.Color() }, uBand: { value: 0.2 }, uWet: { value: 0.5 } };
+    function steakMaterial(off) {
+      const m = new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.5, metalness: 0 }); m.envMapIntensity = 0.22;
+      const U = Object.assign({ uOff: { value: off } }, DU);
+      m.onBeforeCompile = (sh) => {
+        Object.assign(sh.uniforms, U);
+        sh.vertexShader = sh.vertexShader.replace('#include <common>', '#include <common>\nvarying vec3 vSP; varying vec3 vSN;').replace('#include <begin_vertex>', '#include <begin_vertex>\nvSP = position; vSN = normal;');
+        sh.fragmentShader = sh.fragmentShader
+          .replace('#include <common>', `#include <common>
+            varying vec3 vSP; varying vec3 vSN; uniform vec3 uCore, uRing, uCrust, uFatC; uniform float uBand, uWet, uOff; float sRough;
+            ${MeshLib.NOISE}`)
+          .replace('#include <color_fragment>', `
+            vec2 q = abs(vSP.xy - vec2(0.0, ${HT})) - vec2(${HW}, ${HT}) + 0.011;
+            float sd = length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - 0.011;
+            float n = vnoise(vSP * 260.0), n2 = vnoise(vSP * 60.0 + 3.0 + uOff * 40.0);
+            float u = clamp(-sd / ${HT} + (n2 - 0.5) * 0.07, 0.0, 1.0);
+            float face = step(0.9, abs(vSN.z));
+            vec3 inner = mix(uRing, uCore, smoothstep(uBand * 0.55, uBand * 1.2 + 0.06, u)) * (0.88 + 0.22 * n);
+            vec3 fc = mix(uCrust, inner * 0.78, smoothstep(0.05, 0.17, u));
+            float fat = smoothstep(${HW} - 0.012, ${HW} - 0.008, vSP.x + (n2 - 0.5) * 0.006);
+            fc = mix(fc, uFatC * (0.6 + 0.14 * n), fat * smoothstep(0.06, 0.16, u));
+            vec3 cr = uCrust * (0.7 + 0.7 * n2);
+            float mk = abs(fract((vSP.x * 0.75 + (vSP.z + uOff) * 0.66) / 0.03) - 0.5);
+            cr = mix(cr, vec3(0.012, 0.007, 0.005), (1.0 - smoothstep(0.1, 0.16, mk)) * step(0.4, abs(vSN.y)) * 0.85);
+            cr = mix(cr, vec3(0.42, 0.25, 0.08) * (0.8 + 0.4 * n2), step(0.5, vSN.x) * 0.75);
+            diffuseColor.rgb = mix(cr, fc, face);
+            sRough = mix(0.8, mix(0.7, 0.42, uWet), face);
+          `)
+          .replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\nroughnessFactor = sRough;');
+      };
+      m.customProgramCacheKey = () => 'steak2';
+      return m;
+    }
+    (function buildSteak() {
+      const sh = new T.Shape(), r = 0.011, w = HW, h = 2 * HT;
+      sh.moveTo(-w + r, 0); sh.lineTo(w - r, 0); sh.absarc(w - r, r, r, -Math.PI / 2, 0, false); sh.lineTo(w, h - r); sh.absarc(w - r, h - r, r, 0, Math.PI / 2, false);
+      sh.lineTo(-w + r, h); sh.absarc(-w + r, h - r, r, Math.PI / 2, Math.PI, false); sh.lineTo(-w, r); sh.absarc(-w + r, r, r, Math.PI, Math.PI * 1.5, false);
+      const geo = new T.ExtrudeGeometry(sh, { depth: SL, bevelEnabled: false, curveSegments: 6 });
+      const lean = [90, 64, 55, 52, 50, 50, 50], zs = [0, 0.016, 0.044, 0.072, 0.1, 0.128, 0.156];
+      lean.forEach((a, i) => {
+        const m = new T.Mesh(geo, steakMaterial(i * 0.031)); m.castShadow = true; m.receiveShadow = true;
+        m.rotation.x = -a * Math.PI / 180; m.position.set(0, 0, zs[i] - 0.085); doneHolder.add(m);
+      });
+    })();
+    function setDoneness(t) {
+      S.done = t != null; doneHolder.visible = S.done; if (blockMesh) blockMesh.visible = !S.done; if (grainMesh) grainMesh.visible = !S.done;
+      if (S.done) { const L = doneLook(t); const c = (a, u) => u.value.setRGB(a[0] / 255, a[1] / 255, a[2] / 255).convertSRGBToLinear();
+        c(L.core, DU.uCore); c(L.ring, DU.uRing); c(L.crust, DU.uCrust); c(L.fat, DU.uFatC); DU.uBand.value = L.band; DU.uWet.value = L.wet; }
+      if (S.view === 'block') applyView('keep');
+      dirty();
+    }
+
+    // ---------------- grain: arrows along the muscle fibres and the line to slice on, laid over the cut on the block
+    let grainMesh = null;
+    function grainOf(id) {
+      const o = mats[id]; if (!o || !(o.grain > 0.4) || !o.grainDir) return null;
+      const g = o.grainDir, len = Math.hypot(g[0], g[1], g[2]) || 1;
+      return Math.abs(g[1]) / len > 0.7 ? 'v' : 'h';
+    }
+    function setGrain(on) {
+      S.grain = !!on;
+      if (grainMesh) { blockHolder.remove(grainMesh); grainMesh.material.map.dispose(); grainMesh.material.dispose(); grainMesh.geometry.dispose(); grainMesh = null; }
+      const kind = blockId ? grainOf(blockId) : null;
+      if (S.grain && blockMesh && kind === 'h') {
+        const e = pack.meshes['cut.' + blockId], bb = e.geo.boundingBox, k = blockMesh.userData.k;
+        const w = (bb.max.x - bb.min.x) * k, d = (bb.max.z - bb.min.z) * k;
+        const g = mats[blockId].grainDir, gl = Math.hypot(g[0], g[2]) || 1, gx = g[0] / gl, gz = g[2] / gl;
+        const PX = 1400, cw = Math.round(w * PX), ch = Math.round(d * PX);
+        const tex = canvasTex(cw, ch, (c) => {
+          c.translate(cw / 2, ch / 2); c.lineCap = 'round';
+          const R = Math.hypot(cw, ch) / 2, ang = Math.atan2(gz, gx);
+          c.save(); c.rotate(ang);
+          // fibres: gold arrows
+          c.strokeStyle = '#f0b429'; c.fillStyle = '#f0b429'; c.lineWidth = 7; c.shadowColor = 'rgba(0,0,0,0.55)'; c.shadowBlur = 6;
+          const step = Math.max(38, Math.min(cw, ch) / 4.2);
+          for (let y = -R; y <= R; y += step) for (let x = -R + ((y / step) % 2 ? 60 : 0); x < R; x += 190) {
+            c.beginPath(); c.moveTo(x, y); c.lineTo(x + 105, y); c.stroke();
+            c.beginPath(); c.moveTo(x + 128, y); c.lineTo(x + 100, y - 13); c.lineTo(x + 100, y + 13); c.closePath(); c.fill();
+          }
+          // where the knife goes: white dashed lines across the fibres
+          c.strokeStyle = '#ffffff'; c.lineWidth = 9; c.setLineDash([26, 20]);
+          for (const x of [-0.16 * Math.max(cw, ch), 0.16 * Math.max(cw, ch)]) { c.beginPath(); c.moveTo(x, -R); c.lineTo(x, R); c.stroke(); }
+          c.restore();
+          // soft oval mask so nothing hangs past the meat
+          c.globalCompositeOperation = 'destination-in';
+          const gr = c.createRadialGradient(0, 0, 0, 0, 0, 1); gr.addColorStop(0, '#000'); gr.addColorStop(0.72, '#000'); gr.addColorStop(0.9, 'rgba(0,0,0,0)');
+          c.scale(cw / 2, ch / 2); c.fillStyle = gr; c.fillRect(-1, -1, 2, 2);
+        });
+        tex.wrapS = tex.wrapT = T.ClampToEdgeWrapping;
+        grainMesh = new T.Mesh(new T.PlaneGeometry(w, d), new T.MeshBasicMaterial({ map: tex, transparent: true, depthTest: false, depthWrite: false, toneMapped: false }));
+        grainMesh.rotation.x = -Math.PI / 2; grainMesh.position.set(0, bb.max.y * k * 0.92 + 0.002, 0); grainMesh.renderOrder = 5; grainMesh.visible = !S.done;
+        blockHolder.add(grainMesh);
+      }
+      dirty();
+      return kind;
     }
 
     // ---------------- the cow
@@ -400,7 +511,7 @@ const Shop = (function () {
       const fit = (wc, hc) => Math.max(wc / (2 * vt * asp), hc / (2 * vt));
       if (v === 'cow') return { t: cowWorld(), yaw: 0.25, pitch: 0.12, dist: fit(3.9 + S.explodeNow * 2.2, 2.5 + S.explodeNow * 1.2), yawLim: [-9, 9], pitchLim: [-0.05, 1.2] };
       if (v === 'case') { const cw = asp > 1.6 ? 4.2 : asp > 1.05 ? 2.5 : 1.5; return { t: V3(2.68 + rig.panX, 1.06, -1.2), yaw: 0, pitch: 0.86, dist: fit(cw, 1.05), yawLim: [-0.5, 0.5], pitchLim: [0.35, 1.25], pan: Math.max(0, (4.1 - cw) / 2 + 0.1) }; }
-      if (v === 'block') { const bl = Math.max(0.22, blockLen); return { t: V3(BLOCK.x - 0.04, BLOCK_TOP + 0.03, BLOCK.z), yaw: 0.3, pitch: 0.72, dist: fit(bl * 1.75, bl * 1.05), yawLim: [-9, 9], pitchLim: [0.12, 1.35] }; }
+      if (v === 'block') { const bl = S.done ? 0.25 : Math.max(0.22, blockLen); return { t: V3(BLOCK.x - 0.04, BLOCK_TOP + 0.03, BLOCK.z), yaw: 0.3, pitch: 0.72, dist: fit(bl * 1.75, bl * 1.05), yawLim: [-9, 9], pitchLim: [0.12, 1.35] }; }
       const wide = asp > 1.45;
       return wide ? { t: V3(0.15, 1.4, -1.0), yaw: 0, pitch: 0.08, dist: fit(10.6, 3.3), yawLim: [-0.45, 0.45], pitchLim: [-0.02, 0.5] }
         : { t: V3(-1.35, 1.3, -0.8), yaw: 0.04, pitch: 0.08, dist: fit(7.4, 3.0), yawLim: [-0.6, 0.6], pitchLim: [-0.02, 0.5] };
@@ -562,7 +673,7 @@ const Shop = (function () {
         const d = blockHolder.userData.drop || 0;
         if (d > 0.002) { blockHolder.userData.drop = still ? 0 : d * Math.pow(0.002, dt); active = true; }
         blockMesh.position.y = (blockHolder.userData.drop || 0) * 0.35;
-        if (S.view === 'block' && !still && !ptrs.size) { blockHolder.rotation.y += dt * 0.25; active = true; }
+        if (S.view === 'block' && !still && !ptrs.size && !S.done) { blockHolder.rotation.y += dt * 0.25; active = true; }
       }
       // butcher
       if (poseUntil && now > poseUntil) { poseUntil = 0; pose = S.view === 'cow' ? 'cow' : S.view === 'case' ? 'case' : S.view === 'block' ? 'block' : 'idle'; }
@@ -586,12 +697,12 @@ const Shop = (function () {
     requestAnimationFrame(frame);
     const ro = new ResizeObserver(() => resize()); ro.observe(host);
 
-    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setPose, talk, anchorOf, resize, dirty,
+    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setDoneness, setGrain, grainOf, setPose, talk, anchorOf, resize, dirty,
       state: S, caseCuts, pieces, pieceOfCut,
       set onPick(f) { S.onPick = f; }, set onHover(f) { S.onHover = f; },
       zoomBy(f) { rig.zoom = clamp(rig.zoom * f, 0.4, 1.5); rig.tDist = preset.dist * rig.zoom; dirty(); },
       resetView() { rig.zoom = 1; rig.panX = 0; applyView(false); },
       focusCase(id) { const c = caseCuts[id]; if (c && preset && preset.pan) { rig.panX = clamp(c.x - 2.68, -preset.pan, preset.pan); applyView('keep'); } } };
   }
-  return { create };
+  return { create, doneLook };
 })();

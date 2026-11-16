@@ -1,6 +1,6 @@
 // ---- mesh pack loader and materials (shared by the app and the test viewer)
 const MeshLib = (function () {
-  const T = THREE;
+  const T = window.THREE;
 
   function parsePack(buf) {
     const dv = new DataView(buf);

@@ -6,7 +6,7 @@ css = rd('src/style.css')
 dishes = ''.join(rd('src/dishes_%d.txt' % i) for i in range(1, 6))
 dishes = '\n'.join(l for l in dishes.split('\n') if l.strip() and not l.startswith('#'))
 assert '</script' not in dishes
-js = '\n'.join(rd('src/' + f) for f in ('meshlib.js', 'data_cuts.js', 'scene.js', 'app.js'))
+js = '\n'.join(rd('src/' + f) for f in ('meshlib.js', 'data_cuts.js', 'data_extra.js', 'data_pt.js', 'scene.js', 'app_tools.js', 'app.js'))
 assert '</script' not in js
 out = tpl.replace('/*CSS*/', css).replace('/*DISHES*/', dishes).replace('/*JS*/', js)
 os.makedirs(os.path.join(R, 'dist'), exist_ok=True)
