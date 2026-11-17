@@ -30,6 +30,7 @@
       askClaude: 'Preguntarle a Don Rafa', claudeFail: 'No pude consultar ahora. Intenta de nuevo en un momento.', claudeOff: 'Para preguntas libres hace falta permitir que la página use Claude.', stop: 'Detener',
       hello: 'Bienvenido. Dime qué vas a cocinar y te digo qué corte pedir, por qué, y cómo se llama aquí.', loading: 'Afilando los cuchillos…', loadFail: 'No se pudo cargar la tienda en 3D. El resto funciona igual.',
       zone: 'Zona', internal: 'Va por dentro: separa los cortes para verlo.', sources: 'Fuentes', approx: 'Las equivalencias son aproximadas: cada país despieza la res de forma distinta y los nombres cambian entre carnicerías. Si dudas, muestra el corte en la res.',
+      saver: 'Ahorro de datos', saverMsg: 'Ahorro de datos activo: la tienda 3D no se descarga sola.', load3d: 'Cargar tienda 3D', offline: 'Uso sin conexión', saved: 'guardado en este dispositivo', download: 'Descargar', install: 'Instalar app', installL: 'Aplicación', iosHint: 'En iPhone o iPad: toca Compartir y luego «Añadir a pantalla de inicio».', savedOk: 'Guardado para usar sin conexión',
       count: (n) => `${n} recetas`, speak: 'Escuchar', pageOf: 'de' },
     en: { eyebrow: 'Butcher shop', butcher: 'Don Rafa', role: 'Butcher · ask him anything', tabs: ['Butcher', 'Cut', 'Recipes', 'Translator', 'More'],
       views: { shop: 'Shop', cow: 'The cow', case: 'Display case', block: 'The cut' }, explode: 'Separate cuts', hint: 'Drag to turn · tap a cut',
@@ -44,6 +45,7 @@
       askClaude: 'Ask Don Rafa', claudeFail: 'I could not ask right now. Try again in a moment.', claudeOff: 'Free-form questions need permission for this page to use Claude.', stop: 'Stop',
       hello: 'Welcome. Tell me what you are cooking and I will tell you which cut to ask for, why, and what it is called here.', loading: 'Sharpening the knives…', loadFail: 'The 3D shop could not load. Everything else still works.',
       zone: 'Zone', internal: 'It sits inside: separate the cuts to see it.', sources: 'Sources', approx: 'Equivalents are approximate: each country breaks the carcass down differently and names vary between butchers. When in doubt, point at the cut on the cow.',
+      saver: 'Data saver', saverMsg: 'Data saver is on: the 3D shop does not download by itself.', load3d: 'Load the 3D shop', offline: 'Offline use', saved: 'saved on this device', download: 'Download', install: 'Install app', installL: 'App', iosHint: 'On iPhone or iPad: tap Share, then “Add to Home Screen”.', savedOk: 'Saved for offline use',
       count: (n) => `${n} recipes`, speak: 'Listen', pageOf: 'of' },
     pt: { eyebrow: 'Açougue', butcher: 'Don Rafa', role: 'Açougueiro · pergunte o que quiser', tabs: ['Açougueiro', 'Corte', 'Receitas', 'Tradutor', 'Mais'],
       views: { shop: 'Loja', cow: 'O boi', case: 'Vitrine', block: 'O corte' }, explode: 'Separar cortes', hint: 'Arraste para girar · toque num corte',
@@ -58,6 +60,7 @@
       askClaude: 'Perguntar ao Don Rafa', claudeFail: 'Não consegui consultar agora. Tente de novo daqui a pouco.', claudeOff: 'Para perguntas livres é preciso permitir que a página use o Claude.', stop: 'Parar',
       hello: 'Bem-vindo. Diga o que vai cozinhar e eu digo que corte pedir, por quê, e como se chama aqui.', loading: 'Afiando as facas…', loadFail: 'Não foi possível carregar a loja em 3D. O resto funciona igual.',
       zone: 'Região', internal: 'Fica por dentro: separe os cortes para ver.', sources: 'Fontes', approx: 'As equivalências são aproximadas: cada país divide o boi de um jeito e os nomes mudam entre açougues. Na dúvida, mostre o corte no boi.',
+      saver: 'Economia de dados', saverMsg: 'Economia de dados ativa: a loja 3D não é baixada sozinha.', load3d: 'Carregar a loja 3D', offline: 'Uso sem conexão', saved: 'salvo neste aparelho', download: 'Baixar', install: 'Instalar app', installL: 'Aplicativo', iosHint: 'No iPhone ou iPad: toque em Compartilhar e depois em “Adicionar à Tela de Início”.', savedOk: 'Salvo para usar sem conexão',
       count: (n) => `${n} receitas`, speak: 'Ouvir', pageOf: 'de' }
   };
   const LANGS = { es: 'Español', en: 'English', pt: 'Português' };
@@ -93,6 +96,7 @@
   if (COUNTRIES.some((c) => c.id === ls.get('country'))) st.country = ls.get('country');
   if (st.country === st.trFrom) st.trFrom = 'co';
   if (SPECIES[ls.get('sp')]) st.sp = ls.get('sp');
+  st.saver = ls.get('saver') ? ls.get('saver') === '1' : !!(navigator.connection && navigator.connection.saveData);
   const cutsNow = () => CUTS.filter((c) => c.sp === st.sp);
   const L = () => STR[st.lang];
   const LI = { es: 0, en: 1, pt: 2 };
@@ -248,9 +252,9 @@
   const packs = {};
   function ensurePack(sp) {
     if (!shop || shop.has(sp) || packs[sp]) return;
-    toast(L().loading);
-    packs[sp] = fetchPack(SPECIES[sp].file).then((buf) => { shop.addSpecies(sp, MeshLib.parsePack(buf)); shop.setTags((c) => cname(c)); sync3D(); renderCut(); })
-      .catch((err) => { console.error(err); packs[sp] = null; toast(L().loadFail); });
+    packs[sp] = gate(sp).then((asked) => { if (!asked) toast(L().loading); return fetchPack(sp, (k) => { $('#loading .bar b').style.width = Math.min(96, 4 + 92 * k) + '%'; }); })
+      .then((buf) => { shop.addSpecies(sp, MeshLib.parsePack(buf)); shop.setTags((c) => cname(c)); sync3D(); renderCut(); $('#loading').classList.add('done'); renderOffline(); })
+      .catch((err) => { console.error(err); packs[sp] = null; $('#loading').classList.add('done'); toast(L().loadFail); });
   }
   function exampleOf(sp) { const d = DISHES.find((x) => x.n === SPECIES[sp].dish); return { type: 'dish', d, cuts: [d.b].concat(d.a), title: d.n, example: true }; }
   function setSpecies(sp, quiet) {
@@ -471,6 +475,12 @@
     $('#setCountry').innerHTML = COUNTRIES.map((c) => `<option value="${c.id}"${c.id === st.country ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
     $('#setVoice').innerHTML = `<button data-voice="1" aria-pressed="${st.voice}">${esc(S.on)}</button><button data-voice="0" aria-pressed="${!st.voice}">${esc(S.off)}</button>`;
     $('#voiceField').hidden = !tts;
+    $('#setSaverL').textContent = S.saver; $('#setOfflineL').textContent = S.offline; $('#setInstallL').textContent = S.installL;
+    $('#setSaver').innerHTML = `<button data-saver="1" aria-pressed="${st.saver}">${esc(S.on)}</button><button data-saver="0" aria-pressed="${!st.saver}">${esc(S.off)}</button>`;
+    const ios = isIOS() && !standalone();
+    $('#installField').hidden = !(installEvt || ios);
+    $('#setInstall').innerHTML = installEvt ? `<button class="btn" id="installBtn">${esc(S.install)}</button>` : ios ? `<p class="note">${esc(S.iosHint)}</p>` : '';
+    renderOffline();
     $('#loading h2').textContent = 'Korte'; $('#loadmsg').textContent = S.loading;
   }
   function renderAll() {
@@ -521,6 +531,9 @@
       if (d.v) { setView(d.v); return; }
       if (d.lang) return setLang(d.lang);
       if (d.voice != null) { st.voice = d.voice === '1'; renderStatic(); return; }
+      if (d.saver != null) { st.saver = d.saver === '1'; ls.set('saver', d.saver); renderStatic(); return; }
+      if (d.save) { b.disabled = true; if (shop && d.save === st.sp) ensurePack(d.save); else fetchPack(d.save).then(() => { toast(L().savedOk); renderOffline(); }).catch(() => { toast(L().loadFail); renderOffline(); }); return; }
+      if (b.id === 'installBtn' && installEvt) { installEvt.prompt(); installEvt = null; return; }
       if (b.id === 'langBtn') { const ks = Object.keys(LANGS); return setLang(ks[(ks.indexOf(st.lang) + 1) % ks.length]); }
       if (b.id === 'countryBtn' || b.id === 'gear') { $('#settings').hidden = !$('#settings').hidden; return; }
       if (b.id === 'moreDishes') { st.dishCut = st.sel; st.dishQ = ''; st.dishC = ''; st.dishM = ''; st.shown = 40; setTab(2); return; }
@@ -606,39 +619,65 @@
     if (linked) linked();
     window.addEventListener('hashchange', () => { const f = applyHash(false); if (f) f(); });
     load3D();
+    // installed-app plumbing: offline shell, and ask the browser not to evict the saved models
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol) && !window.claude) window.addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => { }));
+    if (standalone() && navigator.storage && navigator.storage.persist) navigator.storage.persist().catch(() => { });
     if (window.claude && window.claude.use) {
       window.claude.use('sample').then((s) => { sample = s || null; }).catch(() => { });
       window.claude.use('tts').then((t) => { tts = t || null; renderStatic(); renderButcher(); }).catch(() => { });
     }
     if (window.claude && window.claude.hot && window.claude.hot.snapshot) window.claude.hot.snapshot(() => ({ lang: st.lang, country: st.country, tab: st.tab }));
   }
-  // the mesh pack travels as base64 text; decode it straight from the bytes
-  function b64(a) {
-    const T = new Uint8Array(128); const A = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
-    for (let i = 0; i < 64; i++) T[A.charCodeAt(i)] = i;
-    let n = a.length; while (n && (a[n - 1] === 61 || a[n - 1] === 10 || a[n - 1] === 13)) n--;
-    const out = new Uint8Array(Math.floor(n * 3 / 4)); let o = 0;
-    for (let i = 0; i + 3 < n; i += 4) { const v = (T[a[i]] << 18) | (T[a[i + 1]] << 12) | (T[a[i + 2]] << 6) | T[a[i + 3]]; out[o++] = v >> 16; out[o++] = (v >> 8) & 255; out[o++] = v & 255; }
-    const r = n % 4;
-    if (r === 2) { out[o++] = ((T[a[n - 2]] << 2) | (T[a[n - 1]] >> 4)) & 255; }
-    else if (r === 3) { const v = (T[a[n - 3]] << 10) | (T[a[n - 2]] << 4) | (T[a[n - 1]] >> 2); out[o++] = (v >> 8) & 255; out[o++] = v & 255; }
-    return out.buffer;
+  // ---- model packs: fetched once, then kept in Cache Storage on the device (build.py fills in url and size)
+  const PACKS = /*PACKS*/{ beef: { url: 'meshes.pack', bytes: 1400000 }, pork: { url: 'meshes_pork.pack', bytes: 910000 } }/*END*/;
+  const PCACHE = 'korte-packs';
+  const mb = (n) => (n / 1048576).toLocaleString(st.lang === 'en' ? 'en' : 'es', { maximumFractionDigits: 1 }) + ' MB';
+  async function cachedPack(sp) { try { return window.caches ? (await (await caches.open(PCACHE)).match(PACKS[sp].url)) || null : null; } catch (e) { return null; } }
+  async function prunePacks() {
+    const c = await caches.open(PCACHE), keep = Object.values(PACKS).map((p) => new URL(p.url, location.href).href);
+    for (const k of await c.keys()) if (!keep.includes(k.url)) await c.delete(k);
   }
-  function fetchPack(file, onProgress) {
-    return fetch(file).then(async (r) => {
-      if (!r.ok) throw new Error('http ' + r.status);
-      const total = (r.headers.get('content-encoding') ? 0 : +r.headers.get('content-length')) || 6500000;
-      if (!r.body || !r.body.getReader) return b64(new Uint8Array(await r.arrayBuffer()));
-      const rd = r.body.getReader(); const chunks = []; let n = 0;
-      for (;;) { const { done, value } = await rd.read(); if (done) break; chunks.push(value); n += value.length; if (onProgress) onProgress(n / total); }
-      const out = new Uint8Array(n); let o = 0; for (const c of chunks) { out.set(c, o); o += c.length; }
-      return b64(out);
+  async function fetchPack(sp, onProgress) {
+    const P = PACKS[sp];
+    let r = await cachedPack(sp);
+    if (!r) {
+      r = await fetch(P.url); if (!r.ok) throw new Error('http ' + r.status);
+      if (window.caches) { const copy = r.clone(); caches.open(PCACHE).then((c) => c.put(P.url, copy)).then(prunePacks).catch(() => { }); }
+    }
+    let gz;
+    if (r.body && r.body.getReader) {
+      const rd = r.body.getReader(), chunks = []; let n = 0;
+      for (;;) { const { done, value } = await rd.read(); if (done) break; chunks.push(value); n += value.length; if (onProgress) onProgress(Math.min(1, n / P.bytes)); }
+      gz = new Uint8Array(n); let o = 0; for (const c of chunks) { gz.set(c, o); o += c.length; }
+    } else gz = new Uint8Array(await r.arrayBuffer());
+    if (gz[0] !== 0x1f || gz[1] !== 0x8b) return gz.buffer;                 // already inflated by the server
+    if (!window.DecompressionStream) throw new Error('no DecompressionStream');
+    return new Response(new Blob([gz]).stream().pipeThrough(new DecompressionStream('gzip'))).arrayBuffer();
+  }
+  // with data saver on, nothing heavy downloads until the person asks for it
+  function askLoad(sp) {
+    return new Promise((ok) => {
+      const box = $('#loading'), btn = $('#loadBtn');
+      box.classList.remove('done'); $('#loading .bar').hidden = true; $('#loadmsg').textContent = L().saverMsg;
+      btn.hidden = false; btn.textContent = `${L().load3d} · ${tx(SPECIES[sp].n)} · ${mb(PACKS[sp].bytes)}`;
+      btn.onclick = () => { btn.hidden = true; $('#loading .bar').hidden = false; $('#loadmsg').textContent = L().loading; ok(); };
     });
   }
+  async function gate(sp) { if (st.saver && !(await cachedPack(sp))) { await askLoad(sp); return true; } return false; }
+  async function renderOffline() {
+    const S = L(), box = $('#setOffline'); if (!box) return;
+    const rows = await Promise.all(Object.keys(PACKS).map(async (sp) => `<div class="offrow"><b>${esc(tx(SPECIES[sp].n))}</b>${(await cachedPack(sp)) ? `<span class="note">✓ ${esc(S.saved)}</span>` : `<button class="btn ghost" data-save="${sp}">${esc(S.download)} · ${mb(PACKS[sp].bytes)}</button>`}</div>`));
+    box.innerHTML = rows.join('');
+  }
+  let installEvt = null;
+  window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); installEvt = e; renderStatic(); });
+  window.addEventListener('appinstalled', () => { installEvt = null; renderStatic(); });
+  const standalone = () => (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+  const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
   function load3D() {
     const bar = $('#loading .bar b'), fail = () => { $('#loadmsg').textContent = L().loadFail; $('#loading .bar').hidden = true; setTimeout(() => $('#loading').classList.add('done'), 2600); };
     if (!window.THREE) return fail();
-    fetchPack('meshes.txt', (k) => { bar.style.width = Math.min(96, 4 + 92 * k) + '%'; }).then((buf) => {
+    gate('beef').then(() => fetchPack('beef', (k) => { bar.style.width = Math.min(96, 4 + 92 * k) + '%'; })).then((buf) => {
       const pack = MeshLib.parsePack(buf);
       const wide = () => window.matchMedia('(min-width: 881px)').matches;
       shop = Shop.create($('#gl'), pack, { cuts: CUTS, panelWidth: () => wide() ? $('#panel').offsetWidth + 14 : 0, onFrame: drawTags });
@@ -649,7 +688,7 @@
       setView(st.view); sync3D();
       const done = () => { $('#loading').classList.add('done'); shop.setPose('wave', 2200); shop.dirty(); };
       (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { shop.setTags((c) => cname(c)); sync3D(); setTimeout(done, 350); });
-      window.__shop = shop;
+      window.__shop = shop; renderOffline();
     }).catch((err) => { console.error(err); fail(); });
   }
   if (window.claude && window.claude.hot && window.claude.hot.ready) window.claude.hot.ready(start); else start((window.claude && window.claude.hot && window.claude.hot.data) || {});

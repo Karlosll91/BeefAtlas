@@ -270,6 +270,6 @@ const PORK = [
 CUTS.forEach((c) => { c.sp = 'beef'; });
 PORK.forEach((c) => { c.sp = 'pork'; CUTS.push(c); });
 const SPECIES = {
-  beef: { n: ['Res', 'Beef', 'Boi'], animal: ['La res', 'The cow', 'O boi'], first: 'sb', dish: 'Ropa vieja', file: 'meshes.txt' },
-  pork: { n: ['Cerdo', 'Pork', 'Porco'], animal: ['El cerdo', 'The pig', 'O porco'], first: 'ppn', dish: 'Cochinita pibil', file: 'meshes_pork.txt' }
+  beef: { n: ['Res', 'Beef', 'Boi'], animal: ['La res', 'The cow', 'O boi'], first: 'sb', dish: 'Ropa vieja' },
+  pork: { n: ['Cerdo', 'Pork', 'Porco'], animal: ['El cerdo', 'The pig', 'O porco'], first: 'ppn', dish: 'Cochinita pibil' }
 };

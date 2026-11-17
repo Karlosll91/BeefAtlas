@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <rect width="512" height="512" fill="#16382d"/>
+  <circle cx="256" cy="256" r="186" fill="none" stroke="#c9a04e" stroke-width="10"/>
+  <circle cx="256" cy="256" r="168" fill="none" stroke="#c9a04e" stroke-width="3"/>
+  <text x="258" y="343" text-anchor="middle" font-family="Georgia, 'DejaVu Serif', 'Liberation Serif', serif" font-weight="700" font-size="250" fill="#ebddb3">K</text>
+</svg>

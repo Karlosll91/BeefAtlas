@@ -2,7 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#16382d">
+<meta name="description" content="Cortes de res y cerdo: qué pedir, por qué y cómo se llama en cada país.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Korte">
 <title>Korte</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +31,7 @@
       <button data-v="shop" aria-pressed="true">Tienda</button><button data-v="cow" aria-pressed="false">La res</button><button data-v="case" aria-pressed="false">Vitrina</button><button data-v="block" aria-pressed="false">El corte</button>
     </nav>
     <div id="hint">Arrastra para girar · toca un corte</div>
-    <div id="loading"><div class="box"><h2>Korte</h2><div class="bar"><b></b></div><p id="loadmsg">Afilando los cuchillos…</p></div></div>
+    <div id="loading"><div class="box"><h2>Korte</h2><div class="bar"><b></b></div><p id="loadmsg">Afilando los cuchillos…</p><button class="btn" id="loadBtn" hidden></button></div></div>
   </div>
   <aside id="panel">
     <div id="phead">
@@ -58,12 +65,15 @@
     <div class="field"><span id="setLangL"></span><div class="seg" id="setLang"></div></div>
     <label class="field"><span id="setWhereL"></span><select id="setCountry"></select></label>
     <div class="field" id="voiceField" hidden><span id="setVoiceL"></span><div class="seg" id="setVoice"></div></div>
+    <div class="field"><span id="setSaverL"></span><div class="seg" id="setSaver"></div></div>
+    <div class="field"><span id="setOfflineL"></span><div id="setOffline"></div></div>
+    <div class="field" id="installField" hidden><span id="setInstallL"></span><div id="setInstall"></div></div>
   </div>
 </div>
 <script type="text/plain" id="dishes">
 /*DISHES*/
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="three.min.js"></script>
 <script>
 /*JS*/
 </script>

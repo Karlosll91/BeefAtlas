@@ -5,6 +5,7 @@ const MeshLib = (function () {
   function parsePack(buf) {
     const dv = new DataView(buf);
     const magic = String.fromCharCode(dv.getUint8(0), dv.getUint8(1), dv.getUint8(2), dv.getUint8(3));
+    if (magic === 'CRN2') return parseCompact(buf);
     if (magic !== 'CARN') throw new Error('bad mesh pack');
     const hl = dv.getUint32(4, true);
     const head = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 8, hl)));
@@ -25,6 +26,45 @@ const MeshLib = (function () {
       const c = new Uint8Array(buf, base + m.c, m.nv * 4);
       g.setAttribute(m.kind === 'flesh' ? 'aux' : 'color', new T.BufferAttribute(c, 4, true));
       g.setIndex(new T.BufferAttribute(m.i16 ? new Uint16Array(buf, base + m.i, m.ni) : new Uint32Array(buf, base + m.i, m.ni), 1));
+      g.computeBoundingSphere(); g.computeBoundingBox();
+      out[m.name] = { geo: g, meta: m };
+    }
+    return { meshes: out, extra: head.extra, list: head.meshes };
+  }
+
+  // Compact pack (gen/packz.py): vertices in first-use order, indices as distance behind the newest vertex,
+  // positions as zigzag deltas in byte planes, normals and colours as per-channel deltas.
+  function parseCompact(buf) {
+    const dv = new DataView(buf), hl = dv.getUint32(4, true);
+    const head = JSON.parse(new TextDecoder().decode(new Uint8Array(buf, 8, hl)));
+    const st = {}; let off = 8 + hl;
+    for (const k of ['idx', 'plo', 'phi', 'nrm', 'col']) { st[k] = new Uint8Array(buf, off, head.streams[k]); off += head.streams[k]; }
+    const at = { idx: 0, plo: 0, phi: 0, nrm: 0, col: 0 }, qmax = (1 << head.qb) - 1, out = {};
+    for (const m of head.meshes) {
+      const nv = m.nv, ni = m.ni;
+      const idx = nv <= 65535 ? new Uint16Array(ni) : new Uint32Array(ni);
+      let p = at.idx, next = 0; const si = st.idx;
+      for (let k = 0; k < ni; k++) {
+        let v = si[p++];
+        if (v > 127) { const x = si[p++]; v = (v & 127) | ((x & 127) << 7); if (x > 127) v |= si[p++] << 14; }
+        idx[k] = next - v; if (v === 0) next++;
+      }
+      at.idx = p;
+      const pos = new Float32Array(nv * 3), nrm = new Int8Array(nv * 4), col = new Uint8Array(nv * 4);
+      for (let c = 0; c < 3; c++) {
+        const lo = st.plo, hi = st.phi, o = at.plo + c * nv, o2 = at.phi + c * nv, base = m.lo[c], sc = (m.hi[c] - m.lo[c]) / qmax;
+        let acc = 0;
+        for (let i = 0; i < nv; i++) { const z = lo[o + i] | (hi[o2 + i] << 8); acc += (z >>> 1) ^ -(z & 1); pos[3 * i + c] = base + acc * sc; }
+        const on = at.nrm + c * nv; let an = 0;
+        for (let i = 0; i < nv; i++) { an = (an + st.nrm[on + i]) & 255; nrm[4 * i + c] = an; }
+      }
+      for (let c = 0; c < 4; c++) { const oc = at.col + c * nv; let ac = 0; for (let i = 0; i < nv; i++) { ac = (ac + st.col[oc + i]) & 255; col[4 * i + c] = ac; } }
+      at.plo += 3 * nv; at.phi += 3 * nv; at.nrm += 3 * nv; at.col += 4 * nv;
+      const g = new T.BufferGeometry();
+      g.setAttribute('position', new T.BufferAttribute(pos, 3));
+      g.setAttribute('normal', new T.BufferAttribute(nrm, 4, true));
+      g.setAttribute(m.kind === 'flesh' ? 'aux' : 'color', new T.BufferAttribute(col, 4, true));
+      g.setIndex(new T.BufferAttribute(idx, 1));
       g.computeBoundingSphere(); g.computeBoundingBox();
       out[m.name] = { geo: g, meta: m };
     }
