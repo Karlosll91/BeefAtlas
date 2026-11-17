@@ -1,6 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#16382d"/>
-  <circle cx="256" cy="256" r="186" fill="none" stroke="#c9a04e" stroke-width="10"/>
-  <circle cx="256" cy="256" r="168" fill="none" stroke="#c9a04e" stroke-width="3"/>
-  <text x="258" y="343" text-anchor="middle" font-family="Georgia, 'DejaVu Serif', 'Liberation Serif', serif" font-weight="700" font-size="250" fill="#ebddb3">K</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs><clipPath id="cow"><path d="M158 400C150 430 150 462 172 474C200 490 240 486 262 462C290 440 320 450 345 490C365 530 385 560 420 585L760 585C800 585 850 560 868 500C884 440 880 380 850 345C820 318 780 322 740 322C640 322 520 326 440 318C395 314 350 300 318 292L290 292C250 296 200 330 176 362C166 376 160 388 158 400Z"/></clipPath></defs>
+  <rect width="1024" height="1024" fill="#16382D"/>
+  <g transform="translate(512 512) scale(0.98) translate(-525 -489)"><rect x="426" y="540" width="56" height="205" rx="20" fill="#F5ECDC"/><rect x="498" y="540" width="48" height="205" rx="20" fill="#F5ECDC"/><rect x="694" y="520" width="52" height="225" rx="20" fill="#F5ECDC"/><rect x="762" y="500" width="62" height="245" rx="22" fill="#F5ECDC"/><path d="M866 360C902 400 902 500 886 556" fill="none" stroke="#F5ECDC" stroke-width="15" stroke-linecap="round"/><ellipse cx="886" cy="578" rx="17" ry="32" fill="#F5ECDC"/><path d="M300 300C300 244 266 218 224 224C254 244 264 272 268 306Z" fill="#E8C37A"/><g clip-path="url(#cow)"><rect x="120" y="230" width="800" height="530" fill="#F5ECDC"/><rect x="480" y="230" width="150" height="225" fill="#B93526"/><g stroke="#16382D" stroke-width="14" fill="none" stroke-linecap="round"><path d="M336 280Q352 420 362 540"/><path d="M480 300V570"/><path d="M630 300V570"/><path d="M362 455H880"/></g></g><ellipse cx="342" cy="318" rx="50" ry="22" transform="rotate(28 342 318)" fill="#F5ECDC" stroke="#16382D" stroke-width="7"/><circle cx="236" cy="372" r="13" fill="#16382D"/><ellipse cx="172" cy="440" rx="7" ry="11" fill="#16382D" transform="rotate(-15 172 440)"/></g></svg>

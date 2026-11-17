@@ -1,6 +1,6 @@
 // Service worker: keeps the page, three.js, fonts and the 3D model packs on the device so the shop opens offline.
 // build.py stamps VERSION; a new build installs a new shell cache and drops the old one.
-const VERSION = 'c2dde1d4a1';
+const VERSION = 'cd473a738a';
 const SHELL = 'korte-shell-' + VERSION, PACKS = 'korte-packs', FONTS = 'korte-fonts';
 const ASSETS = ['./', 'three.min.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png'];
 
