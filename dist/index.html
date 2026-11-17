@@ -3266,7 +3266,7 @@ const Shop = (function () {
     const scene = new T.Scene();
     scene.background = lin('#2a2420');
     scene.environment = MeshLib.makeEnv(renderer);
-    const camera = new T.PerspectiveCamera(34, 1, 0.1, 80);
+    const camera = new T.PerspectiveCamera(34, 1, 0.1, 170);
 
     // ---------------- lights
     scene.add(new T.HemisphereLight(0xfff0dc, 0x4a3c30, 0.5));
@@ -3280,9 +3280,12 @@ const Shop = (function () {
 
     // ---------------- room
     const room = new T.Group(); scene.add(room);
-    const floorT = floorTexture(); floorT.repeat.set(4.5, 3);
-    const floor = new T.Mesh(new T.PlaneGeometry(14.4, 9.6), new T.MeshStandardMaterial({ map: floorT, roughness: 0.32, metalness: 0.0, envMapIntensity: 0.6 }));
-    floor.rotation.x = -Math.PI / 2; floor.position.set(0, 0, 1.2); floor.receiveShadow = true; room.add(floor);
+    // On a phone the camera has to back out through the walls to fit the animal, so the floor and ceiling run on well past the room
+    // (odd multiples of the room, which keeps the tile pattern where it was) and a far outer wall closes the horizon: no empty background.
+    const OUT = { w: 14.4 * 5, d: 9.6 * 7, z: 1.2 };
+    const floorT = floorTexture(); floorT.repeat.set(4.5 * 5, 3 * 7);
+    const floor = new T.Mesh(new T.PlaneGeometry(OUT.w, OUT.d), new T.MeshStandardMaterial({ map: floorT, roughness: 0.32, metalness: 0.0, envMapIntensity: 0.6 }));
+    floor.rotation.x = -Math.PI / 2; floor.position.set(0, 0, OUT.z); floor.receiveShadow = true; room.add(floor);
     const wt = tileTextures(4, 8, [222, 217, 204], '#a39c8d', 0.07);
     const wallMat = (rx, ry) => { const m = wt.col.clone(); m.needsUpdate = true; m.repeat.set(rx, ry); const b = wt.bump.clone(); b.needsUpdate = true; b.repeat.set(rx, ry); return new T.MeshStandardMaterial({ map: m, bumpMap: b, bumpScale: 0.004, roughness: 0.2, metalness: 0, envMapIntensity: 0.45 }); };
     const plaster = std({ color: lin('#d9cdb4'), roughness: 0.95, envMapIntensity: 0.3 });
@@ -3295,15 +3298,27 @@ const Shop = (function () {
     function wall(w, x, z, ry) {
       const g = new T.Group(); g.position.set(x, 0, z); g.rotation.y = ry; room.add(g);
       const tiles = new T.Mesh(new T.PlaneGeometry(w, 2.3), wallMat(w / 0.8, 2.3 / 0.8)); tiles.position.y = 1.15; tiles.receiveShadow = true; g.add(tiles);
-      const band = new T.Mesh(new T.BoxGeometry(w, 0.1, 0.03), green); band.position.set(0, 2.35, 0.015); g.add(band);
+      // flat trims: like the tiles they face into the room only, so a camera orbiting outside the room sees straight through the near wall
+      const band = new T.Mesh(new T.PlaneGeometry(w, 0.1), green); band.position.set(0, 2.35, 0.03); g.add(band);
       const up = new T.Mesh(new T.PlaneGeometry(w, 1.6), plaster); up.position.y = 3.2; up.receiveShadow = true; g.add(up);
-      const skirt = new T.Mesh(new T.BoxGeometry(w, 0.12, 0.03), greenDeep); skirt.position.set(0, 0.06, 0.015); g.add(skirt);
+      const skirt = new T.Mesh(new T.PlaneGeometry(w, 0.12), greenDeep); skirt.position.set(0, 0.06, 0.03); g.add(skirt);
       return g;
     }
     wall(14.4, 0, -3.0, 0);
     wall(9.6, -7.2, 1.8, Math.PI / 2);
     wall(9.6, 7.2, 1.8, -Math.PI / 2);
-    const ceil = new T.Mesh(new T.PlaneGeometry(14.4, 9.6), plaster); ceil.rotation.x = Math.PI / 2; ceil.position.set(0, 4.0, 1.8); room.add(ceil);
+    // street side: closes the room, so orbiting behind the animal shows a wall instead of the empty background
+    const front = wall(14.4, 0, 6.6, Math.PI);
+    const pane = (w, h, mat, x, y, z) => { const m = new T.Mesh(new T.PlaneGeometry(w, h), mat); m.position.set(x, y, z); front.add(m); return m; };
+    pane(1.3, 2.25, greenDeep, 0, 1.125, 0.032);                                  // door frame
+    pane(1.1, 2.1, green, 0, 1.05, 0.034);                                        // door
+    pane(0.8, 0.95, std({ color: lin('#26303a'), roughness: 0.08, metalness: 0.2, envMapIntensity: 1.2 }), 0, 1.42, 0.036);   // door glass
+    pane(0.9, 0.5, greenDeep, 0, 0.5, 0.036);                                     // lower panel
+    pane(0.05, 0.3, brass, 0.42, 1.0, 0.038);                                     // pull handle
+    const ceil = new T.Mesh(new T.PlaneGeometry(OUT.w, OUT.d), plaster); ceil.rotation.x = Math.PI / 2; ceil.position.set(0, 4.0, OUT.z); room.add(ceil);
+    for (const [w, x, z, ry] of [[OUT.w, 0, OUT.z - OUT.d / 2, 0], [OUT.w, 0, OUT.z + OUT.d / 2, Math.PI], [OUT.d, -OUT.w / 2, OUT.z, Math.PI / 2], [OUT.d, OUT.w / 2, OUT.z, -Math.PI / 2]]) {
+      const m = new T.Mesh(new T.PlaneGeometry(w, 4), plaster); m.position.set(x, 2, z); m.rotation.y = ry; room.add(m);
+    }
 
     // sign on the upper wall
     const signT = canvasTex(2048, 256, (g, W, H) => {
@@ -3579,8 +3594,8 @@ const Shop = (function () {
     const cow = new T.Group(); cow.position.copy(COW); cow.rotation.y = COW_YAW; scene.add(cow);
     const pieces = {};            // name -> {group, hide, flesh, meta, off, cur}
     const animals = {};           // species -> group holding its pieces
-    const ANIMAL = { beef: { prefix: 'cow.', cc: [-0.05, 0.98], at: [0.1, -0.005, 0], face: { marb: 0.1, marbScale: 60, seams: 1, seamScale: 5, ribs: 1 }, inner: {} },
-      pork: { prefix: 'pig.', cc: [-0.12, 0.80], at: [0.12, -0.005, 0], face: { meat: '#d58a8c', meat2: '#b96a70', fat: '#f6ece2', marb: 0.08, marbScale: 60, seams: 1, seamScale: 5, ribs: 0 }, inner: { meat: '#cf7b80', meat2: '#b6636a' } } };
+    const ANIMAL = { beef: { prefix: 'cow.', cc: [-0.05, 0.98], ax: [-0.45, 0.65], at: [0.1, -0.005, 0], face: { marb: 0.1, marbScale: 60, seams: 1, seamScale: 5, ribs: 1 }, inner: {} },
+      pork: { prefix: 'pig.', cc: [-0.12, 0.80], ax: [-0.5, 0.6], at: [0.12, -0.005, 0], face: { meat: '#d58a8c', meat2: '#b96a70', fat: '#f6ece2', marb: 0.08, marbScale: 60, seams: 1, seamScale: 5, ribs: 0 }, inner: { meat: '#cf7b80', meat2: '#b6636a' } } };
     const addAnimal = (pk, sp) => {
      const A = ANIMAL[sp], CC = A.cc;
      const cowIn = animals[sp] = new T.Group(); cowIn.position.fromArray(A.at); cowIn.visible = sp === S.sp; cow.add(cowIn);
@@ -3592,12 +3607,18 @@ const Shop = (function () {
       if (!p) {
         p = pieces[pname] = { name: pname, sp, cc: CC, group: new T.Group(), meta: m, cur: V3(0, 0, 0), glow: 0, glowT: 0, dim: 0, dimT: 0 };
         const dx = m.cen[0] - CC[0], dy = m.cen[1] - CC[1];
-        p.dir = V3(dx * 0.62, dy * 0.62 + 0.22, m.side * 0.34);
+        // pieces below the middle travel less far down, so the legs stay above the plinth (addAnimal lifts the animal by whatever is still missing)
+        p.dir = V3(dx * 0.62, dy * (dy < 0 ? 0.38 : 0.62) + 0.22, m.side * 0.34);
         if (m.internal) p.dir = V3(dx * 0.3, dy * 0.3 + 0.12, (m.side || 1) * 1.0 + (offal ? 0.25 : 0));
         if (m.cut === 'ha') p.dir.z = -1.05;
         p.cen = V3(m.cen[0], m.cen[1], m.cen[2]);
+        // highlight: step outwards from the body's long axis, so back cuts rise, belly cuts drop and legs step sideways
+        if (m.internal) p.out = p.dir.clone().normalize();
+        else { p.out = V3(m.cen[0] - clamp(m.cen[0], A.ax[0], A.ax[1]), m.side ? 0 : dy, m.side * 0.9); if (p.out.lengthSq() < 1e-4) p.out.set(0, 1, 0); p.out.normalize(); }
+        p.minY = Infinity;
         cowIn.add(p.group);
       }
+      p.minY = Math.min(p.minY, m.lo[1]);
       const geo = pk.meshes[m.name].geo;
       let mesh;
       if (kind === 'hide') { mesh = new T.Mesh(geo, new T.MeshStandardMaterial({ vertexColors: true, roughness: 0.8, metalness: 0, envMapIntensity: 0.4 })); p.hide = mesh; }
@@ -3609,6 +3630,10 @@ const Shop = (function () {
       mesh.castShadow = true; mesh.receiveShadow = true; mesh.userData.piece = pname; mesh.userData.where = 'cow'; mesh.userData.sp = sp;
       p.group.add(mesh); pickables.push(mesh);
      }
+     // ground line: the lowest point at rest; when pulled apart the whole animal rises just enough that no piece sinks below it
+     A.floorY = Infinity; A.lift = 0;
+     for (const n in pieces) if (pieces[n].sp === sp) A.floorY = Math.min(A.floorY, pieces[n].minY);
+     for (const n in pieces) if (pieces[n].sp === sp) A.lift = Math.max(A.lift, A.floorY - (pieces[n].minY + pieces[n].dir.y));
      // eyes
      const eye = (pc, x, y, z, r) => { if (pieces[pc]) for (const s of [1, -1]) { const e = new T.Mesh(new T.SphereGeometry(r, 14, 10), new T.MeshStandardMaterial({ color: 0x050505, roughness: 0.08 })); e.position.set(x, y, z * s); pieces[pc].group.add(e); } };
      if (sp === 'beef') eye('ch', -1.212, 1.372, 0.112, 0.021); else eye('p_ca', -1.262, 0.962, 0.155, 0.02);
@@ -3809,6 +3834,7 @@ const Shop = (function () {
       // cow pieces
       const ex = Math.max(S.explode, S.explodeAuto);
       if (Math.abs(ex - S.explodeNow) > 0.001) { S.explodeNow = lerp(S.explodeNow, ex, k); active = true; if (S.view === 'cow') { const pv = viewPreset('cow'); rig.tDist = pv.dist * rig.zoom; } }
+      for (const sp in animals) animals[sp].position.y = ANIMAL[sp].at[1] + ANIMAL[sp].lift * S.explodeNow;
       const hovP = hoverPiece ? new Set(pieceOfCut[hoverPiece] || []) : null;
       for (const n in pieces) {
         const p = pieces[n];
@@ -3817,7 +3843,8 @@ const Shop = (function () {
         p.glow = lerp(p.glow, gT, k); p.dim = lerp(p.dim, p.dimT || 0, k); p.pop = lerp(p.pop || 0, p.popT || 0, k);
         const e = S.explodeNow;
         const popK = p.pop * (0.05 + 0.1 * (1 - Math.min(1, e * 2)));
-        p.group.position.set(p.dir.x * e + (p.cen.x - p.cc[0]) * popK * 0.5, p.dir.y * e + popK * 0.35, p.dir.z * e + (p.meta.internal ? 0 : 0));
+        const A = ANIMAL[p.sp], pk = popK * 0.45;
+        p.group.position.set(p.dir.x * e + p.out.x * pk, Math.max(p.dir.y * e + p.out.y * pk, A.floorY - p.minY - A.lift * e), p.dir.z * e + p.out.z * pk);
         const dimK = 1 - (p.sp === 'pork' ? 0.3 : 0.55) * p.dim;
         if (p.hide) { p.hide.material.color.setRGB(dimK, dimK * (1 - 0.3 * p.glow), dimK * (1 - 0.78 * p.glow)); p.hide.material.emissive.copy(gold).multiplyScalar(0.16 * p.glow); }
         if (p.flesh) { const U = p.flesh.material.userData.U; U.uTint.value.setScalar(dimK); U.uGlow.value.copy(gold).multiplyScalar(0.3 * p.glow); }
