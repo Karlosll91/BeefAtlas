@@ -3,7 +3,7 @@
 const { chromium } = require('playwright');
 const http = require('http'), fs = require('fs'), path = require('path');
 const ROOT = path.dirname(__dirname), PORT = 8766, mobile = process.argv.includes('mobile'), dark = process.argv.includes('dark');
-const TYPES = { '.html': 'text/html; charset=utf-8', '.txt': 'text/plain', '.js': 'application/javascript' };
+const TYPES = { '.html': 'text/html; charset=utf-8', '.txt': 'text/plain', '.js': 'application/javascript', '.webmanifest': 'application/manifest+json', '.png': 'image/png' };
 const srv = http.createServer((q, r) => { const f = path.join(ROOT, decodeURIComponent(q.url.split('?')[0])); fs.readFile(f, (e, b) => { if (e) { r.writeHead(404); r.end(); } else { r.writeHead(200, { 'content-type': TYPES[path.extname(f)] || 'application/octet-stream' }); r.end(b); } }); });
 (async () => {
   await new Promise((ok) => srv.listen(PORT, '127.0.0.1', ok));
