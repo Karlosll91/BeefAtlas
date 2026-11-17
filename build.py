@@ -28,7 +28,7 @@ open(D('index.html'), 'w', encoding='utf-8').write(out)
 
 # installable-app files: three.js served from here (works offline), icons, manifest, service worker
 shutil.copy(os.path.join(R, 'test/three.min.js'), D('three.min.js'))
-for f in ('manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'):
+for f in ('manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'icon-maskable-512.png', 'apple-touch-icon.png'):
     shutil.copy(os.path.join(R, 'src/pwa', f), D(f))
 ver = hashlib.sha256(out.encode() + open(D('three.min.js'), 'rb').read()).hexdigest()[:10]
 open(D('sw.js'), 'w', encoding='utf-8').write(rd('src/sw.js').replace('/*VERSION*/', ver))
