@@ -53,9 +53,9 @@ XZ = lambda P: (P[:, 0], P[:, 2])
 C = {}       # name -> dict(fn, fat, bone, seam, bbox, h, mat)
 
 
-def cut(name, bbox, h, mat):
+def cut(name, bbox, h, mat, reg=None):
     def deco(builder):
-        C[name] = dict(build=builder, bbox=bbox, h=h, mat=mat)
+        (C if reg is None else reg)[name] = dict(build=builder, bbox=bbox, h=h, mat=mat)
         return builder
     return deco
 
@@ -529,10 +529,10 @@ def foot(P):
 
 
 # ============================================================ build
-def build_cuts(pack, only=None, log=print):
+def build_cuts(pack, only=None, log=print, reg=None):
     mats = {}
     tot = 0
-    for name, c in C.items():
+    for name, c in (C if reg is None else reg).items():
         if only and name not in only:
             continue
         build = c['build']

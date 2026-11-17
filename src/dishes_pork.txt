@@ -1,0 +1,301 @@
+# Pork. Name|country|method|best|alternatives|es|en
+# ---------------- Colombia
+Lechona tolimense|CO|roll|pen|ppn,ppi|cerdo entero relleno de arroz y arveja, horneado|whole pig stuffed with rice and peas, roasted
+Chicharrón colombiano|CO|crisp|ppn|pcu,ppp|tocino carnudo frito en su grasa|meaty pork belly fried in its own fat
+Bandeja paisa (chicharrón)|CO|crisp|ppn||chicharrón de varias patas|scored belly crackling with many "legs"
+Chuleta valluna|CO|fry|plo|ppi,pch|lomo aplanado, marinado y apanado|pounded, marinated and breaded loin
+Costillitas en salsa BBQ|CO|roast|pbb|pco|costillas horneadas y glaseadas|oven ribs with a barbecue glaze
+Pernil de cerdo navideño|CO|roast|ppi|ppa|pierna marinada y horneada lento|marinated leg roasted slowly
+Fritanga bogotana|CO|crisp|pco|ppn,ptr|picada de costilla, chicharrón y tripa fritos|fried platter of ribs, belly and chitterlings
+Marranitas vallunas|CO|crisp|ppn|pcu|bolas de plátano rellenas de chicharrón|plantain balls stuffed with chicharrón
+Tamal tolimense (cerdo)|CO|braise|pco|ppn,ppi|masa con costilla y tocino cocida en hoja|corn dough with ribs and belly steamed in leaves
+Frijoles con pezuña|CO|soup|ppt|pcd,pra|frijoles rojos cocidos con pata de cerdo|red beans simmered with pig’s feet
+Lomo de cerdo en salsa de ciruelas|CO|roast|plo|pso|lomo horneado con ciruelas pasas|roast loin with prunes
+Cañón de cerdo relleno|CO|roll|plo|ppi|lomo abierto y relleno, al horno|loin opened, stuffed and roasted
+Chorizo santarrosano|CO|grind|pmo|pbo,ppa|chorizo fresco de cerdo|fresh pork sausage
+Sancocho de espinazo|CO|soup|pco|pra,pcd|sopa de hueso carnudo con yuca y plátano|meaty bone soup with cassava and plantain
+Chunchurria de cerdo|CO|crisp|ptr||tripa trenzada y frita|braided, fried chitterlings
+Arroz atollado|CO|braise|pco|ppn,plo|arroz meloso con costilla y longaniza|soupy rice with ribs and sausage
+Hornado pastuso|CO|roast|ppi|ppa,pen|pierna horneada en horno de leña|leg roasted in a wood oven
+Lomo de cerdo a la plancha|CO|sear|plo|pso|filetes de lomo a la plancha|griddled loin steaks
+# ---------------- México
+Cochinita pibil|MX|shred|pbo|ppa,ppi|cerdo en achiote cocido bajo tierra, desmechado|achiote pork cooked in a pit, shredded
+Carnitas michoacanas|MX|crisp|pbo|ppa,pco,ppn|cerdo confitado en manteca y dorado|pork confited in lard, then browned
+Tacos al pastor|MX|skewer|pbo|ppi,plo|láminas adobadas asadas en trompo|adobo-marinated slices roasted on a spit
+Pozole rojo|MX|soup|pca|ppa,pco|sopa de maíz cacahuazintle con cabeza|hominy soup with pig’s head
+Chicharrón prensado|MX|crisp|pcu|ppn|recortes de chicharrón prensados|pressed crackling trimmings
+Chicharrón en salsa verde|MX|braise|pcu||chicharrón ablandado en salsa de tomate verde|crackling softened in tomatillo sauce
+Chamorro adobado|MX|braise|pcd||codillo en adobo de chiles secos|hock in dried-chile adobo
+Costillas de cerdo en salsa verde|MX|braise|pco||costilla guisada con tomate verde|ribs stewed with tomatillo
+Chuletas ahumadas con piña|MX|sear|pch||chuleta ahumada a la plancha|smoked chop on the griddle
+Lomo adobado|MX|roast|plo|pbo|lomo en adobo, al horno|adobo-rubbed roast loin
+Puerco en chile verde|MX|braise|ppa|pbo|trozos guisados en salsa de chiles verdes|chunks stewed in green chile sauce
+Manitas de cerdo en escabeche|MX|braise|ppt||patas cocidas y encurtidas|pickled pig’s feet
+Chorizo mexicano|MX|grind|pmo|pbo|chorizo fresco con chile y vinagre|fresh sausage with chile and vinegar
+Chilorio|MX|shred|ppa|pbo|cerdo deshebrado y frito en chile pasilla|shredded pork fried in pasilla chile
+Poc chuc|MX|grill|plo|ppi|filete delgado en naranja agria, a las brasas|thin steak in sour orange, grilled
+Cueritos en vinagre|MX|braise|pcu||piel cocida y encurtida|pickled pork skin
+Frijol con puerco|MX|braise|ppa|pco|frijoles negros con trozos de cerdo|black beans with pork chunks
+Torta ahogada|MX|crisp|pbo|ppi|birote con carnitas bañado en salsa|carnitas roll drowned in salsa
+Asado de puerco|MX|braise|ppi|ppa|cerdo en salsa de chile colorado|pork in red chile sauce
+Lechón al horno yucateco|MX|roast|pen|ppi|lechón horneado, para tortas|roast suckling pig for sandwiches
+# ---------------- Cono Sur
+Bondiola a la parrilla|AR|grill|pbo||bondiola entera asada lento|whole collar grilled slowly
+Sándwich de bondiola|AR|grill|pbo||filetes de bondiola a la plancha en pan|grilled collar steaks in a roll
+Matambrito de cerdo a la pizza|AR|grill|pse|ppn|matambrito asado con salsa y queso|grilled pork flank topped like a pizza
+Pechito de cerdo a la parrilla|AR|grill|pco|pbb|costillar asado a fuego lento|rack of ribs over slow coals
+Lechón a la parrilla|AR|grill|pen||lechón abierto asado a las brasas|butterflied suckling pig over coals
+Carré de cerdo a la mostaza|AR|roast|plo|pch|lomo al horno con mostaza|roast loin with mustard
+Costeletas de cerdo a la riojana|AR|sear|pch||chuletas con huevo, panceta y arvejas|chops with egg, bacon and peas
+Solomillo de cerdo al verdeo|AR|sear|pso||solomillo con salsa de cebolla de verdeo|tenderloin in scallion cream
+Chorizo criollo|AR|grind|pmo|pbo,ppa|chorizo fresco para la parrilla|fresh grilling sausage
+Queso de cerdo|AR|braise|pca|ppt|fiambre de cabeza prensada|pressed head cheese
+Pamplona de cerdo|UY|roll|plo|pse|lomo relleno y envuelto, a la parrilla|stuffed, wrapped loin on the grill
+Costillar de chancho al horno|CL|roast|pco||costillar adobado con ají y ajo|ribs rubbed with chile and garlic
+Pernil con papas cocidas|CL|braise|pcd||codillo hervido con papas|boiled hock with potatoes
+Arrollado huaso|CL|roll|ppi|pcu,ppn|pulpa adobada envuelta en cuero y cocida|seasoned leg meat rolled in skin and boiled
+Longaniza de Chillán|CL|grind|pmo||longaniza ahumada de cerdo|smoked pork sausage
+# ---------------- Andes y Venezuela
+Pernil venezolano|VE|roast|ppi|ppa|pierna horneada navideña|Christmas roast leg
+Hallaca (guiso de cochino)|VE|braise|ppi|ppa,ppn|guiso de cerdo para el relleno|pork stew for the filling
+Cochino frito|VE|crisp|ppa|pco,ppn|trozos de cerdo fritos en su grasa|pork chunks fried in their own fat
+Hornado ecuatoriano|EC|roast|ppi|pen|pierna horneada con chicha y ajo|leg roasted with chicha and garlic
+Fritada ecuatoriana|EC|crisp|pco|ppa,ppn|costilla cocida y frita en su manteca|ribs simmered, then fried in their fat
+Chugchucaras|EC|crisp|ppa|pcu|fritada con cuero reventado|fried pork with puffed skin
+Pan con chicharrón|PE|crisp|pco|ppn,pbo|chicharrón de costilla en pan con camote|fried pork in a roll with sweet potato
+Adobo arequipeño|PE|braise|pbo|ppi,ppa|cerdo en chicha y ají panca|pork stewed in chicha and panca chile
+Chancho al palo|PE|smoke|pco|ppn|costillar asado en cruz junto al fuego|ribs roasted on a cross by the fire
+Carapulcra|PE|braise|ppn|pco|guiso de papa seca con cerdo|dried-potato stew with pork
+Lechón al horno peruano|PE|roast|ppi||pierna con piel crocante|leg with crackling skin
+Fricasé paceño|BO|soup|pco|ppa|sopa picante con mote y chuño|spicy soup with hominy and chuño
+Chicharrón cochabambino|BO|crisp|pco|ppn|costilla cocida en chicha y frita|ribs boiled in chicha and fried
+Lechón al horno boliviano|BO|roast|pen|ppi|lechón horneado con ají amarillo|suckling pig roasted with yellow chile
+# ---------------- Brasil
+Torresmo|BR|crisp|ppn|pcu,ppp|barriga frita hasta pururucar|belly fried until it crackles
+Feijoada (porco)|BR|braise|pcd|pco,por,pra,ppt|frijol negro con cortes salados de cerdo|black beans with salted pork cuts
+Costelinha com canjiquinha|BR|braise|pco||costilla con maíz quebrado|ribs with cracked corn
+Pernil assado de Natal|BR|roast|ppi||pernil horneado navideño|Christmas roast leg
+Leitão à pururuca|BR|roast|pen|ppn|lechón con piel reventada con aceite caliente|suckling pig, skin blistered with hot oil
+Lombo recheado|BR|roll|plo||lomo relleno al horno|stuffed roast loin
+Bisteca suína grelhada|BR|grill|pch||chuleta a la parrilla|grilled chop
+Linguiça caseira|BR|grind|pmo|ppa|chorizo fresco casero|homemade fresh sausage
+Panceta pururuca|BR|crisp|ppn||panceta al horno con piel crocante|roast belly with crackling
+Sarapatel|BR|braise|phi||guiso de vísceras de cerdo|pork offal stew
+Virado à paulista|BR|sear|pch|ppn|chuleta con tutu de frijol y torresmo|chop with mashed beans and crackling
+# ---------------- Caribe y Centroamérica
+Lechón asado cubano|CU|roast|ppi|pen,ppa|pierna en mojo de naranja agria|leg in sour-orange mojo
+Masitas de puerco fritas|CU|crisp|ppa|pbo|cubos marinados y fritos|marinated, fried pork cubes
+Sándwich cubano|CU|roast|ppi|ppa|cerdo asado con jamón y queso en pan prensado|roast pork with ham and cheese, pressed
+Pernil puertorriqueño|PR|roast|ppa|ppi|paleta con cuerito crocante|shoulder with crisp skin
+Lechón a la varita|PR|smoke|pen||cerdo entero asado en vara|whole pig roasted on a pole
+Mofongo con chicharrón|PR|crisp|ppn|pcu|plátano majado con chicharrón|mashed plantain with crackling
+Cuchifritos|PR|crisp|por|ptr,pra|oreja, rabo y tripa fritos|fried ears, tails and chitterlings
+Chicharrón dominicano|DO|crisp|ppn|ppa|chicharrón de Villa Mella|Villa Mella-style fried pork
+Jerk pork|JM|grill|pbo|ppa,pch|cerdo en adobo jerk a la leña de pimento|jerk-marinated pork over pimento wood
+Griot|HT|crisp|ppa|pbo|cubos en naranja agria, cocidos y fritos|sour-orange pork cubes, simmered and fried
+Vigorón|NI|crisp|ppn|pcu|chicharrón con yuca y ensalada de repollo|crackling with cassava and slaw
+Nacatamal|NI|braise|pco|ppn,ppi|tamal grande con costilla|large tamal with ribs
+Pupusa de chicharrón|SV|grind|ppa|ppn|cerdo frito y molido para el relleno|fried, ground pork filling
+Chifrijo|CR|crisp|ppn|pco|chicharrón con frijoles y pico de gallo|crackling with beans and pico de gallo
+Pig foot souse|TT|braise|ppt|por|patas cocidas en caldo ácido frío|pig’s feet in a cold lime brine
+# ---------------- Estados Unidos y Canadá
+Carolina pulled pork|US|smoke|pbo|ppa|paleta ahumada y desmechada|smoked, pulled shoulder
+St. Louis ribs|US|smoke|pco||costillar recortado y ahumado|trimmed, smoked spare ribs
+Memphis baby back ribs|US|smoke|pbb||costillitas ahumadas con adobo seco|dry-rubbed smoked back ribs
+Bacon|US|cure|ppn|ppp|panceta curada y ahumada|cured, smoked belly
+Smothered pork chops|US|braise|pch||chuletas en salsa de cebolla|chops in onion gravy
+Whole hog barbecue|US|smoke|pen|ppa|cerdo entero ahumado toda la noche|whole pig smoked overnight
+Collard greens with ham hock|US|soup|pcd|ppt|verduras cocidas con codillo ahumado|greens simmered with smoked hock
+Chitlins|US|braise|ptr||tripa cocida lento|slow-simmered chitterlings
+Pork tenderloin medallions|US|sear|pso||medallones de solomillo a la sartén|pan-seared tenderloin medallions
+Breaded pork tenderloin sandwich|US|fry|plo|pso|lomo aplanado y apanado en pan|pounded, breaded loin in a bun
+Pork belly burnt ends|US|smoke|ppn||cubos de panceta ahumados y glaseados|smoked, glazed belly cubes
+Breakfast sausage|US|grind|pmo|pbo|salchicha fresca con salvia|fresh sausage with sage
+Kalua pig|US|smoke|pbo|ppa,pen|cerdo cocido en horno de tierra hawaiano|pork cooked in a Hawaiian earth oven
+Scrapple|US|grind|pca|phi|pan de recortes de cerdo y maíz|loaf of pork scraps and cornmeal
+Cracklins|US|crisp|pcu|ppn|cuero con grasa frito, estilo cajún|Cajun fried skin with fat
+Tourtière|CA|grind|pmo|ppa|pastel de carne de cerdo especiado|spiced pork pie
+Peameal bacon|CA|cure|plo||lomo curado rebozado en harina de maíz|cured loin rolled in cornmeal
+Cretons|CA|grind|pmo|ppa|paté de cerdo para untar|pork spread
+# ---------------- Reino Unido e Irlanda
+Roast pork with crackling|UK|roast|plo|ppn,ppi|lomo asado con piel crocante|roast loin with crackling
+Pork pie|UK|grind|ppa|pmo,ppn|pastel frío de cerdo con gelatina|cold pork pie with jelly
+Bangers and mash|UK|grind|pmo|ppa|salchichas con puré|sausages and mash
+Gammon steak|UK|sear|ppi||filete de pierna curada|cured leg steak
+Pork scratchings|UK|crisp|pcu||cuero frito de pub|pub pork rinds
+Brawn|UK|braise|pca|ppt|fiambre de cabeza en gelatina|jellied head meat
+Faggots (pork)|UK|grind|phi|pmo|albóndigas de hígado y recortes|liver and offcut meatballs
+Bacon and cabbage|IE|braise|pbo|plo|tocino de paleta hervido con repollo|boiled collar bacon with cabbage
+Crubeens|IE|braise|ppt||patas hervidas y doradas|boiled, browned pig’s feet
+# ---------------- Francia y Bélgica
+Rôti de porc|FR|roast|plo|pbo|asado de cerdo al horno|oven roast pork
+Petit salé aux lentilles|FR|braise|ppn|pbo,pcd|cerdo en salmuera con lentejas|salt pork with lentils
+Rillettes|FR|shred|ppn|pbo,ppa|cerdo confitado y deshebrado para untar|confited, shredded pork spread
+Cassoulet (porc)|FR|braise|pcu|ppn,pbo|alubias con corteza, panceta y aguja|beans with rind, belly and collar
+Choucroute garnie|FR|braise|pcd|ppn,ppa|chucrut con codillo y panceta|sauerkraut with hock and belly
+Pieds de porc Sainte-Menehould|FR|crisp|ppt||manitas cocidas, empanadas y doradas|trotters simmered, crumbed and grilled
+Pâté de campagne|FR|grind|phi|pbo,ppp|paté rústico de hígado y papada|country pâté of liver and jowl
+Filet mignon de porc à la moutarde|FR|sear|pso||solomillo con salsa de mostaza|tenderloin in mustard sauce
+Côte de porc charcutière|FR|sear|pch||chuleta con salsa de pepinillos|chop with gherkin sauce
+Travers de porc au miel|FR|roast|pco|pbb|costillas laqueadas con miel|honey-glazed ribs
+Jambon persillé|FR|braise|pcd|ppa|terrina de jamón y perejil|ham and parsley terrine
+Andouillette|FR|grind|ptr||embutido de tripa|chitterling sausage
+Boudin blanc|BE|grind|pmo||salchicha blanca fina|fine white sausage
+# ---------------- Italia
+Porchetta|IT|roll|ppn|pen,plo|panceta enrollada con hierbas, asada|herbed, rolled belly roast
+Arista alla fiorentina|IT|roast|plo|pch|lomo asado con romero y ajo|loin roasted with rosemary and garlic
+Guanciale|IT|cure|ppp|ppn|papada curada para carbonara y amatriciana|cured jowl for carbonara and amatriciana
+Pancetta arrotolata|IT|cure|ppn||panceta curada y enrollada|cured, rolled belly
+Prosciutto crudo|IT|cure|ppi||pierna curada al aire|air-cured leg
+Capocollo|IT|cure|pbo||aguja curada|cured collar
+Salsiccia|IT|grind|pmo|ppa,pbo|salchicha fresca con hinojo|fresh sausage with fennel
+Cotechino|IT|grind|pcu|pmo,ppp|embutido de corteza para hervir|rind sausage for boiling
+Zampone|IT|roll|ppt|pcu|pata rellena de carne picada|trotter stuffed with ground pork
+Stinco al forno|IT|roast|pcd||codillo asado con hierbas|roast hock with herbs
+Maiale al latte|IT|braise|plo|pbo|lomo cocido en leche|loin braised in milk
+Puntine al sugo|IT|braise|pco||costillas en salsa de tomate|ribs in tomato sauce
+Fegatelli|IT|roast|phi||hígado envuelto en redaño con laurel|liver wrapped in caul with bay
+Porceddu|IT|roast|pen||lechón sardo al asador|Sardinian spit-roast suckling pig
+Braciole di maiale|IT|roll|ppi|plo|filetes enrollados en salsa|rolled slices in sauce
+# ---------------- España y Portugal
+Cochinillo asado|ES|roast|pen||lechal al horno de leña, estilo Segovia|wood-oven suckling pig, Segovia style
+Secreto ibérico a la plancha|ES|sear|pse||secreto a la plancha con sal|griddled secreto with salt
+Presa ibérica a la brasa|ES|grill|ppr||presa entera a la brasa|whole presa over coals
+Pluma ibérica a la parrilla|ES|grill|ppl||pluma a fuego fuerte|pluma over fierce heat
+Carrilladas al vino tinto|ES|braise|pcr||carrilleras estofadas en vino|cheeks braised in red wine
+Jamón ibérico|ES|cure|ppi||pierna curada de cerdo ibérico|cured leg of Ibérico pig
+Lomo embuchado|ES|cure|plo||lomo curado con pimentón|loin cured with paprika
+Torreznos de Soria|ES|crisp|ppn||panceta adobada frita con corteza inflada|cured belly fried until the rind puffs
+Oreja a la plancha|ES|crisp|por||oreja cocida y dorada|boiled ear, seared
+Manitas de cerdo guisadas|ES|braise|ppt||manitas en salsa|trotters in sauce
+Codillo asado|ES|roast|pcd||codillo al horno|roast hock
+Lacón con grelos|ES|braise|pcd|ppa|lacón cocido con grelos|cured shoulder hock boiled with turnip greens
+Solomillo de cerdo al whisky|ES|sear|pso||solomillo con ajo y whisky|tenderloin with garlic and whisky
+Chorizo español|ES|grind|pmo|pbo,ppp|embutido curado con pimentón|paprika-cured sausage
+Lomo en manteca|ES|braise|plo||lomo confitado en manteca|loin confited in lard
+Pinchos morunos|ES|skewer|ppi|pbo,plo|pinchos adobados con especias|spice-marinated skewers
+Fabada asturiana|ES|braise|ppn|pcd,ppa|fabes con tocino, lacón y embutidos|white beans with belly, hock and sausages
+Careta a la plancha|ES|crisp|pca|por|careta cocida y dorada|boiled pig’s face, seared
+Zorza|ES|stirfry|pbo|plo|picadillo adobado con pimentón|paprika-marinated chopped pork
+Flamenquín|ES|roll|plo|ppi|lomo enrollado con jamón, apanado y frito|loin rolled with ham, breaded and fried
+Leitão da Bairrada|PT|roast|pen||lechón asado con pasta de ajo y pimienta|suckling pig with garlic-pepper paste
+Carne de porco à alentejana|PT|braise|ppi|plo,pbo|cerdo con almejas|pork with clams
+Bifanas|PT|braise|plo|ppi|filetes finos en vino y ajo, en pan|thin slices in wine and garlic, in a roll
+Rojões à moda do Minho|PT|crisp|ppi|pbo|cubos marinados y fritos en manteca|marinated cubes fried in lard
+Chouriço|PT|grind|pmo||embutido ahumado con pimentón|smoked paprika sausage
+# ---------------- Europa central y del este
+Schweinshaxe|DE|roast|pcd||codillo asado con piel crocante|roast hock with crackling
+Eisbein|DE|braise|pcd||codillo curado y hervido|cured, boiled hock
+Schnitzel Wiener Art|DE|fry|ppi|plo|escalope de cerdo apanado|breaded pork escalope
+Schweinebraten|DE|roast|pbo|ppa|asado de aguja con salsa de cerveza|collar roast with beer gravy
+Kassler|DE|cure|pch|pbo|chuleta curada y ahumada|cured, smoked chop
+Bratwurst|DE|grind|pmo|ppa|salchicha fresca para la parrilla|fresh grilling sausage
+Leberwurst|DE|grind|phi|ppp|embutido de hígado para untar|spreadable liver sausage
+Krustenbraten|DE|roast|ppa|ppn|paleta asada con costra de piel|shoulder roast with crackling
+Spanferkel|DE|roast|pen||lechón al asador|spit-roast suckling pig
+Sülze|DE|braise|pca|ppt|carne de cabeza en gelatina ácida|head meat in sharp aspic
+Stelze|AT|roast|pcd||codillo asado austríaco|Austrian roast hock
+Schweinsbraten mit Kruste|AT|roast|ppn|pbo|panceta asada con comino|belly roast with caraway
+Vepřo knedlo zelo|CZ|roast|pbo|ppa|cerdo asado con knedlíky y repollo|roast pork with dumplings and cabbage
+Pečené koleno|CZ|roast|pcd||codillo asado en cerveza|hock roasted in beer
+Kotlet schabowy|PL|fry|plo|pch|chuleta aplanada y apanada|pounded, breaded chop
+Golonka|PL|braise|pcd||codillo cocido en cerveza|hock simmered in beer
+Bigos|PL|braise|ppa|pco,ppn|guiso de repollo con cerdo y embutidos|cabbage stew with pork and sausage
+Kiełbasa|PL|grind|pmo|ppa|salchicha ahumada con ajo|smoked garlic sausage
+Sertéspörkölt|HU|braise|ppa|pbo|guiso de cerdo con paprika|pork paprika stew
+Töltött káposzta|HU|grind|pmo||repollo relleno de cerdo|pork-stuffed cabbage
+Salo|UA|cure|ppn|ppp|tocino curado en sal|salt-cured fat
+Kholodets (svinina)|RU|soup|ppt|pcd,pca|gelatina de carne fría|cold meat aspic
+Shashlik iz svininy|RU|skewer|pbo||pinchos de cerdo marinados|marinated pork skewers
+Khorovats|AM|skewer|pbo|pch,pco|cerdo a la brasa en espada|pork grilled on swords
+Mtsvadi|GE|skewer|pbo|plo|pinchos sobre sarmientos|skewers over vine cuttings
+Pečeno prase|RS|roast|pen||cerdo entero al asador|whole pig on the spit
+Kavarma|BG|braise|ppa|pbo|guiso de cerdo en cazuela de barro|pork stew in a clay pot
+Flæskesteg|DK|roast|plo|pbo,ppn|asado con piel crocante|roast with crackling
+Stegt flæsk|DK|crisp|ppn||lonjas de panceta fritas con salsa de perejil|fried belly slices with parsley sauce
+Julskinka|SE|roast|ppi||jamón navideño con mostaza|Christmas ham with mustard crust
+Ribbe|NO|roast|ppn|pco|costillar de panceta navideño|Christmas belly ribs
+Joulukinkku|FI|roast|ppi||jamón navideño al horno|Christmas baked ham
+Souvlaki hirinó|GR|skewer|pbo|plo,ppi|pinchos con limón y orégano|skewers with lemon and oregano
+Gyros hirinó|GR|skewer|pbo|ppn|láminas apiladas asadas en vertical|stacked slices on a vertical spit
+Kontosouvli|GR|skewer|pbo||trozos grandes al asador|large chunks on the spit
+# ---------------- Asia oriental
+Char siu|CN|roast|pbo|ppn,plo|cerdo laqueado asado|lacquered roast pork
+Dongpo rou|CN|braise|ppn||panceta en cubos estofada en vino de arroz|belly cubes braised in rice wine
+Hong shao rou|CN|braise|ppn||panceta estofada roja|red-braised belly
+Gu lao rou|CN|fry|plo|pbo|cerdo agridulce rebozado|sweet and sour pork
+Hui guo rou|CN|stirfry|ppn|pbo|panceta dos veces cocida|twice-cooked pork
+Yu xiang rou si|CN|stirfry|plo|pso|tiras salteadas en salsa "aroma de pescado"|shredded pork in fish-fragrant sauce
+Siu yuk|HK|crisp|ppn||panceta asada de piel crocante|crisp-skinned roast belly
+Xiaolongbao|CN|grind|pmo|ppn,pcu|empanadillas con caldo dentro|soup dumplings
+Jiaozi de cerdo y col|CN|grind|pmo||empanadillas hervidas|boiled dumplings
+Shizi tou|CN|grind|pmo|ppn|albóndigas "cabeza de león"|lion’s head meatballs
+Mu shu rou|CN|stirfry|plo|pso|cerdo salteado con huevo y hongos|pork stir-fried with egg and wood ear
+Tang cu pai gu|CN|braise|pco||costillitas agridulces|sweet and sour ribs
+Zhu jiao jiang|HK|braise|ppt|pcd|patas en vinagre negro y jengibre|trotters in black vinegar and ginger
+Lu rou fan|TW|braise|ppn|pmo|panceta picada estofada sobre arroz|braised minced belly over rice
+Gua bao|TW|braise|ppn||pan al vapor con panceta estofada|steamed bun with braised belly
+Tonkatsu|JP|fry|plo|pso|chuleta apanada en panko|panko-breaded cutlet
+Katsudon|JP|fry|plo||tonkatsu con huevo sobre arroz|cutlet and egg over rice
+Chashu|JP|roll|ppn|pbo|panceta enrollada y estofada para ramen|rolled, braised belly for ramen
+Tonkotsu ramen|JP|soup|ppt|pcd,pca|caldo lechoso de huesos de cerdo|milky pork-bone broth
+Buta no kakuni|JP|braise|ppn||cubos de panceta estofados|braised belly cubes
+Shogayaki|JP|stirfry|plo|pbo|láminas salteadas con jengibre|ginger pork slices
+Gyoza|JP|grind|pmo||empanadillas a la plancha|pan-fried dumplings
+Tonjiru|JP|soup|ppn||sopa de miso con cerdo|miso soup with pork
+Samgyeopsal|KR|grill|ppn||lonjas de panceta a la plancha en la mesa|belly slices grilled at the table
+Bossam|KR|braise|ppn|pbo|panceta hervida envuelta en col|boiled belly wrapped in cabbage
+Jokbal|KR|braise|ppt|pcd|patas estofadas en soya|trotters braised in soy
+Dwaeji bulgogi|KR|grill|pbo|ppi|cerdo picante marinado|spicy marinated pork
+Dwaeji galbi|KR|grill|pco|pbb|costillas marinadas a la parrilla|marinated grilled ribs
+Gamjatang|KR|soup|pco||sopa picante de espinazo con papa|spicy pork-bone and potato soup
+Jeyuk bokkeum|KR|stirfry|pbo|ppn|cerdo salteado con gochujang|pork stir-fried with gochujang
+# ---------------- Sudeste asiático y sur de Asia
+Thịt kho|VN|braise|ppn|pbo|panceta caramelizada con huevo|caramelised belly with eggs
+Bún chả|VN|grill|pmo|ppn|albóndigas y panceta a la brasa con fideos|grilled patties and belly with noodles
+Bún thịt nướng|VN|grill|pbo||cerdo a la brasa sobre fideos|grilled pork over noodles
+Bánh mì heo quay|VN|crisp|ppn||baguette con panceta crocante|baguette with crisp belly
+Cơm tấm sườn nướng|VN|grill|pch|pco|chuleta marinada a la brasa con arroz partido|grilled marinated chop on broken rice
+Moo ping|TH|skewer|pbo||pinchos con leche de coco|coconut-milk skewers
+Khao kha moo|TH|braise|pcd||codillo estofado sobre arroz|braised hock over rice
+Moo krob|TH|crisp|ppn||panceta crocante|crisp belly
+Pad kra pao moo|TH|stirfry|pmo||cerdo molido con albahaca sagrada|ground pork with holy basil
+Larb moo|TH|grind|pmo||ensalada de cerdo picado con lima|minced pork salad with lime
+Nam tok moo|TH|grill|pbo||cerdo a la brasa en ensalada picante|grilled pork in a spicy salad
+Babi guling|ID|roast|pen||lechón balinés al asador|Balinese spit-roast pig
+Babi kecap|ID|braise|ppn||panceta en soya dulce|belly in sweet soy
+Sate babi|ID|skewer|pbo||pinchos con salsa de maní|skewers with peanut sauce
+Bak kut teh|MY|soup|pco||sopa de costilla con hierbas|herbal rib soup
+Lechon cebuano|PH|roast|pen||cerdo entero al asador relleno de hierbas|whole spit-roast pig stuffed with herbs
+Lechon kawali|PH|crisp|ppn||panceta hervida y frita|boiled, deep-fried belly
+Sisig|PH|crisp|pca|por,ppp|cabeza picada a la plancha con calamansí|chopped pig’s head on a sizzling plate
+Crispy pata|PH|crisp|pcd||codillo hervido y frito entero|boiled, deep-fried hock
+Adobong baboy|PH|braise|ppn|pbo|cerdo en vinagre y soya|pork in vinegar and soy
+Sinigang na baboy|PH|soup|pco|ppn|sopa ácida de tamarindo|sour tamarind soup
+Tocino filipino|PH|cure|pbo||cerdo curado dulce|sweet cured pork
+Bicol express|PH|braise|ppn||panceta en leche de coco y chile|belly in coconut milk and chile
+Pork vindaloo|IN|braise|ppa|pbo|cerdo en vinagre y especias, de Goa|Goan pork in vinegar and spice
+Sorpotel|IN|braise|phi|ppa|guiso de hígado y carne en vinagre|liver and pork stew in vinegar
+Naga smoked pork with bamboo shoot|IN|smoke|ppn||cerdo ahumado con brote de bambú|smoked pork with bamboo shoot
+Wet thar hin|MM|braise|ppn|ppa|curry birmano de cerdo|Burmese pork curry
+Sai oua|LA|grind|pmo||salchicha con hierba limón|lemongrass sausage
+Prahok ktis|KH|grind|pmo||cerdo molido con prahok y coco|ground pork with prahok and coconut
+# ---------------- África y Oceanía
+Pork rashers on the braai|ZA|grill|ppn|pch|lonjas de panceta a la brasa|belly rashers over coals
+Hāngi (pork)|NZ|smoke|ppa|pbo|cerdo cocido en horno de tierra|pork cooked in an earth oven
+Lovo (vuaka)|FJ|smoke|ppa|pen|cerdo en horno de tierra fiyiano|pork in a Fijian earth oven
+Umu pua‘a|WS|roast|pen||cerdo entero en horno de piedras|whole pig in a stone oven
+Roast pork belly roll|AU|roast|ppn||panceta asada con piel crocante en pan|roast belly with crackling in a roll
+# ---------------- General
+Costillas BBQ|INT|smoke|pbb|pco|costillas ahumadas con salsa|smoked ribs with sauce
+Chuleta de cerdo a la plancha|INT|sear|pch||chuleta dorada en sartén|pan-seared chop
+Lomo de cerdo al horno|INT|roast|plo||lomo asado entero|whole roast loin
+Albóndigas de cerdo|INT|grind|pmo||albóndigas en salsa|meatballs in sauce
+Brochetas de cerdo|INT|skewer|pso|plo,pbo|pinchos a la parrilla|grilled skewers
+Cerdo salteado con verduras|INT|stirfry|plo|pso|tiras salteadas al wok|strips stir-fried in the wok
+Tocino ahumado casero|INT|smoke|ppn||panceta curada y ahumada en casa|home-cured smoked belly
+Hígado de cerdo encebollado|INT|sear|phi||hígado con cebolla|liver and onions
+Rabo de cerdo guisado|INT|braise|pra||rabo en salsa|stewed pig tails
+Sopa de rabo de cerdo|INT|soup|pra|pcd|sopa con rabo salado|soup with salted pig tail
+Oreja en vinagreta|INT|braise|por||oreja cocida y aliñada|boiled ears in vinaigrette
+Frijoles con cuero|INT|soup|pcu|ppt|frijoles espesados con piel|beans thickened with skin

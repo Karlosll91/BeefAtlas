@@ -82,16 +82,18 @@
   const SYN = { grill: 'asar asado parrilla brasa bbq barbecue carbon grill grilled barbacoa churrasco churrasqueira grelha grelhar brasa', sear: 'plancha sarten sellar bistec steak pan seared sear griddle frigideira chapa bife selar', roast: 'horno hornear roast rosbif asado al horno oven forno assar assado rosbife',
     braise: 'guisar guiso estofar estofado sudar sudado braise stew braised cazuela olla presion pressure cooker slow cooker ensopado ensopar cozido panela pressao guisado', shred: 'desmechar mechada deshebrar deshilachar shred shredded pulled ropa vieja desfiar desfiada', soup: 'sopa caldo sancocho cocido puchero soup broth stock consome sopa caldo cozido',
     smoke: 'ahumar ahumado smoke smoked low and slow fuego lento al palo defumar defumado fogo lento', stirfry: 'saltear salteado wok tiras stir fry strips fajitas saltear salteado tiras', fry: 'apanar apanado empanizar milanesa freir frito breaded fried schnitzel cutlet empanar milanesa fritar frito', raw: 'crudo tartar carpaccio raw tataki cru tartar carpaccio',
-    grind: 'moler molida picada hamburguesa albondigas ground mince burger meatballs moer moida hamburguer almondegas', skewer: 'pinchos chuzos brochetas anticuchos skewer kebab kabob satay espetinho espeto', cure: 'curar secar seca cecina tasajo jerky cure cured dried salar curar secar carne seca charque', roll: 'rellenar relleno enrollar arrollado stuffed rolled roulade rechear recheado enrolado', slice: 'laminas lonchas finas hot pot shabu sukiyaki thin sliced shaved fatias finas fatiar' };
+    grind: 'moler molida picada hamburguesa albondigas ground mince burger meatballs moer moida hamburguer almondegas', skewer: 'pinchos chuzos brochetas anticuchos skewer kebab kabob satay espetinho espeto', cure: 'curar secar seca cecina tasajo jerky cure cured dried salar curar secar carne seca charque', roll: 'rellenar relleno enrollar arrollado stuffed rolled roulade rechear recheado enrolado', crisp: 'chicharron chicharrones crocante crujiente freir frito fritura torrezno cuerito crackling cracklings crispy deep fry torresmo pururuca', slice: 'laminas lonchas finas hot pot shabu sukiyaki thin sliced shaved fatias finas fatiar' };
 
   // ------------------------------------------------------------ state
-  const st = { lang: 'es', country: 'co', tab: 0, view: 'shop', sel: 'sb', explode: 0, budget: 0, answer: null, dishQ: '', dishC: '', dishM: '', trFrom: 'us', voice: false, cutMethod: null, shown: 40 };
+  const st = { lang: 'es', country: 'co', sp: 'beef', last: {}, tab: 0, view: 'shop', sel: 'sb', explode: 0, budget: 0, answer: null, dishQ: '', dishC: '', dishM: '', trFrom: 'us', voice: false, cutMethod: null, shown: 40 };
   const ls = { get(k) { try { return localStorage.getItem('atlas-' + k); } catch (e) { return null; } }, set(k, v) { try { localStorage.setItem('atlas-' + k, v); } catch (e) { } } };
   if (STR[ls.get('lang')]) st.lang = ls.get('lang');
   else if (/^pt/i.test(navigator.language || '')) st.lang = 'pt';
   else if (!/^es/i.test(navigator.language || 'es')) st.lang = 'en';
   if (COUNTRIES.some((c) => c.id === ls.get('country'))) st.country = ls.get('country');
   if (st.country === st.trFrom) st.trFrom = 'co';
+  if (SPECIES[ls.get('sp')]) st.sp = ls.get('sp');
+  const cutsNow = () => CUTS.filter((c) => c.sp === st.sp);
   const L = () => STR[st.lang];
   const LI = { es: 0, en: 1, pt: 2 };
   const tx = (p) => !p ? '' : Array.isArray(p) ? (p[LI[st.lang]] || p[0] || '') : (p[st.lang] || p.es || '');
@@ -158,7 +160,7 @@
   function rankMethod(m, budget) {
     const slow = /braise|shred|soup|smoke/.test(m), fast = /grill|sear|stirfry|raw|skewer|slice|roast/.test(m);
     const fit = (c) => m === 'grind' ? c.f * 0.9 + c.v * 0.5 : slow ? c.c * 1.0 + c.f * 0.45 + c.v * 0.2 : fast ? c.t * 1.0 + c.f * 0.4 + c.v * 0.3 : c.t * 0.6 + (6 - c.f) * 0.7;
-    let list = CUTS.filter((c) => c.m[m] >= 2).map((c) => ({ c, s: c.m[m] * 10 + (c.why && c.why[m] ? 3 : 0) + fit(c) + (budget === 1 ? (5 - c.price) * 2.5 : budget === 2 ? c.price * 2.5 : 0) }));
+    let list = cutsNow().filter((c) => c.m[m] >= 2).map((c) => ({ c, s: c.m[m] * 10 + (c.why && c.why[m] ? 3 : 0) + fit(c) + (budget === 1 ? (5 - c.price) * 2.5 : budget === 2 ? c.price * 2.5 : 0) }));
     if (budget === 1) list = list.filter((x) => x.c.price <= 2); if (budget === 2) list = list.filter((x) => x.c.price >= 3);
     return list.sort((a, b) => b.s - a.s || a.c.n - b.c.n).slice(0, 6).map((x) => x.c);
   }
@@ -171,7 +173,7 @@
     const a = st.answer, scn = tools.scene();
     const recs = scn ? scn.recs : a && a.cuts ? a.cuts : [];
     shop.setSelection(scn ? scn.sel : st.sel); shop.setRecs(recs); shop.setBlockCut(st.sel);
-    shop.setDoneness(scn && scn.done != null ? scn.done : null);
+    shop.setDoneness(scn && scn.done != null ? scn.done : null, st.sp);
     if (!!st.grain !== !!shop.state.grain) shop.setGrain(st.grain);
     if (scn) shop.setChalk(scn.chalk[0], scn.chalk[1]);
     else if (a && a.cuts && a.cuts.length) shop.setChalk(a.title || L().example, [cname(BY[a.cuts[0]])].concat(a.cuts.slice(1, 3).map((id, i) => (i ? '' : L().alsoWork.toLowerCase() + ': ') + lower(cname(BY[id])))).slice(0, 3));
@@ -216,6 +218,7 @@
   function selectCut(id, opts) {
     opts = opts || {};
     if (!BY[id]) return;
+    setSpecies(BY[id].sp, true);
     st.sel = id; st.cutMethod = null;
     if (!opts.keepAnswer && st.answer && st.answer.cuts && !st.answer.cuts.includes(id)) st.answer = Object.assign({}, st.answer, { cuts: [] });
     if (opts.tab !== false) setTab(1);
@@ -226,6 +229,7 @@
   }
   function showDish(d, opts) {
     const cuts = [d.b].concat(d.a);
+    setSpecies(BY[d.b].sp, true);
     st.answer = { type: 'dish', d, cuts, title: d.n.replace(/\s*\(.*?\)\s*/g, ' ').trim(), example: opts && opts.example };
     st.sel = d.b; st.cutMethod = d.m;
     setTab(0); renderButcher();
@@ -240,6 +244,25 @@
     setTab(0); renderButcher(); setView('cow'); if (shop) shop.talk(2200);
     sync3D(); renderCut();
   }
+  // ---- species: the shop sells one animal at a time; the other one's models load when first asked for
+  const packs = {};
+  function ensurePack(sp) {
+    if (!shop || shop.has(sp) || packs[sp]) return;
+    toast(L().loading);
+    packs[sp] = fetchPack(SPECIES[sp].file).then((buf) => { shop.addSpecies(sp, MeshLib.parsePack(buf)); shop.setTags((c) => cname(c)); sync3D(); renderCut(); })
+      .catch((err) => { console.error(err); packs[sp] = null; toast(L().loadFail); });
+  }
+  function exampleOf(sp) { const d = DISHES.find((x) => x.n === SPECIES[sp].dish); return { type: 'dish', d, cuts: [d.b].concat(d.a), title: d.n, example: true }; }
+  function setSpecies(sp, quiet) {
+    if (!SPECIES[sp] || sp === st.sp) return;
+    st.last[st.sp] = st.sel; st.sp = sp; ls.set('sp', sp);
+    st.cmp = null; st.quiz = null; st.dishCut = null; st.dishC = ''; st.calc.m = null; st.calc.lvl = null; st.shopM = null;
+    if (shop) { shop.setSpecies(sp); ensurePack(sp); }
+    if (quiet) { if (st.answer && st.answer.cuts && st.answer.cuts.some((id) => BY[id].sp !== sp)) { st.answer = exampleOf(sp); renderButcher(); } renderStatic(); return; }
+    st.answer = exampleOf(sp); st.sel = st.last[sp] || st.answer.d.b; st.cutMethod = null;
+    if (st.tab === 4 && st.tool === 'quiz') st.tool = null;
+    renderAll();
+  }
   function go(e) {
     if (!e) return;
     $('#q').value = ''; hideSug();
@@ -252,7 +275,7 @@
   // ---- free-form questions answered by Claude (when the page is allowed to)
   let sample = null, tts = null, ctl = null;
   function catalog() {
-    return CUTS.map((c) => `${c.id}: ${cname(c)} (US: ${c.names.us[0]}) | tender ${c.t}/5 fat ${c.f}/5 collagen ${c.c}/5 price ${c.price}/4 | best: ${Object.keys(c.m).filter((m) => c.m[m] === 3).join(', ')}`).join('\n');
+    return cutsNow().map((c) => `${c.id}: ${cname(c)} (US: ${c.names.us[0]}) | tender ${c.t}/5 fat ${c.f}/5 collagen ${c.c}/5 price ${c.price}/4 | best: ${Object.keys(c.m).filter((m) => c.m[m] === 3).join(', ')}`).join('\n');
   }
   async function askClaude(q) {
     const S = L();
@@ -261,8 +284,8 @@
     if (!sample) { st.answer = { type: 'none', q, near: search(q.split(' ')[0], 5) }; renderButcher(); return; }
     if (ctl) ctl.abort(); ctl = new AbortController();
     const rules = `You are Don Rafa, a master butcher behind the counter of a neighbourhood shop. The customer shops in ${tx(ctry(st.country))}. Answer in ${({ es: 'Spanish', en: 'English', pt: 'Brazilian Portuguese' })[st.lang]}, warmly and concretely, in at most 110 words, plain text, no markdown, no lists.\n` +
-      `Recommend only beef cuts from this catalogue, and call them by the name given here (the name used where the customer shops). Explain WHY the cut suits the preparation using its tenderness, fat, collagen and grain, and give one practical tip (thickness, doneness temperature in °C, or how to ask for it).\n` +
-      `If the question is not about beef, cooking or buying meat, say briefly that you only know about beef.\n` +
+      `Recommend only ${st.sp} cuts from this catalogue, and call them by the name given here (the name used where the customer shops). Explain WHY the cut suits the preparation using its tenderness, fat, collagen and grain, and give one practical tip (thickness, doneness temperature in °C, or how to ask for it).\n` +
+      `If the question is not about meat, cooking or buying meat, say briefly that you only know about meat.\n` +
       `Your reply MUST start with one line exactly like "CUTS: id1,id2" listing 1 to 3 catalogue ids, best first (or "CUTS:" alone if none apply). Then a blank line, then the answer.\n\nCATALOGUE (id: name | properties | best methods)\n${catalog()}`;
     try {
       if (shop) shop.talk(6000);
@@ -381,7 +404,7 @@
     box.innerHTML = `<div class="card">
       <div><div class="meta">${String(cut.n).padStart(2, '0')} · ${esc(tx(ZONES[cut.zone]))} · ${esc(tx(PRICE[cut.price]))}</div>
         <h2 lang="${me.lang}">${esc(cname(cut))}</h2>${calt(cut) ? `<div class="also" lang="${me.lang}">${esc(S.aka)}: ${esc(calt(cut))}</div>` : ''}</div>
-      <div class="row"><button class="btn ghost" data-view="block">${esc(S.seeCase)}</button><button class="btn ghost" data-view="cow">${esc(S.views.cow)}</button><button class="btn ghost" data-view="case">${esc(S.views.case)}</button></div>
+      <div class="row"><button class="btn ghost" data-view="block">${esc(S.seeCase)}</button><button class="btn ghost" data-view="cow">${esc(tx(SPECIES[st.sp].animal))}</button><button class="btn ghost" data-view="case">${esc(S.views.case)}</button></div>
       ${tools.cutActions(cut)}
       <p>${esc(tx(cut.d))}</p>
       ${internal ? `<p class="note">${esc(S.internal)}</p>` : ''}
@@ -400,12 +423,12 @@
 
   function filteredDishes() {
     const q = norm(st.dishQ);
-    return DISHES.filter((d) => (!st.dishC || d.cc === st.dishC) && (!st.dishM || d.m === st.dishM) && (!st.dishCut || d.b === st.dishCut || d.a.includes(st.dishCut)) && (!q || d.k.includes(q) || norm(cname(BY[d.b])).includes(q)));
+    return DISHES.filter((d) => BY[d.b].sp === st.sp && (!st.dishC || d.cc === st.dishC) && (!st.dishM || d.m === st.dishM) && (!st.dishCut || d.b === st.dishCut || d.a.includes(st.dishCut)) && (!q || d.k.includes(q) || norm(cname(BY[d.b])).includes(q)));
   }
   function renderDishes(keepFocus) {
     const S = L(), box = $('#dishsec');
     const list = filteredDishes();
-    const codes = [...new Set(DISHES.map((d) => d.cc))].sort((a, b) => cuisineName(a).localeCompare(cuisineName(b)));
+    const codes = [...new Set(DISHES.filter((d) => BY[d.b].sp === st.sp).map((d) => d.cc))].sort((a, b) => cuisineName(a).localeCompare(cuisineName(b)));
     if (!keepFocus) {
       box.innerHTML = `<div class="filters"><input id="dq" type="search" placeholder="${esc(S.search)}" value="${esc(st.dishQ)}" autocomplete="off">
         <select id="dc" aria-label="${esc(S.anyCuisine)}"><option value="">${esc(S.anyCuisine)}</option>${codes.map((c) => `<option value="${c}"${c === st.dishC ? ' selected' : ''}>${esc(cuisineName(c))}</option>`).join('')}</select>
@@ -423,7 +446,7 @@
     box.innerHTML = `<p class="note">${esc(S.trHelp)}</p>
       <div class="filters"><label class="field"><span>${esc(S.from)}</span><select id="trA">${opt(A)}</select></label><label class="field"><span>${esc(S.to)}</span><select id="trB">${opt(B)}</select></label></div>
       <div class="tscroll"><table><thead><tr><th>#</th><th>${esc(tx(ctry(A)))}</th><th>${esc(tx(ctry(B)))}</th></tr></thead><tbody>
-      ${CUTS.map((c) => `<tr data-cut="${c.id}"><td class="num">${String(c.n).padStart(2, '0')}</td><td lang="${ctry(A).lang}"><b>${esc(c.names[A][0])}</b>${c.names[A][1] ? `<small>${esc(c.names[A][1])}</small>` : ''}</td><td lang="${ctry(B).lang}"><b>${esc(c.names[B][0])}</b>${c.names[B][1] ? `<small>${esc(c.names[B][1])}</small>` : ''}</td></tr>`).join('')}
+      ${cutsNow().map((c) => `<tr data-cut="${c.id}"><td class="num">${String(c.n).padStart(2, '0')}</td><td lang="${ctry(A).lang}"><b>${esc(c.names[A][0])}</b>${c.names[A][1] ? `<small>${esc(c.names[A][1])}</small>` : ''}</td><td lang="${ctry(B).lang}"><b>${esc(c.names[B][0])}</b>${c.names[B][1] ? `<small>${esc(c.names[B][1])}</small>` : ''}</td></tr>`).join('')}
       </tbody></table></div>
       <div class="foot"><p>${esc(S.approx)}</p><p>${esc(S.sources)}: <a href="https://www.fsis.usda.gov/sites/default/files/media_file/documents/chile-list-of-accepted-cuts.pdf" target="_blank" rel="noopener">USDA FSIS</a>, <a href="https://www.usa-beef.org/wp-content/uploads/2020/07/1063.GU%C3%8DA_beef-cuts_espa%C3%B1ol_09oct13.pdf" target="_blank" rel="noopener">USMEF</a>, <a href="https://www.beefresearch.org/resources/product-quality/fact-sheets/ranking-of-beef-muscles-for-tenderness" target="_blank" rel="noopener">Beef Research</a>, <a href="https://www.contextoganadero.com/blog/como-pides-tu-corte-de-carne-nombres-segun-la-ciudad-y-el-pais" target="_blank" rel="noopener">CONtexto Ganadero</a>, <a href="https://www.sirhuila.gov.co/media/ZbRepository/ZbFiles/2025/8/8cfd49b2019e4778b5cf3a5a81204933.pdf" target="_blank" rel="noopener">SIPSA</a>, <a href="https://cbs.izt.uam.mx/nacameh/volumenes/v8n1/Nacameh_v8n1_001_Montero_etal.pdf" target="_blank" rel="noopener">Nacameh</a>, <a href="https://www.mexconnect.com/?p=1093" target="_blank" rel="noopener">MexConnect</a>, <a href="https://www.directoalpaladar.com/cultura-gastronomica/cortes-carne-argentinos-utilizados-asados-como-se-llaman-espana" target="_blank" rel="noopener">Directo al Paladar</a>.</p></div>`;
   }
@@ -435,19 +458,20 @@
     $('#countryBtn').innerHTML = `<span class="code">${me.id.toUpperCase()}</span>${esc(tx(me).split(' · ')[0])}`;
     $('#langBtn').textContent = st.lang.toUpperCase(); $('#langBtn').setAttribute('aria-label', S.language + ': ' + LANGS[st.lang]);
     document.querySelectorAll('#tabs button').forEach((b, i) => { b.textContent = S.tabs[i]; });
-    document.querySelectorAll('#views button').forEach((b) => { b.textContent = S.views[b.dataset.v]; });
+    document.querySelectorAll('#views button').forEach((b) => { b.textContent = b.dataset.v === 'cow' ? tx(SPECIES[st.sp].animal) : S.views[b.dataset.v]; });
+    $('#species').innerHTML = Object.keys(SPECIES).map((k) => `<button data-sp="${k}" aria-pressed="${k === st.sp}">${esc(tx(SPECIES[k].n))}</button>`).join('');
     $('#cowtools span').textContent = S.explode; $('#hint').textContent = S.hint;
-    $('#askLabel').textContent = S.askLabel; $('#q').placeholder = S.askPh; $('#go').textContent = S.askBtn;
+    $('#askLabel').textContent = S.askLabel; $('#q').placeholder = st.sp === 'pork' ? 'lechona, carnitas, pulled pork, tonkatsu…' : S.askPh; $('#go').textContent = S.askBtn;
     $('#orMethod').textContent = S.orMethod; $('#exLabel').textContent = S.examples;
-    $('#methods').innerHTML = Object.keys(METHODS).map((m) => `<button class="chip" data-method="${m}">${esc(tx(METHODS[m].n))}</button>`).join('');
-    const ex = st.country === 'co' ? ['Posta negra cartagenera', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Milanesa'] : ['Ropa vieja', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Sancocho de costilla'];
+    $('#methods').innerHTML = Object.keys(METHODS).filter((m) => cutsNow().some((c) => c.m[m] >= 2)).map((m) => `<button class="chip" data-method="${m}">${esc(tx(METHODS[m].n))}</button>`).join('');
+    const ex = st.sp === 'pork' ? ['Lechona tolimense', 'Carolina pulled pork', 'Cochinita pibil', 'Tonkatsu', 'Porchetta', 'Chicharrón colombiano'] : st.country === 'co' ? ['Posta negra cartagenera', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Milanesa'] : ['Ropa vieja', 'Texas smoked brisket', 'Bœuf bourguignon', 'Picanha na brasa', 'Bulgogi (불고기)', 'Sancocho de costilla'];
     $('#examples').innerHTML = ex.map((n) => { const d = DISHES.find((x) => x.n === n); return d ? `<button class="chip" data-dish="${d.i}">${esc(n.replace(/\s*\(.*\)/, ''))}</button>` : ''; }).join('');
     $('#settings h3').textContent = S.settings; $('#setLangL').textContent = S.language; $('#setWhereL').textContent = S.where; $('#setVoiceL').textContent = S.voice;
     $('#setLang').innerHTML = Object.keys(LANGS).map((l) => `<button data-lang="${l}" aria-pressed="${st.lang === l}">${LANGS[l]}</button>`).join('');
     $('#setCountry').innerHTML = COUNTRIES.map((c) => `<option value="${c.id}"${c.id === st.country ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
     $('#setVoice').innerHTML = `<button data-voice="1" aria-pressed="${st.voice}">${esc(S.on)}</button><button data-voice="0" aria-pressed="${!st.voice}">${esc(S.off)}</button>`;
     $('#voiceField').hidden = !tts;
-    $('#loading h2').textContent = 'Atlas de la Res'; $('#loadmsg').textContent = S.loading;
+    $('#loading h2').textContent = 'Korte'; $('#loadmsg').textContent = S.loading;
   }
   function renderAll() {
     buildIndex(); renderStatic(); renderButcher(); renderCut();
@@ -485,6 +509,7 @@
       if (!b) return;
       const d = b.dataset;
       if (tools.click(b, d)) return;
+      if (d.sp) return setSpecies(d.sp);
       if (d.s != null) return go(sug[+d.s]);
       if (d.near != null) return go(st.answer.near[+d.near]);
       if (d.dish != null) return showDish(DISHES[+d.dish]);
@@ -550,7 +575,7 @@
     if (dish) p.set('d', slug(dish.n)); else p.set('c', st.sel);
     p.set('p', st.country); p.set('l', st.lang);
     let base = ''; try { base = location.href.split('#')[0]; } catch (e) { }
-    const url = base + '#' + p.toString(), title = 'Atlas de la Res · ' + (dish ? dish.n : cname(BY[st.sel]));
+    const url = base + '#' + p.toString(), title = 'Korte · ' + (dish ? dish.n : cname(BY[st.sel]));
     if (navigator.share) navigator.share({ title, url }).catch(() => { }); else copy(url, tools.t('linkCopied'));
   }
   function applyHash(first) {
@@ -568,7 +593,7 @@
     };
   }
   function refresh() { const y = $('#pbody').scrollTop; renderButcher(); renderCut(); if (st.tab === 2) renderDishes(true); if (st.tab === 4) tools.render(); $('#pbody').scrollTop = y; }
-  const tools = AtlasTools({ $, esc, norm, st, ls, tx, BY, DISHES, cname, calt, ctry, lower, cuisineName, L, whyOf, dishesOf, dishRow, selectCut, setView, setTab, setCountry, sync3D, say, canSay, toast, copy, share, refresh, shop: () => shop });
+  const tools = AtlasTools({ cuts: cutsNow, $, esc, norm, st, ls, tx, BY, DISHES, cname, calt, ctry, lower, cuisineName, L, whyOf, dishesOf, dishRow, selectCut, setView, setTab, setCountry, sync3D, say, canSay, toast, copy, share, refresh, shop: () => shop });
 
   // ------------------------------------------------------------ boot
   function start(saved) {
@@ -576,8 +601,7 @@
     if (STR[saved.lang]) st.lang = saved.lang; if (saved.country) st.country = saved.country;
     const linked = applyHash(true);
     wire(); buildIndex(); renderStatic();
-    const d0 = DISHES.find((d) => d.n === 'Ropa vieja');
-    st.answer = { type: 'dish', d: d0, cuts: [d0.b].concat(d0.a), title: d0.n, example: true }; st.sel = d0.b; st.cutMethod = d0.m;
+    st.answer = exampleOf(st.sp); st.sel = st.answer.d.b; st.cutMethod = st.answer.d.m;
     setTab(saved.tab || 0); renderButcher(); renderCut();
     if (linked) linked();
     window.addEventListener('hashchange', () => { const f = applyHash(false); if (f) f(); });
@@ -600,24 +624,28 @@
     else if (r === 3) { const v = (T[a[n - 3]] << 10) | (T[a[n - 2]] << 4) | (T[a[n - 1]] >> 2); out[o++] = (v >> 8) & 255; out[o++] = v & 255; }
     return out.buffer;
   }
-  function load3D() {
-    const bar = $('#loading .bar b'), fail = () => { $('#loadmsg').textContent = L().loadFail; $('#loading .bar').hidden = true; setTimeout(() => $('#loading').classList.add('done'), 2600); };
-    if (!window.THREE) return fail();
-    fetch('meshes.txt').then(async (r) => {
+  function fetchPack(file, onProgress) {
+    return fetch(file).then(async (r) => {
       if (!r.ok) throw new Error('http ' + r.status);
       const total = (r.headers.get('content-encoding') ? 0 : +r.headers.get('content-length')) || 6500000;
       if (!r.body || !r.body.getReader) return b64(new Uint8Array(await r.arrayBuffer()));
       const rd = r.body.getReader(); const chunks = []; let n = 0;
-      for (;;) { const { done, value } = await rd.read(); if (done) break; chunks.push(value); n += value.length; bar.style.width = Math.min(96, 4 + 92 * n / total) + '%'; }
+      for (;;) { const { done, value } = await rd.read(); if (done) break; chunks.push(value); n += value.length; if (onProgress) onProgress(n / total); }
       const out = new Uint8Array(n); let o = 0; for (const c of chunks) { out.set(c, o); o += c.length; }
       return b64(out);
-    }).then((buf) => {
+    });
+  }
+  function load3D() {
+    const bar = $('#loading .bar b'), fail = () => { $('#loadmsg').textContent = L().loadFail; $('#loading .bar').hidden = true; setTimeout(() => $('#loading').classList.add('done'), 2600); };
+    if (!window.THREE) return fail();
+    fetchPack('meshes.txt', (k) => { bar.style.width = Math.min(96, 4 + 92 * k) + '%'; }).then((buf) => {
       const pack = MeshLib.parsePack(buf);
       const wide = () => window.matchMedia('(min-width: 881px)').matches;
       shop = Shop.create($('#gl'), pack, { cuts: CUTS, panelWidth: () => wide() ? $('#panel').offsetWidth + 14 : 0, onFrame: drawTags });
       shop.onPick = (h) => { if (tools.pickCow(h)) return; if (!h || !h.cut) return; if (h.where === 'case') selectCut(h.cut, { view: 'block', keepAnswer: true }); else if (h.where === 'block') setTab(1); else selectCut(h.cut, { keepAnswer: true }); };
       shop.onHover = (h, e) => { const el = $('#hover'), scn = tools.scene(); if (!h || !h.cut || (scn && scn.quiet)) { el.hidden = true; return; } const r = $('#stage').getBoundingClientRect(); el.hidden = false; el.textContent = cname(BY[h.cut]); el.style.left = (e.clientX - r.left) + 'px'; el.style.top = (e.clientY - r.top) + 'px'; };
       shop.setTags((c) => cname(c));
+      if (st.sp !== 'beef') { shop.setSpecies(st.sp); ensurePack(st.sp); }
       setView(st.view); sync3D();
       const done = () => { $('#loading').classList.add('done'); shop.setPose('wave', 2200); shop.dirty(); };
       (document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve()).then(() => { shop.setTags((c) => cname(c)); sync3D(); setTimeout(done, 350); });

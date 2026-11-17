@@ -88,11 +88,12 @@ SEEDS = {
 IDS = list(SEEDS)
 
 
-def seed_dist(X, Y):
+def seed_dist(X, Y, seeds=None):
     """(n_ids, ...) biased distances to each seed set."""
+    seeds = SEEDS if seeds is None else seeds
     out = []
-    for k in IDS:
-        s = SEEDS[k]
+    for k in seeds:
+        s = seeds[k]
         d = None
         for a, b in s['segs']:
             dd = seg2(X, Y, a, b)
@@ -101,10 +102,13 @@ def seed_dist(X, Y):
     return np.stack(out, 0)
 
 
-def preview(path='out/cow_side.png', h=0.012):
+def preview(path='out/cow_side.png', h=0.012, spec=None):
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt
+    body, BBOX, SEEDS = (spec.body, spec.BBOX, spec.SEEDS) if spec else (globals()['body'], globals()['BBOX'], globals()['SEEDS'])
+    IDS = list(SEEDS)
+    seed_dist = lambda X, Y: globals()['seed_dist'](X, Y, SEEDS)
     xs, ys, zs = grid_points(*BBOX, h)
     vol = eval_grid(body, xs, ys, zs)
     side = vol.min(axis=2)       # x,y
@@ -122,7 +126,7 @@ def preview(path='out/cow_side.png', h=0.012):
         a, b = SEEDS[k]['segs'][0]
         ax[0].text((a[0] + b[0]) / 2, (a[1] + b[1]) / 2 + 0.02, k, fontsize=13, weight='bold')
     ax[0].set_aspect('equal'); ax[0].grid(True, alpha=0.4)
-    ax[0].set_xticks(np.arange(-1.5, 1.4, 0.1)); ax[0].set_yticks(np.arange(0, 1.8, 0.1))
+    ax[0].set_xticks(np.arange(-1.6, 1.4, 0.1)); ax[0].set_yticks(np.arange(0, 1.8, 0.1))
     ax[0].tick_params(labelsize=7)
     ax[1].contourf(xs, zs, top.T, levels=[-10, 0], colors=['#d9d2c5'])
     ax[1].contour(xs, zs, top.T, levels=[0], colors='k', linewidths=1.5)
@@ -214,10 +218,27 @@ def hide_color(P):
     return np.clip(col, 0, 1).astype(F)
 
 
+def rim(Vc):
+    """Thickness of the fat cover seen on the cut faces."""
+    r = 0.007 + 0.013 * fbm(Vc, 6.0, 2, 9) + 0.010 * sstep(1.15, 1.4, Vc[:, 1]) + 0.012 * sstep(0.85, 0.65, Vc[:, 1]) * sstep(-0.75, -0.4, Vc[:, 0]) * sstep(0.7, 0.4, Vc[:, 0])
+    r = r * sstep(0.30, 0.55, Vc[:, 1])
+    return np.where(Vc[:, 0] < -0.98, r * 0.3, r)
+
+
+SIDED = ('mf', 'pf', 'mh', 'ph')
+PREFIX = 'cow.'
+
+
 # ---------------------------------------------------------------- piece builder
-def build_pieces(pack, h=0.016, gap=0.006, log=print):
+def build_pieces(pack, h=0.016, gap=0.006, log=print, spec=None):
+    """Split an animal into pieces. spec: a module shaped like this one (body, BBOX, SEEDS, INTERNAL, bones, hide_color, rim, SIDED, PREFIX); default is the cow."""
     import time
     t0 = time.time()
+    G_ = globals()
+    A = lambda k: getattr(spec, k) if spec is not None else G_[k]
+    body, BBOX, SEEDS, INTERNAL, bones, hide_color, rim, SIDED, PREFIX = (A(k) for k in ('body', 'BBOX', 'SEEDS', 'INTERNAL', 'bones', 'hide_color', 'rim', 'SIDED', 'PREFIX'))
+    IDS = list(SEEDS)
+    seed_dist = lambda X, Y: G_['seed_dist'](X, Y, SEEDS)
     xs, ys, zs = grid_points(*BBOX, h)
     lo = np.array([xs[0], ys[0], zs[0]], F)
     B = eval_grid(body, xs, ys, zs)
@@ -254,7 +275,6 @@ def build_pieces(pack, h=0.016, gap=0.006, log=print):
     log('grid %s, hide mesh %d verts, %.1fs' % (B.shape, len(HV), time.time() - t0))
 
     pieces = []
-    SIDED = ('mf', 'pf', 'mh', 'ph')
     for i, k in enumerate(IDS):
         di = D2[i]
         other = np.where(srt[0] == di, srt[1], srt[0])
@@ -302,7 +322,7 @@ def build_pieces(pack, h=0.016, gap=0.006, log=print):
                 Ne = normalize(grad(body, Ve))
                 ao = sdf_ao(body, Ve, Ne, strength=0.9)
                 col = (hide_color(Ve) ** 2.2) * (0.5 + 0.5 * ao)[:, None]
-                pack.add('cow.' + name + '.hide', Ve, Ne, Fe, np.concatenate([col, ao[:, None]], 1), dict(kind='hide', **meta))
+                pack.add(PREFIX + name + '.hide', Ve, Ne, Fe, np.concatenate([col, ao[:, None]], 1), dict(kind='hide', **meta))
                 ne = len(Ve); tot_v += ne; tot_f += len(Fe)
         # ---- cut faces: the partition surface clipped to the inside of the body
         sub = pc['G'][a[0]:b[0], a[1]:b[1], a[2]:b[2]]
@@ -322,17 +342,14 @@ def build_pieces(pack, h=0.016, gap=0.006, log=print):
                 fatF = np.full(len(Vc), 0.05, F)
                 boneF = np.full(len(Vc), 0.05, F)
             else:
-                rim = 0.007 + 0.013 * fbm(Vc, 6.0, 2, 9) + 0.010 * sstep(1.15, 1.4, Vc[:, 1]) + 0.012 * sstep(0.85, 0.65, Vc[:, 1]) * sstep(-0.75, -0.4, Vc[:, 0]) * sstep(0.7, 0.4, Vc[:, 0])
-                rim = rim * sstep(0.30, 0.55, Vc[:, 1])
-                rim = np.where(Vc[:, 0] < -0.98, rim * 0.3, rim)
-                fatF = depth - rim
+                fatF = depth - rim(Vc)
                 boneF = bones(Vc)
             aux = np.stack([np.clip(fatF / 0.05, -1, 1) * 0.5 + 0.5, np.clip(boneF / 0.05, -1, 1) * 0.5 + 0.5,
                             np.ones(len(Vc), F), np.ones(len(Vc), F)], 1)
-            pack.add('cow.' + name + '.flesh', Vc, Nc, Fcc, aux, dict(kind='flesh', **meta))
+            pack.add(PREFIX + name + '.flesh', Vc, Nc, Fcc, aux, dict(kind='flesh', **meta))
             nc = len(Vc); tot_v += nc; tot_f += len(Fcc)
         log('%-4s hide=%6d  cut=%6d  %.1fs' % (name, ne, nc, time.time() - t0))
-    log('cow total verts %d tris %d' % (tot_v, tot_f))
+    log('%s total verts %d tris %d' % (PREFIX, tot_v, tot_f))
 
 
 if __name__ == '__main__':

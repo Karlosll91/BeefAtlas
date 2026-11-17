@@ -64,7 +64,8 @@ const DONENESS = {
         'Ground beef is cooked through (71 °C / 160 °F) because grinding spreads the surface through the inside. And collagen-rich cuts — brisket, short rib, shank — are not ordered by doneness: they cook for hours to 90–96 °C (195–205 °F).',
         'A carne moída se cozinha por completo (71 °C) porque moer espalha por dentro o que estava na superfície. E os cortes com muito colágeno — peito, costela, músculo — não se pedem por ponto: cozinham por horas até 90–96 °C.'] }
   ],
-  safety: ['Referencia sanitaria (USDA): piezas enteras de res a 63 °C con 3 minutos de reposo; carne molida a 71 °C. Por debajo de eso es una decisión tuya.', 'Food-safety reference (USDA): whole cuts of beef to 63 °C / 145 °F with a 3-minute rest; ground beef to 71 °C / 160 °F. Below that is your own call.', 'Referência sanitária (USDA): peças inteiras de carne bovina a 63 °C com 3 minutos de descanso; carne moída a 71 °C. Abaixo disso a decisão é sua.']
+  porkNote: ['Cerdo: la escala empieza más arriba. No se pide azul ni rojo; el punto jugoso es 63 °C (rosado claro), y los cortes con mucha grasa —panceta, cabeza de lomo, secreto— saben mejor más cocidos.', 'Pork: the scale starts higher. It is not ordered blue or rare; the juicy point is 63 °C / 145 °F (pale pink), and fatty cuts — belly, collar, secreto — taste better cooked further.', 'Porco: a escala começa mais acima. Não se pede selado nem malpassado; o ponto suculento é 63 °C (rosado claro), e os cortes gordos — barriga, copa lombo, secreto — ficam melhores mais passados.'],
+  safety: ['Referencia sanitaria (USDA): piezas enteras de res o cerdo a 63 °C con 3 minutos de reposo; carne molida a 71 °C. Por debajo de eso es una decisión tuya.', 'Food-safety reference (USDA): whole cuts of beef or pork to 63 °C / 145 °F with a 3-minute rest; ground meat to 71 °C / 160 °F. Below that is your own call.', 'Referência sanitária (USDA): peças inteiras de carne bovina ou suína a 63 °C com 3 minutos de descanso; carne moída a 71 °C. Abaixo disso a decisão é sua.']
 };
 
 // Recommended doneness per cut. r: [from, to] level indexes; slow: judged by time, not by doneness;
@@ -74,7 +75,11 @@ const DONE_REC = {
   sb: { r: [2, 2], slow: 1 }, va: { r: [2, 3] }, en: { r: [2, 3] }, ha: { r: [1, 2] }, pl: { r: [2, 2], slow: 1 }, bp: { r: [2, 2] }, mc: { r: [1, 2], slow: 1 }, cp: { r: [2, 3] },
   hi: { r: [3, 3] }, cz: { r: [1, 2] }, ri: { r: [3, 3] },
   ma: { slow: 1 }, fa: { slow: 1 }, cs: { slow: 1 }, pe: { slow: 1 }, ag: { slow: 1 }, ps: { slow: 1 }, mo: { slow: 1 }, mu: { slow: 1 }, bo: { slow: 1 }, cl: { slow: 1 }, ch: { slow: 1 }, le: { slow: 1 }, mon: { slow: 1 }, pt: { slow: 1 },
-  mol: { safe: 1 }, chu: { crisp: 1 }, mj: { crisp: 1 }, tu: { soft: 1 }
+  mol: { safe: 1 }, chu: { crisp: 1 }, mj: { crisp: 1 }, tu: { soft: 1 },
+  // pork: whole cuts from 63 °C (level 3) up; nothing rarer
+  plo: { r: [3, 3], pork: 1 }, pso: { r: [3, 3], pork: 1 }, pch: { r: [3, 4], pork: 1 }, ppr: { r: [3, 3], pork: 1 }, ppl: { r: [3, 3], pork: 1 }, pse: { r: [4, 5], pork: 1 }, ppi: { r: [4, 5], pork: 1, slow: 1 },
+  pbo: { r: [4, 5], pork: 1, slow: 1 }, pbb: { slow: 1 }, pco: { slow: 1 }, ppa: { slow: 1 }, pcd: { slow: 1 }, ppt: { slow: 1 }, pca: { slow: 1 }, pcr: { slow: 1 }, pra: { slow: 1 }, pen: { slow: 1 },
+  ppn: { crisp: 1 }, ppp: { crisp: 1 }, por: { crisp: 1 }, pcu: { crisp: 1 }, ptr: { crisp: 1 }, pmo: { safe: 1 }, phi: { safe: 1 }
 };
 const DONE_NOTE = {
   r: ['Mejor entre {a} y {b}', 'Best between {a} and {b}', 'Melhor entre {a} e {b}'],
@@ -83,15 +88,16 @@ const DONE_NOTE = {
   both: ['A fuego alto y rápido, {x}. En olla no aplica el término: se cocina por horas.', 'Hot and fast, {x}. Braised, doneness does not apply: it cooks for hours.', 'Em fogo alto e rápido, {x}. Na panela o ponto não se aplica: cozinha por horas.'],
   safe: ['Carne molida: siempre cocida completa, 71 °C por dentro.', 'Ground beef: always cooked through, 71 °C / 160 °F inside.', 'Carne moída: sempre bem cozida, 71 °C por dentro.'],
   crisp: ['Se cocina completa y se dora hasta quedar crocante por fuera.', 'Cooked through and browned until crisp outside.', 'Cozinha por completo e doura até ficar crocante por fora.'],
+  pork: ['El cerdo no se sirve rojo: 63 °C con 3 minutos de reposo es el mínimo recomendado, y queda rosado muy claro.', 'Pork is not served rare: 63 °C (145 °F) with a 3-minute rest is the recommended minimum, and it comes out a very pale pink.', 'O porco não se serve malpassado: 63 °C com 3 minutos de descanso é o mínimo recomendado, e fica rosado bem claro.'],
   soft: ['No tiene término: se hornea hasta que el tuétano tiembla y se unta.', 'No doneness: roast until the marrow wobbles and spreads.', 'Não tem ponto: asse até o tutano tremer e ficar cremoso.']
 };
 
 // ---- Portions and times
 const PORTION = {
   appetite: [110, 150, 200],        // grams of cooked, edible meat per person
-  yield: { grill: 0.75, sear: 0.75, roast: 0.72, braise: 0.62, shred: 0.6, soup: 0.65, smoke: 0.5, stirfry: 0.8, fry: 0.8, raw: 1, grind: 0.75, skewer: 0.75, cure: 0.45, roll: 0.7, slice: 0.85 },
-  bone: { cs: 0.35, cl: 0.5, tb: 0.2, mu: 0.25, ps: 0.2, fa: 0.1, le: 0.15 },   // share of the weight you do not eat
-  fixed: { tu: 350, pt: 250 },      // grams per person, whatever the method
+  yield: { grill: 0.75, sear: 0.75, roast: 0.72, braise: 0.62, shred: 0.6, soup: 0.65, smoke: 0.5, stirfry: 0.8, fry: 0.8, raw: 1, grind: 0.75, skewer: 0.75, cure: 0.45, roll: 0.7, slice: 0.85, crisp: 0.55 },
+  bone: { cs: 0.35, cl: 0.5, tb: 0.2, mu: 0.25, ps: 0.2, fa: 0.1, le: 0.15, pch: 0.2, pbb: 0.45, pco: 0.4, pcd: 0.45, pra: 0.5, ppa: 0.2, pca: 0.6 },   // share of the weight you do not eat
+  fixed: { tu: 350, pt: 250, ppt: 350, pen: 650, por: 150, pcu: 120 },      // grams per person, whatever the method
   // minutes per side over high heat for a 2.5 cm steak, by doneness level
   side: [1.5, 2.5, 3.5, 4.5, 5.5, 7],
   // oven at 180 °C: minutes per 500 g by doneness level, after a 15-minute blast
@@ -121,7 +127,8 @@ const PHRASES = {
     skewer: { es: 'pinchos', pt: 'espetinhos', en: 'skewers', fr: 'des brochettes', it: 'spiedini' },
     cure: { es: 'curar', pt: 'curar', en: 'curing', fr: 'faire sécher', it: 'stagionare' },
     roll: { es: 'rellenar', pt: 'rechear', en: 'stuffing', fr: 'farcir', it: 'farcire' },
-    slice: { es: 'cortar en láminas finas', pt: 'cortar em fatias finas', en: 'slicing paper-thin', fr: 'couper en tranches très fines', it: 'tagliare a fettine sottilissime' }
+    slice: { es: 'cortar en láminas finas', pt: 'cortar em fatias finas', en: 'slicing paper-thin', fr: 'couper en tranches très fines', it: 'tagliare a fettine sottilissime' },
+    crisp: { es: 'hacer chicharrón', pt: 'fazer torresmo', en: 'crackling', fr: 'faire griller la couenne', it: 'fare i ciccioli' }
   },
   req: {
     grill: { es: 'En una pieza, de 3 cm de grueso.', pt: 'Em uma peça, com 3 cm de espessura.', en: 'In one piece, an inch and a quarter thick.', fr: 'En un seul morceau, de 3 cm d’épaisseur.', it: 'In un pezzo unico, spesso 3 cm.' },
@@ -138,7 +145,8 @@ const PHRASES = {
     skewer: { es: 'En cubos de 3 cm, todos iguales.', pt: 'Em cubos de 3 cm, todos iguais.', en: 'Cut into even one-inch cubes.', fr: 'En cubes de 3 cm, tous pareils.', it: 'A cubetti di 3 cm, tutti uguali.' },
     cure: { es: 'Una pieza entera, magra y sin telas.', pt: 'Uma peça inteira, magra e sem membranas.', en: 'A whole lean piece, membranes removed.', fr: 'Un morceau entier, maigre et dénervé.', it: 'Un pezzo intero, magro e senza pellicine.' },
     roll: { es: 'Abierto en libro para rellenar.', pt: 'Aberto em manta para rechear.', en: 'Butterflied for stuffing.', fr: 'Ouvert en portefeuille pour le farcir.', it: 'Aperto a libro per farcirlo.' },
-    slice: { es: 'Cortado en máquina, muy fino.', pt: 'Fatiado na máquina, bem fino.', en: 'Machine-sliced, very thin.', fr: 'Tranché à la machine, très fin.', it: 'Tagliato a macchina, molto sottile.' }
+    slice: { es: 'Cortado en máquina, muy fino.', pt: 'Fatiado na máquina, bem fino.', en: 'Machine-sliced, very thin.', fr: 'Tranché à la machine, très fin.', it: 'Tagliato a macchina, molto sottile.' },
+    crisp: { es: 'Con la piel y con su grasa.', pt: 'Com a pele e com a gordura.', en: 'Skin-on, with the fat.', fr: 'Avec la couenne et le gras.', it: 'Con la cotenna e il suo grasso.' }
   }
 };
 
@@ -213,6 +221,16 @@ const GLOSSARY = [
     d: ['En Argentina un bife es un filete grueso para la parrilla, y además nombra cortes: bife de chorizo (lomo ancho), bife ancho (ojo de bife). En Brasil y Portugal un «bife» es cualquier filete delgado de sartén. El bife de chorizo no tiene chorizo.', 'In Argentina a bife is a thick grilling steak, and it also names cuts: bife de chorizo (strip loin), bife ancho (ribeye). In Brazil and Portugal a “bife” is any thin pan steak. Bife de chorizo contains no chorizo.', 'Na Argentina um bife é um filé grosso para a grelha, e também dá nome a cortes: bife de chorizo (contrafilé), bife ancho (ancho). No Brasil e em Portugal “bife” é qualquer fatia fina de frigideira. O bife de chorizo não leva chouriço.'] },
   { id: 'mechar', g: 'trap', cut: 'sb', t: ['Mechar y desmechar', 'Mechar and desmechar', 'Mechar e desmechar'], aka: ['deshebrar · deshilachar', 'lard · shred', 'lardear · desfiar'],
     d: ['Mechar es meterle a la pieza tiras de tocino o verduras antes de cocinarla. Desmechar es lo contrario: deshacer la carne cocida en hebras. Lo mismo se dice deshebrar (México), deshilachar (Chile, Argentina) y desfiar (Brasil).', '“Mechar” is to lard: push strips of bacon or vegetables into the piece before cooking. “Desmechar” is the opposite: pulling cooked meat into shreds. The same idea is deshebrar (Mexico), deshilachar (Chile, Argentina) and desfiar (Brazil).', '“Mechar” é lardear: enfiar tiras de toucinho ou legumes na peça antes de cozinhar. “Desmechar” é o contrário: desfiar a carne cozida. O mesmo se diz deshebrar (México), deshilachar (Chile, Argentina) e desfiar (Brasil).'] },
+  { id: 'tocino', g: 'trap', cut: 'ppn', t: ['Tocino, tocineta, panceta, bacon', 'Tocino, tocineta, panceta, bacon', 'Tocino, tocineta, panceta, bacon'], aka: ['', '', 'toucinho'],
+    d: ['En Colombia «tocino» es la barriga fresca con piel (la del chicharrón) y «tocineta» es la curada y ahumada en lonjas. En México «tocino» ya es el ahumado. En España «tocino» es solo la grasa, y la barriga es «panceta». En Italia la pancetta es curada, no fresca.', 'In Colombia “tocino” is fresh skin-on belly (the chicharrón cut) and “tocineta” is the cured, smoked, sliced kind. In Mexico “tocino” already means smoked bacon. In Spain “tocino” is just the fat, and the belly is “panceta”. In Italy pancetta is cured, not fresh.', 'Na Colômbia “tocino” é a barriga fresca com pele (a do torresmo) e “tocineta” é a curada e defumada em fatias. No México “tocino” já é o bacon. Na Espanha “tocino” é só a gordura, e a barriga é “panceta”. No Brasil “toucinho” é a gordura com pele; na Itália a pancetta é curada, não fresca.'] },
+  { id: 'pernil', g: 'trap', cut: 'ppi', t: ['Pernil', 'Pernil', 'Pernil'], aka: ['', '', ''],
+    d: ['En Colombia, Venezuela, Argentina y Brasil es la pierna trasera. En Puerto Rico el pernil asado suele ser paleta. En Chile «pernil» es el codillo: si pides pernil para hornear te llevas otra cosa.', 'In Colombia, Venezuela, Argentina and Brazil it is the hind leg. In Puerto Rico roast pernil is usually shoulder. In Chile “pernil” is the hock: ask for one to roast and you get something else.', 'Na Colômbia, na Venezuela, na Argentina e no Brasil é a perna traseira. Em Porto Rico o pernil assado costuma ser paleta. No Chile “pernil” é o joelho: quem pede pernil para assar leva outra coisa.'] },
+  { id: 'chicharron', g: 'trap', cut: 'pcu', t: ['Chicharrón', 'Chicharrón', 'Chicharrón / Torresmo'], aka: ['', '', ''],
+    d: ['En Colombia y Centroamérica es barriga con carne, frita. En México puede ser solo el cuero inflado, o el «prensado» de recortes. En Perú y Bolivia es costilla o paleta frita en trozos. En España, según la región, son torreznos o una carne prensada.', 'In Colombia and Central America it is meaty fried belly. In Mexico it can be just the puffed skin, or “prensado”, pressed trimmings. In Peru and Bolivia it is fried chunks of rib or shoulder. In Spain, depending on the region, it is torreznos or a pressed meat.', 'Na Colômbia e na América Central é barriga com carne, frita. No México pode ser só a pele estufada, ou o “prensado” de aparas. No Peru e na Bolívia é costela ou paleta frita em pedaços. No Brasil o equivalente é o torresmo.'] },
+  { id: 'butt', g: 'trap', cut: 'pbo', t: ['Pork butt', 'Pork butt', 'Pork butt'], aka: ['Boston butt', 'Boston butt', 'Boston butt'],
+    d: ['No es la parte de atrás: «butt» es la parte alta de la paleta, la cabeza de lomo. El nombre viene de los barriles («butts») en que se empacaba en Boston. La pierna trasera es «ham».', 'It is not the rear end: the butt is the top of the shoulder. The name comes from the barrels (“butts”) it was packed in around Boston. The hind leg is the ham.', 'Não é a parte de trás: “butt” é a parte alta da paleta, a copa lombo. O nome vem dos barris (“butts”) em que era embalada em Boston. A perna traseira é “ham”.'] },
+  { id: 'iberico', g: 'grade', cut: 'pse', t: ['Ibérico y bellota', 'Ibérico and bellota', 'Ibérico e bellota'], aka: ['pata negra', 'pata negra', 'pata negra'],
+    d: ['Ibérico es la raza, de la península ibérica, que infiltra grasa en el músculo como ninguna otra. «De bellota» dice qué comió: bellotas en la dehesa durante la montanera. «De cebo» es ibérico criado con pienso. Secreto, presa y pluma son cortes propios de su despiece.', 'Ibérico is the breed, from the Iberian peninsula, which marbles like no other pig. “De bellota” says what it ate: acorns on the dehesa in the final months. “De cebo” is Ibérico raised on feed. Secreto, presa and pluma are cuts from its own butchery tradition.', 'Ibérico é a raça, da península ibérica, que entremeia gordura no músculo como nenhuma outra. “De bellota” diz o que comeu: bolotas no montado nos últimos meses. “De cebo” é ibérico criado com ração. Secreto, presa e pluma são cortes próprios do seu desmanche.'] },
   { id: 'chuleta', g: 'trap', t: ['Chuleta y chuletón', 'Chuleta and chuletón', 'Chuleta e chuletón'], aka: ['', '', ''],
     d: ['En España el chuletón es el lomo ancho con su hueso, muy grueso. En Colombia una «chuleta» suele ser un filete apanado (la chuleta valluna es de cerdo). En Venezuela y México la chuleta es de costillar, casi siempre de cerdo.', 'In Spain a chuletón is a very thick bone-in rib steak. In Colombia a “chuleta” is usually a breaded cutlet (chuleta valluna is pork). In Venezuela and Mexico a chuleta is a rib chop, almost always pork.', 'Na Espanha o chuletón é a costela do contrafilé com osso, bem grossa. Na Colômbia uma “chuleta” costuma ser um bife à milanesa (a chuleta valluna é de porco). Na Venezuela e no México a chuleta é da costela, quase sempre de porco.'] }
 ];

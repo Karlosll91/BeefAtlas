@@ -11,11 +11,12 @@ const Shop = (function () {
   // ------------------------------------------------------------ doneness look
   // core temperature (°C) -> colour of the centre, width of the grey ring (0..1 of half the thickness)
   const DONE_STOPS = [[44, [122, 20, 32], 0.05], [48, [142, 24, 38], 0.07], [52, [176, 31, 44], 0.12], [56.5, [198, 58, 69], 0.18], [61, [210, 112, 122], 0.28], [66, [189, 141, 132], 0.45], [70, [154, 124, 108], 1], [77, [134, 112, 95], 1]];
-  function doneLook(t) {
-    const S = DONE_STOPS; t = clamp(t, S[0][0], S[S.length - 1][0]);
+  const PORK_STOPS = [[44, [214, 138, 146], 0.05], [55, [222, 150, 154], 0.1], [60, [228, 168, 166], 0.2], [63, [232, 190, 182], 0.32], [68, [232, 208, 196], 0.6], [72, [226, 214, 200], 1], [77, [218, 206, 190], 1]];
+  function doneLook(t, sp) {
+    const S = sp === 'pork' ? PORK_STOPS : DONE_STOPS; t = clamp(t, S[0][0], S[S.length - 1][0]);
     let i = 0; while (i < S.length - 2 && t > S[i + 1][0]) i++;
     const a = S[i], b = S[i + 1], k = (t - a[0]) / (b[0] - a[0]);
-    return { core: [0, 1, 2].map((j) => Math.round(lerp(a[1][j], b[1][j], k))), band: lerp(a[2], b[2], k), ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160], wet: clamp((66 - t) / 18, 0, 1) };
+    return { core: [0, 1, 2].map((j) => Math.round(lerp(a[1][j], b[1][j], k))), band: lerp(a[2], b[2], k), ring: sp === 'pork' ? [222, 206, 190] : [138, 111, 96], crust: sp === 'pork' ? [140, 86, 40] : [59, 33, 20], fat: sp === 'pork' ? [244, 232, 214] : [236, 214, 160], wet: clamp((66 - t) / 18, 0, 1) };
   }
 
   // ------------------------------------------------------------ canvas textures
@@ -125,7 +126,7 @@ const Shop = (function () {
 
   // ------------------------------------------------------------ main
   function create(host, pack, cfg) {
-    const S = { view: 'shop', sel: null, recs: [], explode: 0, explodeAuto: 0, onPick: null, onHover: null, quality: 1 };
+    const S = { view: 'shop', sp: 'beef', sel: null, recs: [], explode: 0, explodeAuto: 0, onPick: null, onHover: null, quality: 1 };
     const renderer = new T.WebGLRenderer({ antialias: true, alpha: false, powerPreference: 'high-performance' });
     const mobile = Math.min(window.innerWidth, window.innerHeight) < 600;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, mobile ? 1.5 : 2));
@@ -180,7 +181,7 @@ const Shop = (function () {
       g.fillStyle = '#16382d'; g.fillRect(0, 0, W, H);
       g.strokeStyle = '#c9a04e'; g.lineWidth = 8; g.strokeRect(14, 14, W - 28, H - 28);
       g.fillStyle = '#e9d9ac'; g.textAlign = 'center'; g.textBaseline = 'middle';
-      let fs = 150; const txt = 'CARNICERÍA  ·  ATLAS DE LA RES';
+      let fs = 150; const txt = 'CARNICERÍA  ·  KORTE';
       do { g.font = '700 ' + fs + 'px "Zilla Slab", Rockwell, Georgia, serif'; fs -= 6; } while (g.measureText(txt).width > W - 140 && fs > 40);
       g.fillText(txt, W / 2, H / 2 + 8);
     }); signT.wrapS = signT.wrapT = T.ClampToEdgeWrapping;
@@ -273,17 +274,20 @@ const Shop = (function () {
     const strip = new T.Mesh(new T.BoxGeometry(3.9, 0.02, 0.03), new T.MeshBasicMaterial({ color: new T.Color(2.0, 1.85, 1.6) })); strip.position.set(2.685, 1.455, -0.78); counter.add(strip);
 
     // ---------------- cuts in the case + tags
-    const mats = pack.extra.mats || {};
+    const mats = Object.assign({}, pack.extra.mats || {});   // cut id -> material options; grows when a species is added
+    const meshes = Object.assign({}, pack.meshes);
     const caseCuts = {};          // id -> {group, mesh, slot}
     const pickables = [];
+    let pickNow = pickables;      // the pickables of the species on show
     const TAGW = 256, TAGH = 96, TCOLS = 6, TROWS = 6;
     const tagC = document.createElement('canvas'); tagC.width = TAGW * TCOLS; tagC.height = TAGH * TROWS;
     const tagT = new T.CanvasTexture(tagC); tagT.encoding = T.sRGBEncoding; tagT.anisotropy = 8;
     const tagMat = new T.MeshBasicMaterial({ map: tagT, toneMapped: false });
     const trayMat = std({ color: lin('#dfe2e3'), roughness: 0.35, metalness: 0.6 });
     const SC = 0.6;
-    cfg.cuts.forEach((cut, i) => {
-      const e = pack.meshes['cut.' + cut.id]; if (!e) return;
+    const spCuts = (sp) => cfg.cuts.filter((c) => (c.sp || 'beef') === sp);
+    const addCase = (sp) => spCuts(sp).forEach((cut, i) => {
+      const e = meshes['cut.' + cut.id]; if (!e) return;
       const r = Math.floor(i / CASE.cols), c = i % CASE.cols;
       const x = CASE.x0 + 0.165 + c * ((CASE.x1 - CASE.x0 - 0.33) / (CASE.cols - 1));
       const g = new T.Group(); g.position.set(x, rowY[r] + 0.012, rowZ[r] + 0.015); counter.add(g);
@@ -292,18 +296,21 @@ const Shop = (function () {
       const m = new T.Mesh(e.geo, mat); m.scale.setScalar(SC);
       const bb = e.geo.boundingBox; m.position.set(-(bb.min.x + bb.max.x) / 2 * SC, 0.004, -(bb.min.z + bb.max.z) / 2 * SC + 0.012);
       const fit = 0.285 / ((bb.max.x - bb.min.x) * SC); if (fit < 1) { m.scale.multiplyScalar(fit); m.position.multiplyScalar(fit); }
-      m.castShadow = true; m.userData.cut = cut.id; m.userData.where = 'case'; g.add(m); pickables.push(m);
+      m.castShadow = true; m.userData.cut = cut.id; m.userData.where = 'case'; m.userData.sp = sp; g.add(m); pickables.push(m);
       // price-tag style label
       const tg = new T.PlaneGeometry(0.16, 0.06);
       const u0 = (i % TCOLS) / TCOLS, v0 = 1 - (Math.floor(i / TCOLS) + 1) / TROWS;
       const uv = tg.attributes.uv; for (let k = 0; k < uv.count; k++) uv.setXY(k, u0 + uv.getX(k) / TCOLS, v0 + uv.getY(k) / TROWS);
-      const tag = new T.Mesh(tg, tagMat); tag.position.set(0, 0.034, 0.118); tag.rotation.x = -0.5; tag.userData.cut = cut.id; tag.userData.where = 'case'; g.add(tag); pickables.push(tag);
-      caseCuts[cut.id] = { group: g, mesh: m, mat, x, row: r, baseY: m.position.y };
+      const tag = new T.Mesh(tg, tagMat); tag.position.set(0, 0.034, 0.118); tag.rotation.x = -0.5; tag.userData.cut = cut.id; tag.userData.where = 'case'; tag.userData.sp = sp; g.add(tag); pickables.push(tag);
+      g.visible = sp === S.sp;
+      caseCuts[cut.id] = { group: g, mesh: m, mat, x, row: r, baseY: m.position.y, sp };
     });
+    addCase('beef');
     function setTags(nameOf) {
       const g = tagC.getContext('2d');
       g.fillStyle = '#fff'; g.fillRect(0, 0, tagC.width, tagC.height);
-      cfg.cuts.forEach((cut, i) => {
+      if (nameOf) S.nameOf = nameOf; else nameOf = S.nameOf; if (!nameOf) return;
+      spCuts(S.sp).forEach((cut, i) => {
         const x = (i % TCOLS) * TAGW, y = Math.floor(i / TCOLS) * TAGH;
         g.fillStyle = '#fbf8ef'; g.fillRect(x, y, TAGW, TAGH);
         g.strokeStyle = '#a3242f'; g.lineWidth = 6; g.strokeRect(x + 5, y + 5, TAGW - 10, TAGH - 10);
@@ -324,7 +331,7 @@ const Shop = (function () {
     function setBlockCut(id) {
       if (id === blockId) return; blockId = id;
       if (blockMesh) { blockHolder.remove(blockMesh); blockMesh.material.dispose(); blockMesh = null; }
-      const e = id && pack.meshes['cut.' + id]; if (!e) { if (S.grain) setGrain(true); return; }
+      const e = id && meshes['cut.' + id]; if (!e) { blockId = null; if (S.grain) setGrain(true); return; }
       const mat = MeshLib.fleshMaterial(Object.assign({}, mats[id]));
       blockMesh = new T.Mesh(e.geo, mat); blockMesh.castShadow = true; blockMesh.receiveShadow = true;
       const bb = e.geo.boundingBox; const L = bb.max.x - bb.min.x; const k = Math.min(1, 0.46 / L);
@@ -382,9 +389,9 @@ const Shop = (function () {
         m.rotation.x = -a * Math.PI / 180; m.position.set(0, 0, zs[i] - 0.085); doneHolder.add(m);
       });
     })();
-    function setDoneness(t) {
+    function setDoneness(t, sp) {
       S.done = t != null; doneHolder.visible = S.done; if (blockMesh) blockMesh.visible = !S.done; if (grainMesh) grainMesh.visible = !S.done;
-      if (S.done) { const L = doneLook(t); const c = (a, u) => u.value.setRGB(a[0] / 255, a[1] / 255, a[2] / 255).convertSRGBToLinear();
+      if (S.done) { const L = doneLook(t, sp); const c = (a, u) => u.value.setRGB(a[0] / 255, a[1] / 255, a[2] / 255).convertSRGBToLinear();
         c(L.core, DU.uCore); c(L.ring, DU.uRing); c(L.crust, DU.uCrust); c(L.fat, DU.uFatC); DU.uBand.value = L.band; DU.uWet.value = L.wet; }
       if (S.view === 'block') applyView('keep');
       dirty();
@@ -402,7 +409,7 @@ const Shop = (function () {
       if (grainMesh) { blockHolder.remove(grainMesh); grainMesh.material.map.dispose(); grainMesh.material.dispose(); grainMesh.geometry.dispose(); grainMesh = null; }
       const kind = blockId ? grainOf(blockId) : null;
       if (S.grain && blockMesh && kind === 'h') {
-        const e = pack.meshes['cut.' + blockId], bb = e.geo.boundingBox, k = blockMesh.userData.k;
+        const e = meshes['cut.' + blockId], bb = e.geo.boundingBox, k = blockMesh.userData.k;
         const w = (bb.max.x - bb.min.x) * k, d = (bb.max.z - bb.min.z) * k;
         const g = mats[blockId].grainDir, gl = Math.hypot(g[0], g[2]) || 1, gx = g[0] / gl, gz = g[2] / gl;
         const PX = 1400, cw = Math.round(w * PX), ch = Math.round(d * PX);
@@ -441,39 +448,65 @@ const Shop = (function () {
     const pl = cyl(1.75, 1.82, 0.13, std({ map: plankT, roughness: 0.55 }), 0, 0.065, 0, plinth, 56); pl.scale.z = 0.62;
     const ring = new T.Mesh(new T.TorusGeometry(1.76, 0.014, 8, 80), brass); ring.rotation.x = Math.PI / 2; ring.scale.y = 0.62; ring.position.y = 0.13; plinth.add(ring);
     const cow = new T.Group(); cow.position.copy(COW); cow.rotation.y = COW_YAW; scene.add(cow);
-    const cowIn = new T.Group(); cowIn.position.set(0.1, -0.005, 0); cow.add(cowIn);
     const pieces = {};            // name -> {group, hide, flesh, meta, off, cur}
-    const CC = [-0.05, 0.98];
-    for (const m of pack.list) {
-      if (!m.name.startsWith('cow.')) continue;
+    const animals = {};           // species -> group holding its pieces
+    const ANIMAL = { beef: { prefix: 'cow.', cc: [-0.05, 0.98], at: [0.1, -0.005, 0], face: { marb: 0.1, marbScale: 60, seams: 1, seamScale: 5, ribs: 1 }, inner: {} },
+      pork: { prefix: 'pig.', cc: [-0.12, 0.80], at: [0.12, -0.005, 0], face: { meat: '#d58a8c', meat2: '#b96a70', fat: '#f6ece2', marb: 0.08, marbScale: 60, seams: 1, seamScale: 5, ribs: 0 }, inner: { meat: '#cf7b80', meat2: '#b6636a' } } };
+    const addAnimal = (pk, sp) => {
+     const A = ANIMAL[sp], CC = A.cc;
+     const cowIn = animals[sp] = new T.Group(); cowIn.position.fromArray(A.at); cowIn.visible = sp === S.sp; cow.add(cowIn);
+     for (const m of pk.list) {
+      if (!m.name.startsWith(A.prefix)) continue;
       const [, pname, kind] = m.name.split('.');
+      const offal = /vi$/.test(m.cut);
       let p = pieces[pname];
       if (!p) {
-        p = pieces[pname] = { name: pname, group: new T.Group(), meta: m, cur: V3(0, 0, 0), glow: 0, glowT: 0, dim: 0, dimT: 0 };
+        p = pieces[pname] = { name: pname, sp, cc: CC, group: new T.Group(), meta: m, cur: V3(0, 0, 0), glow: 0, glowT: 0, dim: 0, dimT: 0 };
         const dx = m.cen[0] - CC[0], dy = m.cen[1] - CC[1];
         p.dir = V3(dx * 0.62, dy * 0.62 + 0.22, m.side * 0.34);
-        if (m.internal) p.dir = V3(dx * 0.3, dy * 0.3 + 0.12, (m.side || 1) * 1.0 + (m.cut === 'vi' ? 0.25 : 0));
+        if (m.internal) p.dir = V3(dx * 0.3, dy * 0.3 + 0.12, (m.side || 1) * 1.0 + (offal ? 0.25 : 0));
         if (m.cut === 'ha') p.dir.z = -1.05;
         p.cen = V3(m.cen[0], m.cen[1], m.cen[2]);
         cowIn.add(p.group);
       }
-      const geo = pack.meshes[m.name].geo;
+      const geo = pk.meshes[m.name].geo;
       let mesh;
       if (kind === 'hide') { mesh = new T.Mesh(geo, new T.MeshStandardMaterial({ vertexColors: true, roughness: 0.8, metalness: 0, envMapIntensity: 0.4 })); p.hide = mesh; }
       else {
-        const o = m.internal ? (m.cut === 'vi' ? { meat: '#7a3a36', meat2: '#5b2623', marb: 0, gloss: 0.8, rough: 0.3, bone: 0 } : { marb: m.cut === 'lf' ? 0.05 : 0.25, marbScale: 80, grain: 0.85, grainDir: m.cut === 'en' ? [0, 0, 1] : [1, 0, 0], bone: 0 })
-          : { marb: 0.1, marbScale: 60, seams: 1, seamScale: 5, ribs: 1 };
+        const o = m.internal ? (offal ? { meat: '#7a3a36', meat2: '#5b2623', marb: 0, gloss: 0.8, rough: 0.3, bone: 0 } : Object.assign({ marb: m.cut === 'lf' || sp === 'pork' ? 0.05 : 0.25, marbScale: 80, grain: 0.85, grainDir: m.cut === 'en' ? [0, 0, 1] : [1, 0, 0], bone: 0 }, A.inner))
+          : A.face;
         mesh = new T.Mesh(geo, MeshLib.fleshMaterial(o)); p.flesh = mesh;
       }
-      mesh.castShadow = true; mesh.receiveShadow = true; mesh.userData.piece = pname; mesh.userData.where = 'cow';
+      mesh.castShadow = true; mesh.receiveShadow = true; mesh.userData.piece = pname; mesh.userData.where = 'cow'; mesh.userData.sp = sp;
       p.group.add(mesh); pickables.push(mesh);
-    }
-    // eyes
-    if (pieces.ch) for (const s of [1, -1]) { const e = new T.Mesh(new T.SphereGeometry(0.021, 14, 10), new T.MeshStandardMaterial({ color: 0x050505, roughness: 0.08 })); e.position.set(-1.212, 1.372, 0.112 * s); pieces.ch.group.add(e); }
+     }
+     // eyes
+     const eye = (pc, x, y, z, r) => { if (pieces[pc]) for (const s of [1, -1]) { const e = new T.Mesh(new T.SphereGeometry(r, 14, 10), new T.MeshStandardMaterial({ color: 0x050505, roughness: 0.08 })); e.position.set(x, y, z * s); pieces[pc].group.add(e); } };
+     if (sp === 'beef') eye('ch', -1.212, 1.372, 0.112, 0.021); else eye('p_ca', -1.262, 0.962, 0.155, 0.02);
+    };
+    addAnimal(pack, 'beef');
     const pieceOfCut = {};        // cut id -> [piece names]
-    cfg.cuts.forEach((c) => { pieceOfCut[c.id] = c.pieces.flatMap((id) => Object.keys(pieces).filter((n) => n === id || n === id + 'L' || n === id + 'R')); });
     const cutOfPiece = {};        // piece -> primary cut id (first cut that lists it)
-    cfg.cuts.forEach((c) => pieceOfCut[c.id].forEach((n) => { if (!(n in cutOfPiece)) cutOfPiece[n] = c.id; }));
+    function mapPieces() {
+      const names = Object.keys(pieces);
+      cfg.cuts.forEach((c) => { const sp = c.sp || 'beef';
+        pieceOfCut[c.id] = c.pieces[0] === '*' ? names.filter((n) => pieces[n].sp === sp && !pieces[n].meta.internal) : c.pieces.flatMap((id) => names.filter((n) => pieces[n].sp === sp && (n === id || n === id + 'L' || n === id + 'R'))); });
+      cfg.cuts.forEach((c) => { if (c.pieces[0] !== '*') pieceOfCut[c.id].forEach((n) => { if (!(n in cutOfPiece)) cutOfPiece[n] = c.id; }); });
+    }
+    mapPieces();
+    function setSpecies(sp) {
+      S.sp = sp;
+      for (const k in animals) animals[k].visible = k === sp;
+      for (const id in caseCuts) caseCuts[id].group.visible = caseCuts[id].sp === sp;
+      pickNow = pickables.filter((m) => !m.userData.sp || m.userData.sp === sp);
+      setTags(); if (S.view === 'cow') applyView('keep'); dirty();
+    }
+    // a second animal arrives in its own pack, fetched the first time it is asked for
+    function addSpecies(sp, pk) {
+      if (animals[sp]) return;
+      Object.assign(meshes, pk.meshes); Object.assign(mats, pk.extra.mats || {});
+      addAnimal(pk, sp); addCase(sp); mapPieces(); setSpecies(S.sp); refreshTargets();
+    }
 
     // ---------------- the butcher
     const man = new T.Group(); man.position.set(-0.35, 0, -2.2); scene.add(man);
@@ -504,12 +537,12 @@ const Shop = (function () {
     // ---------------- camera rig
     const rig = { target: V3(0, 1.2, -1.2), yaw: 0, pitch: 0.1, dist: 10, tT: V3(0, 1.2, -1.2), tYaw: 0, tPitch: 0.1, tDist: 10, zoom: 1, panX: 0 };
     let W = 1, H = 1, PANEL = 0;
-    const cowWorld = () => V3(COW.x + 0.05, 1.08, COW.z);
+    const cowWorld = () => V3(COW.x + 0.05, S.sp === 'pork' ? 0.84 : 1.08, COW.z);
     function viewPreset(v) {
       const vt = Math.tan(T.MathUtils.degToRad(camera.fov / 2));
       const effW = Math.max(120, W - PANEL), asp = effW / H;
       const fit = (wc, hc) => Math.max(wc / (2 * vt * asp), hc / (2 * vt));
-      if (v === 'cow') return { t: cowWorld(), yaw: 0.25, pitch: 0.12, dist: fit(3.9 + S.explodeNow * 2.2, 2.5 + S.explodeNow * 1.2), yawLim: [-9, 9], pitchLim: [-0.05, 1.2] };
+      if (v === 'cow') return { t: cowWorld(), yaw: 0.25, pitch: 0.12, dist: fit(3.9 + S.explodeNow * 2.2, (S.sp === 'pork' ? 2.1 : 2.5) + S.explodeNow * 1.2), yawLim: [-9, 9], pitchLim: [-0.05, 1.2] };
       if (v === 'case') { const cw = asp > 1.6 ? 4.2 : asp > 1.05 ? 2.5 : 1.5; return { t: V3(2.68 + rig.panX, 1.06, -1.2), yaw: 0, pitch: 0.86, dist: fit(cw, 1.05), yawLim: [-0.5, 0.5], pitchLim: [0.35, 1.25], pan: Math.max(0, (4.1 - cw) / 2 + 0.1) }; }
       if (v === 'block') { const bl = S.done ? 0.25 : Math.max(0.22, blockLen); return { t: V3(BLOCK.x - 0.04, BLOCK_TOP + 0.03, BLOCK.z), yaw: 0.3, pitch: 0.72, dist: fit(bl * 1.75, bl * 1.05), yawLim: [-9, 9], pitchLim: [0.12, 1.35] }; }
       const wide = asp > 1.45;
@@ -572,7 +605,7 @@ const Shop = (function () {
       const r = el.getBoundingClientRect();
       ndc.set(((e.clientX - r.left) / r.width) * 2 - 1, -((e.clientY - r.top) / r.height) * 2 + 1);
       ray.setFromCamera(ndc, camera);
-      const h = ray.intersectObjects(pickables, false)[0];
+      const h = ray.intersectObjects(pickNow, false)[0];
       if (!h) return null;
       const u = h.object.userData;
       return { cut: u.cut || cutOfPiece[u.piece], where: u.where, piece: u.piece };
@@ -655,8 +688,8 @@ const Shop = (function () {
         p.glow = lerp(p.glow, gT, k); p.dim = lerp(p.dim, p.dimT || 0, k); p.pop = lerp(p.pop || 0, p.popT || 0, k);
         const e = S.explodeNow;
         const popK = p.pop * (0.05 + 0.1 * (1 - Math.min(1, e * 2)));
-        p.group.position.set(p.dir.x * e + (p.cen.x - CC[0]) * popK * 0.5, p.dir.y * e + popK * 0.35, p.dir.z * e + (p.meta.internal ? 0 : 0));
-        const dimK = 1 - 0.55 * p.dim;
+        p.group.position.set(p.dir.x * e + (p.cen.x - p.cc[0]) * popK * 0.5, p.dir.y * e + popK * 0.35, p.dir.z * e + (p.meta.internal ? 0 : 0));
+        const dimK = 1 - (p.sp === 'pork' ? 0.3 : 0.55) * p.dim;
         if (p.hide) { p.hide.material.color.setRGB(dimK, dimK * (1 - 0.3 * p.glow), dimK * (1 - 0.78 * p.glow)); p.hide.material.emissive.copy(gold).multiplyScalar(0.16 * p.glow); }
         if (p.flesh) { const U = p.flesh.material.userData.U; U.uTint.value.setScalar(dimK); U.uGlow.value.copy(gold).multiplyScalar(0.3 * p.glow); }
       }
@@ -697,7 +730,7 @@ const Shop = (function () {
     requestAnimationFrame(frame);
     const ro = new ResizeObserver(() => resize()); ro.observe(host);
 
-    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setDoneness, setGrain, grainOf, setPose, talk, anchorOf, resize, dirty,
+    return { setView, setSelection, setRecs, setExplode, setTags, setChalk, setBlockCut, setDoneness, setGrain, grainOf, setSpecies, addSpecies, has: (sp) => !!animals[sp], setPose, talk, anchorOf, resize, dirty,
       state: S, caseCuts, pieces, pieceOfCut,
       set onPick(f) { S.onPick = f; }, set onHover(f) { S.onHover = f; },
       zoomBy(f) { rig.zoom = clamp(rig.zoom * f, 0.4, 1.5); rig.tDist = preset.dist * rig.zoom; dirty(); },

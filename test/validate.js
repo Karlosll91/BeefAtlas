@@ -52,6 +52,43 @@ console.log('cuisines', Object.keys(byCC).length, JSON.stringify(Object.entries(
   for (const m in METHODS) { if (!x.PORTION.yield[m]) e2.push('yield ' + m); const o = x.PT.methods[m]; if (!o || !o.n || !o.v || !o.need || !o.ask) e2.push('pt method ' + m);
     for (const l of ['es', 'pt', 'en', 'fr', 'it']) if (!x.PHRASES.method[m] || !x.PHRASES.method[m][l] || !x.PHRASES.req[m][l]) e2.push('phrase ' + m + ' ' + l); }
   const gid = new Set();
-  for (const g of x.GLOSSARY) { tri(g.t, g.id); tri(g.aka, g.id); tri(g.d, g.id); if (gid.has(g.id)) e2.push('dup term ' + g.id); gid.add(g.id); if (!x.GLOSS_GROUPS[g.g]) e2.push('group ' + g.id); if (g.cut && !ids.has(g.cut)) e2.push('term cut ' + g.id); }
+  for (const g of x.GLOSSARY) { tri(g.t, g.id); tri(g.aka, g.id); tri(g.d, g.id); if (gid.has(g.id)) e2.push('dup term ' + g.id); gid.add(g.id); if (!x.GLOSS_GROUPS[g.g]) e2.push('group ' + g.id); if (g.cut && !ids.has(g.cut) && !/^p[a-z]{2}$/.test(g.cut)) e2.push('term cut ' + g.id); }
   console.log('extra: glossary', x.GLOSSARY.length, 'errors', e2.length); console.log(e2.join('\n'));
+}
+
+// ---- pork: cuts, names, dishes
+{
+  const x = {}, e3 = [];
+  new Function('x', src + fs.readFileSync('src/data_extra.js', 'utf8') + fs.readFileSync('src/data_pork.js', 'utf8') + '\nObject.assign(x,{PORK,SPECIES,DONE_REC,CUTS,METHODS,ZONES});')(x);
+  const pid = new Set(x.PORK.map((c) => c.id));
+  if (pid.size !== x.PORK.length) e3.push('dup pork ids');
+  for (const c of x.PORK) {
+    if (ids.has(c.id)) e3.push('id clashes with beef ' + c.id);
+    for (const k of COUNTRIES) if (!c.names[k.id] || !c.names[k.id][0]) e3.push('name missing ' + c.id + ' ' + k.id);
+    for (const f of ['d', 'tip', 'cook']) if (!c[f] || c[f].length !== 3 || c[f].some((t) => !t)) e3.push('text ' + c.id + ' ' + f);
+    for (const m in c.m) if (!x.METHODS[m]) e3.push('bad method ' + c.id + ' ' + m);
+    for (const m in (c.why || {})) { if (!c.m[m]) e3.push('why without m ' + c.id + ' ' + m); if (c.why[m].length !== 3) e3.push('why triple ' + c.id + ' ' + m); }
+    for (const f of ['t', 'f', 'c', 'v']) if (!(c[f] >= 1 && c[f] <= 5)) e3.push('prop ' + c.id + ' ' + f);
+    if (!(c.price >= 1 && c.price <= 4)) e3.push('price ' + c.id);
+    if (!x.ZONES[c.zone]) e3.push('zone ' + c.id);
+    if (!x.DONE_REC[c.id]) e3.push('no doneness rule ' + c.id);
+  }
+  for (const k in x.SPECIES) { if (!x.CUTS.some((c) => c.id === x.SPECIES[k].first)) e3.push('species first ' + k); }
+  let np = 0; const used = {};
+  for (const l of fs.readFileSync('src/dishes_pork.txt', 'utf8').split('\n')) {
+    if (!l.trim() || l[0] === '#') continue; np++;
+    const f = l.split('|');
+    if (f.length !== 7) { e3.push('fields(' + f.length + ') ' + l); continue; }
+    if (!ccs.has(f[1])) e3.push('cc ' + l);
+    if (!x.METHODS[f[2]]) e3.push('method ' + l);
+    if (!pid.has(f[3])) e3.push('best ' + l);
+    for (const a of (f[4] ? f[4].split(',') : [])) { if (!pid.has(a)) e3.push('alt ' + l); if (a === f[3]) e3.push('alt=best ' + l); }
+    if (!f[5] || !f[6]) e3.push('gloss ' + l);
+    const key = f[0].toLowerCase(); if (seen.has(key)) e3.push('dup dish ' + f[0]); seen.set(key, 1);
+    used[f[3]] = (used[f[3]] || 0) + 1;
+    const cut = x.PORK.find((c) => c.id === f[3]); if (cut && !cut.m[f[2]]) e3.push('best cut lacks method: ' + f[0] + ' ' + f[3] + ' ' + f[2]);
+  }
+  for (const c of x.PORK) if (!used[c.id]) e3.push('no dish for ' + c.id);
+  for (const k in x.SPECIES) if (k === 'pork' && !fs.readFileSync('src/dishes_pork.txt', 'utf8').includes('\n' + x.SPECIES[k].dish + '|')) e3.push('species dish ' + k);
+  console.log('pork: cuts', x.PORK.length, 'dishes', np, 'errors', e3.length); console.log(e3.join('\n'));
 }

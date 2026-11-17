@@ -52,7 +52,7 @@ function AtlasTools(A) {
   const pick = (a) => a[rnd(a.length)];
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1); [a[i], a[j]] = [a[j], a[i]]; } return a; };
   const on = (t) => st.tab === 4 && st.tool === t;
-  const cutOpts = (sel) => CUTS.map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(cname(c))}</option>`).join('');
+  const cutOpts = (sel) => A.cuts().map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(cname(c))}</option>`).join('');
   const ctryOpts = (sel) => COUNTRIES.map((c) => `<option value="${c.id}"${c.id === sel ? ' selected' : ''}>${esc(tx(c))}</option>`).join('');
   const topMethods = (cut) => Object.keys(cut.m).sort((a, b) => cut.m[b] - cut.m[a]);
 
@@ -75,7 +75,7 @@ function AtlasTools(A) {
   const dname = (i, c) => DONENESS.names[c || st.country][i];
   const dfull = (i, c) => { const n = dname(i, c); return n[0] + (n[2] ? ', ' + n[2] : ''); };
   const orderPhrase = (i, c) => DONENESS.order[lp(c)].replace('{x}', dfull(i, c));
-  const look = (t) => (typeof Shop !== 'undefined' && Shop.doneLook ? Shop.doneLook(t) : { core: [198, 58, 69], band: 0.2, ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160] });
+  const look = (t) => (typeof Shop !== 'undefined' && Shop.doneLook ? Shop.doneLook(t, st.sp) : { core: [198, 58, 69], band: 0.2, ring: [138, 111, 96], crust: [59, 33, 20], fat: [236, 214, 160] });
   function doneRec(cut) {
     const r = DONE_REC[cut.id] || {};
     const nm = (i) => `<b lang="${cl()}">${esc(lower(dname(i)[0]))}</b>`;
@@ -84,6 +84,7 @@ function AtlasTools(A) {
       const a = r.r[0], b = r.r[1], same = a === b || dname(a)[0] === dname(b)[0];
       range = (same ? esc(tx(DONE_NOTE.r1)).replace('{a}', nm(a)) : esc(tx(DONE_NOTE.r)).replace('{a}', nm(a)).replace('{b}', nm(b))) + ` (${LV[a].t[0]}–${LV[b].t[1]} °C)`;
     }
+    if (r.pork) range += '. ' + esc(tx(DONE_NOTE.pork)).replace(/\.$/, '');
     if (r.r && r.slow) return { html: esc(tx(DONE_NOTE.both)).replace('{x}', range.charAt(0).toLowerCase() + range.slice(1)), lvl: r.r[0] };
     if (r.r) return { html: range + '.', lvl: r.r[0] };
     const k = r.slow ? 'slow' : r.safe ? 'safe' : r.crisp ? 'crisp' : r.soft ? 'soft' : null;
@@ -92,7 +93,7 @@ function AtlasTools(A) {
 
   function rDone() {
     const s = S();
-    $('#toolbody').innerHTML = `<p class="note">${esc(s.dnHint)}</p>
+    $('#toolbody').innerHTML = `<p class="note">${esc(s.dnHint)}</p>${st.sp === 'pork' ? `<p class="whybox">${esc(tx(DONENESS.porkNote))}</p>` : ''}
       <div class="donebox"><div class="steakx" id="dnSteak" role="img"><i></i></div><div class="dnread" id="dnRead"></div></div>
       <input type="range" class="wide" id="temp" min="${DONENESS.min}" max="${DONENESS.max}" step="1" value="${st.temp}" aria-label="${esc(s.temp)}">
       <div class="chips" id="dnChips"></div>
@@ -122,14 +123,14 @@ function AtlasTools(A) {
     $('#dnTable').innerHTML = LV.map((l, k) => `<tr data-lvl="${k}" class="${k === i ? 'me' : ''}"><td class="num">${l.t[0]}–${l.t[1]}</td>${cell(k, st.trFrom)}${cell(k, me)}</tr>`).join('');
     const cut = BY[st.sel], rec = cut && doneRec(cut);
     $('#dnCut').innerHTML = rec && rec.html ? `<h4>${esc(s.dnFor)} ${esc(lower(cname(cut)))}</h4><p class="whybox">${rec.html}</p>${rec.lvl != null ? `<div class="row" style="margin-top:8px"><button class="btn ghost" data-lvl="${rec.lvl}">${esc(s.dnSet)}</button></div>` : ''}` : '';
-    const sh = A.shop(); if (sh && on('done')) { sh.setDoneness(t); sh.setChalk(s.tools.done[0], [n[0], `${t} °C · ${F(t)} °F`]); }
+    const sh = A.shop(); if (sh && on('done')) { sh.setDoneness(t, st.sp); sh.setChalk(s.tools.done[0], [n[0], `${t} °C · ${F(t)} °F`]); }
   }
 
   // ------------------------------------------------------------ substitutes
   function subsOf(id) {
     const a = BY[id], co = {};
     DISHES.forEach((d) => { if (d.b === id) d.a.forEach((x) => { co[x] = (co[x] || 0) + 1; }); else if (d.a.includes(id)) co[d.b] = (co[d.b] || 0) + 1; });
-    return CUTS.filter((c) => c.id !== id).map((c) => {
+    return CUTS.filter((c) => c.id !== id && c.sp === a.sp).map((c) => {
       const shared = topMethods(a).filter((m) => a.m[m] >= 2 && c.m[m] >= 2);
       const sim = 6 - (Math.abs(a.t - c.t) + Math.abs(a.f - c.f) + Math.abs(a.c - c.c));
       return { c, shared, s: Math.min(8, co[c.id] || 0) * 1.2 + sim * 1.3 + shared.length * 1.5 };
@@ -236,7 +237,7 @@ function AtlasTools(A) {
   // ------------------------------------------------------------ comparison
   function rCmp() {
     const s = S();
-    if (!st.cmp || !BY[st.cmp[0]] || !BY[st.cmp[1]]) { const o = subsOf(st.sel)[0]; st.cmp = [st.sel, o ? o.c.id : (st.sel === 'la' ? 'ba' : 'la')]; }
+    if (!st.cmp || !BY[st.cmp[0]] || !BY[st.cmp[1]]) { const o = subsOf(st.sel)[0]; st.cmp = [st.sel, o ? o.c.id : A.cuts().find((c) => c.id !== st.sel).id]; }
     const a = BY[st.cmp[0]], b = BY[st.cmp[1]];
     const bar = (v) => `<span class="b" role="img" aria-label="${v} / 5">${[1, 2, 3, 4, 5].map((i) => `<i class="${i <= v ? 'on' : ''}"></i>`).join('')}</span>`;
     const best = (c) => topMethods(c).filter((m) => c.m[m] === 3).slice(0, 4).map((m) => esc(tx(METHODS[m].n))).join(' · ') || '—';
@@ -277,10 +278,11 @@ function AtlasTools(A) {
   const ROUND = 8;
   function findable() {
     const sh = A.shop(); if (!sh) return [];
-    const primary = {}; CUTS.forEach((c) => (sh.pieceOfCut[c.id] || []).forEach((n) => { if (!(n in primary)) primary[n] = c.id; }));
-    return CUTS.filter((c) => { const ps = sh.pieceOfCut[c.id] || []; return ps.length && ps.every((n) => !sh.pieces[n].meta.internal && primary[n] === c.id); });
+    const primary = {}; CUTS.forEach((c) => c.pieces[0] !== '*' && (sh.pieceOfCut[c.id] || []).forEach((n) => { if (!(n in primary)) primary[n] = c.id; }));
+    return A.cuts().filter((c) => { const ps = sh.pieceOfCut[c.id] || []; return ps.length && ps.every((n) => !sh.pieces[n].meta.internal && primary[n] === c.id); });
   }
   function newQ() {
+    const CUTS = A.cuts();
     const s = S(), kinds = ['name', 'name', 'method', 'done'], fd = findable(); if (fd.length > 4) kinds.push('find', 'find');
     const kind = pick(kinds);
     if (kind === 'find') { const c = pick(fd); return { kind, id: c.id, text: s.qzFind.replace('{x}', lower(cname(c))) }; }

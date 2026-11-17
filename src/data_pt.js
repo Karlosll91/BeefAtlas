@@ -6,7 +6,7 @@ const PT = {
     TW: 'Taiwan', JP: 'Japão', KR: 'Coreia', VN: 'Vietnã', TH: 'Tailândia', ID: 'Indonésia', MY: 'Malásia', PH: 'Filipinas', KH: 'Camboja', MM: 'Mianmar', PK: 'Paquistão', IN: 'Índia', BD: 'Bangladesh', KZ: 'Cazaquistão', UZ: 'Uzbequistão', MN: 'Mongólia', AU: 'Austrália', NZ: 'Nova Zelândia', FJ: 'Fiji', INT: 'Geral' },
   props: { t: 'Maciez', f: 'Gordura', c: 'Colágeno', v: 'Sabor' },
   price: ['', 'Econômico', 'Preço médio', 'Preço alto', 'Premium'],
-  zones: { loin: 'Lombo', rib: 'Costela', sirloin: 'Alcatra', round: 'Traseiro', flank: 'Flanco', chuck: 'Dianteiro', brisket: 'Peito', shank: 'Braço e perna', head: 'Cabeça', tail: 'Rabo', offal: 'Miúdos', mix: 'Mistura' },
+  zones: { loin: 'Lombo', rib: 'Costela', sirloin: 'Alcatra', round: 'Traseiro', flank: 'Flanco', chuck: 'Dianteiro', brisket: 'Peito', shank: 'Braço e perna', head: 'Cabeça', tail: 'Rabo', offal: 'Miúdos', mix: 'Mistura', belly: 'Barriga', whole: 'Inteiro' },
   methods: {
     grill: { n: 'Churrasqueira', v: 'assar na churrasqueira', need: 'O fogo direto cozinha rápido e seco: pede um corte macio ou com boa gordura, porque o colágeno não chega a amolecer.', ask: 'Peça com 2,5 a 4 cm de espessura; mais fino resseca antes de dourar.' },
     sear: { n: 'Frigideira ou chapa', v: 'fazer na chapa', need: 'Calor muito alto e poucos minutos: funciona com músculos macios de fibra fina e alguma gordura entremeada.', ask: 'Tire da geladeira 30 min antes e seque bem: a umidade impede a crosta.' },
@@ -22,7 +22,8 @@ const PT = {
     skewer: { n: 'Espetinhos', v: 'fazer no espeto', need: 'Cubos pequenos em fogo direto: carne macia e com um pouco de gordura, que aguente sem ressecar.', ask: 'Peça em cubos de 3 cm, todos do mesmo tamanho.' },
     cure: { n: 'Curar ou secar', v: 'curar', need: 'Para secar ou curar busca-se um músculo magro, inteiro e de fibra regular: a gordura rança e os nervos ficam duros.', ask: 'Peça uma peça inteira, magra e sem membranas.' },
     roll: { n: 'Recheado ou enrolado', v: 'rechear', need: 'Para rechear ou enrolar serve uma peça de formato regular ou uma manta larga que se possa abrir e amarrar.', ask: 'Peça para abrirem em manta ou fazerem o bolso para o recheio.' },
-    slice: { n: 'Fatias finíssimas', v: 'fatiar fino', need: 'Cortada quase transparente, a carne cozinha em segundos: aqui é a gordura entremeada que dá o sabor.', ask: 'Peça para fatiarem na máquina, ou congele 1 hora para fatiar em casa.' }
+    slice: { n: 'Fatias finíssimas', v: 'fatiar fino', need: 'Cortada quase transparente, a carne cozinha em segundos: aqui é a gordura entremeada que dá o sabor.', ask: 'Peça para fatiarem na máquina, ou congele 1 hora para fatiar em casa.' },
+    crisp: { n: 'Torresmo ou fritura', v: 'fritar até ficar crocante', need: 'Para algo ficar crocante é preciso pele ou muita gordura: primeiro amacia-se com calor úmido e depois frita-se, quase sempre na própria gordura.', ask: 'Peça com pele e com a gordura; seque bem a pele antes de fritar.' }
   },
   cuts: {
     lf: { d: 'O músculo que menos trabalha do boi: fica por dentro, sob a coluna, e quase não carrega peso. Por isso é o mais macio e também o de sabor mais suave.', tip: 'Procure uma peça limpa, sem o cordão lateral. Rende uns 180 g por pessoa.', cook: '52–57 °C por dentro. Passado do ponto perde sua única vantagem.',

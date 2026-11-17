@@ -58,14 +58,17 @@ const METHODS = {
     ask: ['Pide que te lo abran en libro o le hagan el bolsillo para el relleno.', 'Ask the butcher to butterfly it or cut the pocket for the stuffing.'] },
   slice: { n: ['Láminas finas', 'Paper-thin slices'], v: ['cortar en láminas', 'slice thin'],
     need: ['Cortada casi transparente, la carne se cocina en segundos: aquí la grasa infiltrada es la que da el sabor.', 'Cut almost see-through, beef cooks in seconds: marbling is what carries the flavour here.'],
-    ask: ['Pide que lo corten en máquina, o congélalo 1 hora para lonchearlo en casa.', 'Ask for it machine-sliced, or freeze it for 1 hour to slice at home.'] }
+    ask: ['Pide que lo corten en máquina, o congélalo 1 hora para lonchearlo en casa.', 'Ask for it machine-sliced, or freeze it for 1 hour to slice at home.'] },
+  crisp: { n: ['Chicharrón o fritura', 'Crackling / deep-fry'], v: ['freír hasta que quede crocante', 'fry until crisp'],
+    need: ['Para que algo quede crocante hace falta piel o mucha grasa: primero se ablanda con calor húmedo y luego se fríe, casi siempre en su propia grasa.', 'Crispness needs skin or plenty of fat: soften it first with moist heat, then fry it, usually in its own fat.'],
+    ask: ['Pídelo con piel y con su grasa; la piel se seca bien antes de freír.', 'Ask for it skin-on with its fat; dry the skin well before frying.'] }
 };
 
 const PROPS = { t: ['Terneza', 'Tenderness'], f: ['Grasa', 'Fat'], c: ['Colágeno', 'Collagen'], v: ['Sabor', 'Flavour'] };
 const PRICE = [['', ''], ['Económico', 'Budget'], ['Precio medio', 'Mid-priced'], ['Precio alto', 'Pricey'], ['Premium', 'Premium']];
 const ZONES = {
   loin: ['Lomo', 'Loin'], rib: ['Costillar', 'Rib'], sirloin: ['Cadera', 'Sirloin'], round: ['Pierna', 'Round'], flank: ['Flanco', 'Flank'],
-  chuck: ['Cuarto delantero', 'Chuck'], brisket: ['Pecho', 'Brisket'], shank: ['Brazo y pierna', 'Shank'], head: ['Cabeza', 'Head'], tail: ['Cola', 'Tail'], offal: ['Vísceras', 'Offal'], mix: ['Mezcla', 'Blend']
+  chuck: ['Cuarto delantero', 'Chuck'], brisket: ['Pecho', 'Brisket'], shank: ['Brazo y pierna', 'Shank'], head: ['Cabeza', 'Head'], tail: ['Cola', 'Tail'], offal: ['Vísceras', 'Offal'], mix: ['Mezcla', 'Blend'], belly: ['Barriga', 'Belly'], whole: ['Entero', 'Whole']
 };
 
 // names: country -> [main, also]. m: method suitability 1-3. why: method -> [es, en].
